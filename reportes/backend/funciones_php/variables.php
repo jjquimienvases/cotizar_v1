@@ -1,0 +1,74 @@
+<?php 
+   //DEFINIENDO FECHA INICIAL 
+if(isset($_POST['send_form'])){
+   $fecha_ini = $_POST['fecha_ini'];
+   $hora_ini = $_POST['hora_ini'];
+
+   //DEFINIENDO FECHA FIN 
+   $fecha_fin = $_POST['fecha_fin'];
+   $hora_fin = $_POST['hora_fin'];
+   //-----------------------------------------
+   $fecha_inicial = $fecha_ini." ".$hora_ini; 
+   $fecha_final = $fecha_fin." ".$hora_fin;
+   $punto_de_venta = $_POST['punto_venta'];
+   $metodos_de_pago = $_POST['check'];
+   $cliente = $_POST['cedulasres'];
+   $comercial = $_POST['comerciales_res'];
+   $estado = $_POST['estado']; 
+   $fecha_actual = date("Y-m-D H:i:s");
+   $envio = $_POST['send_form'];
+   $sql = "";  
+}else{
+   echo "esperando consulta";
+}
+
+
+
+  
+
+  /*  $sql ="SELECT * FROM factura_orden WHERE";
+
+   $filtros = "";
+   $where = "";
+
+
+ if(!isset($punto_de_venta)){
+    $punto_de_venta = "mostradorjj";
+}
+$where .=" metodopago = '$punto_de_venta'";
+   
+   //WHERE FECHAS
+ if (isset($fecha_inicial) && isset($fecha_final)){
+    $where .= " AND order_date BETWEEN '$fecha_inicial' AND '$fecha_final'";
+ } else if(isset($fecha_inicial)){
+     $where .= " AND order_date = '$fecha_inicial'";
+ }else if(isset($fecha_final)){
+    $where .= " AND order_date = '$fecha_final'";
+ }else{
+    $where .= " AND order_date = '$fecha_actual'";
+ }
+
+ if(isset($cliente)){
+    $where .= "cedula = '$cliente'";
+}
+
+if(isset($comercial)){
+    $where .= " AND order_receiver_address LIKE '%$comercial%'";
+}
+
+if(isset($estado)){
+    $where .= " AND estado LIKE '%$estado'";
+}
+
+ $metodos = "(";
+ if(isset($metodos_de_pago)){
+    $where .= " AND ";
+    foreach ($metodos_de_pago as $data) {
+       $metodos .= "metodo_de_pago LIKE '%$data%' OR "; 
+    }
+  $metodos = substr($metodos,0,strlen($metodos)-4).")";
+ }
+$consulta_seleccion_usuario = $sql.$where.$metodos;
+       
+
+  */

@@ -1,0 +1,71 @@
+/* #contenedor_tabla{
+  width: 1600px;
+  
+}
+*/
+
+ @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+        .nav-link,
+        th {
+            text-transform: uppercase;
+            font-family: "Montserrat";
+        }
+
+        .table {
+            margin-top: 20px;
+        }
+
+        .tab-pane {
+            padding: 20px;
+        }
+
+        #input_call {
+            background-color: white;
+
+        }
+
+        .contenedor_info_resumida {
+            width: 1000px;
+            margin-left: 10px;
+            margin-top: 10px;
+
+        }
+
+        #all_info {
+            display: none;
+        }
+
+        .results {
+            border: none;
+        }
+
+        img {
+            width: 270px;
+            height: 200px;
+            align-self: center;
+        }
+
+        #span_1 {
+            color: white;
+            text-decoration: none;
+          
+
+        }
+
+        #link {
+            color: white;
+            text-decoration: none;
+        }
+        #report{
+            font-size: 20px;
+            color: white;
+           
+        }
+        .report{
+ border: solid orange 1px;
+            border-radius: 20px;
+            border-width: 110%;
+            background-color: orange;
+            width: 500px;
+        }

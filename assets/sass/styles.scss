@@ -1,0 +1,16 @@
+@import "./_variables";
+
+body {
+    background: $color1;
+
+}
+.cierre-caja-container {
+    
+    width: 40em !important;
+
+    .btn-wrapper {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+

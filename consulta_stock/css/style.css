@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Georama:ital,wght@0,600;1,200&display=swap");
+
+.titulos {
+  font-family: "Georama", sans-serif;
+}
+
+.contenedor_inputs_search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+#informacion_targetas {
+  display: flex;
+  /* display: none ; */
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  /* display: block; */
+}

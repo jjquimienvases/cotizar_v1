@@ -1,0 +1,579 @@
+# BEGIN iThemes Security - Do not modify or remove this line
+# iThemes Security Config Details: 2
+	# Pass through Authorization header.
+	<IfModule mod_rewrite.c>
+		RewriteEngine On
+		RewriteCond %{HTTP:Authorization} ^(.*)
+		RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+	</IfModule>
+
+	# Ban Hosts - Security > Settings > Banned Users
+	SetEnvIF REMOTE_ADDR "^185\.98\.62\.164$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^185\.98\.62\.164$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^185\.98\.62\.164$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^107\.189\.2\.5$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^107\.189\.2\.5$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^107\.189\.2\.5$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^212\.237\.38\.14$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^212\.237\.38\.14$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^212\.237\.38\.14$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^188\.76\.0\.61$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^188\.76\.0\.61$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^188\.76\.0\.61$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^178\.62\.114\.210$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^178\.62\.114\.210$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^178\.62\.114\.210$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^60\.215\.46\.187$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^60\.215\.46\.187$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^60\.215\.46\.187$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^138\.204\.200\.71$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^138\.204\.200\.71$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^138\.204\.200\.71$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^213\.32\.63\.123$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^213\.32\.63\.123$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^213\.32\.63\.123$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^177\.44\.138\.18$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^177\.44\.138\.18$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^177\.44\.138\.18$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^188\.165\.140\.127$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^188\.165\.140\.127$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^188\.165\.140\.127$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^77\.222\.99\.69$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^77\.222\.99\.69$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^77\.222\.99\.69$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^158\.85\.76\.204$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^158\.85\.76\.204$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^158\.85\.76\.204$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^178\.33\.138\.35$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^178\.33\.138\.35$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^178\.33\.138\.35$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^49\.37\.6\.243$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^49\.37\.6\.243$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^49\.37\.6\.243$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^220\.240\.239\.63$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^220\.240\.239\.63$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^220\.240\.239\.63$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^188\.24\.200\.1$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^188\.24\.200\.1$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^188\.24\.200\.1$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^108\.167\.139\.245$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^108\.167\.139\.245$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^108\.167\.139\.245$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^180\.58\.13\.30$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^180\.58\.13\.30$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^180\.58\.13\.30$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^68\.183\.117\.200$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^68\.183\.117\.200$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^68\.183\.117\.200$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^125\.209\.89\.242$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^125\.209\.89\.242$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^125\.209\.89\.242$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^103\.209\.52\.78$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^103\.209\.52\.78$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^103\.209\.52\.78$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^85\.57\.186\.1$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^85\.57\.186\.1$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^85\.57\.186\.1$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^177\.34\.113\.179$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^177\.34\.113\.179$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^177\.34\.113\.179$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^166\.137\.242\.24$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^166\.137\.242\.24$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^166\.137\.242\.24$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^103\.229\.29\.194$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^103\.229\.29\.194$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^103\.229\.29\.194$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^14\.207\.140\.231$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^14\.207\.140\.231$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^14\.207\.140\.231$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^98\.254\.199\.161$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^98\.254\.199\.161$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^98\.254\.199\.161$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^112\.207\.101\.103$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^112\.207\.101\.103$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^112\.207\.101\.103$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^109\.88\.163\.105$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^109\.88\.163\.105$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^109\.88\.163\.105$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^179\.176\.147\.65$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^179\.176\.147\.65$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^179\.176\.147\.65$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^177\.134\.206\.6$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^177\.134\.206\.6$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^177\.134\.206\.6$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^112\.114\.103\.210$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^112\.114\.103\.210$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^112\.114\.103\.210$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^94\.69\.81\.200$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^94\.69\.81\.200$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^94\.69\.81\.200$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^105\.247\.62\.36$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^105\.247\.62\.36$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^105\.247\.62\.36$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^209\.58\.131\.100$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^209\.58\.131\.100$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^209\.58\.131\.100$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^195\.181\.168\.28$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^195\.181\.168\.28$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^195\.181\.168\.28$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^89\.187\.169\.79$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^89\.187\.169\.79$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^89\.187\.169\.79$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^185\.152\.67\.139$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^185\.152\.67\.139$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^185\.152\.67\.139$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^84\.17\.59\.152$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^84\.17\.59\.152$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^84\.17\.59\.152$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^89\.34\.99\.7$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^89\.34\.99\.7$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^89\.34\.99\.7$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^62\.113\.194\.12$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^62\.113\.194\.12$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^62\.113\.194\.12$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^167\.71\.198\.187$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^167\.71\.198\.187$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^167\.71\.198\.187$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^213\.128\.71\.25$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^213\.128\.71\.25$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^213\.128\.71\.25$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^185\.81\.165\.6$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^185\.81\.165\.6$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^185\.81\.165\.6$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^209\.58\.188\.22$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^209\.58\.188\.22$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^209\.58\.188\.22$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^177\.54\.157\.48$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^177\.54\.157\.48$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^177\.54\.157\.48$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^172\.105\.48\.96$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^172\.105\.48\.96$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^172\.105\.48\.96$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^94\.100\.23\.126$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^94\.100\.23\.126$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^94\.100\.23\.126$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^185\.93\.2\.205$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^185\.93\.2\.205$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^185\.93\.2\.205$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^89\.187\.181\.19$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^89\.187\.181\.19$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^89\.187\.181\.19$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^172\.107\.22\.66$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^172\.107\.22\.66$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^172\.107\.22\.66$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^89\.187\.162\.67$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^89\.187\.162\.67$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^89\.187\.162\.67$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^196\.52\.60\.70$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^196\.52\.60\.70$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^196\.52\.60\.70$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^188\.42\.30\.236$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^188\.42\.30\.236$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^188\.42\.30\.236$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^185\.102\.218\.34$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^185\.102\.218\.34$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^185\.102\.218\.34$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^195\.181\.167\.141$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^195\.181\.167\.141$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^195\.181\.167\.141$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^139\.59\.35\.10$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^139\.59\.35\.10$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^139\.59\.35\.10$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^38\.111\.114\.153$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^38\.111\.114\.153$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^38\.111\.114\.153$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^89\.187\.190\.167$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^89\.187\.190\.167$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^89\.187\.190\.167$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^123\.134\.73\.106$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^123\.134\.73\.106$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^123\.134\.73\.106$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^175\.142\.250\.84$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^175\.142\.250\.84$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^175\.142\.250\.84$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^182\.177\.225\.164$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^182\.177\.225\.164$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^182\.177\.225\.164$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^14\.204\.65\.208$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^14\.204\.65\.208$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^14\.204\.65\.208$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^58\.243\.105\.25$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^58\.243\.105\.25$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^58\.243\.105\.25$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^114\.124\.138\.54$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^114\.124\.138\.54$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^114\.124\.138\.54$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^105\.174\.4\.110$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^105\.174\.4\.110$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^105\.174\.4\.110$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^103\.205\.143\.18$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^103\.205\.143\.18$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^103\.205\.143\.18$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^14\.204\.66\.99$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^14\.204\.66\.99$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^14\.204\.66\.99$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^31\.45\.198\.141$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^31\.45\.198\.141$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^31\.45\.198\.141$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^66\.249\.73\.24$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^66\.249\.73\.24$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^66\.249\.73\.24$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^117\.206\.77\.160$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^117\.206\.77\.160$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^117\.206\.77\.160$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^59\.89\.247\.49$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^59\.89\.247\.49$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^59\.89\.247\.49$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^117\.193\.199\.247$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^117\.193\.199\.247$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^117\.193\.199\.247$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^117\.193\.208\.237$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^117\.193\.208\.237$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^117\.193\.208\.237$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^23\.105\.235\.36$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^23\.105\.235\.36$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^23\.105\.235\.36$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^23\.105\.250\.4$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^23\.105\.250\.4$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^23\.105\.250\.4$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^103\.104\.53\.167$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^103\.104\.53\.167$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^103\.104\.53\.167$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^78\.97\.234\.82$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^78\.97\.234\.82$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^78\.97\.234\.82$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^73\.60\.34\.243$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^73\.60\.34\.243$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^73\.60\.34\.243$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^188\.129\.251\.105$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^188\.129\.251\.105$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^188\.129\.251\.105$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^24\.133\.169\.148$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^24\.133\.169\.148$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^24\.133\.169\.148$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^49\.145\.201\.100$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^49\.145\.201\.100$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^49\.145\.201\.100$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^186\.130\.78\.11$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^186\.130\.78\.11$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^186\.130\.78\.11$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^190\.220\.162\.114$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^190\.220\.162\.114$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^190\.220\.162\.114$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^178\.79\.57\.64$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^178\.79\.57\.64$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^178\.79\.57\.64$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^178\.79\.57\.70$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^178\.79\.57\.70$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^178\.79\.57\.70$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^42\.115\.49\.32$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^42\.115\.49\.32$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^42\.115\.49\.32$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^42\.115\.49\.220$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^42\.115\.49\.220$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^42\.115\.49\.220$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^130\.105\.186\.74$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^130\.105\.186\.74$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^130\.105\.186\.74$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^203\.177\.145\.66$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^203\.177\.145\.66$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^203\.177\.145\.66$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^87\.116\.178\.78$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^87\.116\.178\.78$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^87\.116\.178\.78$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^36\.88\.155\.231$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^36\.88\.155\.231$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^36\.88\.155\.231$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^217\.12\.19\.130$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^217\.12\.19\.130$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^217\.12\.19\.130$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^84\.17\.60\.233$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^84\.17\.60\.233$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^84\.17\.60\.233$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^185\.59\.222\.130$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^185\.59\.222\.130$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^185\.59\.222\.130$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^66\.11\.126\.218$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^66\.11\.126\.218$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^66\.11\.126\.218$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^107\.155\.84\.10$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^107\.155\.84\.10$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^107\.155\.84\.10$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^84\.17\.57\.143$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^84\.17\.57\.143$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^84\.17\.57\.143$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^89\.187\.161\.131$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^89\.187\.161\.131$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^89\.187\.161\.131$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^54\.39\.99\.131$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^54\.39\.99\.131$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^54\.39\.99\.131$" DenyAccess
+
+	<IfModule mod_litespeed.c>
+		Order allow,deny
+		Allow from all
+		Deny from env=DenyAccess
+		Deny from 185.98.62.164
+		Deny from 107.189.2.5
+		Deny from 212.237.38.14
+		Deny from 188.76.0.61
+		Deny from 178.62.114.210
+		Deny from 60.215.46.187
+		Deny from 138.204.200.71
+		Deny from 213.32.63.123
+		Deny from 177.44.138.18
+		Deny from 188.165.140.127
+		Deny from 77.222.99.69
+		Deny from 158.85.76.204
+		Deny from 178.33.138.35
+		Deny from 49.37.6.243
+		Deny from 220.240.239.63
+		Deny from 188.24.200.1
+		Deny from 108.167.139.245
+		Deny from 180.58.13.30
+		Deny from 68.183.117.200
+		Deny from 125.209.89.242
+		Deny from 103.209.52.78
+		Deny from 85.57.186.1
+		Deny from 177.34.113.179
+		Deny from 166.137.242.24
+		Deny from 103.229.29.194
+		Deny from 14.207.140.231
+		Deny from 98.254.199.161
+		Deny from 112.207.101.103
+		Deny from 109.88.163.105
+		Deny from 179.176.147.65
+		Deny from 177.134.206.6
+		Deny from 112.114.103.210
+		Deny from 94.69.81.200
+		Deny from 105.247.62.36
+		Deny from 209.58.131.100
+		Deny from 195.181.168.28
+		Deny from 89.187.169.79
+		Deny from 185.152.67.139
+		Deny from 84.17.59.152
+		Deny from 89.34.99.7
+		Deny from 62.113.194.12
+		Deny from 167.71.198.187
+		Deny from 213.128.71.25
+		Deny from 185.81.165.6
+		Deny from 209.58.188.22
+		Deny from 177.54.157.48
+		Deny from 172.105.48.96
+		Deny from 94.100.23.126
+		Deny from 185.93.2.205
+		Deny from 89.187.181.19
+		Deny from 172.107.22.66
+		Deny from 89.187.162.67
+		Deny from 196.52.60.70
+		Deny from 188.42.30.236
+		Deny from 185.102.218.34
+		Deny from 195.181.167.141
+		Deny from 139.59.35.10
+		Deny from 38.111.114.153
+		Deny from 89.187.190.167
+		Deny from 123.134.73.106
+		Deny from 175.142.250.84
+		Deny from 182.177.225.164
+		Deny from 14.204.65.208
+		Deny from 58.243.105.25
+		Deny from 114.124.138.54
+		Deny from 105.174.4.110
+		Deny from 103.205.143.18
+		Deny from 14.204.66.99
+		Deny from 31.45.198.141
+		Deny from 66.249.73.24
+		Deny from 117.206.77.160
+		Deny from 59.89.247.49
+		Deny from 117.193.199.247
+		Deny from 117.193.208.237
+		Deny from 23.105.235.36
+		Deny from 23.105.250.4
+		Deny from 103.104.53.167
+		Deny from 78.97.234.82
+		Deny from 73.60.34.243
+		Deny from 188.129.251.105
+		Deny from 24.133.169.148
+		Deny from 49.145.201.100
+		Deny from 186.130.78.11
+		Deny from 190.220.162.114
+		Deny from 178.79.57.64
+		Deny from 178.79.57.70
+		Deny from 42.115.49.32
+		Deny from 42.115.49.220
+		Deny from 130.105.186.74
+		Deny from 203.177.145.66
+		Deny from 87.116.178.78
+		Deny from 36.88.155.231
+		Deny from 217.12.19.130
+		Deny from 84.17.60.233
+		Deny from 185.59.222.130
+		Deny from 66.11.126.218
+		Deny from 107.155.84.10
+		Deny from 84.17.57.143
+		Deny from 89.187.161.131
+		Deny from 54.39.99.131
+	</IfModule>
+
+	# Disable Directory Browsing - Security > Settings > System Tweaks > Directory Browsing
+	Options -Indexes
+
+	<IfModule mod_rewrite.c>
+		RewriteEngine On
+
+		# Disable PHP in Uploads - Security > Settings > System Tweaks > PHP in Uploads
+		RewriteRule ^wp\-content/uploads/.*\.(?:php[1-7]?|pht|phtml?|phps)\.?$ - [NC,F]
+
+		# Filter Request Methods - Security > Settings > System Tweaks > Request Methods
+		RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK) [NC]
+		RewriteRule ^.* - [F]
+
+		# Filter Suspicious Query Strings in the URL - Security > Settings > System Tweaks > Suspicious Query Strings
+		RewriteCond %{QUERY_STRING} \.\.\/ [OR]
+		RewriteCond %{QUERY_STRING} \.(bash|git|hg|log|svn|swp|cvs) [NC,OR]
+		RewriteCond %{QUERY_STRING} etc/passwd [NC,OR]
+		RewriteCond %{QUERY_STRING} boot\.ini [NC,OR]
+		RewriteCond %{QUERY_STRING} ftp: [NC,OR]
+		RewriteCond %{QUERY_STRING} https?: [NC,OR]
+		RewriteCond %{QUERY_STRING} (<|%3C)script(>|%3E) [NC,OR]
+		RewriteCond %{QUERY_STRING} mosConfig_[a-zA-Z_]{1,21}(=|%3D) [NC,OR]
+		RewriteCond %{QUERY_STRING} base64_decode\( [NC,OR]
+		RewriteCond %{QUERY_STRING} %24&x [NC,OR]
+		RewriteCond %{QUERY_STRING} 127\.0 [NC,OR]
+		RewriteCond %{QUERY_STRING} (^|\W)(globals|encode|localhost|loopback)($|\W) [NC,OR]
+		RewriteCond %{QUERY_STRING} (^|\W)(concat|insert|union|declare)($|\W) [NC,OR]
+		RewriteCond %{QUERY_STRING} %[01][0-9A-F] [NC]
+		RewriteCond %{QUERY_STRING} !^loggedout=true
+		RewriteCond %{QUERY_STRING} !^action=jetpack-sso
+		RewriteCond %{QUERY_STRING} !^action=rp
+		RewriteCond %{HTTP_COOKIE} !wordpress_logged_in_
+		RewriteCond %{HTTP_REFERER} !^http://maps\.googleapis\.com
+		RewriteRule ^.* - [F]
+
+		# Filter Non-English Characters - Security > Settings > System Tweaks > Non-English Characters
+		RewriteCond %{QUERY_STRING} %[A-F][0-9A-F] [NC]
+		RewriteRule ^.* - [F]
+	</IfModule>
+# END iThemes Security - Do not modify or remove this line
+
+# BEGIN WordPress
+# The directives (lines) between `BEGIN WordPress` and `END WordPress` are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
+# BEGIN LiteSpeed
+# The directives (lines) between `BEGIN LiteSpeed` and `END LiteSpeed` are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+<IfModule Litespeed>
+SetEnv noabort 1
+</IfModule>
+# END LiteSpeed

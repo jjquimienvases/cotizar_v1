@@ -1,0 +1,18 @@
+#info_factura{
+    display: none ;
+    flex-flow: row wrap ;
+    justify-content: space-between ;
+    align-items: center ;
+    /* display: block; */
+  }
+#info_factura_call{
+    display: none ;
+    flex-flow: row wrap ;
+    justify-content: space-between ;
+    align-items: center ;
+    /* display: block; */
+  }
+
+  #close{
+      display: none;
+  }

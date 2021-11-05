@@ -1,0 +1,18 @@
+*{
+  margin: 0;
+  padding: 0;
+    font-family: Verdana;
+}
+
+body{
+  font-size: 18px;
+
+}
+
+td, tr{
+  border: solid 1px grey;
+}
+img{
+  width:150px;
+  height:105px;
+}

@@ -1,0 +1,58 @@
+[07-Apr-2021 17:39:51 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 17:39:51 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 17:39:53 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 17:39:53 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 17:39:54 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 17:39:54 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 17:39:54 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 17:39:54 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 17:39:54 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 17:39:54 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 17:39:54 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 17:39:54 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 17:42:40 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 17:42:40 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 17:42:41 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 17:42:41 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 17:42:42 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 17:42:42 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 17:43:29 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 17:43:29 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 17:43:40 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 17:43:40 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 17:48:46 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 17:48:46 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 17:52:56 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 17:52:56 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 18:03:44 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 18:03:44 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 18:03:47 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 18:03:47 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 18:03:49 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 18:03:49 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 18:04:05 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 18:04:05 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 18:04:10 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 18:04:10 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 18:04:13 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 18:04:13 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 18:04:17 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 18:04:17 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 18:04:19 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 18:04:19 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 18:08:36 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 18:08:36 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 18:11:05 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 18:11:05 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 18:25:59 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 18:25:59 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 18:25:59 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 18:25:59 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 18:26:05 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 18:26:05 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 18:26:19 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 18:26:19 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 18:31:17 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 18:31:18 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13
+[07-Apr-2021 18:31:35 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/try_caja/index.php on line 6
+[07-Apr-2021 18:31:35 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/jjquimienvases/cotizar/try_caja/index.php:1) in /home/jjquimienvases/cotizar/try_caja/index.php on line 13

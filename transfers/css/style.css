@@ -1,0 +1,50 @@
+.izquierda{
+    border-radius: 25px;
+}
+
+.derecha{
+    display:none;
+    border: solid black 1px;
+    width: 800px;
+}
+
+.clearfix{
+    float:none;
+    clear:both;
+}
+
+li{
+    list-style:none;
+}
+span{
+    font-family: 'Marcellus SC', serif;
+}
+
+#container-a{
+    width: 35%;
+    float: left;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    padding: 45px;
+}
+
+#container-b{
+    width: 63%;
+    float:left;
+    display:block;
+    padding: 45px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    margin-left: 15px;
+}
+
+#welcome{
+    
+    font-family: 'Marcellus SC', serif;
+}
+.informatic{
+font-family: 'Encode Sans SC', sans-serif;
+}
+
+

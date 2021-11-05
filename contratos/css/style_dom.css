@@ -1,0 +1,167 @@
+
+
+*{
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+  
+    margin: 8px;
+    
+}
+p{
+      text-align: justify;
+}
+
+table{
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+}
+
+
+
+table .head{
+
+    background: rgb(53, 103, 263);
+
+}
+
+table .head td{
+
+    color: #fff;
+
+    font-family: 'Arial',sans-serif;
+
+    font-weight: bold;
+
+    font-size: 15px;
+
+    text-align: center;
+
+}
+
+
+
+table tr td{
+
+    border:1px solid #ccc;
+
+    padding: 7px;
+
+    font-size: 14px;
+
+    color: rgb(39, 39, 39);
+
+}
+
+#white_space{
+    height: 150px;
+}
+
+#white_space_2{
+    height: 500px;
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
+img{
+  height: 120px;
+  width: 100%;
+
+}
+
+#derecha_otro{
+    float:left;
+    margin-left:120px;
+}
+
+#izquierda_otro{
+    float:left;
+}
+
+#huella_otro{
+    float:left;
+    margin-top:20px;
+    margin-left:10px;
+    border: 2px solid black;
+    border-radius:20%;
+    height: 150px;
+    width: 100px;
+}
+
+#izquierda_confidencial{
+    float:left;
+}
+
+
+#derecha_confidencial{
+    float:left;
+    margin-top:20px;
+    margin-left:150px;
+    border: 2px solid black;
+    border-radius:20%;
+    height: 150px;
+    width: 100px;
+}
+
+#izquierda_contrato{
+    float:left;
+}
+
+
+#derecha_contrato{
+    float:left;
+    margin-top:20px;
+    margin-left:150px;
+    border: 2px solid black;
+    border-radius:20%;
+    height: 150px;
+    width: 100px;
+}
+
+
+#derecha_confidencial{
+    float:left;
+    margin-top:20px;
+    margin-left:150px;
+    border: 2px solid black;
+    border-radius:20%;
+    height: 150px;
+    width: 100px;
+}
+
+#izquierda_prestacion{
+    float:left;
+}
+
+#derecha_prestacion{
+    float:left;
+}
+
+#huella_presentacion{
+    float:left;
+    margin-top:20px;
+    margin-left:50px;
+    border: 2px solid black;
+    border-radius:20%;
+    height: 150px;
+    width: 100px;
+}
+
+
+#other_white{
+      height:1200px;
+}
+
+
+
+
+
+
+
+
+

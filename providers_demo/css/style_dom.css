@@ -1,0 +1,49 @@
+
+*{
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+}
+
+table{
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+}
+
+
+
+table .head{
+
+    background: rgb(53, 103, 263);
+
+}
+
+table .head td{
+
+    color: #fff;
+
+    font-family: 'Arial',sans-serif;
+
+    font-weight: bold;
+
+    font-size: 15px;
+
+    text-align: center;
+
+}
+
+
+
+table tr td{
+
+    border:1px solid #ccc;
+
+    padding: 7px;
+
+    font-size: 14px;
+
+    color: rgb(39, 39, 39);
+
+}

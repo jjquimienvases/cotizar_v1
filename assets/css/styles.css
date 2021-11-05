@@ -1,0 +1,15 @@
+/* body {
+  /* background: #ccc; */
+ 
+ 
+a{
+  color: white;
+  text-decoration: none;
+}
+.cierre-caja-container {
+  width: 40em !important;
+}
+.cierre-caja-container .btn-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
