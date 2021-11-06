@@ -1,13 +1,10 @@
 <?php
 
-// include "../../conectar.php";
+include "../../globals.php";
 
 header('Content-Type: application/json');
 
 $response = new stdClass;
-
-$conexion = new mysqli('ftp.jjquimienvases.com','jjquimienvases_jjadmin','LeinerM4ster','jjquimienvases_cotizar');
-
 
 
 $fun = $_POST['key'];
@@ -21,7 +18,7 @@ switch ($fun) {
             $sql = "SELECT * FROM materia_prima WHERE id = $id OR nombre = '$id'";
         
 
-        $r = $conexion->query($sql);
+        $r = $cnx->query($sql);
 
         if ($o = $r->fetch_object()) {
 

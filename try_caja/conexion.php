@@ -1,10 +1,5 @@
 <?php
 
-$con = new mysqli('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');
-if ($con->connect_errno) {
-    die('fail');
-}
-
 function file_name($string) {
 
     // Tranformamos todo a minusculas

@@ -1,5 +1,5 @@
 <?php
- $con = new mysqli ('ftp.jjquimienvases.com','jjquimienvases_jjadmin','LeinerM4ster','jjquimienvases_cotizar');
+include '../../globals.php';
 
 $order_id = $_POST["order_id"];
 $documento = $_POST["documents"];
@@ -7,23 +7,23 @@ $tipo_persona = $_POST["personas"];
 
 $json = [];
 $fecha = date('Y-m-d H:i:s');
-$sql_largo = $con->query("SELECT * FROM factura_id");
+$sql_largo = $cnx->query("SELECT * FROM factura_id");
 foreach ($sql_largo as $id_fac) {
     $customerInvoice = $id_fac["id"];
 }
 $customerInvoiceId = (float)$customerInvoice + 1;
 try {
-    $consultar_cotizacion = $con->query("SELECT * FROM factura_orden WHERE order_id = $order_id");
+    $consultar_cotizacion = $cnx->query("SELECT * FROM factura_orden WHERE order_id = $order_id");
     $sql_productos = "";
     foreach ($consultar_cotizacion as $data) {
         $cedula = $data["cedula"];
-        $sql_info_cliente = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
+        $sql_info_cliente = $cnx->query("SELECT * FROM clientes WHERE cedula = $cedula");
 
         foreach ($sql_info_cliente as $data_c) :
             // $data_c = (object) $data_c;
             //obtener ciudad codigo postal y municipio 
             $city_demo = $data_c["ciudad"];
-            $select_city = $con->query("SELECT * FROM ciudades cd INNER JOIN municipios mp ON cd.m_id = mp.id WHERE cd.ciudad LIKE '%$city_demo%'");
+            $select_city = $cnx->query("SELECT * FROM ciudades cd INNER JOIN municipios mp ON cd.m_id = mp.id WHERE cd.ciudad LIKE '%$city_demo%'");
             foreach ($select_city as $data_city) :
             // $id_fk = $data_city['m_id'];
             // $postal = $data_city['postal'];
@@ -34,7 +34,7 @@ try {
             $cc = str_replace("-", "", $cedula);
 
         endforeach;
-        $sql_productos = $con->query("SELECT * FROM factura_orden_producto WHERE order_id = $order_id");
+        $sql_productos = $cnx->query("SELECT * FROM factura_orden_producto WHERE order_id = $order_id");
         $new_data_p = [];
         foreach ($sql_productos as $data_p) :
             $data_p = (object) $data_p;

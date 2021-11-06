@@ -1,15 +1,18 @@
 <?php 
+
+include "globals.php";
+
 function formatear($num){
 	setlocale(LC_MONETARY, 'en_US');
 	return "$" . number_format($num, 2);
 }
- $con = new mysqli ('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');  
+
 //este documento es un post que recibe el numero de cotizacion 
  $item = $_GET['etiqueta'];
 
-$sql_ = "SELECT pa.id, pa.contratipo, pa.unidad, ig.factura, ig.order_date FROM producto_av pa INNER JOIN ingresos ig ON pa.id = ig.code WHERE pa.id = $item ORDER BY ig.order_date DESC LIMIT 1";
+$sql = "SELECT pa.id, pa.contratipo, pa.unidad, ig.factura, ig.order_date FROM producto_av pa INNER JOIN ingresos ig ON pa.id = ig.code WHERE pa.id = $item ORDER BY ig.order_date DESC LIMIT 1";
 // $sql_ = "SELECT pa.id, pa.contratipo, pa.unidad, ig.factura, pv.id FROM Comunas cINNER JOIN Provincias pON c.idprovincia= p.idprovincia INNER JOIN Regiones r ON r.IdRegion = p.IdRegion"
- $execute = $con->query($sql_);
+ $execute = $cnx->query($sql);
 
  
  $output = '';

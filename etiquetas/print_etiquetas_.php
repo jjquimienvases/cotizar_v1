@@ -1,14 +1,17 @@
 <?php 
+
+include "../globals.php";
+
 function formatear($num){
 	setlocale(LC_MONETARY, 'en_US');
 	return "$" . number_format($num, 2);
 }
 
-$con = new mysqli ('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar'); 
+
 //este documento es un post que recibe el numero de cotizacion 
  $cotizacion = $_GET['invoice_id'];
  $sql_ = "SELECT fo.order_date,fo.order_receiver_name,fp.order_item_unitario,fp.order_item_final_amount, fp.item_code, fp.item_name, fp.gramos,fp.order_item_quantity FROM factura_orden fo INNER JOIN factura_orden_producto fp ON fo.order_id = fp.order_id  WHERE fo.order_id = $cotizacion AND fp.item_categoria = 4";
- $execute = $con->query($sql_);
+ $execute = $cnx->query($sql_);
 
 
 //  <link href="css/estilos_etiquetas.css" rel="stylesheet" type="text/css"   media="screen" />

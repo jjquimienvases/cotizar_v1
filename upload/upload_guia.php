@@ -5,16 +5,16 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <?php
-include('conexion.php');
+include "../globals.php";
 
 $tmp = array();
 $res = array();
 
 $status = "alistamiento";
 
-$sel = $con->query("SELECT * FROM files WHERE estado = '$status'");
+$sel = $cnx->query("SELECT * FROM files WHERE estado = '$status'");
 
-$seleccion = $con->query("SELECT count(*) AS total FROM files WHERE estado = '$status'");
+$seleccion = $cnx->query("SELECT count(*) AS total FROM files WHERE estado = '$status'");
 $data=mysqli_fetch_assoc($seleccion);
 $cuenta = $data['total'];
 
@@ -35,7 +35,7 @@ $cuenta = $data['total'];
 // if (isset($_POST['buscar_cotizacion'])) {
 //  $id = $_POST['producto'];
 //  $sql = "SELECT * FROM factura_orden WHERE order_id='$id'  OR order_receiver_name LIKE '%$id%' ";
-//  $r = $con->query($sql);
+//  $r = $cnx->query($sql);
 //  if ($o = $r->fetch_object()) {
 //   $resultado = $o;
 //  }
@@ -43,11 +43,11 @@ $cuenta = $data['total'];
 // }
 
 include_once '../conexion_proveedor.php';
-$mysqli2 = new mysqli ('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');  
+  
 if(isset($_POST['btn_buscar'])){
     $buscador = $_POST['buscar'];
     $sql = "SELECT * FROM files WHERE order_id LIKE '%$buscador%' OR order_date LIKE '%$buscador%'";
-    $res = $mysqli2->query($sql);
+    $res = $cnx->query($sql);
  
 // var_dump($res);
 }
@@ -55,7 +55,7 @@ if(isset($_POST['btn_buscar'])){
 
 // if(isset($_POST['btn_buscar'])){
 //   $buscar_text=$_POST['buscar'];
-//   $select_buscar=$con->prepare(
+//   $select_buscar=$cnx->prepare(
 // //   'SELECT * FROM files fs INNER JOIN factura_orden_prodcuto fp ON fs.order_id = fp.order_id WHERE fs.order_id LIKE :campo OR fs.order_date LIKE :campo;'
 //   'SELECT * FROM files fs INNER JOIN factura_orden_prodcuto fp ON fs.order_id = fp.order_id WHERE fp.order_id LIKE :campo OR fp.order_date LIKE :campo;'
 //   );
@@ -199,7 +199,7 @@ if(isset($_POST['btn_buscar'])){
                             <select id="buscarcliente" style="width: 100%" name="cotizacion">
                               <option value="0">Elegir una cotizacion:</option>
                                  <?php
-                                   $query = $mysqli2 -> query ("SELECT * FROM files WHERE estado = 'alistamiento' ORDER BY order_date DESC ");
+                                   $query = $cnx -> query ("SELECT * FROM files WHERE estado = 'alistamiento' ORDER BY order_date DESC ");
                                    while ($valores = mysqli_fetch_array($query)) {
                                      echo '<option value="'.$valores[order_id].'">'.$valores[order_id].','.$valores[title].'</option>';
                                    }

@@ -1,16 +1,11 @@
-
 <?php
-
-include 'conectar.php';
-$conexion = conectar();
-
-
 session_start([
-    'cookie_lifetime' => 86400,
+	'cookie_lifetime' => 86400,
     'gc_maxlifetime' => 86400,
 ]);
 
-include('header.php');
+include 'globals.php';
+include 'header.php';
 include 'Invoice.php';
 
 $invoice = new Invoice();
@@ -60,7 +55,7 @@ $invoice->checkLoggedIn();
 	}
 </style>
 
-<?php include('container_asistente.php');?>
+<!-- <?php include('container_asistente.php');?> -->
 
 
 <div class="container content-invoice">
@@ -69,7 +64,7 @@ $invoice->checkLoggedIn();
 <div class="row">
 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
     <h2 class="title">Orden de compra</h2>
-      <?php include('menu5.php');?>
+      <!-- <?php include('menu5.php');?> -->
 </div>
 </div>
 <input id="currency" type="hidden" value="$">

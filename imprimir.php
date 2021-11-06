@@ -8,7 +8,11 @@ function formatear($num){
 	setlocale(LC_MONETARY, 'en_US');
 	return "$" . number_format($num, 2);
 }
+
 include 'Invoice.php';
+include 'globals.php';
+
+
 $invoice = new Invoice();
 $invoice->checkLoggedIn();
 if(!empty($_GET['invoice_id']) && $_GET['invoice_id']) {
@@ -18,11 +22,10 @@ if(!empty($_GET['invoice_id']) && $_GET['invoice_id']) {
 	$invoiceItems = $invoice->getInvoiceItems($_GET['invoice_id']);
 }
 
-$conex = new mysqli('ftp.jjquimienvases.com','jjquimienvases_jjadmin','LeinerM4ster','jjquimienvases_cotizar');
 $date = date("Y-m-d");
       
         $sql = "SELECT fa.nuevo_abono,fa.metodo_de_pago FROM file_abono fa INNER JOIN factura_orden fo ON fo.order_id = fa.order_id WHERE DATE(fa.order_date) = '$date' AND fa.order_id = $cotizacion";
-        $result = $conex->query($sql);
+        $result = $cnx->query($sql);
     if($result){
           foreach($result as $data){
          $nuevo_abono = $data['nuevo_abono'];

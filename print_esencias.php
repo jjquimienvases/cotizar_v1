@@ -1,14 +1,13 @@
 <?php 
-
-$con = new mysqli ('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar'); 
+include "globals.php";
 //este documento es un post que recibe el numero de cotizacion 
 
 //  include 'arch.php';
  //consulta informacion cliente
 
 /*  $sql_ = "SELECT * FROM factura_orden fo INNER JOIN factura_orden_producto fp ON fo.order_id = fp.order_id  WHERE fo.order_id = $cotizacion AND fp.item_categoria = 4"; */
- $sql_ = "SELECT * FROM producto_av WHERE id BETWEEN 201 AND 378 AND id_categoria = 4";
- $execute = $con->query($sql_);
+ $sql = "SELECT * FROM producto_av WHERE id BETWEEN 201 AND 378 AND id_categoria = 4";
+ $execute = $cnx->query($sql);
 
 
 //  <link href="css/estilos_etiquetas.css" rel="stylesheet" type="text/css"   media="screen" />

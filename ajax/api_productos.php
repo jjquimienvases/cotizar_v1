@@ -1,5 +1,6 @@
 <?php
-$con = new mysqli ('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');  
+
+include "../globals.php";
 
 
 
@@ -34,7 +35,7 @@ header('Content-type: application/json');
 
 // $app->run();
 
-$sql = $con->query("SELECT * FROM producto_av WHERE visibilidad = 1 LIMIT 100");
+$sql = $cnx->query("SELECT * FROM producto_av WHERE visibilidad = 1 LIMIT 100");
 $new_data_p = [];
  foreach($sql as $data_p){
      $data_p = (object) $data_p;

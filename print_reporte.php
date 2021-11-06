@@ -1,12 +1,14 @@
 <?php
+
+include "globals.php";
+
 function formatear($num)
 {
-
     setlocale(LC_MONETARY, 'en_US');
 
     return "$" . number_format($num, 2);
 }
-$con = new mysqli('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');
+
 //las variables de filtro 
 $cc_cliente = $_POST['cedulasres'];
 $fecha_inicial = $_POST['inicial'];
@@ -14,17 +16,17 @@ $fecha_final = $_POST['final'];
 
 //consulta de datos
 $sql_ = "SELECT fo.order_id, fo.order_date, fo.order_receiver_name, fo.order_total_after_tax, oo.estado_abono, oo.restante,oo.abono, oo.deuda FROM factura_orden fo INNER JOIN order_abono oo ON fo.order_id = oo.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicial' AND '$fecha_final' AND fo.cedula = $cc_cliente AND oo.estado_abono = 'pendiente' ORDER BY fo.order_date ASC";
-$execute = $con->query($sql_);
+$execute = $cnx->query($sql_);
 
-$sql_sum = $con->query("SELECT SUM(oo.restante) as tt FROM factura_orden fo INNER JOIN order_abono oo ON fo.order_id = oo.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicial' AND '$fecha_final' AND fo.cedula = $cc_cliente AND oo.estado_abono = 'pendiente'");
+$sql_sum = $cnx->query("SELECT SUM(oo.restante) as tt FROM factura_orden fo INNER JOIN order_abono oo ON fo.order_id = oo.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicial' AND '$fecha_final' AND fo.cedula = $cc_cliente AND oo.estado_abono = 'pendiente'");
 $deuda_total=mysqli_fetch_assoc($sql_sum);
 $dt = $deuda_total['tt'];
 
-$sql_sum_abono = $con->query("SELECT SUM(oo.abono) as ab FROM factura_orden fo INNER JOIN order_abono oo ON fo.order_id = oo.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicial' AND '$fecha_final' AND fo.cedula = $cc_cliente");
+$sql_sum_abono = $cnx->query("SELECT SUM(oo.abono) as ab FROM factura_orden fo INNER JOIN order_abono oo ON fo.order_id = oo.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicial' AND '$fecha_final' AND fo.cedula = $cc_cliente");
 $abono_total = mysqli_fetch_assoc($sql_sum_abono);
 $abt = $abono_total['ab'];
 
-$sql_sum_deuda = $con->query("SELECT SUM(oo.deuda) as deu FROM factura_orden fo INNER JOIN order_abono oo ON fo.order_id = oo.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicial' AND '$fecha_final' AND fo.cedula = $cc_cliente");
+$sql_sum_deuda = $cnx->query("SELECT SUM(oo.deuda) as deu FROM factura_orden fo INNER JOIN order_abono oo ON fo.order_id = oo.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicial' AND '$fecha_final' AND fo.cedula = $cc_cliente");
 $deuda_total = mysqli_fetch_assoc($sql_sum_deuda);
 $deu = $deuda_total['deu'];
 
@@ -32,7 +34,7 @@ $deu = $deuda_total['deu'];
 
 //sql para las completas 
 $sql_completas = "SELECT fo.order_id, fo.order_date, fo.order_receiver_name, fo.order_total_after_tax, oo.estado_abono, oo.restante, oo.abono, oo.deuda FROM factura_orden fo INNER JOIN order_abono oo ON fo.order_id = oo.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicial' AND '$fecha_final' AND fo.cedula = $cc_cliente AND oo.estado_abono = 'completo' ORDER BY fo.order_date ASC";
-$execute_completas = $con->query($sql_completas);
+$execute_completas = $cnx->query($sql_completas);
 
 $countt = mysqli_num_rows($execute_completas) + mysqli_num_rows($execute);
 // print_r($execute_completas);
@@ -86,7 +88,7 @@ $output .= '<center><table border="1" cellpadding="5" cellspacing="0">
         $clientes = $data_abonadas['order_receiver_name'];
         $abonos = $data_abonadas['abono'];
            $deudas = $data_abonadas['deuda'];
-        $sql_items_ = $con->query("SELECT * FROM factura_orden_producto WHERE order_id = $order_ids");
+        $sql_items_ = $cnx->query("SELECT * FROM factura_orden_producto WHERE order_id = $order_ids");
         $output .= '
         <table class="table table-bordered">
  <tr>
@@ -147,7 +149,7 @@ if ($execute) {
         $cliente = $data['order_receiver_name'];
         $deuda = $data['deuda'];
  $abono = $data['abono'];
-        $sql_items = $con->query("SELECT * FROM factura_orden_producto WHERE order_id = $order_id");
+        $sql_items = $cnx->query("SELECT * FROM factura_orden_producto WHERE order_id = $order_id");
         $output .= '
         <table class="table table-bordered">
  <tr>

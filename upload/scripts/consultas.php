@@ -5,10 +5,9 @@
 
 header('Content-Type: application/json');
 
+include "../../globals.php";
+
 $response = new stdClass;
-
-$conexion = new mysqli('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');
-
 
 
 $fun = $_POST['key'];
@@ -23,7 +22,7 @@ switch ($fun) {
 
                 WHERE  order_id LIKE '%$id%'  OR order_receiver_address LIKE '%$id%'";
 
-        $r = $conexion->query($sql);
+        $r = $cnx->query($sql);
 
         if ($o = $r->fetch_object()) {
 

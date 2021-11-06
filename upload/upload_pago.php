@@ -5,7 +5,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <?php
-include('conexion.php');
+include "../globals.php";
 
 $tmp = array();
 $res = array();
@@ -14,10 +14,10 @@ $status3 = "s_factura";
 $status = "pendiente";
 $status2 = "alistamiento";
 
-$sel = $con->query("SELECT * FROM files WHERE estado = '$status' OR estado = '$status2' OR estado = '$status3' ORDER BY order_date DESC");
+$sel = $cnx->query("SELECT * FROM files WHERE estado = '$status' OR estado = '$status2' OR estado = '$status3' ORDER BY order_date DESC");
 
 
-$seleccion = $con->query("SELECT count(*) AS total FROM files WHERE estado = '$status' OR estado = '$status2' OR estado = '$status3'");
+$seleccion = $cnx->query("SELECT count(*) AS total FROM files WHERE estado = '$status' OR estado = '$status2' OR estado = '$status3'");
 $data = mysqli_fetch_assoc($seleccion);
 $cuenta = $data['total'];
 
@@ -36,7 +36,7 @@ $resultado = "";
 if (isset($_POST['buscar_cotizacion'])) {
     $id = $_POST['producto'];
     $sql = "SELECT * FROM factura_orden WHERE order_id='$id'";
-    $r = $con->query($sql);
+    $r = $cnx->query($sql);
     if ($o = $r->fetch_object()) {
         $resultado = $o;
     }
@@ -46,7 +46,7 @@ include_once '../conexion_proveedor.php';
 
 if (isset($_POST['btn_buscar'])) {
     $buscar_text = $_POST['buscar'];
-    $select_buscar = $con->prepare(
+    $select_buscar = $cnx->prepare(
         '
     SELECT * FROM files WHERE order_id LIKE :campo OR order_date LIKE :campo AND estado = "alistamiento";'
     );
@@ -57,8 +57,6 @@ if (isset($_POST['btn_buscar'])) {
 
     $res = $select_buscar->fetchAll();
 }
-
-$conexion = new mysqli('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');
 ?>
 
 

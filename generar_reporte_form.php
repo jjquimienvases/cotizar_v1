@@ -1,5 +1,6 @@
 <?php
-$con = new mysqli('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');
+
+include "globals.php";
 
 ?>
 
@@ -32,7 +33,7 @@ $con = new mysqli('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4s
                         <datalist id="buscarclient">
                             <option value="">Seleccione un cliente</option>
                             <?php
-                            $query = $con->query("SELECT * FROM clientes ORDER BY nombres ASC");
+                            $query = $cnx->query("SELECT * FROM clientes ORDER BY nombres ASC");
                             while ($valores = mysqli_fetch_array($query)) {
                                 echo '<option value="' . $valores["cedula"] . '">' . $valores["cedula"] . ',' . $valores["nombres"] . '</option>';
                             }

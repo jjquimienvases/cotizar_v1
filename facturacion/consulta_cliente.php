@@ -1,13 +1,11 @@
 <?php
 
-// include "../../conectar.php";
+include "../globals.php";
 
 header('Content-Type: application/json');
 
 $response = new stdClass;
 
-
- $con = new mysqli ('ftp.jjquimienvases.com','jjquimienvases_jjadmin','LeinerM4ster','jjquimienvases_cotizar');
 
 
 
@@ -20,7 +18,7 @@ switch ($fun) {
         $id = $_POST['cliente'];
         $sql = "SELECT * FROM clientes WHERE cedula LIKE '%$id%' OR nombres LIKE '%$id%'";
        
-        $r = $con->query($sql);
+        $r = $cnx->query($sql);
 
         if ($o = $r->fetch_object()) {
 

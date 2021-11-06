@@ -1,11 +1,12 @@
 <?php 
- $con = new mysqli ('ftp.jjquimienvases.com','jjquimienvases_jjadmin','LeinerM4ster','jjquimienvases_cotizar');
+
+include "../../globals.php";
 
 $json = array();
 $status = "s_factura";
 $status2 = "pendiente";
 
-$sql = $con->query("SELECT * FROM files WHERE estado = '$status' OR estado = '$status2'");
+$sql = $cnx->query("SELECT * FROM files WHERE estado = '$status' OR estado = '$status2'");
 $row = $sql->fetch_all(MYSQLI_ASSOC);
 $json["target"] = $row;
 

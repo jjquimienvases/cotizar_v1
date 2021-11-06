@@ -1,6 +1,6 @@
 <?php
 
-$con = new mysqli('ftp.jjquimienvases.com','jjquimienvases_jjadmin','LeinerM4ster','jjquimienvases_cotizar');
+include "../../globals.php";
 
 $id = $_POST['id'];
 $costo = $_POST['costo'];
@@ -8,10 +8,10 @@ $porcentaje = $_POST['presentacion'];
 $nombre = $_POST['materia'];
 $estado = $_POST['estado'];
 
-$sql = $con->query("UPDATE materia_prima SET costo = $costo, nombre = '$nombre', porcentaje = $porcentaje, estado = '$estado' WHERE id = $id");
+$sql = $cnx->query("UPDATE materia_prima SET costo = $costo, nombre = '$nombre', porcentaje = $porcentaje, estado = '$estado' WHERE id = $id");
 
 if($sql){
-    $sql_ = $con->query("SELECT * FROM producto_av pa INNER JOIN materia_prima mp ON pa.padre = mp.id WHERE pa.padre = $id");
+    $sql_ = $cnx->query("SELECT * FROM producto_av pa INNER JOIN materia_prima mp ON pa.padre = mp.id WHERE pa.padre = $id");
  $puntos = ['producto','producto_av','producto_d1','productos_ibague','productos_ibague2'];
  
  $garrafa = 20;
@@ -39,12 +39,12 @@ if($sql){
   $cantidad_gramos_por_capacidad = $valor_x * $data['capacidad'];
   //item asociado
   $item_asociado = $data['item_asociado'];
-  $sql_item_asociado = $con->query("SELECT gramo as Total FROM producto_av WHERE id = $item_asociado");
+  $sql_item_asociado = $cnx->query("SELECT gramo as Total FROM producto_av WHERE id = $item_asociado");
   foreach($sql_item_asociado as $datas){
       $costo_item_a = $datas['Total'];
   }
   if($item_asociado == 606 || $item_asociado == 599){
-      $sql_tapa = $con->query("SELECT gramo as Total FROM producto_av WHERE id = 48005");
+      $sql_tapa = $cnx->query("SELECT gramo as Total FROM producto_av WHERE id = 48005");
       foreach($sql_tapa as $data_t){
         $costo_tapa = $data_t['Total'];
 
@@ -68,7 +68,7 @@ if($sql){
 
 
   //Hacemos una consulta para obtener el id
-  $sql_get_id = $con->query("SELECT id FROM producto_av WHERE contratipo LIKE '%$presentacion%' AND item_asociado != 0 AND padre = $id");
+  $sql_get_id = $cnx->query("SELECT id FROM producto_av WHERE contratipo LIKE '%$presentacion%' AND item_asociado != 0 AND padre = $id");
   foreach($sql_get_id as $data_g){
   $item_id = $data_g['id'];
   }
@@ -77,9 +77,9 @@ if($sql){
     $new_name = $presentacion." (".$cantidad_gramos_por_capacidad.")ML";
     foreach($puntos as $punto){
         if($punto == "productos_ibague" || $punto == "productos_ibague2"){
-        $sql_update = $con->query("UPDATE $punto SET gramo = $total_venta_ibague, visibilidad = 1 WHERE id = $item_id");
+        $sql_update = $cnx->query("UPDATE $punto SET gramo = $total_venta_ibague, visibilidad = 1 WHERE id = $item_id");
         }else{
-        $sql_update = $con->query("UPDATE $punto SET gramo = $total_venta_bogota, visibilidad = 1 WHERE id = $item_id");
+        $sql_update = $cnx->query("UPDATE $punto SET gramo = $total_venta_bogota, visibilidad = 1 WHERE id = $item_id");
         }
         
         if($sql_update){

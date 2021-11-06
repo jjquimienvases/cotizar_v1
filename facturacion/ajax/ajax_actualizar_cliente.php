@@ -1,7 +1,7 @@
 <?php
 
-//  include '../conexion.php';
- $con = new mysqli ('ftp.jjquimienvases.com','jjquimienvases_jjadmin','LeinerM4ster','jjquimienvases_cotizar');
+ include '../../globals.php';
+
   
  $id = $_POST['id'];
  $cedula = $_POST['cedulas'];
@@ -12,7 +12,7 @@
  $email = $_POST['email'];
  $porcentaje = $_POST['porcentaje'];
 
- $sql = $con->query("UPDATE clientes SET cedula = $cedula, nombres = '$nombres', direccion = '$direccion', telefono = '$telefono', ciudad = '$ciudad', email = '$email', descuento = $porcentaje WHERE id = $id ");
+ $sql = $cnx->query("UPDATE clientes SET cedula = $cedula, nombres = '$nombres', direccion = '$direccion', telefono = '$telefono', ciudad = '$ciudad', email = '$email', descuento = $porcentaje WHERE id = $id ");
 
  if($sql){
      echo $sql;

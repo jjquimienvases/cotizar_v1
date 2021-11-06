@@ -1,7 +1,6 @@
 <?php
 
-$con = new mysqli ('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');  
-
+include "../globals.php";  
 
 //recibo las variables
 
@@ -51,7 +50,7 @@ $puntosN = $_POST['puntosN'];
 $puntosE = $_POST['puntosE'];
 $checkN = (isset($_POST['Pnaturales'])) ? $_POST['Pnaturales'] : "";
 $puntos_perfumeria = [];
-$cont = 0;
+$cnxt = 0;
 $stocknuevo = [];
 $gramosNuevos_demo = [];
 $fecha = date("d-m-y H:i:s");
@@ -60,7 +59,7 @@ $fecha = date("d-m-y H:i:s");
 //items 
 //------ Productos-----//
 $codigo = (isset($_POST['productCode'])) ? $_POST['productCode'] : "";
-$contratipo = (isset($_POST['productName'])) ? $_POST['productName'] : "";
+$cnxtratipo = (isset($_POST['productName'])) ? $_POST['productName'] : "";
 $categoria = (isset($_POST['idCategoria'])) ? $_POST['idCategoria'] : "";
 if ($cedula == "1110532395" && $categoria == 4) {
     $cantidades = (isset($_POST['quantity'])) ? $_POST['quantity'] : "";
@@ -83,7 +82,7 @@ $capacidad_recarga = $_POST['Capacidad'];
 
 //consultando cliente
 
-$sql_c = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
+$sql_c = $cnx->query("SELECT * FROM clientes WHERE cedula = $cedula");
 foreach ($sql_c as $data_c) {
     $puntos_e = $data_c['puntos_perfumeria'];
     $puntos_n = $data_c['puntos_naturales'];
@@ -93,10 +92,10 @@ foreach ($sql_c as $data_c) {
 
 //consulta_ agregar cotizacion
 
-$sql_add = $con->query ("INSERT INTO `factura_orden`(`user_id`, `order_receiver_name`, `tel_client`, `direccion`, `ciudad`, `order_receiver_address`, `order_total_before_tax`, `order_total_tax`, `order_tax_per`, `order_total_after_tax`, `order_amount_paid`, `order_total_amount_due`, `note`, `metodopago`, `cedula`, `email`, `estado`)
+$sql_add = $cnx->query ("INSERT INTO `factura_orden`(`user_id`, `order_receiver_name`, `tel_client`, `direccion`, `ciudad`, `order_receiver_address`, `order_total_before_tax`, `order_total_tax`, `order_tax_per`, `order_total_after_tax`, `order_amount_paid`, `order_total_amount_due`, `note`, `metodopago`, `cedula`, `email`, `estado`)
            VALUES ($usuario,'$cliente',$telefono,'$direccion','$ciudad','$comercial',$subtotal,'$taxA','$taxR','$totalAft','$amountP','$amountD','$nota','$metodo',$cedula,'$email','$estado')");
 
-$id_ =  mysqli_insert_id($con);
+$id_ =  mysqli_insert_id($cnx);
 
 if ($sql_add) {
     //insertando items
@@ -104,36 +103,36 @@ if ($sql_add) {
         
         $new_name = $perfume[$i]." ".$capacidad_puntos[$i];
         if ($gramos[$i] == 0) {
-            $sqlInsertarProductos = $con->query("INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario, order_item_final_amount, order_date)
-                       VALUES ('$id_', '$codigo[$i]', '$contratipo[$i]', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]', '$resultado[$i]','$fecha[$i]')");
+            $sqlInsertarProductos = $cnx->query("INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario, order_item_final_amount, order_date)
+                       VALUES ('$id_', '$codigo[$i]', '$cnxtratipo[$i]', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]', '$resultado[$i]','$fecha[$i]')");
 
             if ($sqlInsertarProductos and $rol_usuario != 4) {
-                $con_stock = $con->query("SELECT stock FROM $tabla WHERE id = $codigo[$i]");
-                $stock = floatval($con_stock->fetch_row()[0]);
+                $cnx_stock = $cnx->query("SELECT stock FROM $tabla WHERE id = $codigo[$i]");
+                $stock = floatval($cnx_stock->fetch_row()[0]);
                 $nuevostock = $stock - $cantidad[$i];
-                $sql_update_stock = $con->query("UPDATE $tabla SET stock = $nuevostock WHERE id = $codigo[$i]");
+                $sql_update_stock = $cnx->query("UPDATE $tabla SET stock = $nuevostock WHERE id = $codigo[$i]");
             } else {
             }
         } else { //aqui agregamos gramos y y perfumeria especial 
-            $sqlInsertarProductos = $con->query("INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario, order_item_final_amount, order_date,gramos,envases,tapa)
+            $sqlInsertarProductos = $cnx->query("INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario, order_item_final_amount, order_date,gramos,envases,tapa)
                        VALUES ('$id_', '$codigo[$i]', '$perfume[$i] $capacidad_puntos[$i]', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]', '$resultado[$i]','$fecha[$i]','$gramos[$i]','$envase[$i]','$tapa[$i]')");
         }
         //esencia
         if ($sqlInsertarProductos and $rol_usuario != 4 || $rol_usuario != 1) {
-            $con_stock = $con->query("SELECT stock FROM $tabla WHERE id = $codigo[$i]");
-            $stock = floatval($con_stock->fetch_row()[0]);
+            $cnx_stock = $cnx->query("SELECT stock FROM $tabla WHERE id = $codigo[$i]");
+            $stock = floatval($cnx_stock->fetch_row()[0]);
             $nuevostock_g = $stock - $gramos[$i];
-            $sql_update_stock_e = $con->query("UPDATE $tabla SET stock = $nuevostock WHERE id = $codigo[$i]");
+            $sql_update_stock_e = $cnx->query("UPDATE $tabla SET stock = $nuevostock WHERE id = $codigo[$i]");
             //tapas 
-            $con_stock_t = $con->query("SELECT stock FROM $tabla WHERE id = $tapa[$i]");
-            $stock_t = floatval($con_stock->fetch_row()[0]);
+            $cnx_stock_t = $cnx->query("SELECT stock FROM $tabla WHERE id = $tapa[$i]");
+            $stock_t = floatval($cnx_stock->fetch_row()[0]);
             $nuevostock_t = $stock_t - $cantidad[$i];
-            $sql_update_stock_t = $con->query("UPDATE $tabla SET stock = $nuevostock_t WHERE id = $tapa[$i]");
+            $sql_update_stock_t = $cnx->query("UPDATE $tabla SET stock = $nuevostock_t WHERE id = $tapa[$i]");
             //envasers
-            $con_stock_e = $con->query("SELECT stock FROM $tabla WHERE id = $envase[$i]");
-            $stock_e = floatval($con_stock->fetch_row()[0]);
+            $cnx_stock_e = $cnx->query("SELECT stock FROM $tabla WHERE id = $envase[$i]");
+            $stock_e = floatval($cnx_stock->fetch_row()[0]);
             $nuevostock_e = $stock_e - $cantidad[$i];
-            $sql_update_stock_e = $con->query("UPDATE $tabla SET stock = $nuevostock_e WHERE id = $envase[$i]");
+            $sql_update_stock_e = $cnx->query("UPDATE $tabla SET stock = $nuevostock_e WHERE id = $envase[$i]");
         } else {
         }
 
@@ -146,67 +145,67 @@ if($capacidad_puntos[$i] != 0 || $capacidad_puntos[$i] != ""){
             switch ($capacidad_puntos[$i]) {
                 case "30 ML":
                     $especial = $cantidad[$i] * 0.5;
-                    $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
+                    $sql_cs = $cnx->query("SELECT * FROM clientes WHERE cedula = $cedula");
                         foreach ($sql_cs as $data_c){$puntos_es = $data_c['puntos_perfumeria'];}
                     $new_point = floatval($puntos_es) + $especial;
-                    $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
+                    $update_puntos = $cnx->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
 
                     break;
                 case "50 ML":
                     $especial = $cantidad[$i] * 1;
-               $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
+               $sql_cs = $cnx->query("SELECT * FROM clientes WHERE cedula = $cedula");
                         foreach ($sql_cs as $data_c){$puntos_es = $data_c['puntos_perfumeria'];}
                     $new_point = floatval($puntos_es) + $especial;
-                    $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
+                    $update_puntos = $cnx->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
                     break;
                 case "100 ML":
                     $especial = $cantidad[$i] * 2;
-               $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
+               $sql_cs = $cnx->query("SELECT * FROM clientes WHERE cedula = $cedula");
                         foreach ($sql_cs as $data_c){$puntos_es = $data_c['puntos_perfumeria'];}
                     $new_point = floatval($puntos_es) + $especial;
-                    $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
+                    $update_puntos = $cnx->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
                     break;
             }
 
             if ($capacidad_recarga[$i] == "Recarga 30 ML") {
                 $especial = $cantidad[$i] * 0.5;
-                  $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
+                  $sql_cs = $cnx->query("SELECT * FROM clientes WHERE cedula = $cedula");
                         foreach ($sql_cs as $data_c){$puntos_es = $data_c['puntos_perfumeria'];} 
                 $new_point = floatval($puntos_es) + $especial;
-                $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
+                $update_puntos = $cnx->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
             } else if ($capacidad_recarga[$i] == "Recarga 50 ML") {
                 $especial = $cantidad[$i] * 1;
-                $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
+                $sql_cs = $cnx->query("SELECT * FROM clientes WHERE cedula = $cedula");
                         foreach ($sql_cs as $data_c){$puntos_es = $data_c['puntos_perfumeria'];}
                 $new_point = floatval($puntos_es) + $especial;
-                $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
+                $update_puntos = $cnx->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
             } else if ($capacidad_recarga[$i] == "Recarga 100 ML") {
                 $especial = $cantidad[$i] * 2;
-                $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
+                $sql_cs = $cnx->query("SELECT * FROM clientes WHERE cedula = $cedula");
                         foreach ($sql_cs as $data_c){$puntos_es = $data_c['puntos_perfumeria'];}
                 $new_point = floatval($puntos_es) + $especial;
-                $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
+                $update_puntos = $cnx->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
             }
             
               if ($capacidad_puntos[$i] == "50ML Premio") {
                  
                 $especial = $cantidad[$i] * 10;
-              $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
+              $sql_cs = $cnx->query("SELECT * FROM clientes WHERE cedula = $cedula");
                         foreach ($sql_cs as $data_c){$puntos_es = $data_c['puntos_perfumeria'];}
                     $new_point = floatval($puntos_es) - $especial;
-                $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
+                $update_puntos = $cnx->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
             } else if ($capacidad_puntos[$i] == "100ML Premio") {
                 $especial = $cantidad[$i] * 20;
-                $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
+                $sql_cs = $cnx->query("SELECT * FROM clientes WHERE cedula = $cedula");
                         foreach ($sql_cs as $data_c){$puntos_es = $data_c['puntos_perfumeria'];}
                     $new_point = floatval($puntos_es) - $especial;
-                $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
+                $update_puntos = $cnx->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
             } else if ($capacidad_puntos[$i] == "100ML aumentar") {
                 $especial = $cantidad[$i] * 10;
-                 $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
+                 $sql_cs = $cnx->query("SELECT * FROM clientes WHERE cedula = $cedula");
                         foreach ($sql_cs as $data_c){$puntos_es = $data_c['puntos_perfumeria'];}
                     $new_point = floatval($puntos_es) - $especial;
-                $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
+                $update_puntos = $cnx->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
             }
 
           

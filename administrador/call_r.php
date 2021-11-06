@@ -1,5 +1,7 @@
 <?php
 
+include "../globals.php";
+
 function formatear($num)
 {
     setlocale(LC_MONETARY, 'en_US');
@@ -12,111 +14,107 @@ $fecha_inicio = $_POST['inicio'];
 $fecha_final = $_POST['final'];
 
 
-
-
-$conexion = new mysqli ('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');
-
 //leidy - ventas y efectivo
-$consulta_all_data = $conexion->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%')");
+$consulta_all_data = $cnx->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%')");
 $count_leidy = mysqli_num_rows($consulta_all_data);
 
-$consulta_datos_leidy = $conexion->query("SELECT SUM(total) as total_leidy FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%')");
+$consulta_datos_leidy = $cnx->query("SELECT SUM(total) as total_leidy FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%')");
 $datos_ventas_leidy = mysqli_fetch_assoc($consulta_datos_leidy);
 $monto_leidy = $datos_ventas_leidy['total_leidy'];
 
 
 
 //metodos de pago
-$consulta_datos_bc = $conexion->query("SELECT SUM(order_total_after_tax) as total_bc FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%bancolombia%'");
-$consulta_data_bc = $conexion->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%bancolombia%'");
+$consulta_datos_bc = $cnx->query("SELECT SUM(order_total_after_tax) as total_bc FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%bancolombia%'");
+$consulta_data_bc = $cnx->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%bancolombia%'");
 $datos_bc = mysqli_fetch_assoc($consulta_datos_bc);
 $monto_bc = $datos_bc['total_bc'];
 $count_bc = mysqli_num_rows($consulta_data_bc);
 
 //davivienda
-$consulta_datos_dv = $conexion->query("SELECT SUM(order_total_after_tax) as total_dv FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%davivienda%'");
-$consulta_data_dv = $conexion->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%davivienda%'");
+$consulta_datos_dv = $cnx->query("SELECT SUM(order_total_after_tax) as total_dv FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%davivienda%'");
+$consulta_data_dv = $cnx->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%davivienda%'");
 $datos_dv = mysqli_fetch_assoc($consulta_datos_dv);
 $monto_dv = $datos_dv['total_dv'];
 $count_dv = mysqli_num_rows($consulta_data_dv);
 
 //contra entrega 
-$consulta_datos_c = $conexion->query("SELECT SUM(order_total_after_tax) as total_c FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%contra%'");
-$consulta_data_c = $conexion->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%contra%'");
+$consulta_datos_c = $cnx->query("SELECT SUM(order_total_after_tax) as total_c FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%contra%'");
+$consulta_data_c = $cnx->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%contra%'");
 $datos_c = mysqli_fetch_assoc($consulta_datos_c);
 $monto_c = $datos_c['total_c'];
 $count_c = mysqli_num_rows($consulta_data_c);
 
 //datafono
-$consulta_datos_dt = $conexion->query("SELECT SUM(order_total_after_tax) as total_dt FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%datafono%'");
-$consulta_data_dt = $conexion->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%datafono%'");
+$consulta_datos_dt = $cnx->query("SELECT SUM(order_total_after_tax) as total_dt FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%datafono%'");
+$consulta_data_dt = $cnx->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%datafono%'");
 $datos_dt = mysqli_fetch_assoc($consulta_datos_dt);
 $monto_dt = $datos_dt['total_dt'];
 $count_dt = mysqli_num_rows($consulta_data_dt);
 
 //efectivo
-$consulta_datos_ef = $conexion->query("SELECT SUM(order_total_after_tax) as total_ef FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%efectivo%'");
-$consulta_data_ef = $conexion->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%efectivo%'");
+$consulta_datos_ef = $cnx->query("SELECT SUM(order_total_after_tax) as total_ef FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%efectivo%'");
+$consulta_data_ef = $cnx->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%efectivo%'");
 $datos_ef = mysqli_fetch_assoc($consulta_datos_ef);
 $monto_ef = $datos_ef['total_ef'];
 $count_ef = mysqli_num_rows($consulta_data_ef);
 
 //redes sociales 
-$consulta_datos_rd = $conexion->query("SELECT SUM(order_total_after_tax) as total_rd FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.canal LIKE '%redes%'");
-$consulta_data_rd = $conexion->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.canal LIKE '%redes%'");
+$consulta_datos_rd = $cnx->query("SELECT SUM(order_total_after_tax) as total_rd FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.canal LIKE '%redes%'");
+$consulta_data_rd = $cnx->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.canal LIKE '%redes%'");
 $datos_rd = mysqli_fetch_assoc($consulta_datos_rd);
 $monto_rd = $datos_rd['total_rd'];
 $count_rd = mysqli_num_rows($consulta_data_rd);
 
 //tienda virtual 
-$consulta_datos_tv = $conexion->query("SELECT SUM(order_total_after_tax) as total_tv FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.canal LIKE '%tienda%'");
-$consulta_data_tv = $conexion->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.canal LIKE '%tienda%'");
+$consulta_datos_tv = $cnx->query("SELECT SUM(order_total_after_tax) as total_tv FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.canal LIKE '%tienda%'");
+$consulta_data_tv = $cnx->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.canal LIKE '%tienda%'");
 $datos_tv = mysqli_fetch_assoc($consulta_datos_tv);
 $monto_tv = $datos_tv['total_tv'];
 $count_tv = mysqli_num_rows($consulta_data_tv);
 
 //call center 
-$consulta_datos_cl = $conexion->query("SELECT SUM(order_total_after_tax) as total_cl FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.canal LIKE '%call%'");
-$consulta_data_cl = $conexion->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.canal LIKE '%call%'");
+$consulta_datos_cl = $cnx->query("SELECT SUM(order_total_after_tax) as total_cl FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.canal LIKE '%call%'");
+$consulta_data_cl = $cnx->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.canal LIKE '%call%'");
 $datos_cl = mysqli_fetch_assoc($consulta_datos_cl);
 $monto_cl = $datos_cl['total_cl'];
 $count_cl = mysqli_num_rows($consulta_data_cl);
 
 //credito
-$consulta_datos_cd = $conexion->query("SELECT SUM(order_total_after_tax) as total_cd FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%credito%'");
-$consulta_data_cd = $conexion->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%credito%'");
+$consulta_datos_cd = $cnx->query("SELECT SUM(order_total_after_tax) as total_cd FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%credito%'");
+$consulta_data_cd = $cnx->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%credito%'");
 $datos_cd = mysqli_fetch_assoc($consulta_datos_cd);
 $monto_cd = $datos_cd['total_cd'];
 $count_cd = mysqli_num_rows($consulta_data_cd);
 
-$get_data_credito = $conexion->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fm.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%credito%'");
+$get_data_credito = $cnx->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fm.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%credito%'");
 
-$consulta_datos_cd = $conexion->query("SELECT SUM(restante) as total_cd FROM factura_modificada fm INNER JOIN order_abono oa ON fm.order_id = oa.order_id WHERE DATE(fm.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%credito%'");
-$consulta_data_cd = $conexion->query("SELECT * FROM factura_modificada fm INNER JOIN order_abono oa ON fm.order_id = oa.order_id WHERE DATE(fm.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%credito%'");
+$consulta_datos_cd = $cnx->query("SELECT SUM(restante) as total_cd FROM factura_modificada fm INNER JOIN order_abono oa ON fm.order_id = oa.order_id WHERE DATE(fm.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%credito%'");
+$consulta_data_cd = $cnx->query("SELECT * FROM factura_modificada fm INNER JOIN order_abono oa ON fm.order_id = oa.order_id WHERE DATE(fm.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%credito%'");
 $datos_cd = mysqli_fetch_assoc($consulta_datos_cd);
 $monto_cd = $datos_cd['total_cd'];
 
-$consulta_datos_ab = $conexion->query("SELECT SUM(abono) as total_r FROM factura_modificada fm INNER JOIN order_abono oa ON fm.order_id = oa.order_id WHERE DATE(fm.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%credito%'");
-$consulta_datos_ab_ = $conexion->query("SELECT * FROM factura_modificada fm INNER JOIN order_abono oa ON fm.order_id = oa.order_id WHERE DATE(fm.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%credito%' AND oa.abono != 0");
+$consulta_datos_ab = $cnx->query("SELECT SUM(abono) as total_r FROM factura_modificada fm INNER JOIN order_abono oa ON fm.order_id = oa.order_id WHERE DATE(fm.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%credito%'");
+$consulta_datos_ab_ = $cnx->query("SELECT * FROM factura_modificada fm INNER JOIN order_abono oa ON fm.order_id = oa.order_id WHERE DATE(fm.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%credito%' AND oa.abono != 0");
 $datos_ab = mysqli_fetch_assoc($consulta_datos_ab);
 $monto_ab = $datos_ab['total_r'];
 
 $count_cd = mysqli_num_rows($consulta_data_cd);
 $count_abonos = mysqli_num_rows($consulta_datos_ab_);
 
-$get_data_credito = $conexion->query("SELECT * FROM factura_modificada fm INNER JOIN order_abono oa ON fm.order_id = oa.order_id WHERE DATE(fm.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%credito%'");
+$get_data_credito = $cnx->query("SELECT * FROM factura_modificada fm INNER JOIN order_abono oa ON fm.order_id = oa.order_id WHERE DATE(fm.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%credito%'");
 
 //descuento 
-// $get_data_descuento = $conexion->query("SELECT SUM(order_total_after_tax) FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%solicitud%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fo.order_tax_per != ''");
+// $get_data_descuento = $cnx->query("SELECT SUM(order_total_after_tax) FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%solicitud%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fo.order_tax_per != ''");
 
-$consulta_datos_d = $conexion->query("SELECT SUM(order_total_amount_due) as total_d FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fo.order_tax_per > 1");
-$consulta_data_d = $conexion->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%credito%'");
+$consulta_datos_d = $cnx->query("SELECT SUM(order_total_amount_due) as total_d FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fo.order_tax_per > 1");
+$consulta_data_d = $cnx->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%credito%'");
 $datos_d = mysqli_fetch_assoc($consulta_datos_d);
 $monto_d = $datos_d['total_d'];
 $count_d = mysqli_num_rows($consulta_data_d);
 
 //mercado libre 
-$consulta_data_ml = $conexion->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%mercado%'");
+$consulta_data_ml = $cnx->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%') AND fm.metodopago LIKE '%mercado%'");
 $count_m = mysqli_num_rows($consulta_data_ml);
 $totall = 0;
 $total_bc = 0;

@@ -1,15 +1,17 @@
 <?php 
+
+include "../globals.php";
+
 function formatear($num){
 	setlocale(LC_MONETARY, 'en_US');
 	return "$" . number_format($num, 2);
 }
-$con = new mysqli ('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');
 //este documento es un post que recibe el numero de cotizacion 
  $order = $_GET['invoice_id'];
 
      $sql_ = "SELECT td.order_date,td.bodega_salida,td.bodega_entrada,tp.transfer_id,tp.item_code,tp.item_name,tp.item_quantity FROM 
      traspaso_orden td INNER JOIN traspaso_producto_id tp ON td.transfer_id = tp.transfer_id WHERE tp.transfer_id = $order";
- $execute = $con->query($sql_);
+ $execute = $cnx->query($sql_);
 
 
 

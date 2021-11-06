@@ -1,7 +1,6 @@
 <?php
-include 'conexion.php';
+include '../globals.php';
 
-// $conexion = mysqli_connect('ftp.jjquimienvases.com','jjquimienvases_admin','LeinerM4ster','jjquimienvases_cotizar');
 session_start();
 
 $user_id = $_SESSION['userid'];
@@ -78,18 +77,18 @@ include 'modal_edit_materia.php';
                       <option value="">Selecciona un producto</option>
                       <?php
                       if ($user_id == 27) {
-                        $query = $conexion->query("SELECT * FROM productos_ibague2 ORDER BY id ASC");
+                        $query = $cnx->query("SELECT * FROM productos_ibague2 ORDER BY id ASC");
                       } else if ($id_rol == 4) {
-                        $query = $conexion->query("SELECT * FROM producto_av ORDER BY id ASC");
+                        $query = $cnx->query("SELECT * FROM producto_av ORDER BY id ASC");
                       } else if ($id_rol == 2) {
-                        $query = $conexion->query("SELECT * FROM producto ORDER BY id ASC");
+                        $query = $cnx->query("SELECT * FROM producto ORDER BY id ASC");
                       } else if ($user_id == 26) {
-                        $query = $conexion->query("SELECT * FROM productos_ibague ORDER BY id ASC");
+                        $query = $cnx->query("SELECT * FROM productos_ibague ORDER BY id ASC");
                       } else if ($user_id == 1) {
-                        $query = $conexion->query("SELECT * FROM producto_av ORDER BY id ASC");
+                        $query = $cnx->query("SELECT * FROM producto_av ORDER BY id ASC");
                       }else{
-                        $query = $conexion->query("SELECT * FROM producto_av ORDER BY id ASC");
-                         //$query = $conexion->query("SELECT * FROM productos_ibague ORDER BY id ASC");
+                        $query = $cnx->query("SELECT * FROM producto_av ORDER BY id ASC");
+                         //$query = $cnx->query("SELECT * FROM productos_ibague ORDER BY id ASC");
                        
                       }
                       while ($valores = mysqli_fetch_array($query)) {

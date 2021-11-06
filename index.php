@@ -1,17 +1,17 @@
 <?php
-$sessionTime = 365 * 24 * 60 * 60; // 1 a0Š9o de duraci¨®n
+$sessionTime = 365 * 24 * 60 * 60; // 1 aï¿½0ï¿½9o de duraciï¿½ï¿½n
 session_set_cookie_params($sessionTime);
 session_start();
-// include('header.php');
+
+
 $loginError = '';
 if (!empty($_POST['email']) && !empty($_POST['pwd'])) {
     include 'Invoice.php';
     $invoice = new Invoice();
     $user = $invoice->loginUsers($_POST['email'], $_POST['pwd']);
     if (!empty($user)) {
-        $sessionTime = 365 * 24 * 60 * 60; // 1 a0Š9o de duraci¨®n
+        $sessionTime = 365 * 24 * 60 * 60; // 1 aï¿½0ï¿½9o de duraciï¿½ï¿½n
 
-        session_start();
         $_SESSION['user'] = $user[0]['first_name'] . "&nbsp;" . $user[0]['last_name'];
         $_SESSION['userid'] = $user[0]['id'];
         $_SESSION['email'] = $user[0]['email'];
@@ -39,13 +39,15 @@ if (!empty($_POST['email']) && !empty($_POST['pwd'])) {
         } elseif ($_SESSION['id_rol'] == 9) {
             header("Location:panel_bodega_perfumeria.php");
         }
-    }else {
-        $loginError = "Verifica tu correo y contrase0Š9a!";
+    } else {
+        $loginError = "Verifica tu correo y contraseï¿½0ï¿½9a!";
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -59,34 +61,36 @@ if (!empty($_POST['email']) && !empty($_POST['pwd'])) {
     <link href='css/estilos_log.css' rel="stylesheet">
 
 </head>
+
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <form class="box" action="" method="post">
-                <img src="JJ CIRCULO LOGO (fondo blanco).png" alt="Logo JJQUIMIENVASES">
-                    <h1>Iniciar Sesion</h1>
-                    
-                    <p class="text-muted"> Porfavor Escribir tu correo y contrasena!</p> 
-                    <div class="form-group">
-                <?php if ($loginError) { ?>
-                    <div class="alert alert-warning"><?php echo $loginError; ?></div>
-                <?php } ?>
-            </div>
-                    <input type="text" name="email" placeholder="Correo electronico"> <input type="password" name="pwd" placeholder="Contrasena"> <a class="forgot text-muted" hhref="https://api.whatsapp.com/send?phone=573045393941" >Olvidaste tu contrasena?</a> <input type="submit" name="" value="Ingresar">
-                  
-                    <div class="col-md-12">
-                        <ul class="social-network social-circle">
-                            <li><a href="https://www.facebook.com/jj.quimienvases" class="icoFacebook" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="https://www.instagram.com/jj_quimienvases/?hl=es-la" class="icoInstagram" title="Instagram"><i class="fab fa-instagram"></i></a></li>
-                            <li><a href="https://jjquimienvases.com/" class="icoGoogle" title="Google +"><i class="fas fa-store"></i></a></li>
-                        </ul>
-                    </div>
-                </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <form class="box" action="" method="post">
+                        <img src="JJ CIRCULO LOGO (fondo blanco).png" alt="Logo JJQUIMIENVASES">
+                        <h1>Iniciar Sesion</h1>
+
+                        <p class="text-muted"> Por favor Escribir tu correo y contrasena!</p>
+                        <div class="form-group">
+                            <?php if ($loginError) { ?>
+                                <div class="alert alert-warning"><?php echo $loginError; ?></div>
+                            <?php } ?>
+                        </div>
+                        <input type="text" name="email" placeholder="Correo electronico"> <input type="password" name="pwd" placeholder="Contrasena"> <a class="forgot text-muted" hhref="https://api.whatsapp.com/send?phone=573045393941">Olvidaste tu contrasena?</a> <input type="submit" name="" value="Ingresar">
+
+                        <div class="col-md-12">
+                            <ul class="social-network social-circle">
+                                <li><a href="https://www.facebook.com/jj.quimienvases" class="icoFacebook" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="https://www.instagram.com/jj_quimienvases/?hl=es-la" class="icoInstagram" title="Instagram"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="https://jjquimienvases.com/" class="icoGoogle" title="Google +"><i class="fas fa-store"></i></a></li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </body>
+
 </html>

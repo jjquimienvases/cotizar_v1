@@ -1,12 +1,10 @@
 <?php
 
-// include "../../conectar.php";
+include "../globals.php";
 
 header('Content-Type: application/json');
 
 $response = new stdClass;
-
- $con = new mysqli ('ftp.jjquimienvases.com','jjquimienvases_jjadmin','LeinerM4ster','jjquimienvases_cotizar');
 
 
 
@@ -23,7 +21,7 @@ switch ($fun) {
     
                 $sql = "SELECT * FROM files WHERE estado = '$status' OR estado = '$status2' AND order_id LIKE '%$codigo%'";
 
-        $r = $con->query($sql);
+        $r = $cnx->query($sql);
 
         if ($o = $r->fetch_object()) {
 
@@ -38,6 +36,3 @@ switch ($fun) {
 }
 
 echo json_encode($response);
-
-?>
-

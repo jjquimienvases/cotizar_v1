@@ -1,10 +1,11 @@
 <?php
-$conexion = new mysqli('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');
+
+include "../globals.php";
 
 $id = $_POST['id'];
 
 $sql = "SELECT * FROM factura_orden WHERE order_id='$id'";
-$r = $conexion->query($sql);
+$r = $cnx->query($sql);
 
 if ($o = $r->fetch_object()) {
  $resultado = $o;

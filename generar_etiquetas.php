@@ -1,7 +1,5 @@
 <?php
-
-$con = new mysqli ('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');  
-
+    include "globals.php";
 ?>
 
 <!-- Modal Structure -->
@@ -13,7 +11,7 @@ $con = new mysqli ('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4
                     <datalist id="buscarclient">
                         <option value="">Seleccione un item</option>
                         <?php
-                        $sql = $con->query("SELECT * FROM producto_av ORDER BY id_categoria ASC");
+                        $sql = $cnx->query("SELECT * FROM producto_av ORDER BY id_categoria ASC");
                         while ($data = mysqli_fetch_array($sql)) {
                             echo '<option value="' . $data["id"] . '">' . $data["id"] . ',' . $data["contratipo"] . '</option>';
                         }
@@ -62,7 +60,7 @@ $con = new mysqli ('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4
 
 </div>
 <script>
- $(document).ready(function({
+ $(document).ready(function(){
     $("#buscarcliente").on('keyup', function() {
         $.ajax({
             url: 'methods/conexion_items.php',
@@ -120,7 +118,7 @@ $con = new mysqli ('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4
                         if (r != 0 && !isNaN(r)) { //SI ES DISTINTO A 0 Y ES UN NUMERO
                             Swal.fire({
                                 icon: 'success',
-                                title: 'Guardado con exito, ¿Deseas ver la etiqueta?',
+                                title: 'Guardado con exito, 锟�0锟�7Deseas ver la etiqueta?',
                                 showDenyButton: true,
                                 showCancelButton: true,
                                 confirmButtonText: `Ver etiqueta`,

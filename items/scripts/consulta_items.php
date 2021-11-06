@@ -1,13 +1,12 @@
 
 <?php
 
-// include "../../conectar.php";
+include "../../globals.php";
 
 header('Content-Type: application/json');
 
 $response = new stdClass;
 
-$conexion = mysqli_connect('ftp.jjquimienvases.com','jjquimienvases_jjadmin','LeinerM4ster','jjquimienvases_cotizar');
 session_start();
 $id_rol = $_SESSION['id_rol'];
 $id_user = $_SESSION['userid'];
@@ -36,7 +35,7 @@ switch ($fun) {
             $sql = "SELECT * FROM producto_av WHERE  id = $id  OR contratipo = '$id'";
         }
 
-        $r = $conexion->query($sql);
+        $r = $cnx->query($sql);
 
         if ($o = $r->fetch_object()) {
 

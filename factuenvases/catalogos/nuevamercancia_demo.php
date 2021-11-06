@@ -1,12 +1,10 @@
 <?php
-include 'conectar.php';
+include "../../globals.php";
 session_start();
 
 
 ?>
 
-<?php $mysqli = new mysqli('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');
-?>
 <title>Nueva Mercancia</title>
 <script src="jquery-3.1.1.min.js"></script>
 <link href="css/style.css" rel="stylesheet">
@@ -135,7 +133,7 @@ session_start();
                   <select id="mibuscador" style="width: 100%">
                     <option value="0">Seleccione:</option>
                     <?php
-                    $query = $mysqli->query("SELECT * FROM producto");
+                    $query = $cnx->query("SELECT * FROM producto");
                     while ($valores = mysqli_fetch_array($query)) {
                       echo '<option value="' . $valores['id'] . '">' . $valores['contratipo'] . ',' . $valores['id'] . '</option>';
                     }
