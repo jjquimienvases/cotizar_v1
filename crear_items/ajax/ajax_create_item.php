@@ -1,7 +1,7 @@
 <?php
 
 include '../conexion.php';
-$conexion = new mysqli('localhost', 'root', '', 'cotpruebas');
+$conexion = conectar();
 $date = date('Y-m-d H:i:s');
 $user = $_POST["user_creador"];
 $materia = $_POST["materia"];

@@ -1,6 +1,5 @@
 <?php 
-// include '../conexion.php';
- $con = new mysqli ('ftp.jjquimienvases.com','jjquimienvases_jjadmin','LeinerM4ster','jjquimienvases_cotizar');
+include '../conexion.php';
 
 $json = array();
 $sql = $con->query("SELECT * FROM notificaciones WHERE estado LIKE '%pendiente%'");

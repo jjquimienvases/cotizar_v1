@@ -1,6 +1,6 @@
 <?php
-$conexion = new mysqli('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');
-
+include '../conectar.php';
+$conexion = conectar();
 $id = $_POST['id'];
 
 $sql = "SELECT * FROM factura_orden WHERE order_id='$id'";

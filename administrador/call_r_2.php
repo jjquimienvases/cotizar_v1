@@ -13,9 +13,8 @@ $fecha_final = $_POST['final'];
 
 
 
-
-$conexion = new mysqli ('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');
-
+include '../conectar.php';
+$conexion = conectar();
 //leidy - ventas y efectivo
 $consulta_all_data = $conexion->query("SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id WHERE DATE(fo.order_date) BETWEEN '$fecha_inicio' AND '$fecha_final' AND (fm.estado LIKE '%solicitud%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%')");
 $count_leidy = mysqli_num_rows($consulta_all_data);

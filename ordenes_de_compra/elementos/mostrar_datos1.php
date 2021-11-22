@@ -6,7 +6,7 @@ $user_name = $_SESSION['user'];
 $user_rol = $_SESSION['id_rol'];
 $estado_solicitud = "solicitud";
 
-$consulta = $conexion->query("SELECT * FROM solicitud_productos WHERE estado = '$estado_solicitud'");
+$consulta = $conexion->query("SELECT * FROM solicitud_productos WHERE DATE(fecha_solicitud) > '2021-08-30' ");
 
 ?>
 
@@ -16,7 +16,7 @@ $consulta = $conexion->query("SELECT * FROM solicitud_productos WHERE estado = '
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../traspasos/css/estilos.css">
-    <title></title>
+    <title>Ver ordenes</title>
 </head>
 
 <body>

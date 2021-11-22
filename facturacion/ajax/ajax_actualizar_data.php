@@ -1,8 +1,6 @@
 <?php 
 
-//  include '../conexion.php';
- $con = new mysqli ('ftp.jjquimienvases.com','jjquimienvases_jjadmin','LeinerM4ster','jjquimienvases_cotizar');
-
+include '../conexion.php';
          $codigo = $_POST['codigo'];
             $id_factura = $_POST['id_factura'];
          $id_f_nuevo = $id_factura;

@@ -51,6 +51,9 @@ switch ($valor) {
         echo "<option value='Perfume Sencillo 100 ML'>100 ML</option>";
         echo "<option value='Perfume Sencillo 100 ML Familia'>Familia 100 ML</option>";
         echo "<option value='kit'>KIT PERFUMERIA</option>";
+        echo "<option value='perfume promo 30 ML'>Perfume Promo 30ml</option>";
+        echo "<option value='perfume promo 50 ML'>Perfume Promo 50ml</option>";
+        echo "<option value='perfume promo 100 ML'>Perfume Promo 100ml</option>";
         break;
     case "6":
         echo "<option>Selecione la capacidad</option>";

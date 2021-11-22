@@ -9,8 +9,8 @@ if(!empty($_POST['companyName']) && $_POST['companyName']) {
 }
 ?>
 <?php
-
-$mysqli2 = new mysqli ('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');
+include 'conectar.php';
+$mysqli2 = conectar();
 //  $mysqli2 = new mysqli ('localhost', 'root', '', 'cotpruebas');  
 
 $alistamiento = "finalizado";
@@ -158,16 +158,7 @@ $cuenta = $data['total'];
 	 <script src="js/script.js"></script>
 	 <script languaje="javascript">
 
-	function confirmAdmin()
-	{
-		var getin = confirm ("¿Eres el administrador del sistema?.")
-    if (getin == true)
-		 return true;
-	 }
-	 else {
-		 alert('No puedes ingresar aqui si no eres el administrador')
-		 return false;
-	 }
+
 
 </script>
 

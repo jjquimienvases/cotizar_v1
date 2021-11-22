@@ -22,7 +22,7 @@
                         <datalist id="buscarclient">
                             <option value="">Seleccione una cotizacion</option>
                             <?php
-                            $query = $conexion->query("SELECT * FROM factura_orden ORDER BY order_date DESC");
+                            $query = $conexion->query("SELECT * FROM factura_orden ORDER BY order_date DESC LIMIT 20");
                             // $query = $con->query("SELECT * FROM factura_orden ");
                             while ($valores = mysqli_fetch_array($query)) {
                                 echo '<option value="' . $valores["order_id"] . '">' . $valores["order_id"] . ',' . $valores["order_receiver_name"] . '</option>';
@@ -31,6 +31,7 @@
                         </datalist>
                         <input class="form-control" list="buscarclient" name="cedulasres" id="buscarcliente" type="text" placeholder="Buscar Cotizacion">
                     </div>
+                    <button class="btn btn-success rounded" id="consultor">Buscar</button>
                     <form enctype="multipart/form-data" id="form1" name="form1" method="post">
                         <div class="form-group">
                             <label for="title">Cotizacion</label>

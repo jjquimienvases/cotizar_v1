@@ -6,7 +6,7 @@ header('Content-Type: application/json');
 
 $response = new stdClass;
 
- $con = new mysqli ('ftp.jjquimienvases.com','jjquimienvases_jjadmin','LeinerM4ster','jjquimienvases_cotizar');
+include 'conexion.php';
 
 
 

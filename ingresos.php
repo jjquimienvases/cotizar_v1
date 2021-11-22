@@ -23,7 +23,7 @@ function formatear($num){
 	if(isset($_POST['btn_buscar'])){
 		$buscar_text=$_POST['buscar'];
 		$select_buscar=$con->prepare('
-			SELECT * FROM ingresos WHERE code LIKE :campo OR contratipo LIKE :campo OR factura LIKE :campo;'
+			SELECT * FROM ingresos WHERE code LIKE :campo OR contratipo LIKE :campo OR factura LIKE :campo OR order_date LIKE :campo;'
 		);
 
 		$select_buscar->execute(array(

@@ -2,7 +2,8 @@
 
 
 //voy a hacer una prueba, miremos si funciona
-include_once 'factuenvases/catalogos/conexion0.php';
+include 'conectar.php';
+$conx = conectar();
 function formatear($num){
   setlocale(LC_MONETARY, 'en_US');
   return "$" . number_format($num, 2);

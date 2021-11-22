@@ -137,6 +137,34 @@ if (isset($_POST['Capacidad'])) {
                 "presentacion" => "Perfume Sencillo 100 ML Familia",
             ];
             break;
+              case "perfume promo 30 ML":
+            $unidad = [
+                "Unidad" => "10000",
+                "Gramo" => "0",
+                "Envase" => "0",
+                "Capacidad" => "30 ML",
+                "presentacion" => "perfume promo 30 ML",
+            ];
+            break;
+             case "perfume promo 50 ML":
+            $unidad = [
+                "Unidad" => "16000",
+                "Gramo" => "0",
+                "Envase" => "0",
+                "Capacidad" => "50 ML",
+                "presentacion" => "perfume promo 50 ML",
+            ];
+            break;
+             case "perfume promo 100 ML":
+            $unidad = [
+                "Unidad" => "27000",
+                "Gramo" => "0",
+                "Envase" => "0",
+                "Capacidad" => "100 ML",
+                "presentacion" => "perfume promo 100 ML",
+            ];
+            break;
+          
                case "kit":
             $unidad = [
                 "Unidad" => "50000",

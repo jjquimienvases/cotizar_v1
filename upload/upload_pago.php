@@ -267,14 +267,15 @@ $conexion = new mysqli('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'Lein
             e.preventDefault();
         }
 
-        $("#buscarcliente").on('keyup', function() {
+        $("#consultor").on('click', function() {
+            let data_ = $("#buscarcliente").val()
             $.ajax({
                 url: 'scripts/consultas.php',
                 type: 'POST',
                 dataType: 'json',
                 data: {
                     key: 'Q1',
-                    cliente: $(this).val()
+                    cliente: data_
                 }
             }).done(function(d) {
 

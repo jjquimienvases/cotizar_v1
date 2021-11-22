@@ -45,7 +45,7 @@ session_start();
                     <div class="card-body text-center mb-2">
                        <p class="card-text">Ver lista de cotizaciones</p>
                        <hr>
-                      <a href="cotizaciones/index.php"><button class="btn btn-lg btn-primary">Click Aqui</button></a>
+                      <a href="../search/index.php"><button class="btn btn-lg btn-primary">Click Aqui</button></a>
 
                       <!-- <span><a href="../bodega/index.php"><i class="fas fa-cubes rounded-circle" aria-hidden="true"></i></a></span> -->
 

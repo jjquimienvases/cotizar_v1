@@ -15,9 +15,9 @@ function formatear($num){
 	return "$" . number_format($num, 2);
 
 }
+include 'conectar.php';
+$conex = conectar();
 
-
-$conex = new mysqli('ftp.jjquimienvases.com','jjquimienvases_jjadmin','LeinerM4ster','jjquimienvases_cotizar');
 
 include 'Invoice.php';
 

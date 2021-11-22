@@ -254,16 +254,7 @@ if ($id_usuario == 4460) {
 	 <script src="js/script.js"></script>
 	 <script languaje="javascript">
 
-	function confirmAdmin()
-	{
-		var getin = confirm ("Eres el administrador del sistema?.")
-    if (getin == true)
-		 return true;
-	 }
-	 else {
-		 alert('No puedes ingresar aqui si no eres el administrador')
-		 return false;
-	 }
+	
 
 </script>
 

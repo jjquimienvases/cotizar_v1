@@ -1,0 +1,6 @@
+[07-Apr-2021 17:41:14 UTC] PHP Warning:  mysqli::query(): Empty query in /home/jjquimienvases/cotizar/search_d1/buscar.php on line 18
+[07-Apr-2021 17:46:03 UTC] PHP Warning:  mysqli::query(): Empty query in /home/jjquimienvases/cotizar/search_d1/buscar.php on line 18
+[07-Apr-2021 17:50:56 UTC] PHP Warning:  mysqli::query(): Empty query in /home/jjquimienvases/cotizar/search_d1/buscar.php on line 18
+[07-Apr-2021 17:58:26 UTC] PHP Warning:  mysqli::query(): Empty query in /home/jjquimienvases/cotizar/search_d1/buscar.php on line 18
+[07-Apr-2021 18:12:46 UTC] PHP Warning:  mysqli::query(): Empty query in /home/jjquimienvases/cotizar/search_d1/buscar.php on line 18
+[07-Apr-2021 18:23:55 UTC] PHP Warning:  mysqli::query(): Empty query in /home/jjquimienvases/cotizar/search_d1/buscar.php on line 18

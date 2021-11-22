@@ -1,0 +1,18 @@
+
+
+a{
+
+    text-decoration: none;
+    color: #fff;
+}
+
+#button_charge{
+    display:none;
+}
+
+#info_orders{
+    display: flex ;
+    flex-flow: row wrap ;
+    justify-content: space-between ;
+    align-items: center ;
+}

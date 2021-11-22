@@ -6,7 +6,8 @@ $invoice->checkLoggedIn();
 
 ?>
 <?php 
-$conx = new mysqli ('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');  
+include 'conectar.php';
+$conexion = conectar();
 
 $alistamiento = "alistamiento";
 $result= $conx -> query ("SELECT count(*) as total from files WHERE estado = '$alistamiento'");

@@ -1,9 +1,6 @@
 <?php
-  $servidor="ftp.profruver.com";
-  $nombreBd="profru_cotpruebas";
-  $usuario="profru_jjquimi";
-  $pass="LeinerM4ster";
-  $conexion = new mysqli($servidor,$usuario,$pass,$nombreBd);
+  include '../conectar.php';
+  $conexion = conectar();
 
 
   if ($conexion->connect_error) {

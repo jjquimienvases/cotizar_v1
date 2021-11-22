@@ -1,7 +1,7 @@
 <?php
-
-$con = new mysqli ('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_pruebas');  
-
+include '../conectar.php';
+$con = conectar();
+//recibo las variables
 //recibo las variables
 
 session_start();
@@ -89,6 +89,7 @@ foreach ($sql_c as $data_c) {
     $id_c = $data_c['id'];
 }
 
+
 //consulta_ agregar cotizacion
 
 $sql_add = $con->query ("INSERT INTO `factura_orden`(`user_id`, `order_receiver_name`, `tel_client`, `direccion`, `ciudad`, `order_receiver_address`, `order_total_before_tax`, `order_total_tax`, `order_tax_per`, `order_total_after_tax`, `order_amount_paid`, `order_total_amount_due`, `note`, `metodopago`, `cedula`, `email`, `estado`)
@@ -96,30 +97,22 @@ $sql_add = $con->query ("INSERT INTO `factura_orden`(`user_id`, `order_receiver_
 
 $id_ =  mysqli_insert_id($con);
 
+$sql_order = $con->query ("SELECT order_id AS order FROM factura_orden WHERE user_id = $usuario ORDER BY order_id DESC LIMIT 1");
+
+
+    foreach($sql_order as $data_order){
+      $id_1 = $data_order['order'];
+    }
+
+
 if ($sql_add) {
     //insertando items
     for ($i = 0; $i < count($codigo); $i++) {
-       
-
-
+        
+        $new_name = $perfume[$i]." ".$capacidad_puntos[$i];
         if ($gramos[$i] == 0) {
-            
-            if($perfume[$i] == "Onzas"){
-                
-                print_r($perfume[$i]);
-                 return;
-    $sqlInsertarProductos = ("INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario, order_item_final_amount, order_date)
-                       VALUES ('$id_', '$codigo[$i]', 'Onzas', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]', '$resultado[$i]','$fecha[$i]')");
-                       print_r($sqlInsertarProductos);
-                      
-}else{
-   
-            $sqlInsertarProductos = ("INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario, order_item_final_amount, order_date)
-                       VALUES ('$id_', '$codigo[$i]', 'okeyleiner', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]', '$resultado[$i]','$fecha[$i]')");
-                         print_r($sqlInsertarProductos);
-                       return;
-}
-            
+            $sqlInsertarProductos = $con->query("INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario, order_item_final_amount, order_date)
+                       VALUES ($id_1, '$codigo[$i]', '$contratipo[$i]', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]', '$resultado[$i]','$fecha[$i]')");
 
             if ($sqlInsertarProductos and $rol_usuario != 4) {
                 $con_stock = $con->query("SELECT stock FROM $tabla WHERE id = $codigo[$i]");
@@ -130,10 +123,10 @@ if ($sql_add) {
             }
         } else { //aqui agregamos gramos y y perfumeria especial 
             $sqlInsertarProductos = $con->query("INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario, order_item_final_amount, order_date,gramos,envases,tapa)
-                       VALUES ('$id_', '$codigo[$i]', '$capacidad[$i]', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]', '$resultado[$i]','$fecha[$i]','$gramos[$i]','$envase[$i]','$tapa[$i]')");
+                       VALUES ($id_1, '$codigo[$i]', '$perfume[$i] $capacidad_puntos[$i]', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]', '$resultado[$i]','$fecha[$i]','$gramos[$i]','$envase[$i]','$tapa[$i]')");
         }
         //esencia
-        if ($sqlInsertarProductos and $rol_usuario != 4) {
+        if ($sqlInsertarProductos and $rol_usuario != 4 || $rol_usuario != 1) {
             $con_stock = $con->query("SELECT stock FROM $tabla WHERE id = $codigo[$i]");
             $stock = floatval($con_stock->fetch_row()[0]);
             $nuevostock_g = $stock - $gramos[$i];
@@ -148,11 +141,12 @@ if ($sql_add) {
             $stock_e = floatval($con_stock->fetch_row()[0]);
             $nuevostock_e = $stock_e - $cantidad[$i];
             $sql_update_stock_e = $con->query("UPDATE $tabla SET stock = $nuevostock_e WHERE id = $envase[$i]");
-        } else {
-        }
+        } else { }
 
 
         //sumandopuntos
+if($capacidad_puntos[$i] != 0 || $capacidad_puntos[$i] != ""){
+      //sumandopuntos
 
         if ($rol_usuario != 4) {
             switch ($capacidad_puntos[$i]) {
@@ -201,6 +195,7 @@ if ($sql_add) {
             }
             
               if ($capacidad_puntos[$i] == "50ML Premio") {
+                 
                 $especial = $cantidad[$i] * 10;
               $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
                         foreach ($sql_cs as $data_c){$puntos_es = $data_c['puntos_perfumeria'];}
@@ -224,16 +219,15 @@ if ($sql_add) {
         } else {
        
         }
-        
-        
+}
+     
     }
     
-    
-    // if($sqlInsertarProductos){
-    // echo 1;
-    // }else{
-    //     echo 0;
-    // }
+    if($sqlInsertarProductos){
+    echo 1;
+    }else{
+        echo 0;
+    }
 }else{
     echo $sqlInsertarProductos;
 }

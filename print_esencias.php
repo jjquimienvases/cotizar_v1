@@ -1,6 +1,7 @@
 <?php 
 
-$con = new mysqli ('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar'); 
+include 'conectar.php';
+$con = conectar();
 //este documento es un post que recibe el numero de cotizacion 
 
 //  include 'arch.php';

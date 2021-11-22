@@ -185,6 +185,9 @@ echo $boton_cotizar;
 <div class="form-group col-md-2">
 <button class="btn btn-danger" id="abono"><a href="../devoluciones/vistas/view_search.php" target="_blank">Devoluciones</a></button>
 </div>
+<div class="form-group col-md-5">
+<button class="btn btn-primary" id="catalogo_close"><a href="../close_shop_sold/vistas/index.php" target="_blank">Cerrar Ventas Catalogo</a></button>
+</div>
 </div>
 </div>
 

@@ -3,7 +3,8 @@ function formatear($num){
 	setlocale(LC_MONETARY, 'en_US');
 	return "$" . number_format($num, 2);
 }
- $con = new mysqli ('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');  
+include 'conectar.php';
+$con = conectar();
 //este documento es un post que recibe el numero de cotizacion 
  $item = $_GET['etiqueta'];
 

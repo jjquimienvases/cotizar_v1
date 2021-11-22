@@ -1,0 +1,5 @@
+[07-Apr-2021 17:49:15 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/traspasos/element/mostrar_datos.php on line 4
+[07-Apr-2021 17:49:35 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/traspasos/element/mostrar_datos.php on line 4
+[07-Apr-2021 17:50:22 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/traspasos/element/mostrar_datos.php on line 4
+[07-Apr-2021 17:50:38 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/traspasos/element/mostrar_datos.php on line 4
+[07-Apr-2021 17:50:38 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/traspasos/element/mostrar_datos.php on line 4

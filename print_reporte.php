@@ -6,7 +6,8 @@ function formatear($num)
 
     return "$" . number_format($num, 2);
 }
-$con = new mysqli('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');
+include 'conectar.php';
+$con = conectar();
 //las variables de filtro 
 $cc_cliente = $_POST['cedulasres'];
 $fecha_inicial = $_POST['inicial'];

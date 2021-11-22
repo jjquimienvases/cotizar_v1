@@ -60,10 +60,13 @@ $sql = $con->query("SELECT * FROM traspaso_orden WHERE estado != 'pendiente' AND
 <link rel="stylesheet" href="css/style.css">
 <title>Lista de traspasos</title>
 <div class="container">
-  <?php include 'navbar.php'; ?>
+  <?php include 'navbar.php';
+        include 'modal_notas.php';
+  ?>
   <hr class="mt-2">
   <input type="hidden" value="<?= $user ?>" id="user_name" class="user_ps">
   <input type="hidden" value="<?= $user_id ?>" id="user_id" class="user_ps">
+    <input type="hidden"  data-target="modal_notes" class="btn modal-trigger" id="open_notes">
   <h2 class="title">Lista de traspasos</h2>
   <table id="data-table" class="table table-condensed">
     <thead>

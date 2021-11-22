@@ -1,0 +1,4 @@
+[07-Apr-2021 17:49:14 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/traspasos/new_demo.php on line 5
+[07-Apr-2021 17:49:15 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/traspasos/send_end_solicitud.php on line 6
+[07-Apr-2021 17:50:38 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/traspasos/send_end_solicitud.php on line 6
+[07-Apr-2021 17:50:38 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/jjquimienvases/cotizar/traspasos/send_end_solicitud.php on line 6

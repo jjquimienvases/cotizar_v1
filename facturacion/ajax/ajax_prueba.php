@@ -1,5 +1,5 @@
 <?php
-$con = new mysqli('localhost', 'root', '', 'cotpruebas');
+include '../conexion.php';
 
 $order_id = $_POST["cotizacion"];
 $documento = $_POST["document"];

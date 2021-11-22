@@ -8,6 +8,8 @@ function stopDefAction(evt) {
 
 
 <?php
+include 'conectar.php';
+$conx = conectar();
 function formatear($num){
 	setlocale(LC_MONETARY, 'en_US');
 	return "$" . number_format($num, 2);

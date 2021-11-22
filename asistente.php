@@ -10,17 +10,17 @@ if(!empty($_POST['companyName']) && $_POST['companyName']) {
 	$invoice->saveInvoice($_POST);
 	header("Location:invoice_list.php");
 }
-
-$mysqli2 = new mysqli ('ftp.profruver.com', 'profru_jjquimi', 'LeinerM4ster', 'profru_cotpruebas');  
+include 'conectar.php';
+$conexion = conectar();
 
 $alistamiento = "alistamiento";
-$result= $mysqli2 -> query ("SELECT count(*) as total FROM notificaciones WHERE estado = 'pendiente' ");
+$result= $conexion -> query ("SELECT count(*) as total FROM notificaciones WHERE estado = 'pendiente' ");
 $data=mysqli_fetch_assoc($result);
 
 $cuenta = $data['total'];
 
 $alistamiento = "pendiente";
-$resultados= $mysqli2 -> query ("SELECT count(*) as totales FROM files WHERE estado = 'pendiente' ");
+$resultados= $conexion -> query ("SELECT count(*) as totales FROM files WHERE estado = 'pendiente' ");
 $datas=mysqli_fetch_assoc($resultados);
 
 $cuentas = $datas['totales'];
@@ -90,7 +90,7 @@ $cuentas = $datas['totales'];
 								 						<p class="card-text">Ingresar aqui para generar una orden de compra</p>
 								 						<hr>
 								 					 <a href="new_create_orden.php"><button class="btn btn-lg btn-warning">Click Aqui</button></a>
-
+ <a href="providers_demo/vistas/proveedores.php"><button class="btn btn-lg btn-danger">new</button></a>
 								 					 <!-- <span><a href="../bodega/index.php"><i class="fas fa-cubes rounded-circle" aria-hidden="true"></i></a></span> -->
 
 
@@ -353,20 +353,7 @@ $cuentas = $datas['totales'];
 
 
 	 <script src="js/script.js"></script>
-	 <script languaje="javascript">
 
-	function confirmAdmin()
-	{
-		var getin = confirm ("¿Eres el administrador del sistema?.")
-    if (getin == true)
-		 return true;
-	 }
-	 else {
-		 alert('No puedes ingresar aqui si no eres el administrador')
-		 return false;
-	 }
-
-</script>
 
 	</body>
 	</html>

@@ -1,5 +1,5 @@
 <?php
-include "../conections.php";
+include '../../conectar.php';
 header('Content-Type: application/json');
 $response = new stdClass;
 $conexion = conectar();

@@ -90,7 +90,7 @@ $bodega_descuento = "producto_d1";
             $stock_actual = $stock;
             $nuevostocks = $stock_actual - $producto_cantidad;
 
-            // $consulta_descuenta = $con->query("UPDATE '$bodega_descuento' SET stock = $nuevostocks WHERE id = $codigo_producto");
+            $consulta_descuenta = $con->query("UPDATE $bodega_descuento SET stock = $nuevostocks WHERE id = $codigo_producto");
 
           }
         }
@@ -104,7 +104,7 @@ $bodega_descuento = "producto_d1";
   }
 
 
-  if ($consulta_solicitar_factura) {
+  if ($consulta_descuenta) {
     echo "<script> alert(se completo esta venta); </script>";
     header('Location: pedidos_pendientes_mostrador.php');
   }else{

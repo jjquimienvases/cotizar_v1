@@ -1,6 +1,5 @@
 <?php 
- $con = new mysqli ('ftp.jjquimienvases.com','jjquimienvases_jjadmin','LeinerM4ster','jjquimienvases_cotizar');
-
+include '../conexion.php';
 $json = array();
 $status = "s_factura";
 $status2 = "pendiente";

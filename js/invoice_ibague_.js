@@ -1,4 +1,4 @@
-let precioDB = 0;
+   let precioDB = 0;
 let cedula = "";
 let precioPerfumeria = 0;
 let unitario_marlon = 0;
@@ -1495,6 +1495,8 @@ else if(categoria == 75 && quantity <=11){
            console.log("este es el unitario de marlon:"+unitario_marlon)
        }else if(categoria == 4){
      totales = total * quantity;
+       }else{
+             totales = total * quantity; 
        }
       var vunit = total;
       if(categoria != 4){

@@ -1,6 +1,7 @@
 <?php
+include 'conectar.php';
+$con = conectar();
 
-$con = new mysqli ('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');  
 
 ?>
 
@@ -120,7 +121,7 @@ $con = new mysqli ('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4
                         if (r != 0 && !isNaN(r)) { //SI ES DISTINTO A 0 Y ES UN NUMERO
                             Swal.fire({
                                 icon: 'success',
-                                title: 'Guardado con exito, ¿Deseas ver la etiqueta?',
+                                title: 'Guardado con exito, 锟�0锟�7Deseas ver la etiqueta?',
                                 showDenyButton: true,
                                 showCancelButton: true,
                                 confirmButtonText: `Ver etiqueta`,

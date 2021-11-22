@@ -1,6 +1,5 @@
 <?php
- $con = new mysqli ('ftp.jjquimienvases.com','jjquimienvases_jjadmin','LeinerM4ster','jjquimienvases_cotizar');
-
+include '../conexion.php';
 $order_id = $_POST["order_id"];
 $documento = $_POST["documents"];
 $tipo_persona = $_POST["personas"];

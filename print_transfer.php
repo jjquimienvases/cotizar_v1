@@ -1,5 +1,6 @@
 <?php
-include 'transfers/conexion.php';
+include 'conectar.php';
+$con = conectar();
 session_start([
 
     'cookie_lifetime' => 86400,

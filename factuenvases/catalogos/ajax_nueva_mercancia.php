@@ -1,6 +1,6 @@
 <?php 
- $con = new mysqli ('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');  
-
+ include '../../conectar.php';
+ $conexion = conectar();
 
  $item_id = $_POST['codigo'];
  $item_name = $_POST['name'];

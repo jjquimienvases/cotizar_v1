@@ -337,7 +337,7 @@ function calculate_diferencia(){
     let resta = suma_v - demo_novedades;
     $('#rest_total').val(numberFormat2.format(resta));
     
-     let suma_vcj = (demo_caja_2 + demo_caja_1);
+     let suma_vcj = (demo_caja_2 + demo_caja_1 + demo_call);
     let resta_cj = suma_vcj - demo_novedades;
     $('#rest_total_caja').val(numberFormat2.format(resta_cj));
 }

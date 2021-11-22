@@ -41,15 +41,23 @@ if(copy($ruta, $destino)){
 
     $ins2 = "INSERT INTO file_abono (order_id, ruta, archivo, metodo_de_pago,nuevo_abono) VALUES 
     ($cotizacion,'$destino','$nombreImg','$metodo_pago',$monto_cancelado)";
-    $execute2 = $con->query($ins2);
+    
+     if ($execute) {
+      $execute2 = $con->query($ins2);
+  }else{
+    echo 0;
+  }
+ 
 
 
   }
   
-  //ejecutando la consulta y condiconandoelresultado 
-
-  if ($execute) {
-    echo $execute;
+     if ($execute2) {
+      echo $execute2;
   }else{
     echo 0;
   }
+  
+  //ejecutando la consulta y condiconandoelresultado 
+
+ 

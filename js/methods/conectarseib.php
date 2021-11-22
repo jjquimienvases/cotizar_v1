@@ -1,5 +1,6 @@
 <?php
-include "../conections.php";
+include '../../conectar.php';
+
 session_start();
 
 $user_id = $_SESSION['userid'];

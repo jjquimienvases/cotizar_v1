@@ -2,8 +2,10 @@
 
 // include '../conexion.php';
 // $conexion = conectar();
-$conexion = new mysqli('ftp.jjquimienvases.com','jjquimienvases_jjadmin','LeinerM4ster','jjquimienvases_cotizar');
+include "../conexion.php";
+$conexion = conectar();
 $punto_venta = "";
+$user_ = $_SESSION['user'];
 $date = DATE('Y-m-d');
 $item_code = $_POST["item_code"];
 $item_name = $_POST["item_name"];
@@ -34,6 +36,7 @@ $punto_v = $_POST['metodopago'];
 
  foreach($sql_get_data as $data_pro){
    $order_quantity = $data_pro['order_item_quantity'];
+   
 
  }
 
@@ -73,7 +76,12 @@ try {
     //SQL PARA SUBIR A LA TABLA DE DEVOLUCIONES (ALLI VA A QUEDAR REGISTRADO DICHA DEVOLUCION);
     $sql_insert_devolucion = $conexion->query("INSERT INTO devolucion (order_id, cliente, cedula, item_code, item_name, item_quantity, item_total_amount, punto_venta) 
     VALUES ($order_id,'$order_receiver_name','$cedula',$item_code,'$item_name',$order_item_quantity,$order_item_final_amount,'$punto_venta')");
- 
+     
+     if($item_name == "Perfume Sencillo 30 ML" || $item_name == "Perfume Sencillo 50 ML" || $item_name == "Perfume Sencillo 100 ML"){
+     $sql_perfume_pp = $conexion->query("INSERT INTO `devolucion_pp`(`order_id`, `item_code`, `item_name`, `item_quantity`, `user`,`estado`) VALUES ($order_id,$item_code,'$item_name',$order_item_quantity,'$user_','pendiente')");     
+     }else{
+         
+     }
   
 //   SQL PARA DAR EL SALDO A FAVOR DEL CLIENTE
     $sql_update_saldo = $conexion->query("UPDATE clientes SET credito = $nuevo_credito WHERE cedula = $cedula");

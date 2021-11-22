@@ -44,7 +44,8 @@ $invoice->checkLoggedIn();
 ?>
 <?php
 
-$mysqli2 = new mysqli('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');
+include 'conectar.php';
+$conexion = conectar();
 
 ?>
 
@@ -146,7 +147,7 @@ $mysqli2 = new mysqli('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'Leine
                                 <datalist id="buscarclient">
                                     <option value="">Seleccione un cliente</option>
                                     <?php
-                                    $query = $mysqli2->query("SELECT * FROM clientes ORDER BY nombres ASC");
+                                    $query =$conexion->query("SELECT * FROM clientes ORDER BY nombres ASC");
                                     while ($valores = mysqli_fetch_array($query)) {
                                         echo '<option value="' . $valores["cedula"] . '">' . $valores["cedula"] . ',' . $valores["nombres"] . '</option>';
                                     }
@@ -217,7 +218,7 @@ $mysqli2 = new mysqli('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'Leine
                                 <select id="buscarcomercial" style="width: 100%" name="address">
                                     <option value="0">Busca tu nombre:</option>
                                     <?php
-                                    $query = $mysqli2->query("SELECT * FROM factura_usuarios order by first_name");
+                                    $query =$conexion->query("SELECT * FROM factura_usuarios order by first_name");
                                     while ($valores = mysqli_fetch_array($query)) {
                                         echo '<option value="' . $valores['first_name'] . '&nbsp;' . $valores['last_name'] . '">' . $valores['first_name'] . '&nbsp;' . $valores['last_name'] . '</option>';
                                     }

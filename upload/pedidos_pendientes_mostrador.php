@@ -18,7 +18,7 @@ function formatear($num){
  $user_id = $_SESSION['userid'];
  $user_rol = $_SESSION['id_rol'];
  
-
+ $other_bodega = "";
  $bodega = "";
  if($user_rol == 2){
      $bodega = "mostrador principal";
@@ -36,7 +36,7 @@ function formatear($num){
 // 	$sentencia_select->execute();
 // 	$resultado=$sentencia_select->fetchAll();
 if($user_rol == 2){
- $sql_ = "SELECT * FROM call_punto_de_venta cp INNER JOIN factura_orden fo ON cp.order_id = fo.order_id WHERE cp.estado = 'pendiente' AND cp.bodega = '$bodega' OR cp.bodega = '$other_bodega'";
+ $sql_ = "SELECT * FROM call_punto_de_venta cp INNER JOIN factura_orden fo ON cp.order_id = fo.order_id WHERE fo.estado = 'pendiente' AND cp.bodega = '$bodega' OR cp.bodega = '$other_bodega'";
 }else{
      $sql_ = "SELECT * FROM call_punto_de_venta cp INNER JOIN factura_orden fo ON cp.order_id = fo.order_id WHERE cp.estado = 'pendiente' AND cp.bodega = '$bodega'";
 }

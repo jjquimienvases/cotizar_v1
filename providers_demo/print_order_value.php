@@ -76,9 +76,7 @@ function formatear($num){
 
 		<th align="left">CANTIDAD</th>
 
-		<th align="left">UNITARIO</th>
 
-		<th align="left">TOTAL</th>
 
 	</tr>';
 
@@ -98,9 +96,7 @@ foreach($sql as $data){
 
 	<td>'.$data["cantidad"].' </td>
 
-	<td>'.formatear($data["item_unitario"]).' </td>
 
-	<td>'.formatear($data["item_total"]).' </td>
 
 	</tr>';
 

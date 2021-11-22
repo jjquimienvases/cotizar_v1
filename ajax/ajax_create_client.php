@@ -1,7 +1,6 @@
 <?php 
-
- $con = new mysqli ('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');  
-
+include '../conectar.php';
+$con = conectar();
  //aqui voy a recibir mis variables
  
  $cedula = $_POST['cedula'];
