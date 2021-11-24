@@ -7,7 +7,7 @@ header('Content-Type: application/json');
 
 $response = new stdClass;
 
-$conexion = new mysqli('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');
+$conexion = new mysqli('127.0.0.1', 'cotizar', 'LeinerM4ster', 'cotizar');
 
 
 
@@ -28,13 +28,11 @@ switch ($fun) {
         if ($o = $r->fetch_object()) {
 
             $resultado = $o;
-
         }
 
         $response->resultado = $resultado;
 
         break;
-
 }
 
 echo json_encode($response);

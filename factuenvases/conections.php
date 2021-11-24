@@ -3,8 +3,8 @@ include '../conexion.php';
 ?>
 
 <!--function conectar(){-->
-<!--  $servidor="ftp.jjquimienvases.com";-->
-<!--  $nombreBd="jjquimienvases_cotizar";-->
-<!--  $usuario="jjquimienvases_jjadmin";-->
+<!--  $servidor="127.0.0.1";-->
+<!--  $nombreBd="cotizar";-->
+<!--  $usuario="cotizar";-->
 <!--  $pass="LeinerM4ster";-->
 <!--  $conexion = new mysqli($servidor,$usuario-->

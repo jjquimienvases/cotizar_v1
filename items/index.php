@@ -1,7 +1,7 @@
 <?php
 include 'conexion.php';
 
-// $conexion = mysqli_connect('ftp.jjquimienvases.com','jjquimienvases_admin','LeinerM4ster','jjquimienvases_cotizar');
+// $conexion = mysqli_connect('127.0.0.1','jjquimienvases_admin','LeinerM4ster','cotizar');
 session_start();
 
 $user_id = $_SESSION['userid'];
@@ -10,17 +10,17 @@ $user = $_SESSION['user'];
 
 
 if ($id_rol == 4) {
-    $ref = "../Panel_Comerciales.php";
+  $ref = "../Panel_Comerciales.php";
 } else if ($id_rol == 2) {
-    $ref = "../panel_bodega.php";
+  $ref = "../panel_bodega.php";
 } else if ($id_rol == 7) {
-    $ref = "../panel_ibague.php";
+  $ref = "../panel_ibague.php";
 } else if ($id_rol == 3) {
-    $ref = "../panel_d1.php";
+  $ref = "../panel_d1.php";
 } else if ($id_rol == 6) {
-    $ref = "../panel_bodega.php";
+  $ref = "../panel_bodega.php";
 } else {
-    $ref = "../Panel_Comerciales.php";
+  $ref = "../Panel_Comerciales.php";
 }
 
 include 'modal_create_items.php';
@@ -51,11 +51,11 @@ include 'modal_edit_materia.php';
   <div class="container">
     <div class="text-center">
       <button class="btn btn-outline-success mt-3" data-toggle="modal" data-target="#exampleModal"> Editar Item</button>
-           <button class="btn btn-outline-danger mt-3" data-toggle="modal" data-target="#exampleModalMaterial">Editar Materia Prima</button>
-           <button class="btn btn-info mt-3" data-toggle="modal" data-target="#exampleModalCreate"> Crear Item</button>
+      <button class="btn btn-outline-danger mt-3" data-toggle="modal" data-target="#exampleModalMaterial">Editar Materia Prima</button>
+      <button class="btn btn-info mt-3" data-toggle="modal" data-target="#exampleModalCreate"> Crear Item</button>
       <button class="btn btn-warning mt-3" id="ver_stocks" name="ver_stocks"> Ver Stocks</button>
-      <button class="btn btn-success mt-3"> <a href="<?= $ref?>">Regresar a mi panel</a> </button>
-      
+      <button class="btn btn-success mt-3"> <a href="<?= $ref ?>">Regresar a mi panel</a> </button>
+
       <button class="btn btn-danger" id="actualizar_items">Actualizar ps ome </button>
       <div id="modal">
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -72,7 +72,7 @@ include 'modal_edit_materia.php';
                 <form methods="POST" id="form_1">
 
                   <div class="buscaritems">
-                      <?php echo $id_rol; ?>
+                    <?php echo $id_rol; ?>
                     <label for="" class="text-success">Consultar Un Producto:</label>
                     <datalist id="buscaritem">
                       <option value="">Selecciona un producto</option>
@@ -87,10 +87,10 @@ include 'modal_edit_materia.php';
                         $query = $conexion->query("SELECT * FROM productos_ibague ORDER BY id ASC");
                       } else if ($user_id == 1) {
                         $query = $conexion->query("SELECT * FROM producto_av ORDER BY id ASC");
-                      }else{
+                      } else {
                         $query = $conexion->query("SELECT * FROM producto_av ORDER BY id ASC");
-                         //$query = $conexion->query("SELECT * FROM productos_ibague ORDER BY id ASC");
-                       
+                        //$query = $conexion->query("SELECT * FROM productos_ibague ORDER BY id ASC");
+
                       }
                       while ($valores = mysqli_fetch_array($query)) {
                         echo '<option value="' . $valores["id"] . '">' . $valores["id"] . ',' . $valores["contratipo"] . '</option>';
@@ -127,7 +127,7 @@ include 'modal_edit_materia.php';
                     </div>
                     <div class="col mb-2">
                       <small id="unidads" class="text-muted">UNIDAD DE EMPAQUE</small>
-                      <input type="text" class="form-control" name="unidad"  id="unidad" placeholder="Unidad de empaque" aria-describedby="unidads">
+                      <input type="text" class="form-control" name="unidad" id="unidad" placeholder="Unidad de empaque" aria-describedby="unidads">
                     </div>
                   </div>
                   <hr>

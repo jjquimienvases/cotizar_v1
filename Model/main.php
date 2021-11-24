@@ -1,27 +1,28 @@
 <?php
 
-class main{
-/*-----Función Conexion -----*/
-public static function conectar()
+class main
 {
-    try {
-          $conexion = new PDO('mysql:host=ftp.jjquimienvases.com;dbname=jjquimienvases_pruebas', 'jjquimienvases_jjadmin', 'LeinerM4ster'); 
-        // $conexion = new PDO('mysql:host=localhost;dbname=cotpruebas', 'root', '');
-        $conexion->exec("SET CHARACTER SET utf8");
+    /*-----Función Conexion -----*/
+    public static function conectar()
+    {
+        try {
+            $conexion = new PDO('mysql:host=127.0.0.1;dbname=jjquimienvases_pruebas', 'cotizar', 'LeinerM4ster');
+            // $conexion = new PDO('mysql:host=localhost;dbname=cotpruebas', 'root', '');
+            $conexion->exec("SET CHARACTER SET utf8");
 
-        return $conexion;
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
+            return $conexion;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
     }
-}
-/*-----Función Ejecutar Consultas Simples -----*/
-public static function ejecutar_consulta_simples($consulta)
-{
-    $sql = self::conectar()->prepare($consulta);
-    $sql->execute();
-    return $sql;
-}
-public static function limpiar_cadena($cadena)
+    /*-----Función Ejecutar Consultas Simples -----*/
+    public static function ejecutar_consulta_simples($consulta)
+    {
+        $sql = self::conectar()->prepare($consulta);
+        $sql->execute();
+        return $sql;
+    }
+    public static function limpiar_cadena($cadena)
     {
         $cadena = trim($cadena);
         $cadena = stripslashes($cadena);
@@ -54,8 +55,8 @@ public static function limpiar_cadena($cadena)
         return $cadena;
     }
 
-public static function mensaje(){
-    echo "main";
-}
-
+    public static function mensaje()
+    {
+        echo "main";
+    }
 }

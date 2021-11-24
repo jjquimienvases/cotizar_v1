@@ -16,7 +16,7 @@
 
 <?php
 
-$conexion = mysqli_connect('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');
+$conexion = mysqli_connect('127.0.0.1', 'cotizar', 'LeinerM4ster', 'cotizar');
 
 ?>
 
@@ -26,11 +26,11 @@ $conexion = mysqli_connect('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', '
 
 
 <div class="container">
-<center>
-    <h3>Asignar Producto -> Proveedor</h3>
-</center>
+    <center>
+        <h3>Asignar Producto -> Proveedor</h3>
+    </center>
 
-<hr>
+    <hr>
 
     <div class="row">
         <button class="btn btn-warning" id="btn"><a href="../asistente.php">Regresar al panel asistente</a></button>

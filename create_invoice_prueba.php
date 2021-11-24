@@ -39,7 +39,7 @@ $invoice->checkLoggedIn();
 ?>
 <?php
 
-$mysqli2 = new mysqli('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');
+$mysqli2 = new mysqli('127.0.0.1', 'cotizar', 'LeinerM4ster', 'cotizar');
 
 ?>
 
@@ -105,8 +105,8 @@ $mysqli2 = new mysqli('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'Leine
     }
 
     #limpiar {
-        margin-left: 450px;e
-
+        margin-left: 450px;
+        e
     }
 </style>
 

@@ -5,7 +5,7 @@ session_start();
 
 ?>
 
-<?php $mysqli = new mysqli('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');
+<?php $mysqli = new mysqli('127.0.0.1', 'cotizar', 'LeinerM4ster', 'cotizar');
 ?>
 <title>Nueva Mercancia</title>
 <script src="jquery-3.1.1.min.js"></script>
@@ -35,9 +35,11 @@ session_start();
     font-size: 16px;
     align-content: center;
   }
+
   table {
     width: 80%;
   }
+
   .contenedor {
     display: block;
     width: 90%;
@@ -45,9 +47,11 @@ session_start();
     margin-right: 50px;
     /* display: inline; */
   }
+
   input {
     width: 100%;
   }
+
   @media only screen and (max-width: 760px),
   (min-device-width: 768px) and (max-device-width: 1024px) {
 
@@ -60,15 +64,18 @@ session_start();
     tr {
       display: block;
     }
+
     /* Hide table headers (but not display: none;, for accessibility) */
     thead tr {
       position: absolute;
       top: -9999px;
       left: -9999px;
     }
+
     tr {
       border: 1px solid #ccc;
     }
+
     td {
       /* Behave  like a "row" */
       border: none;
@@ -76,6 +83,7 @@ session_start();
       position: relative;
       padding-left: 50%;
     }
+
     td:before {
       /* Now like a table header */
       position: absolute;
@@ -88,27 +96,27 @@ session_start();
     }
   }
 
-  #boton_add{
-    width:150px;
+  #boton_add {
+    width: 150px;
 
   }
-  
-  #removeRows{
-    width:150px;
+
+  #removeRows {
+    width: 150px;
     float: left;
-  } 
+  }
 </style>
 
 <body>
   <div class="contenedor">
     <h3>AGREGAR MERCANCIA BODEGA Principal</h3>
     <div class="datos">
-      <form  method="post" id="informacion">
+      <form method="post" id="informacion">
         <div class="row">
 
           <div class="col-md-3">
             <br>
-         <!--    <div class="form-group">
+            <!--    <div class="form-group">
               <a id="Nuevo" class="btn btn-info form-control">Nuevo</a>
             </div> -->
           </div>
@@ -171,20 +179,22 @@ session_start();
           </tbody>
           <hr>
         </table>
-<hr>
-        <div class="form-group"id="boton_add">
-              <a id="Nuevo" class="btn btn-info form-control">Nuevo</a>
-            </div>
-         <div>
-          <a id="removeRows" class="btn btn-danger form-control">Eliminar</a>
-          </div> 
-<br>
-<center>
-        <div class="boton" id="boton">
-          <button name="button" id="enviar">Ingresar este producto</button>
+        <hr>
+        <div class="form-group" id="boton_add">
+          <a id="Nuevo" class="btn btn-info form-control">Nuevo</a>
         </div>
-        <div id="wait" type="hidden"><p>Espera un momento mientras se envia la informacion al servidor</p> </div>
-</center>        
+        <div>
+          <a id="removeRows" class="btn btn-danger form-control">Eliminar</a>
+        </div>
+        <br>
+        <center>
+          <div class="boton" id="boton">
+            <button name="button" id="enviar">Ingresar este producto</button>
+          </div>
+          <div id="wait" type="hidden">
+            <p>Espera un momento mientras se envia la informacion al servidor</p>
+          </div>
+        </center>
       </form>
     </div>
     <hr>
@@ -225,62 +235,61 @@ session_start();
       $('#mibuscador').select2();
     });
 
- //ajax de envio
+    //ajax de envio
 
-    var	mostrar = function(){
+    var mostrar = function() {
       //document.getElementById('enviar').style.display = 'block';
       $('#boton').show(3000);
-	  $('#boton').show("fast");
+      $('#boton').show("fast");
     };
 
     $(document).ready(function() {
-  
-    	$("#enviar").click(function(e){
-    	    //e.preventDefault();
-    		$('#boton').hide(3000);
-    		$('#boton').hide("fast");
-    			
-    	
-    	    setTimeout(mostrar,5000);
-    	    
-    	});
-        
-        $('#informacion').submit(function(e) {
-          e.preventDefault()
-          Swal.fire({
-  title: 'Estas Seguro De Subir Este Ingreso?',
-  showDenyButton: true,
-  showCancelButton: true,
-  confirmButtonText: 'Si, Estoy seguro!',
-  denyButtonText: `No estoy seguro`,
-}).then((result) => {
-  /* Read more about isConfirmed, isDenied below */
-  if (result.isConfirmed) {
-    var datos = $(this).serialize();
-          $.ajax({
-            type: "POST",
-            // url: "https://envasesyperfumeria.com/backend_aux/stock/update-stock",
-            url: "./ajax_nueva_mercancia.php",
-            data: datos,
-            success: function(r) {
-              console.log(r);
-                  Swal.fire('Los cambios se han cargado con exito!', '', 'success');
-               
-                setTimeout(function(){ window.location.reload(); }, 2000);
-            }
-          });
-      
-  } else if (result.isDenied) {
-    Swal.fire('Cancelaste el ingreso!', '', 'info')
-  }
-})
-        
-         
-        });
+
+      $("#enviar").click(function(e) {
+        //e.preventDefault();
+        $('#boton').hide(3000);
+        $('#boton').hide("fast");
+
+
+        setTimeout(mostrar, 5000);
+
+      });
+
+      $('#informacion').submit(function(e) {
+        e.preventDefault()
+        Swal.fire({
+          title: 'Estas Seguro De Subir Este Ingreso?',
+          showDenyButton: true,
+          showCancelButton: true,
+          confirmButtonText: 'Si, Estoy seguro!',
+          denyButtonText: `No estoy seguro`,
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+            var datos = $(this).serialize();
+            $.ajax({
+              type: "POST",
+              // url: "https://envasesyperfumeria.com/backend_aux/stock/update-stock",
+              url: "./ajax_nueva_mercancia.php",
+              data: datos,
+              success: function(r) {
+                console.log(r);
+                Swal.fire('Los cambios se han cargado con exito!', '', 'success');
+
+                setTimeout(function() {
+                  window.location.reload();
+                }, 2000);
+              }
+            });
+
+          } else if (result.isDenied) {
+            Swal.fire('Cancelaste el ingreso!', '', 'info')
+          }
+        })
+
+
+      });
     });
-
-
-
   </script>
 </body>
 

@@ -5,8 +5,8 @@ class cotizacionModelo extends main
 
     public static function agregar_Cotizacion_modelo($datos)
     {
-        //  $con = new mysqli('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');
-        
+        //  $con = new mysqli('127.0.0.1', 'cotizar', 'LeinerM4ster', 'cotizar');
+
         $pdo = main::conectar();
         $stmt = $pdo->prepare("INSERT INTO factura_orden (user_id, order_receiver_name, tel_client, direccion, ciudad, order_receiver_address, order_total_before_tax, order_total_tax, order_tax_per, order_total_after_tax, order_amount_paid, order_total_amount_due, note, metodopago,cedula,email,estado)
         VALUES (:USERID,:ORDER_RECEIVER_NAME,:TEL_CLIENT,
@@ -29,39 +29,39 @@ class cotizacionModelo extends main
         $stmt->bindParam(':CEDULA', $datos['_cedula']);
         $stmt->bindParam(':EMAIL', $datos['_email']);
         $stmt->bindParam(':ESTADO', $datos['_estado']);
-        
+
         $stmt->execute();
-   
-      $id = $pdo->lastInsertId();
+
+        $id = $pdo->lastInsertId();
         return $id;
-        
-    //     $user_id = $datos['_userid'];
-    //     $cliente = $datos['_order_receiver_name'];
-    //     $telefono = $datos['_tel_client'];
-    //     $direccion = $datos['_direccion'];
-    //     $ciudad = $datos['_ciudad'];
-    //     $comercial = $datos['_order_receiver_address'];
-    //     $order_total_b_t = $datos['_order_total_before_tax'];
-    //     $order_total_tax = $datos['_order_total_tax'];
-    //     $order_tax_per = $datos['_order_tax_per'];
-    //     $order_total_a_t = $datos['_order_total_after_tax'];
-    //     $order_amount_p = $datos['_order_amount_paid'];
-    //     $order_amount_d = $datos['_order_total_amount_due'];
-    //     $note = $datos['_note'];
-    //     $metodop = $datos['_metodopago'];
-    //     $cedula = $datos['_cedula'];
-    //     $email = $datos['_email'];
-    //     $estado = $datos['_estado'];
-    
-    // $sql = "INSERT INTO `factura_orden`(`user_id`, `order_receiver_name`, `tel_client`, `direccion`, `ciudad`, `order_receiver_address`, `order_total_before_tax`, `order_total_tax`, `order_tax_per`, `order_total_after_tax`, `order_amount_paid`, `order_total_amount_due`, `note`, `metodopago`, `cedula`, `email`, `estado`)
-    // VALUES ($user_id,'$cliente',$telefono,'$direccion','$ciudad','$comercial',$order_total_b_t,$order_total_tax,$order_tax_per,$order_total_a_t,$order_amount_p,$order_amount_d,'$note','$metodop','$cedula','$email','$estado')";
-           
-    // $execute = $con->query($sql);   
-    // $id =  mysqli_insert_id($con);
-    
-    // return $id;
-    
-      
+
+        //     $user_id = $datos['_userid'];
+        //     $cliente = $datos['_order_receiver_name'];
+        //     $telefono = $datos['_tel_client'];
+        //     $direccion = $datos['_direccion'];
+        //     $ciudad = $datos['_ciudad'];
+        //     $comercial = $datos['_order_receiver_address'];
+        //     $order_total_b_t = $datos['_order_total_before_tax'];
+        //     $order_total_tax = $datos['_order_total_tax'];
+        //     $order_tax_per = $datos['_order_tax_per'];
+        //     $order_total_a_t = $datos['_order_total_after_tax'];
+        //     $order_amount_p = $datos['_order_amount_paid'];
+        //     $order_amount_d = $datos['_order_total_amount_due'];
+        //     $note = $datos['_note'];
+        //     $metodop = $datos['_metodopago'];
+        //     $cedula = $datos['_cedula'];
+        //     $email = $datos['_email'];
+        //     $estado = $datos['_estado'];
+
+        // $sql = "INSERT INTO `factura_orden`(`user_id`, `order_receiver_name`, `tel_client`, `direccion`, `ciudad`, `order_receiver_address`, `order_total_before_tax`, `order_total_tax`, `order_tax_per`, `order_total_after_tax`, `order_amount_paid`, `order_total_amount_due`, `note`, `metodopago`, `cedula`, `email`, `estado`)
+        // VALUES ($user_id,'$cliente',$telefono,'$direccion','$ciudad','$comercial',$order_total_b_t,$order_total_tax,$order_tax_per,$order_total_a_t,$order_amount_p,$order_amount_d,'$note','$metodop','$cedula','$email','$estado')";
+
+        // $execute = $con->query($sql);   
+        // $id =  mysqli_insert_id($con);
+
+        // return $id;
+
+
     }
 
     public static function agregar_producto_modelo($datos)
@@ -91,5 +91,4 @@ class cotizacionModelo extends main
         $stmt->execute();
         return $stmt;
     }
-
 }

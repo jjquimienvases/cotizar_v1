@@ -58,7 +58,7 @@ if (isset($_POST['btn_buscar'])) {
     $res = $select_buscar->fetchAll();
 }
 
-$conexion = new mysqli('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'LeinerM4ster', 'jjquimienvases_cotizar');
+$conexion = new mysqli('127.0.0.1', 'cotizar', 'LeinerM4ster', 'cotizar');
 ?>
 
 
@@ -158,7 +158,6 @@ $conexion = new mysqli('ftp.jjquimienvases.com', 'jjquimienvases_jjadmin', 'Lein
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
     <script>
-
         function onSubmitForm() {
 
             Swal.fire({
