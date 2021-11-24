@@ -1,5 +1,3 @@
-
-
 <?php
 include "../conectar.php";
 header('Content-Type: application/json');
@@ -19,4 +17,3 @@ $conexion = conectar();
           break;
     }
     echo json_encode($response);
- ?>

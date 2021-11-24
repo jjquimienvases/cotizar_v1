@@ -718,7 +718,7 @@ $(document).ready(function() {
                         on: {
                             onchange: function(evt) {
                                 $.ajax({
-                                        url: "/methods/conexion_callcenter.php",
+                                        url: "./methods/conexion_callcenter.php",
                                         type: "POST",
                                         dataType: "json",
                                         data: {
