@@ -16,7 +16,7 @@
 
 <?php
 
-$conexion = mysqli_connect('127.0.0.1', 'cotizar', 'LeinerM4ster', 'cotizar');
+$conexion = mysqli_connect('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
 
 ?>
 

@@ -1,7 +1,7 @@
 <?php
 include 'conexion.php';
 
-// $conexion = mysqli_connect('127.0.0.1','jjquimienvases_admin','LeinerM4ster','cotizar');
+// $conexion = mysqli_connect('173.230.154.140','jjquimienvases_admin','LeinerM4ster','cotizar');
 session_start();
 
 $user_id = $_SESSION['userid'];

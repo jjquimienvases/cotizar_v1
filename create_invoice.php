@@ -1,5 +1,5 @@
 <?php
-$servidor = "127.0.0.1";
+$servidor = "173.230.154.140";
 $nombreBd = "cotizar";
 $usuario = "cotizar";
 $pass = "LeinerM4ster";
@@ -41,9 +41,9 @@ include 'sqlsuma.php';
 // $mysqli = new mysqli('ftp.profruver.com', 'profru_jjquimi', 'LeinerM4ster', 'profru_cotpruebas');
 
 
-$mysqli2 = new mysqli('127.0.0.1', 'cotizar', 'LeinerM4ster', 'cotizar');
+$mysqli2 = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
 
-$mysqli = new mysqli('127.0.0.1', 'cotizar', 'LeinerM4ster', 'cotizar');
+$mysqli = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
 
 
 // $query = $mysqli -> query ("SELECT * FROM factura_orden");

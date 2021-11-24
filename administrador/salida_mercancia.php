@@ -12,7 +12,7 @@ function formatear($num)
   return "$" . number_format($num, 2);
 }
 
-$conexion = new mysqli('127.0.0.1', 'cotizar', 'LeinerM4ster', 'cotizar');
+$conexion = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
 // metodo buscar
 $fecha_inicial = $_POST['fecha_inicial'] . " " . "07:50:50";
 $fecha_final = $_POST['fecha_final'] . " " . "19:50:50";

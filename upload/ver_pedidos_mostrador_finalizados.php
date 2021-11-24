@@ -12,7 +12,7 @@ function formatear($num)
 	return "$" . number_format($num, 2);
 }
 
-$servidor = "127.0.0.1";
+$servidor = "173.230.154.140";
 $nombreBd = "cotizar";
 $usuario = "cotizar";
 $pass = "LeinerM4ster";

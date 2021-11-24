@@ -6,7 +6,7 @@ class main
     public static function conectar()
     {
         try {
-            $conexion = new PDO('mysql:host=127.0.0.1;dbname=cotizar', 'cotizar', 'LeinerM4ster');
+            $conexion = new PDO('mysql:host=173.230.154.140;dbname=cotizar', 'cotizar', 'LeinerM4ster');
             $conexion->exec("SET CHARACTER SET utf8");
 
             return $conexion;

@@ -34,7 +34,7 @@ $fecha_final = $_POST['final'] . "&nbsp;" . "07:10:50";
 
 
 
-$conexion = new mysqli('127.0.0.1', 'cotizar', 'LeinerM4ster', 'cotizar');
+$conexion = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
 //consular los usuarios del sistema
 
 $consulta_user = $conexion->query("SELECT * FROM factura_usuarios");

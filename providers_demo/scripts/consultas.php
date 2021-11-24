@@ -3,7 +3,7 @@
 /* include '../conexion.php'; */
 
 /* header('Content-Type: application/json'); */
-$con = new mysqli('127.0.0.1', 'cotizar', 'LeinerM4ster', 'jjquimienvases_prueba');
+$con = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'jjquimienvases_prueba');
 
 /* $sql = "SELECT pav.unidad, pav.stock, pav.id, pav.contratipo, p.codigo, p.empresa, p.telefono, p.telefono_asesor, p.asesor, pp.precio, p.nit, p.direccion FROM proveedor_producto pp INNER JOIN proveedor p ON p.codigo = pp.proveedor_id INNER JOIN producto_av pav ON pav.id = pp.producto_id WHERE pav.id = 1263";
  */

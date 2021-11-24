@@ -1,12 +1,12 @@
 
 <?php
 
-// '127.0.0.1', 'jquimienvases_jjadmin', 'LeinerM4ster', 'cotizar'
+// '173.230.154.140', 'jquimienvases_jjadmin', 'LeinerM4ster', 'cotizar'
 // pues preguntaaaa ahahaha
 class Invoice
 {
   private $user  = 'cotizar';
-  private $host  = '127.0.0.1';
+  private $host  = '173.230.154.140';
   private $password   = "LeinerM4ster";
   private $database  = "cotizar";
   private $invoiceUserTable = 'factura_usuarios';

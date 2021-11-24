@@ -5,7 +5,7 @@ session_start();
 
 ?>
 
-<?php $mysqli = new mysqli('127.0.0.1', 'cotizar', 'LeinerM4ster', 'cotizar');
+<?php $mysqli = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
 ?>
 <title>Nueva Mercancia</title>
 <script src="jquery-3.1.1.min.js"></script>

@@ -8,7 +8,7 @@ function formatear($num)
 
 $message = '';
 
-$connect = new PDO("mysql:host=127.0.0.1;dbname=cotizar", "cotizar", "LeinerM4ster");
+$connect = new PDO("mysql:host=173.230.154.140;dbname=cotizar", "cotizar", "LeinerM4ster");
 
 function fetch_customer_data($connect)
 {
@@ -17,7 +17,7 @@ function fetch_customer_data($connect)
   $total_d1 = '';
   $total_ib1 = '';
   $total_ib2 = '';
-  $myconexion = new mysqli('127.0.0.1', 'cotizar', 'LeinerM4ster', 'cotizar');
+  $myconexion = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
 
   $status = $_POST['estado'];
 

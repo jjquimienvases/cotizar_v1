@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Slim Framework (https://slimframework.com)
  *
@@ -24,7 +25,8 @@ class Environment extends Collection implements EnvironmentInterface
     {
         //Validates if default protocol is HTTPS to set default port 443
         if ((isset($settings['HTTPS']) && $settings['HTTPS'] !== 'off') ||
-            ((isset($settings['REQUEST_SCHEME']) && $settings['REQUEST_SCHEME'] === 'https'))) {
+            ((isset($settings['REQUEST_SCHEME']) && $settings['REQUEST_SCHEME'] === 'https'))
+        ) {
             $defscheme = 'https';
             $defport = 443;
         } else {
@@ -46,7 +48,7 @@ class Environment extends Collection implements EnvironmentInterface
             'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8',
             'HTTP_ACCEPT_CHARSET'  => 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
             'HTTP_USER_AGENT'      => 'Slim Framework',
-            'REMOTE_ADDR'          => '127.0.0.1',
+            'REMOTE_ADDR'          => '173.230.154.140',
             'REQUEST_TIME'         => time(),
             'REQUEST_TIME_FLOAT'   => microtime(true),
         ], $settings);

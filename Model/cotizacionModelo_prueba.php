@@ -5,7 +5,7 @@ class cotizacionModelo extends main
 
     public static function agregar_Cotizacion_modelo($datos)
     {
-        //  $con = new mysqli('127.0.0.1', 'cotizar', 'LeinerM4ster', 'cotizar');
+        //  $con = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
 
         $pdo = main::conectar();
         $stmt = $pdo->prepare("INSERT INTO factura_orden (user_id, order_receiver_name, tel_client, direccion, ciudad, order_receiver_address, order_total_before_tax, order_total_tax, order_tax_per, order_total_after_tax, order_amount_paid, order_total_amount_due, note, metodopago,cedula,email,estado)

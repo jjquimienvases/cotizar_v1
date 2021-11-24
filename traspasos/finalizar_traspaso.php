@@ -1,6 +1,6 @@
 <?php
 // function conectar(){
-//   $servidor="127.0.0.1";
+//   $servidor="173.230.154.140";
 //   $nombreBd="cotizar";
 //   $usuario="cotizar";
 //   $pass="LeinerM4ster";
@@ -12,7 +12,7 @@
 // }
 
 
-$conexion = new mysqli('127.0.0.1', 'cotizar', 'LeinerM4ster', 'cotizar');
+$conexion = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
 
 //  if ($conexion->connect_error) {
 //     die("Connection failed: " . $conexion->connect_error);

@@ -1,6 +1,6 @@
 <?php
 
-$con = new mysqli('127.0.0.1', 'cotizar', 'LeinerM4ster', 'cotizar');
+$con = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
 
 $id = $_POST['id'];
 $costo = $_POST['costo'];

@@ -58,7 +58,7 @@ if (isset($_POST['btn_buscar'])) {
     $res = $select_buscar->fetchAll();
 }
 
-$conexion = new mysqli('127.0.0.1', 'cotizar', 'LeinerM4ster', 'cotizar');
+$conexion = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
 ?>
 
 

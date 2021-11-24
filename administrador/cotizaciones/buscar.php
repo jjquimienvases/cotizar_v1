@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli('127.0.0.1', 'cotizar', 'LeinerM4ster', 'cotizar');
+$conn = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
 
 
 function formatear($num)

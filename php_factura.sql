@@ -2,7 +2,7 @@
 -- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
+-- Servidor: 173.230.154.140
 -- Tiempo de generación: 20-03-2019 a las 22:25:18
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.3.0

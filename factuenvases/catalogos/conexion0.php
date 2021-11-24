@@ -6,13 +6,13 @@ $password = 'LeinerM4ster';
 
 try {
 
-	$con = new PDO('mysql:host=127.0.0.1;dbname=' . $database, $user, $password);
+	$con = new PDO('mysql:host=173.230.154.140;dbname=' . $database, $user, $password);
 } catch (PDOException $e) {
 	echo "Error" . $e->getMessage();
 }
 
 ?>
-<!--$servidor="127.0.0.1";-->
+<!--$servidor="173.230.154.140";-->
 <!--$nombreBd="cotizar";-->
 <!--$usuario="cotizar";-->
 <!--$pass="LeinerM4ster";-->
