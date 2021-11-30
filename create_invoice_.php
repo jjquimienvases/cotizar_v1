@@ -133,6 +133,7 @@ $conexion = conectar();
                                 <input class="form-control" list="buscarclient" name="cedulasres" id="buscarcliente" type="text" placeholder="Buscar Cliente">
                             </div>
                         </div>
+                        
                         <div class="form-group">
                             <input type="text" class="form-control" name="companyName" id="companyName" placeholder="Nombre de Empresa o cliente" autocomplete="off" required>
                         </div>

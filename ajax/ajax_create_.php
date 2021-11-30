@@ -4,9 +4,8 @@ $con = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
 
 //recibo las variables
 
-session_start();
-$rol_usuario = $_SESSION['id_rol'];
-$user_id = $_SESSION['userid'];
+$rol_usuario = $_POST['user_rol'];
+$user_id = $_POST['userId'];
 
 
 if ($rol_usuario == 1) {
@@ -130,8 +129,8 @@ if ($sql_add) {
                        VALUES ('$id_', '$codigo[$i]', '$contratipo[$i]', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]',0,'$resultado[$i]','$date_',0,0,0)");
             $sqlInsertarProductos = $con->query($execute_items);
 
-         
-            
+
+
             if ($sqlInsertarProductos and $rol_usuario != 4) {
                 $con_stock = $con->query("SELECT stock FROM $tabla WHERE id = $codigo[$i]");
                 $stock = floatval($con_stock->fetch_row()[0]);
@@ -143,7 +142,7 @@ if ($sql_add) {
             $execute_items = ("INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario,order_item_price,order_item_final_amount, order_date,gramos,envases,tapa)
                        VALUES ('$id_', '$codigo[$i]', '$contratipo[$i]', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]',0,'$resultado[$i]','$date_','$gramos[$i]','$envase[$i]','$tapa[$i]')");
             $sqlInsertarProductos = $con->query($execute_items);
-    }
+        }
         //esencia
         if ($sqlInsertarProductos and $rol_usuario != 4) {
             $con_stock = $con->query("SELECT stock FROM $tabla WHERE id = $codigo[$i]");
