@@ -26,15 +26,19 @@ if ($result) {
 	$latabla_abono = 0;
 }
 
-$sql_data = $conex->query("SELECT fo.order_receiver_name FROM factura_orden fo INNER JOIN factura_orden_producto fp ON fo.order_id = fp.order_id WHERE fo.order_id = $cotizacion");
+$sql_data = ("SELECT fo.order_receiver_name FROM factura_orden fo INNER JOIN factura_orden_producto fp ON fo.order_id = fp.order_id WHERE fo.order_id = $cotizacion");
+$execute = ->$conex->query($sql_data);
 
-
-foreach ($sql_data as $datas) {
-
-	$cliente = $datas['order_receiver_name'];
+if($execute){
+	foreach ($sql_data as $datas) {
+		$cliente = $datas['order_receiver_name'];
+}
+	echo $cliente;
+}else{
+	print_r($sql_data);
 }
 
-echo $cliente;
+
 return
 
 	$output = '';
