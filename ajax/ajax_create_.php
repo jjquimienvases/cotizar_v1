@@ -127,9 +127,17 @@ if ($sql_add) {
 
         $new_name = $perfume[$i] . " " . $capacidad_puntos[$i];
         if ($gramos[$i] == 0) {
-            $sqlInsertarProductos = $con->query("INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario, order_item_final_amount, order_date,gramos,envases,tapa)
+            $execute_items =("INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario, order_item_final_amount, order_date,gramos,envases,tapa)
                        VALUES ('$id_', '$codigo[$i]', '$contratipo[$i]', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]', '$resultado[$i]','$fecha[$i]',0,0,0)");
+            $sqlInsertarProductos = $con->query($execute_items);
 
+           if($sqlInsertarProductos){
+           print_r("se ingresaron lo items");
+           }else{
+        print_r($execute_items);
+           }
+
+           return;
             if ($sqlInsertarProductos and $rol_usuario != 4) {
                 $con_stock = $con->query("SELECT stock FROM $tabla WHERE id = $codigo[$i]");
                 $stock = floatval($con_stock->fetch_row()[0]);
