@@ -1,26 +1,8 @@
 <?php
-	function conectar()
-	{
-		$servidor = "173.230.154.140";
-		$nombreBd = "cotizar";
-		$usuario = "cotizar";
-		$pass = "LeinerM4ster";
-		$conexion = new mysqli($servidor, $usuario, $pass, $nombreBd);
-		if ($conexion->connect_error) {
-			die("Connection failed: " . $conexion->connect_error);
-		}
-		return $conexion;
-	}
-	$conex = conectar();
+	$conex = new mysqli('173.230.154.140','cotizar','LeinerM4ster','cotizar');
 	include 'Invoice.php';
 	$invoice = new Invoice();
-function formatear($num){
-
-	setlocale(LC_MONETARY, 'en_US');
-
-	return "$" . number_format($num, 2);
-
-}
+function formatear($num){setlocale(LC_MONETARY, 'en_US');return "$" . number_format($num, 2);}
 
 // $invoice->checkLoggedIn();
 
