@@ -448,10 +448,10 @@ $conexion = conectar();
                     console.log(datos);
                     $.ajax({
                         type: "POST",
-                        url: "ajax/ajax_create_.php",
+                        url: "./ajax/ajax_create_.php",
                         data: datos,
                         success: function(r) {
-                            console.log(r);
+                            console.log("Esta respuesta: "+r);
                             if (r != 0 && !isNaN(r)) { //SI ES DISTINTO A 0 Y ES UN NUMERO
                                 Swal.fire('Guardado con exito!', '', 'success')
                                 if (user_rol == "4") {
