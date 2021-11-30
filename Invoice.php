@@ -1,5 +1,4 @@
 <?php
-
 class Invoice
 {
   private $user  = 'cotizar';

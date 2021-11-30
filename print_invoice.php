@@ -11,7 +11,7 @@
 		}
 		return $conexion;
 	}
-	$conex = conectar();
+	$conex = new mysqli('173.230.154.140');
 	include 'Invoice.php';
 	$invoice = new Invoice();
 function formatear($num){
