@@ -133,10 +133,10 @@ if ($sql_add) {
          
             
             if ($sqlInsertarProductos and $rol_usuario != 4) {
-                $con_stock = $con->query("SELECT stock FROM $tabla WHERE id = $codigo[$i]");
+                $con_stock = $con->query("SELECT stock FROM '$tabla' WHERE id = $codigo[$i]");
                 $stock = floatval($con_stock->fetch_row()[0]);
                 $nuevostock = $stock - $cantidad[$i];
-                $sql_update_stock = $con->query("UPDATE $tabla SET stock = $nuevostock WHERE id = $codigo[$i]");
+                $sql_update_stock = $con->query("UPDATE '$tabla' SET stock = $nuevostock WHERE id = $codigo[$i]");
             } else {
             }
         } else { //aqui agregamos gramos y y perfumeria especial 
@@ -146,20 +146,20 @@ if ($sql_add) {
     }
         //esencia
         if ($sqlInsertarProductos and $rol_usuario != 4) {
-            $con_stock = $con->query("SELECT stock FROM $tabla WHERE id = $codigo[$i]");
+            $con_stock = $con->query("SELECT stock FROM '$tabla' WHERE id = $codigo[$i]");
             $stock = floatval($con_stock->fetch_row()[0]);
             $nuevostock_g = $stock - ($gramos[$i] * $cantidad[$i]);
-            $sql_update_stock_g = $con->query("UPDATE $tabla SET stock = $nuevostock WHERE id = $codigo[$i]");
+            $sql_update_stock_g = $con->query("UPDATE '$tabla' SET stock = $nuevostock WHERE id = $codigo[$i]");
             //tapas 
-            $con_stock_t = $con->query("SELECT stock FROM $tabla WHERE id = $tapa[$i]");
+            $con_stock_t = $con->query("SELECT stock FROM '$tabla' WHERE id = $tapa[$i]");
             $stock_t = floatval($con_stock->fetch_row()[0]);
             $nuevostock_t = $stock_t - $cantidad[$i];
-            $sql_update_stock_t = $con->query("UPDATE $tabla SET stock = $nuevostock_t WHERE id = $tapa[$i]");
+            $sql_update_stock_t = $con->query("UPDATE '$tabla' SET stock = $nuevostock_t WHERE id = $tapa[$i]");
             //envasers
-            $con_stock_e = $con->query("SELECT stock FROM $tabla WHERE id = $envase[$i]");
+            $con_stock_e = $con->query("SELECT stock FROM '$tabla' WHERE id = $envase[$i]");
             $stock_e = floatval($con_stock->fetch_row()[0]);
             $nuevostock_e = $stock_e - $cantidad[$i];
-            $sql_update_stock_e = $con->query("UPDATE $tabla SET stock = $nuevostock_e WHERE id = $envase[$i]");
+            $sql_update_stock_e = $con->query("UPDATE '$tabla' SET stock = $nuevostock_e WHERE id = $envase[$i]");
         } else {
         }
 

@@ -1,13 +1,19 @@
 <?php
-
-session_start([
-
-    'cookie_lifetime' => 86400,
-
-    'gc_maxlifetime' => 86400,
-
-]);
-
+	function conectar()
+	{
+		$servidor = "173.230.154.140";
+		$nombreBd = "cotizar";
+		$usuario = "cotizar";
+		$pass = "LeinerM4ster";
+		$conexion = new mysqli($servidor, $usuario, $pass, $nombreBd);
+		if ($conexion->connect_error) {
+			die("Connection failed: " . $conexion->connect_error);
+		}
+		return $conexion;
+	}
+	$conex = conectar();
+	include 'Invoice.php';
+	$invoice = new Invoice();
 function formatear($num){
 
 	setlocale(LC_MONETARY, 'en_US');
@@ -15,13 +21,6 @@ function formatear($num){
 	return "$" . number_format($num, 2);
 
 }
-include 'conectar.php';
-$conex = conectar();
-
-
-include 'Invoice.php';
-
-$invoice = new Invoice();
 
 // $invoice->checkLoggedIn();
 
