@@ -130,13 +130,8 @@ if ($sql_add) {
                        VALUES ('$id_', '$codigo[$i]', '$contratipo[$i]', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]',0,'$resultado[$i]','$date_',0,0,0)");
             $sqlInsertarProductos = $con->query($execute_items);
 
-            if ($sqlInsertarProductos) {
-                print_r("se ingresaron lo items");
-            } else {
-                print_r($execute_items);
-            }
-
-            return;
+         
+            
             if ($sqlInsertarProductos and $rol_usuario != 4) {
                 $con_stock = $con->query("SELECT stock FROM $tabla WHERE id = $codigo[$i]");
                 $stock = floatval($con_stock->fetch_row()[0]);
@@ -145,9 +140,10 @@ if ($sql_add) {
             } else {
             }
         } else { //aqui agregamos gramos y y perfumeria especial 
-            $sqlInsertarProductos = $con->query("INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario, order_item_final_amount, order_date,gramos,envases,tapa)
-                       VALUES ('$id_', '$codigo[$i]', '$perfume[$i] $capacidad_puntos[$i]', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]', '$resultado[$i]','$fecha[$i]','$gramos[$i]','$envase[$i]','$tapa[$i]')");
-        }
+            $execute_items = ("INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario,order_item_price,order_item_final_amount, order_date,gramos,envases,tapa)
+                       VALUES ('$id_', '$codigo[$i]', '$contratipo[$i]', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]',0,'$resultado[$i]','$date_','$gramos[$i]','$envase[$i]','$tapa[$i]')");
+            $sqlInsertarProductos = $con->query($execute_items);
+    }
         //esencia
         if ($sqlInsertarProductos and $rol_usuario != 4) {
             $con_stock = $con->query("SELECT stock FROM $tabla WHERE id = $codigo[$i]");
