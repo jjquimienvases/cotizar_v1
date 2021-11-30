@@ -1,29 +1,21 @@
-    
 <?php
-session_start([
-    'cookie_lifetime' => 86400,
-    'gc_maxlifetime' => 86400,
-]);
 function formatear($num){
 	setlocale(LC_MONETARY, 'en_US');
 	return "$" . number_format($num, 2);
 }
-include 'Invoice.php';
-$invoice = new Invoice();
-$invoice->checkLoggedIn();
+
 if(!empty($_GET['invoice_id']) && $_GET['invoice_id']) {
     $cotizacion = $_GET['invoice_id'];
 	echo $_GET['invoice_id'];
-	$invoiceValues = $invoice->getInvoice($_GET['invoice_id']);
-	$invoiceItems = $invoice->getInvoiceItems($_GET['invoice_id']);
-}
 
+}
 include 'conectar.php';
 $conex = conectar();
 $date = date("Y-m-d");
+$order = $_GET['invoice_id'];
       
-        $sql = "SELECT fa.nuevo_abono,fa.metodo_de_pago FROM file_abono fa INNER JOIN factura_orden fo ON fo.order_id = fa.order_id WHERE DATE(fa.order_date) = '$date' AND fa.order_id = $cotizacion";
-        $result = $conex->query($sql);
+        $sql = "SELECT fa.nuevo_abono,fa.metodo_de_pago FROM file_abono fa INNER JOIN factura_orden fo ON fo.order_id = fa.order_id WHERE DATE(fa.order_date) = '$date' AND fa.order_id = $order";
+       $result = $conex->query($sql);
     if($result){
           foreach($result as $data){
          $nuevo_abono = $data['nuevo_abono'];
@@ -36,7 +28,9 @@ $date = date("Y-m-d");
 
     }
 
+	$sql_data = $conex->query("SELECT * FROM factura_orden fo INNER JOIN factura_orden_producto fp ON fo.order_id = fp.order_id WHERE fo.order_id = $order");
 
+   foreach($sql_data as $invoiceValues):
 $invoiceDate = date("d/M/Y h:i:s A", strtotime($invoiceValues['order_date']));
 $output = '';
 $output .= '
@@ -85,8 +79,9 @@ remision No:  '.$invoiceValues['order_id'].'<br /></td>
 	<th align="center" style="width:50px;">Cantidad</th>
 	<th align="center">Precio</th>
 	</tr>';
+   endforeach;
 $count = 0;
-foreach($invoiceItems as $invoiceItem){
+foreach($sql_data as $invoiceItem){
 	$count++;
 	$output .= '
 	<tr height="90%" >
@@ -140,4 +135,3 @@ $dompdf->loadHtml(html_entity_decode($output));
 $dompdf->setPaper('A4', 'portrait');
 $dompdf->render();
 $dompdf->stream($invoiceFileName, array("Attachment" => false));
-?>

@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 	function conectar()
 	{
 		$servidor = "173.230.154.140";
@@ -12,15 +13,12 @@
 		return $conexion;
 	}
 	$conex = new mysqli('173.230.154.140');
+=======
+	$conex = new mysqli('173.230.154.140','cotizar','LeinerM4ster','cotizar');
+>>>>>>> be5fdab4b4ac90ae82d94dd83b61c47c225df327
 	include 'Invoice.php';
 	$invoice = new Invoice();
-function formatear($num){
-
-	setlocale(LC_MONETARY, 'en_US');
-
-	return "$" . number_format($num, 2);
-
-}
+function formatear($num){setlocale(LC_MONETARY, 'en_US');return "$" . number_format($num, 2);}
 
 // $invoice->checkLoggedIn();
 
