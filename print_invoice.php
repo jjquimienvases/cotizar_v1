@@ -1,4 +1,15 @@
 <?php
+
+
+
+
+
+$date = DATE("Y-m-d H:m:s");
+
+echo $date;
+
+return;
+
 function formatear($num)
 {
 	setlocale(LC_MONETARY, 'en_US');
@@ -308,6 +319,3 @@ $dompdf->setPaper('letter', 'portrait');
 $dompdf->render();
 
 $dompdf->stream($invoiceFileName, array("Attachment" => false));
-
-?>
-
