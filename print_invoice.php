@@ -2,11 +2,12 @@
 
 
 
-date_default_timezone_get('america/bogota');
+//date_default_timezone_set('america/bogota');
 
+$hoy = getdate();
 $date = DATE("Y-m-d H:m:s");
 
-echo $date;
+echo $hoy;
 
 return;
 
