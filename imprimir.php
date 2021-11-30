@@ -90,7 +90,7 @@ remision No:  ' . $cotizacion . '<br /></td>
 	</tr>';
 
 $count = 0;
-foreach ($sql_data as $invoiceItem) {
+foreach ($execute as $invoiceItem) {
 	$count++;
 	$output .= '
 	<tr height="90%" >
