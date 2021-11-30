@@ -2,7 +2,7 @@
 
 
 
-date_default_timezone_set('america/bogota');
+date_default_timezone_get('america/bogota');
 
 $date = DATE("Y-m-d H:m:s");
 
@@ -26,45 +26,42 @@ $order = $_GET['invoice_id'];
 
 // $invoice->checkLoggedIn();
 
-if(!empty($_GET['invoice_id']) && $_GET['invoice_id']) {
-  
-   $cotizacion = $_GET['invoice_id'];
+if (!empty($_GET['invoice_id']) && $_GET['invoice_id']) {
+
+	$cotizacion = $_GET['invoice_id'];
 }
 
 $date = date("Y-m-d");
 
-       $puntos_de_venta = ["mostradorjj", "mostradord1", "mostrador_ibague_1", "mostrador_ibague_2", "bancolombia"];
-  
-        // $sql = "SELECT fa.nuevo_abono,fa.metodo_de_pago FROM factura_orden fo INNER JOIN file_abono fa ON fo.order_id = fa.order_id WHERE DATE(fo.order_date) = '$date' AND order_id = $cotizacion AND fo.estado != 'solicitud anular' AND fo.estado != 'anulado' AND fo.estado != 'pendiente'";
-        $sql = "SELECT fa.nuevo_abono,fa.metodo_de_pago FROM file_abono fa INNER JOIN factura_orden fo ON fo.order_id = fa.order_id WHERE DATE(fa.order_date) = '$date' AND fa.order_id = $cotizacion";
-     
-            //  $sql = "SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id INNER JOIN file_abono fa ON fo.order_id = fa.order_id WHERE DATE(fo.order_date) LIKE '%$date%' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%')";
-     
-        $result = $conex->query($sql);
-      $latabla_abono = "";
-    
-    if($result != 0 || $result != ""){
-          foreach($result as $data){
-         $nuevo_abono = $data['nuevo_abono'];
-         $metodo_de_pago = $data['metodo_de_pago'];
-      }
-       
-      $latabla_abono = $nuevo_abono;
-    }else{
-      $sql_ = $conex->query("SELECT fa.nuevo_abono,fa.metodo_de_pago FROM file_abono fa INNER JOIN factura_orden fo ON fo.order_id = fa.order_id WHERE fa.order_id = $cotizacion ORDER BY fa.order_date DESC LIMIT 1");
-      if($sql_){
-        foreach($sql_ as $datas){
-         $nuevo_abono = $datas['nuevo_abono'];
-         $metodo_de_pago = $datas['metodo_de_pago'];
-      }
-      $latabla_abono = $nuevo_abono;
-      }else{
-      $latabla_abono = 0;
-      }
-      
+$puntos_de_venta = ["mostradorjj", "mostradord1", "mostrador_ibague_1", "mostrador_ibague_2", "bancolombia"];
 
+// $sql = "SELECT fa.nuevo_abono,fa.metodo_de_pago FROM factura_orden fo INNER JOIN file_abono fa ON fo.order_id = fa.order_id WHERE DATE(fo.order_date) = '$date' AND order_id = $cotizacion AND fo.estado != 'solicitud anular' AND fo.estado != 'anulado' AND fo.estado != 'pendiente'";
+$sql = "SELECT fa.nuevo_abono,fa.metodo_de_pago FROM file_abono fa INNER JOIN factura_orden fo ON fo.order_id = fa.order_id WHERE DATE(fa.order_date) = '$date' AND fa.order_id = $cotizacion";
 
-    }
+//  $sql = "SELECT * FROM factura_orden fo INNER JOIN factura_modificada fm ON fo.order_id = fm.order_id INNER JOIN file_abono fa ON fo.order_id = fa.order_id WHERE DATE(fo.order_date) LIKE '%$date%' AND (fm.estado LIKE '%s_factura%' OR fm.estado LIKE '%finalizado%' OR fm.estado LIKE '%alistamiento%')";
+
+$result = $conex->query($sql);
+$latabla_abono = "";
+
+if ($result != 0 || $result != "") {
+	foreach ($result as $data) {
+		$nuevo_abono = $data['nuevo_abono'];
+		$metodo_de_pago = $data['metodo_de_pago'];
+	}
+
+	$latabla_abono = $nuevo_abono;
+} else {
+	$sql_ = $conex->query("SELECT fa.nuevo_abono,fa.metodo_de_pago FROM file_abono fa INNER JOIN factura_orden fo ON fo.order_id = fa.order_id WHERE fa.order_id = $cotizacion ORDER BY fa.order_date DESC LIMIT 1");
+	if ($sql_) {
+		foreach ($sql_ as $datas) {
+			$nuevo_abono = $datas['nuevo_abono'];
+			$metodo_de_pago = $datas['metodo_de_pago'];
+		}
+		$latabla_abono = $nuevo_abono;
+	} else {
+		$latabla_abono = 0;
+	}
+}
 
 
 $sql_data = ("SELECT * FROM factura_orden INNER JOIN factura_orden_producto ON factura_orden.order_id = factura_orden_producto.order_id WHERE factura_orden.order_id = $cotizacion");
@@ -145,19 +142,19 @@ $output .= '<link href="css/styledom2.css" rel="stylesheet" type="text/css"   me
 
 
 
-	Cliente: '.$invoiceValues['order_receiver_name'].'<br />
+	Cliente: ' . $invoiceValues['order_receiver_name'] . '<br />
 
-	Asesor Comercial: '.$invoiceValues['order_receiver_address'].'<br />
+	Asesor Comercial: ' . $invoiceValues['order_receiver_address'] . '<br />
 
-    Metodo de pago: '.$invoiceValues['metodo_de_pago'].'<br />
+    Metodo de pago: ' . $invoiceValues['metodo_de_pago'] . '<br />
 
 	</td>
 
 	<td width="55%">
 
-	remision No. : '.$invoiceValues['order_id'].'<br />
+	remision No. : ' . $invoiceValues['order_id'] . '<br />
 
-	Fecha : '.$invoiceDate.'<br />
+	Fecha : ' . $invoiceDate . '<br />
 
 	</br>
 
@@ -182,7 +179,7 @@ $output .= '<link href="css/styledom2.css" rel="stylesheet" type="text/css"   me
 
 $count = 0;
 
-foreach($invoiceItems as $invoiceItem){
+foreach ($invoiceItems as $invoiceItem) {
 
 	$count++;
 
@@ -190,27 +187,27 @@ foreach($invoiceItems as $invoiceItem){
 
 	<tr height="90%" >
 
-	<td align="left" height="5px" >'.$count.'</td>
+	<td align="left" height="5px" >' . $count . '</td>
 
-	<td align="left">'.$invoiceItem["item_code"].'</td>
+	<td align="left">' . $invoiceItem["item_code"] . '</td>
 
-	<td align="left">'.$invoiceItem["item_name"].'</td>
+	<td align="left">' . $invoiceItem["item_name"] . '</td>
 
-	<td align="left">'.$invoiceItem["order_item_quantity"].'</td>
+	<td align="left">' . $invoiceItem["order_item_quantity"] . '</td>
 
-	<td align="left">'.formatear($invoiceItem["order_item_unitario"]).'</td>
+	<td align="left">' . formatear($invoiceItem["order_item_unitario"]) . '</td>
 
-	<td align="left">'.formatear($invoiceItem["order_item_final_amount"]).'</td>
+	<td align="left">' . formatear($invoiceItem["order_item_final_amount"]) . '</td>
 
 	</tr>';
-
-}$output .= '
+}
+$output .= '
 
 		<tr>
 
 		<td align="right" colspan="5"><b>Sub Total</b></td>
 
-		<td align="left"><b>'.formatear($invoiceValues['order_total_before_tax']).'</b></td>
+		<td align="left"><b>' . formatear($invoiceValues['order_total_before_tax']) . '</b></td>
 
 		</tr>
 
@@ -218,28 +215,28 @@ foreach($invoiceItems as $invoiceItem){
 
 		<td align="right" colspan="5"><b> Porcentaje:</b></td>
 
-		<td align="left">'.$invoiceValues['order_tax_per'].'%</td>
+		<td align="left">' . $invoiceValues['order_tax_per'] . '%</td>
 
 		</tr>
 		<tr>
 
 		<td align="right" colspan="5"><b>Total con descuento</b></td>
 
-		<td align="left">'.formatear($invoiceValues['order_total_amount_due']).'</td>
+		<td align="left">' . formatear($invoiceValues['order_total_amount_due']) . '</td>
 
 		</tr>
 		 <tr>
 
 		<td align="right" colspan="5"><b>Ahorro: </b></td>
 
-		<td align="left">'.formatear($invoiceValues['order_total_tax']).'</td>
+		<td align="left">' . formatear($invoiceValues['order_total_tax']) . '</td>
 
 		</tr>
 		<tr>
 
 		<td align="right" colspan="5"><b>Abonos</b></td>
 
-		<td align="left">'.formatear($latabla_abono).'</td>
+		<td align="left">' . formatear($latabla_abono) . '</td>
 
 		</tr>
 
@@ -260,7 +257,7 @@ $output .= '
 
     <tr>
 
-<td align="left" colspan ="2"><strong><P>Notas:</P>'.$invoiceValues['note'].'</strong></td>
+<td align="left" colspan ="2"><strong><P>Notas:</P>' . $invoiceValues['note'] . '</strong></td>
 
     </tr>
 
@@ -284,13 +281,13 @@ $output .= '
 
  <center><h2> DESTINATARIO </h2></center>
 
-<p align="left"> <strong>NOMBRES Y APELLIDOS:</strong>&nbsp;'.$invoiceValues['order_receiver_name'].'</p>
+<p align="left"> <strong>NOMBRES Y APELLIDOS:</strong>&nbsp;' . $invoiceValues['order_receiver_name'] . '</p>
 
- <p align="left"> <strong>DIRECCION:</strong>&nbsp;'.$invoiceValues['direccion'].' &nbsp; <strong>CEDULA: </strong>&nbsp; '.$invoiceValues['cedula'].' </p>
+ <p align="left"> <strong>DIRECCION:</strong>&nbsp;' . $invoiceValues['direccion'] . ' &nbsp; <strong>CEDULA: </strong>&nbsp; ' . $invoiceValues['cedula'] . ' </p>
 
- <p align="left"> <strong>TELEFONO:</strong>&nbsp;'.$invoiceValues['tel_client'].' &nbsp;	<strong> CIUDAD:</strong>&nbsp;'.$invoiceValues['ciudad'].'</p>
+ <p align="left"> <strong>TELEFONO:</strong>&nbsp;' . $invoiceValues['tel_client'] . ' &nbsp;	<strong> CIUDAD:</strong>&nbsp;' . $invoiceValues['ciudad'] . '</p>
 
- <p aling="left"> <strong>EMAIL:</strong>&nbsp;'.$invoiceValues['email'].'</p>
+ <p aling="left"> <strong>EMAIL:</strong>&nbsp;' . $invoiceValues['email'] . '</p>
 
 </td>
 
@@ -302,7 +299,7 @@ $output .= '
 
 // create pdf of invoice
 
-$invoiceFileName = 'Invoice-'.$invoiceValues['order_id'].'.pdf';
+$invoiceFileName = 'Invoice-' . $invoiceValues['order_id'] . '.pdf';
 
 require_once 'dompdf/src/Autoloader.php';
 
