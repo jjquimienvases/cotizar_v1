@@ -26,7 +26,7 @@ if ($rol_usuario == 1) {
 }
 
 
-print_r($rol_usuario);
+print_r("este es el rol"+$rol_usuario);
 return;
 
 $estado = "pendiente";
