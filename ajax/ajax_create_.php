@@ -26,10 +26,9 @@ if ($rol_usuario == 1) {
     $tabla = "producto_av";
 }
 
-if($user_id == 0 || $user_id = null){
-  echo "no_session";
-}else{
-    
+if ($user_id == 0 || $user_id = null) {
+    echo "no_session";
+} else {
 }
 $estado = "pendiente";
 $usuario = $_POST['userId'];
@@ -145,7 +144,9 @@ if ($sql_add) {
             }
         } else { //aqui agregamos gramos y y perfumeria especial 
             $execute_items = ("INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario,order_item_price,order_item_final_amount, order_date,gramos,envases,tapa)
-                       VALUES ('$id_', '$codigo[$i]', '$contratipo[$i]', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]',0,'$resultado[$i]','$date_','$gramos[$i]','$envase[$i]','$tapa[$i]')");
+            
+                                   VALUES ($id_, '$codigo[$i]', '$perfume[$i] $capacidad_puntos[$i]', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]',0,'$resultado[$i]','$fecha[$i]','$gramos[$i]','$envase[$i]','$tapa[$i]')");
+
             $sqlInsertarProductos = $con->query($execute_items);
         }
         //esencia
