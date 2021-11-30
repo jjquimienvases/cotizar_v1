@@ -7,7 +7,7 @@
 $hoy = getdate();
 $date = DATE("Y-m-d H:m:s");
 
-echo $hoy;
+print_r($hoy);
 
 return;
 
