@@ -1,36 +1,23 @@
 <?php
-<<<<<<< HEAD
-	function conectar()
-	{
-		$servidor = "173.230.154.140";
-		$nombreBd = "cotizar";
-		$usuario = "cotizar";
-		$pass = "LeinerM4ster";
-		$conexion = new mysqli($servidor, $usuario, $pass, $nombreBd);
-		if ($conexion->connect_error) {
-			die("Connection failed: " . $conexion->connect_error);
-		}
-		return $conexion;
-	}
-	$conex = new mysqli('173.230.154.140');
-=======
-	$conex = new mysqli('173.230.154.140','cotizar','LeinerM4ster','cotizar');
->>>>>>> be5fdab4b4ac90ae82d94dd83b61c47c225df327
-	include 'Invoice.php';
-	$invoice = new Invoice();
-function formatear($num){setlocale(LC_MONETARY, 'en_US');return "$" . number_format($num, 2);}
+function formatear($num)
+{
+	setlocale(LC_MONETARY, 'en_US');
+	return "$" . number_format($num, 2);
+}
+
+if (!empty($_GET['invoice_id']) && $_GET['invoice_id']) {
+	$cotizacion = $_GET['invoice_id'];
+}
+
+$conex = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
+$date = date("Y-m-d");
+$order = $_GET['invoice_id'];
 
 // $invoice->checkLoggedIn();
 
 if(!empty($_GET['invoice_id']) && $_GET['invoice_id']) {
   
    $cotizacion = $_GET['invoice_id'];
-	echo $_GET['invoice_id'];
-
-	$invoiceValues = $invoice->getInvoice($_GET['invoice_id']);
-
-	$invoiceItems = $invoice->getInvoiceItems($_GET['invoice_id']);
-
 }
 
 $date = date("Y-m-d");
@@ -67,11 +54,25 @@ $date = date("Y-m-d");
 
 
     }
-    
-      
-    
 
-$invoiceDate = date("d/M/Y h:i:s A", strtotime($invoiceValues['order_date']));
+
+$sql_data = ("SELECT * FROM factura_orden INNER JOIN factura_orden_producto ON factura_orden.order_id = factura_orden_producto.order_id WHERE factura_orden.order_id = $cotizacion");
+$execute = $conex->query($sql_data);
+
+if ($execute) {
+	foreach ($execute as $datas) {
+		$cliente = $datas['order_receiver_name'];
+		$fecha = $datas['order_date'];
+		$comercial = $datas['order_receiver_address'];
+		$metodo_de_pago = $datas['metodo_de_pago'];
+		$afterTax = $datas['order_total_after_tax'];
+		$taxPer = $datas['order_tax_per'];
+		$totalTax = $datas['order_total_tax'];
+		$amountD = $datas['order_total_amount_due'];
+	}
+} else {
+	print_r($sql_data);
+}
 
 $output = '';
 
