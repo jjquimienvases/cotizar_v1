@@ -38,10 +38,19 @@ $cedula = $_POST['id_cedula'];
 $comercial = $_POST['address'];
 $subtotal = $_POST['subTotal'];
 $taxA = $_POST['taxAmount'];
+if ($taxA == 0 || $taxA == null) {
+    $taxA = 0;
+}
 $taxR = $_POST['taxRate'];
 $totalAft = $_POST['totalAftertax'];
 $amountP = $_POST['amountPaid'];
+if($amountP == 0 || $amountP == null){
+    $amountP = 0;
+}
 $amountD = $_POST['amountDue'];
+if($amountD == 0 || $amountD == null){
+    $amountD = 0;
+}
 $nota = $_POST['notes'];
 $metodo = $_POST['metodopago'];
 $email = $_POST['email'];
@@ -79,6 +88,8 @@ $capacidad_puntos = (isset($_POST['Puntos'])) ? $_POST['Puntos'] : "";
 $abono = (isset($_POST['abono'])) ? $_POST['abono'] : "";
 $gramosAdicionales = (isset($_POST['gramos_adicionales'])) ? $_POST['gramos_adicionales'] : "";
 $capacidad_recarga = $_POST['Capacidad'];
+
+
 
 
 
