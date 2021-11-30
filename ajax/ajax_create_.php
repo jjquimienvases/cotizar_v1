@@ -26,10 +26,11 @@ if ($rol_usuario == 1) {
     $tabla = "producto_av";
 }
 
-
-print_r("este es el rol" . $rol_usuario);
-return;
-
+if($user_id == 0 || $user_id = null){
+  echo "no_session";
+}else{
+    
+}
 $estado = "pendiente";
 $usuario = $_POST['userId'];
 $idcliente = $_POST['idcliente'];

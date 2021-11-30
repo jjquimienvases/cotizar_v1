@@ -10,11 +10,11 @@ $user_rol = $_SESSION['id_rol'];
 // if (empty($caja)) {
 //     header("Location:panel_ibague.php");
 // }
-if($_SESSION['id_rol'] == 7){
-}else if($_SESSION['id_rol'] == 3){
+if ($_SESSION['id_rol'] == 7) {
+} else if ($_SESSION['id_rol'] == 3) {
     header("Location:create_invoice_d1_.php");
-}else if($_SESSION['id_rol'] == 2){
-     header("Location:create_invoice_2_.php");
+} else if ($_SESSION['id_rol'] == 2) {
+    header("Location:create_invoice_2_.php");
 }
 
 $rol_usuario = $_SESSION['id_rol'];
@@ -28,9 +28,9 @@ if ($rol_usuario == 1) {
     $tabla = "producto_av";
 } else if ($rol_usuario == 6) {
     $tabla = "producto_av";
-}else if($user == 27){
+} else if ($user == 27) {
     $tabla = "productos_ibague2";
-}else if ($rol_usuario == 7) {
+} else if ($rol_usuario == 7) {
     $tabla = "productos_ibague";
 } else if ($rol_usuario == 9) {
     $tabla = "producto_av";
@@ -147,7 +147,7 @@ $conexion = conectar();
                                 <datalist id="buscarclient">
                                     <option value="">Seleccione un cliente</option>
                                     <?php
-                                    $query =$conexion->query("SELECT * FROM clientes ORDER BY nombres ASC");
+                                    $query = $conexion->query("SELECT * FROM clientes ORDER BY nombres ASC");
                                     while ($valores = mysqli_fetch_array($query)) {
                                         echo '<option value="' . $valores["cedula"] . '">' . $valores["cedula"] . ',' . $valores["nombres"] . '</option>';
                                     }
@@ -218,7 +218,7 @@ $conexion = conectar();
                                 <select id="buscarcomercial" style="width: 100%" name="address">
                                     <option value="0">Busca tu nombre:</option>
                                     <?php
-                                    $query =$conexion->query("SELECT * FROM factura_usuarios order by first_name");
+                                    $query = $conexion->query("SELECT * FROM factura_usuarios order by first_name");
                                     while ($valores = mysqli_fetch_array($query)) {
                                         echo '<option value="' . $valores['first_name'] . '&nbsp;' . $valores['last_name'] . '">' . $valores['first_name'] . '&nbsp;' . $valores['last_name'] . '</option>';
                                     }
@@ -228,51 +228,50 @@ $conexion = conectar();
                             </div>
                         </div>
                         <hr>
-                      
 
-                  
+
+
                         <div class="form-group">
                             <label for=""> Distribuidores</label>
                             <td><input class="itemRus" type="checkbox" autocomplete="off" id="distri" name="distri" value=""></td>
                         </div>
-                        
+
                         <div class="form-group">
-                        <label>Promocion PETS</label>
-                        <td> <input class="p_especial" type="checkbox" id="p_especial" name='p_especial'> </td> 
-                     </div>
+                            <label>Promocion PETS</label>
+                            <td> <input class="p_especial" type="checkbox" id="p_especial" name='p_especial'> </td>
+                        </div>
                         <div class="form-group">
-                        <label>DIPE</label>
-                        <td> <input class="pp_item_p" type="checkbox" id="pp_item_p" name='pp_item_p'> </td> 
-                     </div>
-                     <div class="form-group">
-                        <label>MARLON BAYONA</label>
-                        <td> <input class="mb" type="checkbox" id="mb" name='mb'> </td> 
-                     </div>
-                     
-                     <?php
-                      if($user_rol == 4){
-                          echo '  <div class="form-group">
+                            <label>DIPE</label>
+                            <td> <input class="pp_item_p" type="checkbox" id="pp_item_p" name='pp_item_p'> </td>
+                        </div>
+                        <div class="form-group">
+                            <label>MARLON BAYONA</label>
+                            <td> <input class="mb" type="checkbox" id="mb" name='mb'> </td>
+                        </div>
+
+                        <?php
+                        if ($user_rol == 4) {
+                            echo '  <div class="form-group">
                         <label>Precio Docena</label>
                         <td> <input class="price_docena" type="checkbox" id="price_docena" name="price_docena"> </td> 
                      </div>';
-                      }else{
-                          
-                      }
-                     
-                     ?>
+                        } else {
+                        }
+
+                        ?>
 
                         <hr>
                         <div class="form-group">
-                            <?php 
-                             if($user == 27){
-                                 $val = "<input type='hidden' name='metodopago'  value='mostrador_ibague_2'>";
-                             }else if($user_rol == 7){
-                                 $val = "<input type='hidden' name='metodopago'  value='mostrador_ibague_1'>";
-                             }else if($user_rol == 4){
-                                 $val = "<input type='hidden' name='metodopago'  value='bancolombia'>";
-                             }
-                             
-                             echo $val;
+                            <?php
+                            if ($user == 27) {
+                                $val = "<input type='hidden' name='metodopago'  value='mostrador_ibague_2'>";
+                            } else if ($user_rol == 7) {
+                                $val = "<input type='hidden' name='metodopago'  value='mostrador_ibague_1'>";
+                            } else if ($user_rol == 4) {
+                                $val = "<input type='hidden' name='metodopago'  value='bancolombia'>";
+                            }
+
+                            echo $val;
                             ?>
                             <!--<p>Elegir en que sede estas ubicado</p>-->
                             <!--<select name="metodopago" class="form-control">-->
@@ -389,7 +388,7 @@ $conexion = conectar();
                                 <div class="input-group-prepend">
                                     <label class="input-group-text" for="inputGroupSelect01">Abono $</label>
                                 </div>
-                                <input value="" type="number" class="form-control" autocomplete="off" name="amountPaid" id="amountPaid" placeholder="Cantidad pagada" readonly >
+                                <input value="" type="number" class="form-control" autocomplete="off" name="amountPaid" id="amountPaid" placeholder="Cantidad pagada" readonly>
                                 <div id="check" class="input-group-text">
                                     <input type='checkbox' name='abono' class="bg-primary " aria-label="Checkbox for following text input">
                                 </div>
@@ -412,11 +411,11 @@ $conexion = conectar();
                     <hr>
                     <!-- Botom para guardar -->
                     <div class="guardado_group">
-                      <input type="hidden" value="<?php echo $_SESSION['userid']; ?>" id="user_id" class="form-control" name="userId">
-                          <input type="hidden" value="<?php echo $_SESSION['id_rol']; ?>" id="user_rol" class="form-control" >
-                        <button data-loading-text="Guardando factura..." type="button" onclick="send_ajax()" name="invoice_btn" value="" class="btn btn-success rounded-pill" >FInalizar </button>
+                        <input type="hidden" value="<?php echo $_SESSION['userid']; ?>" id="user_id" class="form-control" name="userId">
+                        <input type="hidden" value="<?php echo $_SESSION['id_rol']; ?>" id="user_rol" class="form-control">
+                        <button data-loading-text="Guardando factura..." type="button" onclick="send_ajax()" name="invoice_btn" value="" class="btn btn-success rounded-pill">FInalizar </button>
                         <!--<input id="guardando" data-loading-text="Guardando factura..." type="submit" name="invoice_btn" value="FINALIZAR" doiclicksito class="btn btn-success submit_btn invoice-save-btm" accesskey="g">-->
-                                <!--<input id="guardando_call" data-loading-text="Guardando factura..." type="submit" name="invoice_btn" value="FINALIZAR" doiclicksito class="btn btn-success submit_btn invoice-save-btm" accesskey="g">-->
+                        <!--<input id="guardando_call" data-loading-text="Guardando factura..." type="submit" name="invoice_btn" value="FINALIZAR" doiclicksito class="btn btn-success submit_btn invoice-save-btm" accesskey="g">-->
                     </div>
                     <!-- termina el boton -->
                 </div>
@@ -437,152 +436,156 @@ $conexion = conectar();
     function run_calcular(e, id) {
         calculateTotal(id);
     }
-    function send_ajax(){
-        
-        
-           let user_id = $("#user_id").val();
+
+    function send_ajax() {
+
+
+        let user_id = $("#user_id").val();
         let user_rol = $("#user_rol").val();
         let cedula = $("#cedula").val();
         let comercial = $("#buscarcomercial").val();
         let name_client = $("#companyName").val();
-        
+
         Swal.fire({
-  title: 'Estas seguro de guardar esta cotizacion?',
-  showDenyButton: true,
-  showCancelButton: true,
-  confirmButtonText: 'Si, Finalizar',
-  denyButtonText: `No, Comprobar datos`,
-}).then((result) => {
-    
-  /* Read more about isConfirmed, isDenied below */
-  if (result.isConfirmed) {
-      if(cedula == ""){
-          Swal.fire({
-  icon: 'error',
-  title: 'Oops...',
-  text: 'Debes escribir el numero de identificacion!',
+            title: 'Estas seguro de guardar esta cotizacion?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Si, Finalizar',
+            denyButtonText: `No, Comprobar datos`,
+        }).then((result) => {
 
-})
-      }else if(comercial == 0){
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                if (cedula == "") {
                     Swal.fire({
-  icon: 'error',
-  title: 'Oops...',
-  text: 'Debes escribir el nombre del comercial!',
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Debes escribir el numero de identificacion!',
 
-})
-      }else if(name_client == ""){
+                    })
+                } else if (comercial == 0) {
                     Swal.fire({
-  icon: 'error',
-  title: 'Oops...',
-  text: 'Debes escribir el nombre del cliente!',
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Debes escribir el nombre del comercial!',
 
-})
-      }else{
-           var datos = $('#invoice-form').serialize();
-            $.ajax({
-                type: "POST",
-                url: "ajax/ajax_create_.php",
-                data: datos,
-                success: function(r) {
-                    console.log(r);
-                    if (r != 0 && !isNaN(r)) { //SI ES DISTINTO A 0 Y ES UN NUMERO
-                      Swal.fire('Guardado con exito!', '', 'success')
- if(user_rol == "4"){
-                                    window.location.href="search/index.php";
-                                }else if( user_id == "8"){
-                                    window.location.href="try_caja/index.php";
-                                }else if(user_id == "2"){
-                                    window.location.href="search/index.php";
-                                }else if(user_id == "9"){
-                                    window.location.href="try_caja/index.php";
-                                }else if(user_id == "26"){
-                                    window.location.href="try_caja/index.php";
-                                }else if(user_id == "27"){
-                                    window.location.href="try_caja/index.php";
-                                }else if(user_rol == "2"){
-                                    window.location.href="search_mostrador/index.php";
-                                }else if(user_rol == "3"){
-                                    window.location.href="try_caja/index.php";
-                                }else if(user_rol == "7"){
-                                    window.location.href="search_ibague_1/index.php";
+                    })
+                } else if (name_client == "") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Debes escribir el nombre del cliente!',
+
+                    })
+                } else {
+                    var datos = $('#invoice-form').serialize();
+                    $.ajax({
+                        type: "POST",
+                        url: "ajax/ajax_create_.php",
+                        data: datos,
+                        success: function(r) {
+                            console.log(r);
+                            if (r != 0 && !isNaN(r)) { //SI ES DISTINTO A 0 Y ES UN NUMERO
+                                Swal.fire('Guardado con exito!', '', 'success')
+                                if (user_rol == "4") {
+                                    window.location.href = "search/index.php";
+                                } else if (user_id == "8") {
+                                    window.location.href = "try_caja/index.php";
+                                } else if (user_id == "2") {
+                                    window.location.href = "search/index.php";
+                                } else if (user_id == "9") {
+                                    window.location.href = "try_caja/index.php";
+                                } else if (user_id == "26") {
+                                    window.location.href = "try_caja/index.php";
+                                } else if (user_id == "27") {
+                                    window.location.href = "try_caja/index.php";
+                                } else if (user_rol == "2") {
+                                    window.location.href = "search_mostrador/index.php";
+                                } else if (user_rol == "3") {
+                                    window.location.href = "try_caja/index.php";
+                                } else if (user_rol == "7") {
+                                    window.location.href = "search_ibague_1/index.php";
                                 }
-                        console.log(datos);
-                    } else { //ES 0(NO SE EJECUTO LA CONSULTA) O EXISTE UN ERROR EXPLICATIVO(STRING)
-                        alert("no funciona");
-                        console.log(datos);
-                    }
-                }
-            });
-            return false;
-      }
-  
-  } else if (result.isDenied) {
-    Swal.fire('Changes are not saved', '', 'info')
-  }
-})
-   
-    }
-    
-      function create_clients(){
-        //defino variables
-         let cedula = $("#cedula").val();
-         let nombre = $("#companyName").val();
-         let telefono = $("#tele").val();
-         let ciudad = $("#ciudad").val();
-         let direccion = $("#direccion").val();
-         let email = $("#email").val();
-         let tipo_cliente = $("#especificos").val();
-         
-        
-Swal.fire({
-  title: '¿Estas Seguro?',
-  text: 'Recuerda que si el cliente ya esta creado solo vamos a actualizar la informacion del mismo.',
-  showDenyButton: true,
-  showCancelButton: true,
-  confirmButtonText: 'Si Crear',
-  denyButtonText: `No, Validar datos`,
-}).then((result) => {
-  /* Read more about isConfirmed, isDenied below */
-  if (result.isConfirmed) {
-      
-      $.ajax({
-                type: "POST",
-                url: "ajax/ajax_create_client.php",
-                data: {
-                    cedula:cedula,
-                    nombre:nombre,
-                    telefono:telefono,
-                    ciudad:ciudad,
-                    direccion:direccion,
-                    email:email,
-                    tipo_cliente:tipo_cliente
-                },
-                success: function(r) {
-                    console.log(r);
-                    if (r == 1) { //SI ES DISTINTO A 0 Y ES UN NUMERO
-                      Swal.fire('Cliente creado con exito!', '', 'success')
-                       
-                    }else if(r == 2){
-                         Swal.fire('Cliente Actualziado con exito!', '', 'success')
-                    }else if(r == "na"){
-                         Swal.fire('No funciona la actualizacion de cliente!', '', 'info')
-                    }else if(r == "nc"){
-                              Swal.fire('No funciona la creacion de cliente!', '', 'info')
-                    } else { //ES 0(NO SE EJECUTO LA CONSULTA) O EXISTE UN ERROR EXPLICATIVO(STRING)
-                    Swal.fire('No funciona nada contactar al desarrollador!', '', 'error')
-                       
-                    }
-                }
-            });
-            return false;
-      
+                                console.log(datos);
+                            } else if (r == "no_session") {
+                                Swal.fire('Se Cerro la session!', 'porfavor iniciar session y guardar la cotizacion', 'info')
 
-  } else if (result.isDenied) {
-    Swal.fire('Changes are not saved', '', 'info')
-  }
-})
-        
-        
+                            } else { //ES 0(NO SE EJECUTO LA CONSULTA) O EXISTE UN ERROR EXPLICATIVO(STRING)
+                                alert("no funciona");
+                                console.log(datos);
+                            }
+                        }
+                    });
+                    return false;
+                }
+
+            } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info')
+            }
+        })
+
+    }
+
+    function create_clients() {
+        //defino variables
+        let cedula = $("#cedula").val();
+        let nombre = $("#companyName").val();
+        let telefono = $("#tele").val();
+        let ciudad = $("#ciudad").val();
+        let direccion = $("#direccion").val();
+        let email = $("#email").val();
+        let tipo_cliente = $("#especificos").val();
+
+
+        Swal.fire({
+            title: '¿Estas Seguro?',
+            text: 'Recuerda que si el cliente ya esta creado solo vamos a actualizar la informacion del mismo.',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Si Crear',
+            denyButtonText: `No, Validar datos`,
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+
+                $.ajax({
+                    type: "POST",
+                    url: "ajax/ajax_create_client.php",
+                    data: {
+                        cedula: cedula,
+                        nombre: nombre,
+                        telefono: telefono,
+                        ciudad: ciudad,
+                        direccion: direccion,
+                        email: email,
+                        tipo_cliente: tipo_cliente
+                    },
+                    success: function(r) {
+                        console.log(r);
+                        if (r == 1) { //SI ES DISTINTO A 0 Y ES UN NUMERO
+                            Swal.fire('Cliente creado con exito!', '', 'success')
+
+                        } else if (r == 2) {
+                            Swal.fire('Cliente Actualziado con exito!', '', 'success')
+                        } else if (r == "na") {
+                            Swal.fire('No funciona la actualizacion de cliente!', '', 'info')
+                        } else if (r == "nc") {
+                            Swal.fire('No funciona la creacion de cliente!', '', 'info')
+                        } else { //ES 0(NO SE EJECUTO LA CONSULTA) O EXISTE UN ERROR EXPLICATIVO(STRING)
+                            Swal.fire('No funciona nada contactar al desarrollador!', '', 'error')
+
+                        }
+                    }
+                });
+                return false;
+
+
+            } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info')
+            }
+        })
+
+
     }
 </script>
 
@@ -674,7 +677,7 @@ Swal.fire({
             padre.find("[name^=email]").val(d.resultado.email);
             padre.find("[name^=puntosN]").val(d.resultado.puntos_naturales);
             padre.find("[name^=puntosE]").val(d.resultado.puntos_perfumeria);
-               padre.find("[name^=Especificos]").val(d.resultado.venta_condicion);
+            padre.find("[name^=Especificos]").val(d.resultado.venta_condicion);
             padre.find("[name^=descuento_p]").val(d.resultado.descuento);
             if (d.resultado.puntos_naturales >= 1000) {
                 padre.find("[name^=Pnaturales]").prop("type", "checkbox");
@@ -809,17 +812,17 @@ Swal.fire({
     $(document).ready(function() {
         $('#buscarcomercial').select2();
 
-  $('#ver_stocks').click(function() {
-    windowObjectReference = window.open(
+        $('#ver_stocks').click(function() {
+            windowObjectReference = window.open(
 
-"stocks/index.php",
+                "stocks/index.php",
 
-  "DescriptiveWindowName",
+                "DescriptiveWindowName",
 
-  "resizable,scrollbars,status"
+                "resizable,scrollbars,status"
 
-);
-    });
+            );
+        });
 
     });
 </script>
@@ -852,7 +855,6 @@ Swal.fire({
     $(document).ready(function() {
         $('#mibuscadores').select2();
     });
-
 </script>
 </script>
 
