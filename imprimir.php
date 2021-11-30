@@ -26,8 +26,17 @@ if ($result) {
 	$latabla_abono = 0;
 }
 
-$sql_data = $conex->query("SELECT * FROM factura_orden fo INNER JOIN factura_orden_producto fp ON fo.order_id = fp.order_id WHERE fo.order_id = $order");
+$sql_data = $conex->query("SELECT * FROM factura_orden fo INNER JOIN factura_orden_producto fp ON fo.order_id = fp.order_id WHERE fo.order_id = $cotizacion");
 
+
+if($sql_data){
+	echo "ok";
+}else{
+	echo "nothing";
+}
+
+
+return;
 foreach ($sql_data as $invoiceValues) :
 	$invoiceDate = date("d/M/Y h:i:s A", strtotime($invoiceValues['order_date']));
 	$output = '';
