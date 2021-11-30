@@ -443,6 +443,9 @@ $conexion = conectar();
                     })
                 } else {
                     var datos = $('#invoice-form').serialize();
+
+
+                    console.log(datos);
                     $.ajax({
                         type: "POST",
                         url: "ajax/ajax_create_.php",
