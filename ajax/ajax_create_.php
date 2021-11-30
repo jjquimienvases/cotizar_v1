@@ -126,8 +126,8 @@ if ($sql_add) {
 
         $new_name = $perfume[$i] . " " . $capacidad_puntos[$i];
         if ($gramos[$i] == 0) {
-            $execute_items = ("INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario, order_item_final_amount, order_date,gramos,envases,tapa)
-                       VALUES ('$id_', '$codigo[$i]', '$contratipo[$i]', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]', '$resultado[$i]','$date_',0,0,0)");
+            $execute_items = ("INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario,order_item_price,order_item_final_amount, order_date,gramos,envases,tapa)
+                       VALUES ('$id_', '$codigo[$i]', '$contratipo[$i]', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]',0,'$resultado[$i]','$date_',0,0,0)");
             $sqlInsertarProductos = $con->query($execute_items);
 
             if ($sqlInsertarProductos) {
