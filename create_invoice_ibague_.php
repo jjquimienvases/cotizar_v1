@@ -71,6 +71,7 @@ $conexion = conectar();
 <script src="js/calcular_perfumeria.js"></script>
 
 
+
 <style>
     table {
         width: 80%;
@@ -338,6 +339,7 @@ $conexion = conectar();
                         </tr>
 
                     </table>
+                    <input type="hidden" onclick="existe_session()" id="verificar">
                     <button class="btn btn-danger delete" id="removeRows" type="button">- Borrar</button>
                     <button class="btn btn-success" id="addRows" type="button" accesskey="a">+ Agregar Más</button>
                     <button class="btn btn-warning" id="btnadd" type="button">+ Agregar Perfume</button>
@@ -433,6 +435,25 @@ $conexion = conectar();
 
 
 <script type="text/javascript">
+    function existe_session() {
+
+        let user_id = $("#user_id").val();
+        let user_rol = $("#user_rol").val();
+
+        if (user_id == 0 || user_id == null) {
+            Swal.fire('Debes iniciar sesion de nuevo', '', 'info')
+            window.location.href = "index.php";
+
+        } else if (user_rol == 0 || user_rol == nul) {
+            Swal.fire('Debes iniciar sesion de nuevo', '', 'info')
+            window.location.href = "index.php";
+
+        } else {
+            Swal.fire('Todo esta correcto.', 'Cotiza con cuidado', 'success')
+
+        }
+    }
+
     function run_calcular(e, id) {
         calculateTotal(id);
     }
@@ -592,6 +613,7 @@ $conexion = conectar();
 <script type="text/javascript">
     $(document).ready(function() {
         $("#addRows").trigger("click");
+        $("#verificar").trigger("click");
 
 
         //obtener los datos
