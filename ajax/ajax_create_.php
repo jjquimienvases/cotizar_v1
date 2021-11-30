@@ -116,14 +116,7 @@ $execute = ("INSERT INTO `factura_orden`(user_id, order_receiver_name, tel_clien
            VALUES ($usuario,'$cliente',$telefono,'$direccion','$ciudad','$comercial',$subtotal,$taxA,$taxR,$totalAft,$amountP,$amountD,'$nota','$metodo',0,'$cedula','$email','$estado','$estado','none')");
 $sql_add = $con->query($execute);
 
-if ($sql_add) {
-    print_r("funciona la consulta");
-} else {
 
-    print_r($execute);
-}
-
-return;
 $id_ =  mysqli_insert_id($con);
 
 if ($sql_add) {
