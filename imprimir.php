@@ -1,16 +1,11 @@
     
 <?php
-session_start([
-    'cookie_lifetime' => 86400,
-    'gc_maxlifetime' => 86400,
-]);
 function formatear($num){
 	setlocale(LC_MONETARY, 'en_US');
 	return "$" . number_format($num, 2);
 }
 include 'Invoice.php';
 $invoice = new Invoice();
-$invoice->checkLoggedIn();
 if(!empty($_GET['invoice_id']) && $_GET['invoice_id']) {
     $cotizacion = $_GET['invoice_id'];
 	echo $_GET['invoice_id'];
