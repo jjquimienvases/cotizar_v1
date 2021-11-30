@@ -1,5 +1,5 @@
 <?php
-$sessionTime = 365 * 24 * 60 * 60; // 1 a0Š9o de duraci¨®n
+$sessionTime = 365 * 24 * 60 * 60; // 1 aï¿½0ï¿½9o de duraciï¿½ï¿½n
 session_set_cookie_params($sessionTime);
 session_start();
 // include('header.php');
@@ -9,7 +9,7 @@ if (!empty($_POST['email']) && !empty($_POST['pwd'])) {
     $invoice = new Invoice();
     $user = $invoice->loginUsers($_POST['email'], $_POST['pwd']);
     if (!empty($user)) {
-        $sessionTime = 365 * 24 * 60 * 60; // 1 a0Š9o de duraci¨®n
+        $sessionTime = 365 * 24 * 60 * 60; // 1 aï¿½0ï¿½9o de duraciï¿½ï¿½n
 
         session_start();
         $_SESSION['user'] = $user[0]['first_name'] . "&nbsp;" . $user[0]['last_name'];
@@ -40,7 +40,7 @@ if (!empty($_POST['email']) && !empty($_POST['pwd'])) {
             header("Location:panel_bodega_perfumeria.php");
         }
     }else {
-        $loginError = "Verifica tu correo y contrase0Š9a!";
+        $loginError = "Verifica tu correo y contraseï¿½0ï¿½9a!";
     }
 }
 ?>

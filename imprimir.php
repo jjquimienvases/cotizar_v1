@@ -7,7 +7,6 @@ function formatear($num)
 
 if (!empty($_GET['invoice_id']) && $_GET['invoice_id']) {
 	$cotizacion = $_GET['invoice_id'];
-	echo $_GET['invoice_id'];
 }
 
 $conex = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
