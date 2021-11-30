@@ -444,7 +444,7 @@ $conexion = conectar();
             Swal.fire('Debes iniciar sesion de nuevo', '', 'info')
             window.location.href = "index.php";
             console.log("verifique y no tiene usuario");
-        } else if (user_rol == 0 || user_rol == nul) {
+        } else if (user_rol == 0 || user_rol == null) {
             Swal.fire('Debes iniciar sesion de nuevo', '', 'info')
             window.location.href = "index.php";
             console.log("verifique y no tiene usuario");
