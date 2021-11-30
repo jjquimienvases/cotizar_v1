@@ -29,13 +29,16 @@ if ($result) {
 $sql_data = $conex->query("SELECT * FROM factura_orden fo INNER JOIN factura_orden_producto fp ON fo.order_id = fp.order_id WHERE fo.order_id = $cotizacion");
 
 
-foreach ($sql_data as $invoiceValues){
- $fecha = $invoiceValues['order_date'];
- $cliente = $invoiceValues['order_receiver_name'];
- $comercial = $invoiceValues['order_receiver_address'];
- $metodo_de_pago = $invoiceValues['metodo_de_pago'];
+foreach ($sql_data as $datas){
+ $fecha = $datas['order_date'];
+ $cliente = $datas['order_receiver_name'];
+ $comercial = $datas['order_receiver_address'];
+ $metodo_de_pago = $datas['metodo_de_pago'];
 
 }
+
+echo $cliente;
+return
 	
 	$output = '';
 	$output .= '
