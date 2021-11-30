@@ -94,6 +94,7 @@ foreach ($sql_c as $data_c) {
 
 //consulta_ agregar cotizacion
 
+
 $sql_add = $con->query("INSERT INTO `factura_orden`(`user_id`, `order_receiver_name`, `tel_client`, `direccion`, `ciudad`, `order_receiver_address`, `order_total_before_tax`, `order_total_tax`, `order_tax_per`, `order_total_after_tax`, `order_amount_paid`, `order_total_amount_due`, `note`, `metodopago`, `cedula`, `email`, `estado`)
            VALUES ($usuario,'$cliente',$telefono,'$direccion','$ciudad','$comercial',$subtotal,'$taxA','$taxR','$totalAft','$amountP','$amountD','$nota','$metodo',$cedula,'$email','$estado')");
 
