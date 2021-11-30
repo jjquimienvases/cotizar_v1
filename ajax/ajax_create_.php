@@ -4,8 +4,9 @@ $con = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
 
 //recibo las variables
 session_start();
-$rol_usuario = $_POST['id_rol'];
-$user_id = $_POST['userid'];
+
+$rol_usuario = $_SESSION['id_rol'];
+$user_id = $_SESSION['userid'];
 
 if ($rol_usuario == 1) {
     $tabla = "producto_av";
@@ -26,7 +27,7 @@ if ($rol_usuario == 1) {
 }
 
 
-print_r("este es el rol".$rol_usuario);
+print_r("este es el rol" . $rol_usuario);
 return;
 
 $estado = "pendiente";
