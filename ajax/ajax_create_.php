@@ -105,12 +105,12 @@ foreach ($sql_c as $data_c) {
 
 //consulta_ agregar cotizacion
 
-$sql_add = $con->query ("INSERT INTO `factura_orden`(`user_id`, `order_receiver_name`, `tel_client`, `direccion`, `ciudad`, `order_receiver_address`, `order_total_before_tax`, `order_total_tax`, `order_tax_per`, `order_total_after_tax`, `order_amount_paid`, `order_total_amount_due`, `note`, `metodopago`, `cedula`, `email`, `estado`)
+$sql_add = $con->query("INSERT INTO `factura_orden`(`user_id`, `order_receiver_name`, `tel_client`, `direccion`, `ciudad`, `order_receiver_address`, `order_total_before_tax`, `order_total_tax`, `order_tax_per`, `order_total_after_tax`, `order_amount_paid`, `order_total_amount_due`, `note`, `metodopago`, `cedula`, `email`, `estado`)
            VALUES ($usuario,'$cliente',$telefono,'$direccion','$ciudad','$comercial',$subtotal,'$taxA','$taxR','$totalAft','$amountP','$amountD','$nota','$metodo',$cedula,'$email','$estado')");
 
-if($sql_add){
-  print_r("funciona la consulta");
-}else{
+if ($sql_add) {
+    print_r("funciona la consulta");
+} else {
 
     print_r("NO funciona la consulta");
 }
@@ -121,8 +121,8 @@ $id_ =  mysqli_insert_id($con);
 if ($sql_add) {
     //insertando items
     for ($i = 0; $i < count($codigo); $i++) {
-        
-        $new_name = $perfume[$i]." ".$capacidad_puntos[$i];
+
+        $new_name = $perfume[$i] . " " . $capacidad_puntos[$i];
         if ($gramos[$i] == 0) {
             $sqlInsertarProductos = $con->query("INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario, order_item_final_amount, order_date)
                        VALUES ('$id_', '$codigo[$i]', '$contratipo[$i]', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]', '$resultado[$i]','$fecha[$i]')");
@@ -159,114 +159,128 @@ if ($sql_add) {
 
 
         //sumandopuntos
-if($capacidad_puntos[$i] != 0 || $capacidad_puntos[$i] != ""){
-      //sumandopuntos
+        if ($capacidad_puntos[$i] != 0 || $capacidad_puntos[$i] != "") {
+            //sumandopuntos
 
-        if ($rol_usuario != 4) {
-            switch ($capacidad_puntos[$i]) {
-                case "30 ML":
-                    $especial = $cantidad[$i] * 0.5;
+            if ($rol_usuario != 4) {
+                switch ($capacidad_puntos[$i]) {
+                    case "30 ML":
+                        $especial = $cantidad[$i] * 0.5;
+                        $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
+                        foreach ($sql_cs as $data_c) {
+                            $puntos_es = $data_c['puntos_perfumeria'];
+                        }
+                        $new_point = floatval($puntos_es) + $especial;
+                        $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
+
+                        break;
+                    case "50 ML":
+                        $especial = $cantidad[$i] * 1;
+                        $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
+                        foreach ($sql_cs as $data_c) {
+                            $puntos_es = $data_c['puntos_perfumeria'];
+                        }
+                        $new_point = floatval($puntos_es) + $especial;
+                        $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
+                        break;
+                    case "100 ML":
+                        $especial = $cantidad[$i] * 2;
+                        $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
+                        foreach ($sql_cs as $data_c) {
+                            $puntos_es = $data_c['puntos_perfumeria'];
+                        }
+                        $new_point = floatval($puntos_es) + $especial;
+                        $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
+                        break;
+                }
+
+
+                switch ($capacidad_recarga[$i]) {
+                    case "Recarga 30 ML":
+                        $especial = $cantidad[$i] * 0.5;
+                        $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
+                        foreach ($sql_cs as $data_c) {
+                            $puntos_es = $data_c['puntos_perfumeria'];
+                        }
+                        $new_point = floatval($puntos_es) + $especial;
+                        $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
+                        break;
+                    case "Recarga 50 ML":
+                        $especial = $cantidad[$i] * 1;
+                        $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
+                        foreach ($sql_cs as $data_c) {
+                            $puntos_es = $data_c['puntos_perfumeria'];
+                        }
+                        $new_point = floatval($puntos_es) + $especial;
+                        $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
+                        break;
+                    case "Recarga 100 ML":
+                        $especial = $cantidad[$i] * 2;
+                        $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
+                        foreach ($sql_cs as $data_c) {
+                            $puntos_es = $data_c['puntos_perfumeria'];
+                        }
+                        $new_point = floatval($puntos_es) + $especial;
+                        $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
+                        break;
+                }
+
+                // if ($capacidad_recarga[$i] == "Recarga 30 ML") {
+                //     $especial = $cantidad[$i] * 0.5;
+                //       $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
+                //             foreach ($sql_cs as $data_c){$puntos_es = $data_c['puntos_perfumeria'];} 
+                //     $new_point = floatval($puntos_es) + $especial;
+                //     $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
+                // } else if ($capacidad_recarga[$i] == "Recarga 50 ML") {
+                //     $especial = $cantidad[$i] * 1;
+                //     $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
+                //             foreach ($sql_cs as $data_c){$puntos_es = $data_c['puntos_perfumeria'];}
+                //     $new_point = floatval($puntos_es) + $especial;
+                //     $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
+                // } else if ($capacidad_recarga[$i] == "Recarga 100 ML") {
+                //     $especial = $cantidad[$i] * 2;
+                //     $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
+                //             foreach ($sql_cs as $data_c){$puntos_es = $data_c['puntos_perfumeria'];}
+                //     $new_point = floatval($puntos_es) + $especial;
+                //     $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
+                // }
+
+                if ($capacidad_puntos[$i] == "50ML Premio") {
+
+                    $especial = $cantidad[$i] * 10;
                     $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
-                        foreach ($sql_cs as $data_c){$puntos_es = $data_c['puntos_perfumeria'];}
-                    $new_point = floatval($puntos_es) + $especial;
-                    $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
-
-                    break;
-                case "50 ML":
-                    $especial = $cantidad[$i] * 1;
-               $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
-                        foreach ($sql_cs as $data_c){$puntos_es = $data_c['puntos_perfumeria'];}
-                    $new_point = floatval($puntos_es) + $especial;
-                    $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
-                    break;
-                case "100 ML":
-                    $especial = $cantidad[$i] * 2;
-               $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
-                        foreach ($sql_cs as $data_c){$puntos_es = $data_c['puntos_perfumeria'];}
-                    $new_point = floatval($puntos_es) + $especial;
-                    $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
-                    break;
-            }
-            
-            
-              switch ($capacidad_recarga[$i]) {
-                case "Recarga 30 ML":
-                    $especial = $cantidad[$i] * 0.5;
-                  $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
-                        foreach ($sql_cs as $data_c){$puntos_es = $data_c['puntos_perfumeria'];} 
-                $new_point = floatval($puntos_es) + $especial;
-                $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
-                    break;
-                case "Recarga 50 ML":
-    $especial = $cantidad[$i] * 1;
-                $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
-                        foreach ($sql_cs as $data_c){$puntos_es = $data_c['puntos_perfumeria'];}
-                $new_point = floatval($puntos_es) + $especial;
-                $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
-                    break;
-                case "Recarga 100 ML":
-                    $especial = $cantidad[$i] * 2;
-                $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
-                        foreach ($sql_cs as $data_c){$puntos_es = $data_c['puntos_perfumeria'];}
-                $new_point = floatval($puntos_es) + $especial;
-                $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
-                    break;
-            }
-
-            // if ($capacidad_recarga[$i] == "Recarga 30 ML") {
-            //     $especial = $cantidad[$i] * 0.5;
-            //       $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
-            //             foreach ($sql_cs as $data_c){$puntos_es = $data_c['puntos_perfumeria'];} 
-            //     $new_point = floatval($puntos_es) + $especial;
-            //     $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
-            // } else if ($capacidad_recarga[$i] == "Recarga 50 ML") {
-            //     $especial = $cantidad[$i] * 1;
-            //     $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
-            //             foreach ($sql_cs as $data_c){$puntos_es = $data_c['puntos_perfumeria'];}
-            //     $new_point = floatval($puntos_es) + $especial;
-            //     $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
-            // } else if ($capacidad_recarga[$i] == "Recarga 100 ML") {
-            //     $especial = $cantidad[$i] * 2;
-            //     $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
-            //             foreach ($sql_cs as $data_c){$puntos_es = $data_c['puntos_perfumeria'];}
-            //     $new_point = floatval($puntos_es) + $especial;
-            //     $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
-            // }
-            
-              if ($capacidad_puntos[$i] == "50ML Premio") {
-                 
-                $especial = $cantidad[$i] * 10;
-              $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
-                        foreach ($sql_cs as $data_c){$puntos_es = $data_c['puntos_perfumeria'];}
+                    foreach ($sql_cs as $data_c) {
+                        $puntos_es = $data_c['puntos_perfumeria'];
+                    }
                     $new_point = floatval($puntos_es) - $especial;
-                $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
-            } else if ($capacidad_puntos[$i] == "100ML Premio") {
-                $especial = $cantidad[$i] * 20;
-                $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
-                        foreach ($sql_cs as $data_c){$puntos_es = $data_c['puntos_perfumeria'];}
+                    $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
+                } else if ($capacidad_puntos[$i] == "100ML Premio") {
+                    $especial = $cantidad[$i] * 20;
+                    $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
+                    foreach ($sql_cs as $data_c) {
+                        $puntos_es = $data_c['puntos_perfumeria'];
+                    }
                     $new_point = floatval($puntos_es) - $especial;
-                $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
-            } else if ($capacidad_puntos[$i] == "100ML aumentar") {
-                $especial = $cantidad[$i] * 10;
-                 $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
-                        foreach ($sql_cs as $data_c){$puntos_es = $data_c['puntos_perfumeria'];}
+                    $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
+                } else if ($capacidad_puntos[$i] == "100ML aumentar") {
+                    $especial = $cantidad[$i] * 10;
+                    $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
+                    foreach ($sql_cs as $data_c) {
+                        $puntos_es = $data_c['puntos_perfumeria'];
+                    }
                     $new_point = floatval($puntos_es) - $especial;
-                $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
+                    $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
+                }
+            } else {
             }
-
-          
-        } else {
-       
         }
-}
-     
     }
-    
-    if($sqlInsertarProductos){
-    echo 1;
-    }else{
+
+    if ($sqlInsertarProductos) {
+        echo 1;
+    } else {
         echo 0;
     }
-}else{
+} else {
     echo $sqlInsertarProductos;
 }
