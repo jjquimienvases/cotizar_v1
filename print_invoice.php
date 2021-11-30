@@ -5,9 +5,9 @@
 date_default_timezone_set('america/bogota');
 
 $hoy = getdate();
-$date = DATE("Y-m-d H:m:s");
+$date = DATE("Y-m-d H:M:s");
 
-print_r($hoy);
+print_r($date);
 
 return;
 
