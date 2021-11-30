@@ -1,16 +1,6 @@
 <?php
 
 
-
-date_default_timezone_set('america/bogota');
-
-$hoy = getdate();
-$date = DATE("Y-m-d h:i:s");
-
-print_r($date);
-
-return;
-
 function formatear($num)
 {
 	setlocale(LC_MONETARY, 'en_US');
@@ -22,6 +12,7 @@ if (!empty($_GET['invoice_id']) && $_GET['invoice_id']) {
 }
 
 $conex = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
+
 $date = date("Y-m-d");
 $order = $_GET['invoice_id'];
 

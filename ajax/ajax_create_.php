@@ -1,5 +1,6 @@
 <?php
-
+date_default_timezone_set('america/bogota');
+$fecha = DATE("Y-m-d h:i:s");
 $con = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
 
 //recibo las variables
@@ -70,7 +71,7 @@ $puntos_perfumeria = [];
 $cont = 0;
 $stocknuevo = [];
 $gramosNuevos_demo = [];
-$fecha = date("d-m-y H:i:s");
+
 
 
 //items 

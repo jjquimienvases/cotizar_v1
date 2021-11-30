@@ -1,6 +1,6 @@
 <?php
-$sessionTime = 365 * 24 * 60 * 60; // 1 a�0�9o de duraci��n
-session_set_cookie_params($sessionTime);
+ini_set('session.gc_maxlifetime',3600);
+session_set_cookie_params(3600);
 session_start();
 // include('header.php');
 $loginError = '';
@@ -9,9 +9,11 @@ if (!empty($_POST['email']) && !empty($_POST['pwd'])) {
     $invoice = new Invoice();
     $user = $invoice->loginUsers($_POST['email'], $_POST['pwd']);
     if (!empty($user)) {
-        $sessionTime = 365 * 24 * 60 * 60; // 1 a�0�9o de duraci��n
-
+        
+        
         session_start();
+
+        $sessionTime = 365 * 24 * 60 * 60; // 1 a�0�9o de duraci��n
         $_SESSION['user'] = $user[0]['first_name'] . "&nbsp;" . $user[0]['last_name'];
         $_SESSION['userid'] = $user[0]['id'];
         $_SESSION['email'] = $user[0]['email'];
