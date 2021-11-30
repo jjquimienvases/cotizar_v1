@@ -26,7 +26,7 @@ if ($rol_usuario == 1) {
 }
 
 
-print_r($tabla);
+print_r($rol_usuario);
 return;
 
 $estado = "pendiente";
