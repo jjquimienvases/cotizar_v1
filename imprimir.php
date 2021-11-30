@@ -35,6 +35,10 @@ if($execute){
 		$fecha = $datas['order_date'];
 		$comercial = $datas['order_receiver_address'];
 		$metodo_de_pago = $datas['metodo_de_pago'];
+		$afterTax = $datas['order_total_after_tax'];
+		$taxPer = $datas['order_tax_per'];
+		$totalTax = $datas['order_total_tax'];
+		$amountD = $datas['order_total_amount_due'];
 }
 	
 }else{
@@ -107,25 +111,26 @@ foreach ($execute as $invoiceItem) {
 $output .= '
 	     <tr>
 		<td align="right" colspan="4"><b>Total: </b></td>
-		<td align="center">' . formatear($invoiceValues['order_total_after_tax']) . '</td>
+		<td align="center">' . formatear($afterTax) . '</td>
 		</tr>
 		<tr>
 		<td align="right" colspan="4"><b>Porcentaje:</b></td>
-		<td align="center">' . ($invoiceValues['order_tax_per']) . '</td>
+		<td align="center">' . ($taxPer) . '</td>
 		</tr>
 		<tr>
 		<td align="right" colspan="4"><b>Ahorro:</b></td>
-		<td align="center">' . formatear($invoiceValues['order_total_tax']) . '</td>
+		<td align="center">' . formatear($totalTax) . '</td>
 		</tr>
 		<tr>
 		<td align="right" colspan="4"><b>Total con descuento:</b></td>
-		<td align="center">' . formatear($invoiceValues['order_total_amount_due']) . '</td>
+		<td align="center">' . formatear($amountD) . '</td>
 		</tr>
 		<tr>
 		<td align="right" colspan="4"><b>Abono:</b></td>
 		<td align="center">' . formatear($latabla_abono) . '</td>
 		</tr>
 			';
+		
 
 $output .= '
 
