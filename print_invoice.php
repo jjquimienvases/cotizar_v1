@@ -2,7 +2,7 @@
 
 
 
-
+date_default_timezone_set('america/bogota');
 
 $date = DATE("Y-m-d H:m:s");
 
