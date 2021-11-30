@@ -26,22 +26,19 @@ if ($result) {
 	$latabla_abono = 0;
 }
 
-$sql_data = $conex->query("SELECT * FROM factura_orden fo INNER JOIN factura_orden_producto fp ON fo.order_id = fp.order_id WHERE fo.order_id = $cotizacion");
+$sql_data = $conex->query("SELECT fo.order_receiver_name FROM factura_orden fo INNER JOIN factura_orden_producto fp ON fo.order_id = fp.order_id WHERE fo.order_id = $cotizacion");
 
 
-foreach ($sql_data as $datas){
- $fecha = $datas['order_date'];
- $cliente = $datas['order_receiver_name'];
- $comercial = $datas['order_receiver_address'];
- $metodo_de_pago = $datas['metodo_de_pago'];
+foreach ($sql_data as $datas) {
 
+	$cliente = $datas['order_receiver_name'];
 }
 
 echo $cliente;
 return
-	
+
 	$output = '';
-	$output .= '
+$output .= '
 <table width="53%" border="1" cellpadding="5" cellspacing="0" height="90px;" >
  <link href="css/estilo_imprimir_termica.css" rel="stylesheet" type="text/css"   media="screen" />
 	<tr>
@@ -63,15 +60,15 @@ return
 	<tr>
 	<td width="100%" colspan="6" align="center" >
 
-	Cliente: ' . $cliente. '<br />
-	Asesor Comercial: ' . $comercial. '<br />
+	Cliente: ' . $cliente . '<br />
+	Asesor Comercial: ' . $comercial . '<br />
     Metodo de pago: ' . $metodo_de_pago . '<br />
 	</td>
  </tr>
  <tr>
  <td width="100%" colspan="6" align="center">
  ' . $fecha . '<br />
-remision No:  ' . $cotizacion. '<br /></td>
+remision No:  ' . $cotizacion . '<br /></td>
  </tr>
 
 	<tr>
