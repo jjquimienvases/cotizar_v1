@@ -122,15 +122,13 @@ $id_ =  mysqli_insert_id($con);
 if ($sql_add) {
 
 
-    print_r("entre a agregar productos");
-    return;
     //insertando items
     for ($i = 0; $i < count($codigo); $i++) {
 
         $new_name = $perfume[$i] . " " . $capacidad_puntos[$i];
         if ($gramos[$i] == 0) {
-            $sqlInsertarProductos = $con->query("INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario, order_item_final_amount, order_date)
-                       VALUES ('$id_', '$codigo[$i]', '$contratipo[$i]', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]', '$resultado[$i]','$fecha[$i]')");
+            $sqlInsertarProductos = $con->query("INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario, order_item_final_amount, order_date,gramos,envases,tapa)
+                       VALUES ('$id_', '$codigo[$i]', '$contratipo[$i]', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]', '$resultado[$i]','$fecha[$i]',0,0,0)");
 
             if ($sqlInsertarProductos and $rol_usuario != 4) {
                 $con_stock = $con->query("SELECT stock FROM $tabla WHERE id = $codigo[$i]");
