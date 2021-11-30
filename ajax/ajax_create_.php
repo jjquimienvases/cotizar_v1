@@ -40,22 +40,21 @@ $subtotal = $_POST['subTotal'];
 $taxA = $_POST['taxAmount'];
 if ($taxA == 0 || $taxA == null) {
     $taxA = 0;
-}else{
-
+} else {
 }
 $taxR = $_POST['taxRate'];
 $totalAft = $_POST['totalAftertax'];
 $amountP = $_POST['amountPaid'];
-if($amountP == 0 || $amountP == null){
+if ($amountP == 0 || $amountP == null) {
     $amountP = 0;
-}else{
-    $amountP = $_POST['amountPaid']; 
+} else {
+    $amountP = $_POST['amountPaid'];
 }
 $amountD = $_POST['amountDue'];
-if($amountD == 0 || $amountD == null){
+if ($amountD == 0 || $amountD == null) {
     $amountD = 0;
-}else{
-    $amountD = $_POST['amountDue'];  
+} else {
+    $amountD = $_POST['amountDue'];
 }
 $nota = $_POST['notes'];
 $metodo = $_POST['metodopago'];
@@ -116,7 +115,7 @@ $execute = ("INSERT INTO `factura_orden`(user_id, order_receiver_name, tel_clien
            VALUES ($usuario,'$cliente',$telefono,'$direccion','$ciudad','$comercial',$subtotal,$taxA,$taxR,$totalAft,$amountP,$amountD,'$nota','$metodo',0,'$cedula','$email','$estado','$estado','none')");
 $sql_add = $con->query($execute);
 
-
+$date_ = DATE("Y-m-d h:m:s");
 $id_ =  mysqli_insert_id($con);
 
 if ($sql_add) {
@@ -127,17 +126,17 @@ if ($sql_add) {
 
         $new_name = $perfume[$i] . " " . $capacidad_puntos[$i];
         if ($gramos[$i] == 0) {
-            $execute_items =("INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario, order_item_final_amount, order_date,gramos,envases,tapa)
-                       VALUES ('$id_', '$codigo[$i]', '$contratipo[$i]', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]', '$resultado[$i]','$fecha[$i]',0,0,0)");
+            $execute_items = ("INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario, order_item_final_amount, order_date,gramos,envases,tapa)
+                       VALUES ('$id_', '$codigo[$i]', '$contratipo[$i]', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]', '$resultado[$i]','$date_',0,0,0)");
             $sqlInsertarProductos = $con->query($execute_items);
 
-           if($sqlInsertarProductos){
-           print_r("se ingresaron lo items");
-           }else{
-        print_r($execute_items);
-           }
+            if ($sqlInsertarProductos) {
+                print_r("se ingresaron lo items");
+            } else {
+                print_r($execute_items);
+            }
 
-           return;
+            return;
             if ($sqlInsertarProductos and $rol_usuario != 4) {
                 $con_stock = $con->query("SELECT stock FROM $tabla WHERE id = $codigo[$i]");
                 $stock = floatval($con_stock->fetch_row()[0]);
