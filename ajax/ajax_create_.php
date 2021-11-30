@@ -112,7 +112,7 @@ if($sql_add){
   print_r("funciona la consulta");
 }else{
 
-    print_r($codigo);
+    print_r("NO funciona la consulta");
 }
 
 return;
