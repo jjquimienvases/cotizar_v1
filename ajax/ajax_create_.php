@@ -40,16 +40,22 @@ $subtotal = $_POST['subTotal'];
 $taxA = $_POST['taxAmount'];
 if ($taxA == 0 || $taxA == null) {
     $taxA = 0;
+}else{
+
 }
 $taxR = $_POST['taxRate'];
 $totalAft = $_POST['totalAftertax'];
 $amountP = $_POST['amountPaid'];
 if($amountP == 0 || $amountP == null){
     $amountP = 0;
+}else{
+    $amountP = $_POST['amountPaid']; 
 }
 $amountD = $_POST['amountDue'];
 if($amountD == 0 || $amountD == null){
     $amountD = 0;
+}else{
+    $amountD = $_POST['amountDue'];  
 }
 $nota = $_POST['notes'];
 $metodo = $_POST['metodopago'];
@@ -106,8 +112,8 @@ foreach ($sql_c as $data_c) {
 //consulta_ agregar cotizacion
 
 
-$execute = ("INSERT INTO `factura_orden`(user_id, order_receiver_name, tel_client, direccion, ciudad, order_receiver_address, order_total_before_tax, order_total_tax, order_tax_per, order_total_after_tax, order_amount_paid, order_total_amount_due, note, metodopago, cedula, email, estado)
-           VALUES ($usuario,'$cliente',$telefono,'$direccion','$ciudad','$comercial',$subtotal,$taxA,$taxR,$totalAft,$amountP,$amountD,'$nota','$metodo','$cedula','$email','$estado')");
+$execute = ("INSERT INTO `factura_orden`(user_id, order_receiver_name, tel_client, direccion, ciudad, order_receiver_address, order_total_before_tax, order_total_tax, order_tax_per, order_total_after_tax, order_amount_paid, order_total_amount_due, note, metodopago,codigof, cedula, email, estado,metodo_de_pago,new_date)
+           VALUES ($usuario,'$cliente',$telefono,'$direccion','$ciudad','$comercial',$subtotal,$taxA,$taxR,$totalAft,$amountP,$amountD,'$nota','$metodo',0,'$cedula','$email','$estado','$estado','none')");
 $sql_add = $con->query($execute);
 
 if ($sql_add) {
