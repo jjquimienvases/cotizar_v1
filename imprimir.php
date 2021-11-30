@@ -32,14 +32,16 @@ $execute = $conex->query($sql_data);
 if($execute){
 	foreach ($execute as $datas) {
 		$cliente = $datas['order_receiver_name'];
+		$fecha = $datas['order_date'];
+		$comercial = $datas['order_receiver_address'];
+		$metodo_de_pago = $datas['metodo_de_pago'];
 }
-	echo $cliente;
+	
 }else{
 	print_r($sql_data);
 }
 
 
-return
 
 	$output = '';
 $output .= '
