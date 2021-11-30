@@ -120,6 +120,10 @@ $sql_add = $con->query($execute);
 $id_ =  mysqli_insert_id($con);
 
 if ($sql_add) {
+
+
+    print_r("entre a agregar productos");
+    return;
     //insertando items
     for ($i = 0; $i < count($codigo); $i++) {
 
