@@ -81,6 +81,7 @@ function getOrderList(){
         d.retornolosdatos.forEach((item) => {
 
             let nombres = item.nombres;
+            
             let id = item.id;
             let telefono = item.telefono;
             let cargo = item.cargo;
