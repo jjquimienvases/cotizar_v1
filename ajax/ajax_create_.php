@@ -7,7 +7,6 @@ $con = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
 $rol_usuario = $_POST['user_rol'];
 $user_id = $_POST['userId'];
 
-
 if ($rol_usuario == 1) {
     $tabla = "producto_av";
 } else if ($rol_usuario == 2) {
@@ -25,6 +24,10 @@ if ($rol_usuario == 1) {
 } else if ($rol_usuario == 9) {
     $tabla = "producto_av";
 }
+
+
+print_r($tabla);
+return;
 
 $estado = "pendiente";
 $usuario = $_POST['userId'];
