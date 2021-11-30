@@ -91,6 +91,11 @@ $abono = (isset($_POST['abono'])) ? $_POST['abono'] : "";
 $gramosAdicionales = (isset($_POST['gramos_adicionales'])) ? $_POST['gramos_adicionales'] : "";
 $capacidad_recarga = $_POST['Capacidad'];
 
+
+
+print_r($codigo);
+
+return;
 //consultando cliente
 
 $sql_c = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
