@@ -133,7 +133,7 @@ $conexion = conectar();
                                 <input class="form-control" list="buscarclient" name="cedulasres" id="buscarcliente" type="text" placeholder="Buscar Cliente">
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <input type="text" class="form-control" name="companyName" id="companyName" placeholder="Nombre de Empresa o cliente" autocomplete="off" required>
                         </div>
@@ -365,6 +365,7 @@ $conexion = conectar();
             <hr>
             <!-- Botom para guardar -->
             <div class="guardado_group">
+                <input type="hidden" onclick="existe_session()" id="verificar">
 
                 <input type="hidden" value="<?php echo $_SESSION['userid']; ?>" id="user_id" class="form-control" name="userId">
                 <input type="hidden" value="<?php echo $_SESSION['id_rol']; ?>" id="user_rol" class="form-control">
@@ -400,7 +401,27 @@ $conexion = conectar();
 <script>
     $(document).ready(function() {
         $("#addRows").trigger("click");
+        $("#verificar").trigger("click");
     });
+
+    function existe_session() {
+
+        let user_id = $("#user_id").val();
+        let user_rol = $("#user_rol").val();
+        console.log("vamos a verificar");
+        if (user_id == 0 || user_id == null) {
+            Swal.fire('Debes iniciar sesion de nuevo', '', 'info')
+            window.location.href = "index.php";
+            console.log("verifique y no tiene usuario");
+        } else if (user_rol == 0 || user_rol == null) {
+            Swal.fire('Debes iniciar sesion de nuevo', '', 'info')
+            window.location.href = "index.php";
+            console.log("verifique y no tiene usuario");
+        } else {
+            Swal.fire('Todo esta correcto.', 'Cotiza con cuidado', 'success')
+            console.log("verifique y si tiene usuario");
+        }
+    }
 
     function send_ajax() {
 
@@ -452,8 +473,8 @@ $conexion = conectar();
                         url: "./ajax/ajax_create_.php",
                         data: datos,
                         success: function(r) {
-                            console.log("Esta respuesta: "+r);
-                            if (r != 0 && !isNaN(r)) { //SI ES DISTINTO A 0 Y ES UN NUMERO
+                            console.log("Esta respuesta: " + r);
+                            if (r == 1) { //SI ES DISTINTO A 0 Y ES UN NUMERO
                                 Swal.fire('Guardado con exito!', '', 'success')
                                 if (user_rol == "4") {
                                     window.location.href = "search/index.php";
@@ -475,6 +496,9 @@ $conexion = conectar();
                                     window.location.href = "search_ibague_1/index.php";
                                 }
                                 console.log(datos);
+                            } else if (r == "no_session") {
+                                Swal.fire('Se Cerro la session!', 'porfavor iniciar session y guardar la cotizacion', 'info')
+
                             } else { //ES 0(NO SE EJECUTO LA CONSULTA) O EXISTE UN ERROR EXPLICATIVO(STRING)
                                 alert("no funciona");
                                 console.log(datos);

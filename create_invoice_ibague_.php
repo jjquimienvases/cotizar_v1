@@ -450,7 +450,7 @@ $conexion = conectar();
             console.log("verifique y no tiene usuario");
         } else {
             Swal.fire('Todo esta correcto.', 'Cotiza con cuidado', 'success')
-            console.log("verifique y si tiene usuario");
+            console.log("verifique y si tiene usuario" + user_id);
         }
     }
 
@@ -506,7 +506,7 @@ $conexion = conectar();
                         data: datos,
                         success: function(r) {
                             console.log(r);
-                            if (r != 0 && !isNaN(r)) { //SI ES DISTINTO A 0 Y ES UN NUMERO
+                            if (r == 1) { //SI ES DISTINTO A 0 Y ES UN NUMERO
                                 Swal.fire('Guardado con exito!', '', 'success')
                                 if (user_rol == "4") {
                                     window.location.href = "search/index.php";
