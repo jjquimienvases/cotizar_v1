@@ -29,16 +29,14 @@ if ($result) {
 $sql_data = $conex->query("SELECT * FROM factura_orden fo INNER JOIN factura_orden_producto fp ON fo.order_id = fp.order_id WHERE fo.order_id = $cotizacion");
 
 
-if($sql_data){
-	echo "ok";
-}else{
-	echo "nothing";
+foreach ($sql_data as $invoiceValues){
+ $fecha = $invoiceValues['order_date'];
+ $cliente = $invoiceValues['order_receiver_name'];
+ $comercial = $invoiceValues['order_receiver_address'];
+ $metodo_de_pago = $invoiceValues['metodo_de_pago'];
+
 }
-
-
-return;
-foreach ($sql_data as $invoiceValues) :
-	$invoiceDate = date("d/M/Y h:i:s A", strtotime($invoiceValues['order_date']));
+	
 	$output = '';
 	$output .= '
 <table width="53%" border="1" cellpadding="5" cellspacing="0" height="90px;" >
@@ -62,15 +60,15 @@ foreach ($sql_data as $invoiceValues) :
 	<tr>
 	<td width="100%" colspan="6" align="center" >
 
-	Cliente: ' . $invoiceValues['order_receiver_name'] . '<br />
-	Asesor Comercial: ' . $invoiceValues['order_receiver_address'] . '<br />
-    Metodo de pago: ' . $invoiceValues['metodopago'] . '<br />
+	Cliente: ' . $cliente. '<br />
+	Asesor Comercial: ' . $comercial. '<br />
+    Metodo de pago: ' . $metodo_de_pago . '<br />
 	</td>
  </tr>
  <tr>
  <td width="100%" colspan="6" align="center">
- ' . $invoiceDate . '<br />
-remision No:  ' . $invoiceValues['order_id'] . '<br /></td>
+ ' . $fecha . '<br />
+remision No:  ' . $cotizacion. '<br /></td>
  </tr>
 
 	<tr>
@@ -86,7 +84,7 @@ remision No:  ' . $invoiceValues['order_id'] . '<br /></td>
 	<th align="center" style="width:50px;">Cantidad</th>
 	<th align="center">Precio</th>
 	</tr>';
-endforeach;
+
 $count = 0;
 foreach ($sql_data as $invoiceItem) {
 	$count++;
