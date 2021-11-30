@@ -439,18 +439,18 @@ $conexion = conectar();
 
         let user_id = $("#user_id").val();
         let user_rol = $("#user_rol").val();
-
+        console.log("vamos a verificar");
         if (user_id == 0 || user_id == null) {
             Swal.fire('Debes iniciar sesion de nuevo', '', 'info')
             window.location.href = "index.php";
-
+            console.log("verifique y no tiene usuario");
         } else if (user_rol == 0 || user_rol == nul) {
             Swal.fire('Debes iniciar sesion de nuevo', '', 'info')
             window.location.href = "index.php";
-
+            console.log("verifique y no tiene usuario");
         } else {
             Swal.fire('Todo esta correcto.', 'Cotiza con cuidado', 'success')
-
+            console.log("verifique y si tiene usuario");
         }
     }
 
