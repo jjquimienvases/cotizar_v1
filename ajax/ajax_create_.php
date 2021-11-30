@@ -3,9 +3,9 @@
 $con = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
 
 //recibo las variables
-
-$rol_usuario = $_POST['user_rol'];
-$user_id = $_POST['userId'];
+session_start();
+$rol_usuario = $_POST['id_rol'];
+$user_id = $_POST['userid'];
 
 if ($rol_usuario == 1) {
     $tabla = "producto_av";
