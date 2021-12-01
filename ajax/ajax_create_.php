@@ -3,6 +3,7 @@ date_default_timezone_set('america/bogota');
 $fecha = DATE("Y-m-d h:i:s");
 $con = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
 
+
 //recibo las variables
 session_start();
 
@@ -119,7 +120,6 @@ $execute = ("INSERT INTO `factura_orden`(user_id, order_receiver_name, tel_clien
            VALUES ($usuario,'$cliente',$telefono,'$direccion','$ciudad','$comercial',$subtotal,$taxA,$taxR,$totalAft,$amountP,$amountD,'$nota','$metodo',0,'$cedula','$email','$estado','$estado','none')");
 $sql_add = $con->query($execute);
 
-$date_ = DATE("Y-m-d h:m:s");
 $id_ =  mysqli_insert_id($con);
 
 if ($sql_add) {

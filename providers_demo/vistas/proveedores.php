@@ -1,7 +1,6 @@
-<?php ?>
+<?php require_once '../conexion.php'; ?>
 <!DOCTYPE html>
 <html lang="es">
-<?php require_once '../conexion.php'; ?>
 
 <head>
     <meta charset="UTF-8">
@@ -17,8 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!--     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
     <?php include '../includes/header.php'; ?>
-    <script src="../js/funciones.js"></script>
-
+    
     <style>
         .modal-lg {
             max-width: 1800px;
@@ -43,7 +41,7 @@
 
     <?php include './navbar.php' ?>
     <div class="m-4">
-
+        
         <body>
             <div class='cont'>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -112,5 +110,6 @@
             </div>
     </div>
 
-
+    
 </html>
+    <script src="../js/funciones.js"></script>
