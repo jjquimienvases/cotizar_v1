@@ -1,6 +1,5 @@
 <?php
-
-
+$conex = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
 function formatear($num)
 {
 	setlocale(LC_MONETARY, 'en_US');
@@ -11,7 +10,6 @@ if (!empty($_GET['invoice_id']) && $_GET['invoice_id']) {
 	$cotizacion = $_GET['invoice_id'];
 }
 
-$conex = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
 
 $date = date("Y-m-d");
 $order = $_GET['invoice_id'];
@@ -73,8 +71,8 @@ if ($execute) {
 		$cedula = $datas['cedula'];
 		$direccion = $datas['direccion'];
 		$ciudad = $datas['ciudad'];
-        $telefono = $datas['telefono'];
-        $beforeT = $datas['order_total_before_tax'];
+		$telefono = $datas['telefono'];
+		$beforeT = $datas['order_total_before_tax'];
 		$notes = $datas['notes'];
 	}
 } else {
@@ -82,14 +80,6 @@ if ($execute) {
 }
 
 $output = '';
-
-
-
-
-
-
-
-
 
 $output .= '<link href="css/styledom2.css" rel="stylesheet" type="text/css"   media="screen" />
 
@@ -151,7 +141,7 @@ $output .= '<link href="css/styledom2.css" rel="stylesheet" type="text/css"   me
 
 	<td width="55%">
 
-	remision No. : ' . $cotizacion. '<br />
+	remision No. : ' . $cotizacion . '<br />
 
 	Fecha : ' . $fecha . '<br />
 
@@ -178,7 +168,7 @@ $output .= '<link href="css/styledom2.css" rel="stylesheet" type="text/css"   me
 
 $count = 0;
 
-foreach ($execute as $invoiceItem) {
+foreach ($execute as $datos) {
 
 	$count++;
 
@@ -188,15 +178,15 @@ foreach ($execute as $invoiceItem) {
 
 	<td align="left" height="5px" >' . $count . '</td>
 
-	<td align="left">' . $invoiceItem["item_code"] . '</td>
+	<td align="left">' . $datos["item_code"] . '</td>
 
-	<td align="left">' . $invoiceItem["item_name"] . '</td>
+	<td align="left">' . $datos["item_name"] . '</td>
 
-	<td align="left">' . $invoiceItem["order_item_quantity"] . '</td>
+	<td align="left">' . $datos["order_item_quantity"] . '</td>
 
-	<td align="left">' . formatear($invoiceItem["order_item_unitario"]) . '</td>
+	<td align="left">' . formatear($datos["order_item_unitario"]) . '</td>
 
-	<td align="left">' . formatear($invoiceItem["order_item_final_amount"]) . '</td>
+	<td align="left">' . formatear($datos["order_item_final_amount"]) . '</td>
 
 	</tr>';
 }
@@ -282,11 +272,11 @@ $output .= '
 
 <p align="left"> <strong>NOMBRES Y APELLIDOS:</strong>&nbsp;' . $cliente . '</p>
 
- <p align="left"> <strong>DIRECCION:</strong>&nbsp;' . $direccion. ' &nbsp; <strong>CEDULA: </strong>&nbsp; ' . $cedula . ' </p>
+ <p align="left"> <strong>DIRECCION:</strong>&nbsp;' . $direccion . ' &nbsp; <strong>CEDULA: </strong>&nbsp; ' . $cedula . ' </p>
 
  <p align="left"> <strong>TELEFONO:</strong>&nbsp;' . $telefono . ' &nbsp;	<strong> CIUDAD:</strong>&nbsp;' . $ciudad . '</p>
 
- <p aling="left"> <strong>EMAIL:</strong>&nbsp;' . $email. '</p>
+ <p aling="left"> <strong>EMAIL:</strong>&nbsp;' . $email . '</p>
 
 </td>
 
