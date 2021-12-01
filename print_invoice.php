@@ -69,6 +69,13 @@ if ($execute) {
 		$taxPer = $datas['order_tax_per'];
 		$totalTax = $datas['order_total_tax'];
 		$amountD = $datas['order_total_amount_due'];
+		$email = $datas['email'];
+		$cedula = $datas['cedula'];
+		$direccion = $datas['direccion'];
+		$ciudad = $datas['ciudad'];
+        $telefono = $datas['telefono'];
+        $beforeT = $datas['order_total_before_tax'];
+		$notes = $datas['notes'];
 	}
 } else {
 	print_r($sql_data);
@@ -134,19 +141,19 @@ $output .= '<link href="css/styledom2.css" rel="stylesheet" type="text/css"   me
 
 
 
-	Cliente: ' . $invoiceValues['order_receiver_name'] . '<br />
+	Cliente: ' . $cliente . '<br />
 
-	Asesor Comercial: ' . $invoiceValues['order_receiver_address'] . '<br />
+	Asesor Comercial: ' . $comercial . '<br />
 
-    Metodo de pago: ' . $invoiceValues['metodo_de_pago'] . '<br />
+    Metodo de pago: ' . $metodo_de_pago . '<br />
 
 	</td>
 
 	<td width="55%">
 
-	remision No. : ' . $invoiceValues['order_id'] . '<br />
+	remision No. : ' . $cotizacion. '<br />
 
-	Fecha : ' . $invoiceDate . '<br />
+	Fecha : ' . $fecha . '<br />
 
 	</br>
 
@@ -171,7 +178,7 @@ $output .= '<link href="css/styledom2.css" rel="stylesheet" type="text/css"   me
 
 $count = 0;
 
-foreach ($invoiceItems as $invoiceItem) {
+foreach ($execute as $invoiceItem) {
 
 	$count++;
 
@@ -199,7 +206,7 @@ $output .= '
 
 		<td align="right" colspan="5"><b>Sub Total</b></td>
 
-		<td align="left"><b>' . formatear($invoiceValues['order_total_before_tax']) . '</b></td>
+		<td align="left"><b>' . formatear($beforeT) . '</b></td>
 
 		</tr>
 
@@ -207,21 +214,21 @@ $output .= '
 
 		<td align="right" colspan="5"><b> Porcentaje:</b></td>
 
-		<td align="left">' . $invoiceValues['order_tax_per'] . '%</td>
+		<td align="left">' . $taxPer . '%</td>
 
 		</tr>
 		<tr>
 
 		<td align="right" colspan="5"><b>Total con descuento</b></td>
 
-		<td align="left">' . formatear($invoiceValues['order_total_amount_due']) . '</td>
+		<td align="left">' . formatear($amountD) . '</td>
 
 		</tr>
 		 <tr>
 
 		<td align="right" colspan="5"><b>Ahorro: </b></td>
 
-		<td align="left">' . formatear($invoiceValues['order_total_tax']) . '</td>
+		<td align="left">' . formatear($totalTax) . '</td>
 
 		</tr>
 		<tr>
@@ -249,7 +256,7 @@ $output .= '
 
     <tr>
 
-<td align="left" colspan ="2"><strong><P>Notas:</P>' . $invoiceValues['note'] . '</strong></td>
+<td align="left" colspan ="2"><strong><P>Notas:</P>' . $notes . '</strong></td>
 
     </tr>
 
@@ -273,13 +280,13 @@ $output .= '
 
  <center><h2> DESTINATARIO </h2></center>
 
-<p align="left"> <strong>NOMBRES Y APELLIDOS:</strong>&nbsp;' . $invoiceValues['order_receiver_name'] . '</p>
+<p align="left"> <strong>NOMBRES Y APELLIDOS:</strong>&nbsp;' . $cliente . '</p>
 
- <p align="left"> <strong>DIRECCION:</strong>&nbsp;' . $invoiceValues['direccion'] . ' &nbsp; <strong>CEDULA: </strong>&nbsp; ' . $invoiceValues['cedula'] . ' </p>
+ <p align="left"> <strong>DIRECCION:</strong>&nbsp;' . $direccion. ' &nbsp; <strong>CEDULA: </strong>&nbsp; ' . $cedula . ' </p>
 
- <p align="left"> <strong>TELEFONO:</strong>&nbsp;' . $invoiceValues['tel_client'] . ' &nbsp;	<strong> CIUDAD:</strong>&nbsp;' . $invoiceValues['ciudad'] . '</p>
+ <p align="left"> <strong>TELEFONO:</strong>&nbsp;' . $telefono . ' &nbsp;	<strong> CIUDAD:</strong>&nbsp;' . $ciudad . '</p>
 
- <p aling="left"> <strong>EMAIL:</strong>&nbsp;' . $invoiceValues['email'] . '</p>
+ <p aling="left"> <strong>EMAIL:</strong>&nbsp;' . $email. '</p>
 
 </td>
 
@@ -291,7 +298,7 @@ $output .= '
 
 // create pdf of invoice
 
-$invoiceFileName = 'Invoice-' . $invoiceValues['order_id'] . '.pdf';
+$invoiceFileName = 'Invoice-' . $cotizacion . '.pdf';
 
 require_once 'dompdf/src/Autoloader.php';
 
