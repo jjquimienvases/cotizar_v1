@@ -148,7 +148,7 @@ if ($sql_add) {
                                    VALUES ('$id_', '$codigo[$i]', '$perfume[$i] $capacidad_puntos[$i]', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]',0,'$resultado[$i]','$fecha[$i]','$gramos[$i]','$envase[$i]','$tapa[$i]')");
 
 
-            print_r($execute_items);
+            echo $execute_items;
             return;
             $sqlInsertarProductos = $con->query($execute_items);
         }
