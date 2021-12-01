@@ -2,8 +2,9 @@
 
 include '../conexion.php';
 $conexion = conectar();
+session_start();
+$user = $_SESSION['user'];
 $date = date('Y-m-d H:i:s');
-$user = $_POST["user_creador"];
 $materia = $_POST["materia"];
 $presentacion = $_POST["presentacion"];
 $envase_presentacion = $_POST['envase_presentacion'];

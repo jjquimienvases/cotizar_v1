@@ -43,16 +43,7 @@ if ($user_rol == 7) {
 <html lang="en">
 
 <head>
-  <link href="../../Lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="../../Lib/bootstrap/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-  <link rel="stylesheet" href="../css/estilos.css">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <?php include '../includes/head.php'; ?>
   <title>Crear Items</title>
 </head>
 
@@ -63,51 +54,44 @@ if ($user_rol == 7) {
       <div class="panel panel-default">
         <div class="panel-heading">
 
-          <div class="row ">
+          <div class="row mt-4">
             <div class="col-md-12">
-              <span class="help-block text-muted small-font">Busca y selecciona tu nombre</span>
-              <div class="buscar_usuario">
-                <datalist id="buscaruser">
-                  <option value="">Seleccione un cliente</option>
-                  <?php
-                  $query = $conexion->query("SELECT * FROM factura_usuarios ORDER BY first_name ASC");
-                  while ($valores = mysqli_fetch_array($query)) {
-                    echo '<option value="' . $valores["first_name"] . ' ' . $valores["last_name"] . '">' . $valores["first_name"] . ' ' . $valores["last_name"] . '</option>';
-                  }
-                  ?>
-                </datalist>
-                <input class="form-control" v-model="user_creador" list="buscaruser" name="user_creador" id="buscar_usuario" type="text" placeholder="Buscar el nombre de quien va a ejecutar la accion">
-              </div>
+              <h3 class="help-block text-muted medium-font text-danger">Bienvenido <?= $user ?></h3>
+
             </div>
           </div>
           <hr>
           <div class="row mt-1">
             <div class="col-md-3 col-sm-3 col-xs-3">
               <span class="help-block text-muted small-font">Seleccionar Materia Prima</span>
-              
+
               <select name="materia" id="inputPassword4" v-model="materia" class="form-control">
                 <option value="">Escoger Una Opcion</option>
-                <?php 
-             $sql = $conexion->query("SELECT * FROM producto_av WHERE contratipo LIKE '%Materia Prima%'");
-             foreach ($sql as $data):
-              echo '<option value="' . $data["id"] . '">' . $data["id"] . ' ' . $data["contratipo"] . '</option>';
+                <?php
+                $sql = $conexion->query("SELECT * FROM materia_prima");
+                foreach ($sql as $data) :
+                  echo '<option value="' . $data["id"] . '">' . $data["id"] . ' ' . $data["nombre"] . '</option>';
 
-             endforeach; 
+                endforeach;
 
-              ?>
+                ?>
               </select>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-3">
               <span class="help-block text-muted small-font"> Seleccionar una presentacion</span>
-              <select name="presentacion" id="presentacion" v-model="presentacion" class="form-control">
-                <option value="">Escoge Una Opcion</option>
-                <option value="cuarto">Cuarto</option>
-                <option value="media">Media Libra</option>
-                <option value="libra">Libra</option>
-                <option value="litro">Litro / Kilo</option>
-                <option value="galon">Galon</option>
-                <option value="garrafa">Garrafa</option>
-              </select>
+
+              <div class="buscar_presentacion">
+                <datalist id="presentacion">
+                  <option value="">Busca y escoge un presentacion</option>
+                  <?php
+                  $query = $conexion->query("SELECT * FROM producto_av WHERE padre != 0 AND visibilidad = 1 ORDER BY contratipo ASC");
+                  while ($valores = mysqli_fetch_array($query)) {
+                    echo '<option value="' . $valores["id"] . '">' . $valores["id"] . ', ' . $valores["contratipo"] . '</option>';
+                  }
+                  ?>
+                </datalist>
+                <input class="form-control" v-model="presentacion" list="presentacion" name="presentacion" id="buscar_presentacion" type="text" placeholder="Buscar Presentacion">
+              </div>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-3">
               <span class="help-block text-muted small-font"> Seleccionar Un Envase</span>
@@ -146,13 +130,13 @@ if ($user_rol == 7) {
               <label class="help-block text-muted small-font">Escribir la cantidad</label>
               <input type="number" v-model="cantidad" name="cantidad" class="form-control" placeholder="Escribir la cantidad" />
             </div>
-<input type="hidden" name="bodega" value="<?= $info_bodega ?>">
+            <input type="hidden" name="bodega" value="<?= $info_bodega ?>">
           </div>
 
           <div class="row ">
             <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust mt-2">
               <!-- <input type="button" class="btn btn-warning btn-block" @click="consultar_data()" id="send_info" :disabled="!(cantidad)" value="Crear Productos" /> -->
-              <button type="button" class="btn btn-warning btn-block"  id="send_info" :disabled="!(cantidad)">ok</button>
+              <button type="button" class="btn btn-primary btn-block" id="send_info" :disabled="!(cantidad)">Cargar Presentacion</button>
             </div>
           </div>
 
