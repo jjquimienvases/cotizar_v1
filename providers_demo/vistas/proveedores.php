@@ -9,14 +9,14 @@
     <title>Proveedores</title>
     <link rel="stylesheet" href="../Lib/bootstrap/css/bootstrap.css">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
+
     <script src="../Lib/bootstrap/js/bootstrap.js"></script>
     <script src="../js/scripts.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!--     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
     <?php include '../includes/header.php'; ?>
-    
+
     <style>
         .modal-lg {
             max-width: 1800px;
@@ -35,13 +35,14 @@
             cursor: pointer;
         }
     </style>
+    <script src="../js/funciones.js"></script>
 </head>
 
 <body>
 
     <?php include './navbar.php' ?>
     <div class="m-4">
-        
+
         <body>
             <div class='cont'>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -110,6 +111,5 @@
             </div>
     </div>
 
-    
+
 </html>
-    <script src="../js/funciones.js"></script>
