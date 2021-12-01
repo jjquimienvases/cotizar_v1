@@ -149,7 +149,7 @@ if ($sql_add) {
 
 
             echo $execute_items;
-            return;
+
             $sqlInsertarProductos = $con->query($execute_items);
         }
         //esencia
