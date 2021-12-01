@@ -1,4 +1,3 @@
-<!-- Modal -->
 <div class="modal fade" id="modal_create_provider_order" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">

@@ -85,6 +85,16 @@ $count = 0;
 foreach($sql as $data){
 
 	$count++;
+	$real_name = "";
+	$item_id = $_POST['item_id'];
+
+	$sql_csn = "SELECT * FROM producto_av WHERE id = $id";
+	$execute_csn = $con->query($sql_csn);
+
+	foreach($sql as $data_nm){
+		$name_provider = $data_nm['name_prov'];
+		
+	}
 
 	$output .= '
 

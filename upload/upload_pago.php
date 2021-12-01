@@ -42,20 +42,13 @@ if (isset($_POST['buscar_cotizacion'])) {
     }
 }
 
-include_once '../conexion_proveedor.php';
-
 if (isset($_POST['btn_buscar'])) {
     $buscar_text = $_POST['buscar'];
-    $select_buscar = $con->prepare(
-        '
-    SELECT * FROM files WHERE order_id LIKE :campo OR order_date LIKE :campo AND estado = "alistamiento";'
-    );
-
-    $select_buscar->execute(array(
-        ':campo' => "%" . $buscar_text . "%"
-    ));
-
-    $res = $select_buscar->fetchAll();
+     $sql_select = "SELECT * FROM files WHERE order_id = $buscar_text OR order_date LIKE '%$buscar_text%' AND e  stado = 'alistamiento'";
+    $r = $con->query($sql_select);
+    if ($o = $r->fetch_object()) {
+        $resultado = $o;
+    }
 }
 
 $conexion = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
@@ -163,9 +156,9 @@ $conexion = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
             Swal.fire({
                 title: 'Bebe estas segura de solicitar esta factura?',
                 showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: `Si, Estoy segura papasito`,
-                denyButtonText: `No, papi.`,
+                showCancelButton: false,
+                confirmButtonText: `Continuar`,
+                denyButtonText: `No, Verificar datos.`,
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
@@ -182,10 +175,10 @@ $conexion = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
                                 // alert(msg);
                                 Swal.fire({
                                     title: 'Perfecto!',
-                                    text: 'Me encantas bebecita.',
-                                    imageUrl: 'corazon.png',
+                                    text: 'Click en continuar.',
+                                    imageUrl: '../logo.png',
                                     imageWidth: 400,
-                                    imageHeight: 200,
+                                    imageHeight: 400,
                                     imageAlt: 'Custom image',
                                 })
                                 $('#exampleModal').modal('hide')
@@ -193,10 +186,10 @@ $conexion = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
                                 // alert(msg);
                                 Swal.fire({
                                     title: 'No funciona :( !',
-                                    text: 'Me encantas bebecita.',
-                                    imageUrl: 'corazon.png',
+                                    text: 'Click en continuar y verificar datos.',
+                                    imageUrl: '../logo.png',
                                     imageWidth: 400,
-                                    imageHeight: 200,
+                                    imageHeight: 400,
                                     imageAlt: 'Custom image',
                                 })
                             }

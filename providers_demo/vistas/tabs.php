@@ -33,7 +33,7 @@
                 <?php include  "./toolbar_oc.php"; ?>
                 <?php include "./modal_product.php"; ?>
                 <?php
-                /*  include "./table.php";  */
+              
                 include './modal_update_merch.php';
                 include './modal_edit_item.php';
                 ?>

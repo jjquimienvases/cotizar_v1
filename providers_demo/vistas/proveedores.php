@@ -75,7 +75,7 @@
                         <div id="square_orders">
                             <?php
                             include './providers_in_orders.php';
-                            include './orders_in_orders.php';
+                            include 'orders_in_orders.php';
                             include './products_in_orders.php'; ?>
                         </div>
                         <?php

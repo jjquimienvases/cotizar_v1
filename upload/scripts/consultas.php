@@ -1,9 +1,7 @@
 
 <?php
 
-// include "../../conectar.php";
 
-header('Content-Type: application/json');
 
 $response = new stdClass;
 

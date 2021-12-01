@@ -3,6 +3,7 @@
 
 //voy a hacer una prueba, miremos si funciona
 include 'conectar.php';
+include 'conexion_proveedor.php';
 $conx = conectar();
 function formatear($num){
   setlocale(LC_MONETARY, 'en_US');

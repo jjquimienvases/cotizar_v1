@@ -14,7 +14,6 @@ let resultt_i = "";
 const numberFormat2 = new Intl.NumberFormat('en-US', options2);
 
 function limpiar_data() {
-    /* $("#info").empty() */
     document.getElementById("info").innerHTML = "";
     document.getElementById("stock_actual").innerHTML = "";
     document.getElementById("unidad_empaque").innerHTML = "";
