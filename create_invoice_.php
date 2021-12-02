@@ -377,7 +377,7 @@ include 'modal_sede.php';
 
                 <input type="hidden" value="<?php echo $_SESSION['userid']; ?>" id="user_id" class="form-control" name="userId">
                    <input type="hidden" value="<?php echo $_SESSION['id_rol']; ?>" id="user_rol"  class="form-control">
-                          <input type="hidden" value="" id="user_rols" name="user_rol" class="form-control">
+                            <input type="hidden" value="" id="data_sede" name="data_sede" class="form-control">
                 <button data-loading-text="Guardando factura..." type="button" onclick="sede()" name="invoice_btn" value="" class="btn btn-success rounded-pill">FInalizar </button>
                 <!--<input id="guardando" data-loading-text="Guardando factura..." type="submit" name="invoice_btn" value="FINALIZAR" doiclicksito class="btn btn-success submit_btn invoice-save-btm" accesskey="g">-->
                 <!--<input id="guardando_call" data-loading-text="Guardando factura..." type="submit" name="invoice_btn" value="FINALIZAR" doiclicksito class="btn btn-success submit_btn invoice-save-btm" accesskey="g">-->
@@ -559,7 +559,7 @@ if (user_rol == 1) {
         let data_ = $("#sede").val();
         document.getElementById("data_sede").value = data_;
       
-       console.log($("$sede").val());
+       console.log($("#data_sede").val());
       return;
         setTimeout(send_ajax(), 2000);
         setTimeout($("#modal_close").trigger("click"), 2200);
