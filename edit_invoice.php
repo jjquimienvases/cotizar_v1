@@ -1,4 +1,5 @@
-'conectar.php';
+<?php
+include 'conectar.php';
 $con = conectar();
 
 session_start();
