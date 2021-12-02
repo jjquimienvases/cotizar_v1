@@ -71,7 +71,7 @@ if ($execute) {
 		$cedula = $datas['cedula'];
 		$direccion = $datas['direccion'];
 		$ciudad = $datas['ciudad'];
-		$telefono = $datas['telefono'];
+		$telefono = $datas['tel_client'];
 		$beforeT = $datas['order_total_before_tax'];
 		$notes = $datas['notes'];
 	}
