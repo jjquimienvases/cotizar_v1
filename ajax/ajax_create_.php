@@ -126,8 +126,8 @@ foreach ($sql_c as $data_c) {
 //consulta_ agregar cotizacion
 
 
-$execute = ("INSERT INTO `factura_orden`(user_id, order_receiver_name, tel_client, direccion, ciudad, order_receiver_address, order_total_before_tax, order_total_tax, order_tax_per, order_total_after_tax, order_amount_paid, order_total_amount_due, note, metodopago,codigof, cedula, email, estado,metodo_de_pago,new_date)
-           VALUES ($usuario,'$cliente',$telefono,'$direccion','$ciudad','$comercial',$subtotal,$taxA,$taxR,$totalAft,$amountP,$amountD,'$nota','$metodo',0,'$cedula','$email','$estado','$estado','none')");
+$execute = "INSERT INTO `factura_orden`(user_id, order_receiver_name, tel_client, direccion, ciudad, order_receiver_address, order_total_before_tax, order_total_tax, order_tax_per, order_total_after_tax, order_amount_paid, order_total_amount_due, note, metodopago,codigof, cedula, email, estado,metodo_de_pago,new_date)
+           VALUES ($usuario,'$cliente',$telefono,'$direccion','$ciudad','$comercial',$subtotal,$taxA,$taxR,$totalAft,$amountP,$amountD,'$nota','$metodo',0,'$cedula','$email','$estado','$estado','none')";
 $sql_add = $con->query($execute);
 
 $id_ =  mysqli_insert_id($con);
@@ -137,8 +137,8 @@ if ($sql_add) {
 
     //insertando items
     for ($i = 0; $i < count($codigo); $i++) {
-  $execute_items = ("INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario,order_item_price,order_item_final_amount, order_date,gramos,envases,tapa)
-                                   VALUES ($id_, $codigo[$i], '$perfume[$i] $capacidad_puntos[$i]', $cantidad[$i], $categoria[$i],$unitario[$i],0,$resultado[$i],'$fecha[$i]',$gramos[$i],$envase[$i],$tapa[$i])");
+  $execute_items = "INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario,order_item_price,order_item_final_amount, order_date,gramos,envases,tapa)
+                                   VALUES ($id_, $codigo[$i], '$perfume[$i] $capacidad_puntos[$i]', $cantidad[$i], $categoria[$i],$unitario[$i],0,$resultado[$i],'$fecha',$gramos[$i],$envase[$i],$tapa[$i])";
 
    echo $execute_items;
             
