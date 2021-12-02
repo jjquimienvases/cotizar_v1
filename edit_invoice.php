@@ -75,7 +75,8 @@ $invoiceItems = $con->query("SELECT * FROM factura_orden_producto WHERE order_id
 					<?php echo $_SESSION['address']; ?><br>
 					<?php echo $_SESSION['mobile']; ?><br>
 					<?php echo $_SESSION['email']; ?><br>
-<?php				</div>
+					</div>
+<?php				
 foreach($invoiceValue as $invoiceValues):
 ?>
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 pull-right">
