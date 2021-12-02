@@ -70,6 +70,12 @@ $conexion = conectar();
 <script src="js/cotizacion_prueba.js"></script>
 <script src="scripts/alertas.js"></script>
 <script src="js/calcular_perfumeria.js"></script>
+<!-- UIkit CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.9.4/dist/css/uikit.min.css" />
+
+<!-- UIkit JS -->
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.9.4/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.9.4/dist/js/uikit-icons.min.js"></script>
 
 
 <style>
@@ -116,9 +122,11 @@ $conexion = conectar();
 
     }
 </style>
-
-<?php include 'containermostrador.php'; ?>
+<?php include 'container_comerciales.php'; 
+include 'modal_sede.php'; 
+?>
 <div class="row">
+      <button uk-toggle="target: #my-id" id="my-ids" type="button"></button>
     <div class="col-md-12 col-xl-12 col-sm-12 col-lg-12 ">
         <form id="invoice-form" method="post" class="invoice-form" role="form" novalidate>
             <!--<input type="hidden" value="agregarCotizacion" name="metodo">-->
@@ -378,7 +386,8 @@ $conexion = conectar();
                         <input type="hidden" value="<?php echo $_SESSION['userid']; ?>" id="user_id" class="form-control" name="userId">
                         <input type="hidden" value="<?php echo $_SESSION['id_rol']; ?>" id="user_rol"  class="form-control">
                           <input type="hidden" value="" id="user_rols" name="user_rol" class="form-control">
-                        <button data-loading-text="Guardando factura..." type="button" onclick="send_ajax()" name="invoice_btn" value="" class="btn btn-success rounded-pill">FInalizar </button>
+                        <input type="hidden" value="" id="data_sede" name="data_sede" class="form-control">
+                        <button data-loading-text="Guardando factura..." type="button" onclick="sede()" name="invoice_btn" value="" class="btn btn-success rounded-pill">FInalizar </button>
                         <!--<input id="guardando" data-loading-text="Guardando factura..." type="submit" name="invoice_btn" value="FINALIZAR" doiclicksito class="btn btn-success submit_btn invoice-save-btm" accesskey="g">-->
                         <!--<input id="guardando_call" data-loading-text="Guardando factura..." type="submit" name="invoice_btn" value="FINALIZAR" doiclicksito class="btn btn-success submit_btn invoice-save-btm" accesskey="g">-->
                     </div>
@@ -415,33 +424,22 @@ $conexion = conectar();
             Swal.fire('Todo esta correcto.', 'Cotiza con cuidado', 'success')
             console.log("verifique y si tiene usuario");
         }
-         let tabla;
-if (user_rol == 1) {
-    tabla = "producto_av";
-} else if (user_rol == 2) {
-    tabla = "producto";
-} else if (user_rol == 3) {
-    tabla = "producto_d1";
-} else if (user_rol == 4) {
-    tabla = "producto_av";
-} else if (user_rol == 6) {
-    tabla = "producto_av";
-} else if (user_id == 27) {
-    tabla = "productos_ibague2";
-} else if (user_rol == 7) {
-    tabla = "productos_ibague";
-} else if (user_rol == 9) {
-    tabla = "producto_av";
-}
+       
         
-        $("#user_rols").val(tabla);
+       
     }
 
     function run_calcular(e, id) {
         calculateTotal(id);
     }
 
+   function sede() {
 
+        $("#my-ids").trigger("click");
+          
+          console.log("le di click");
+
+    }
 
     function send_ajax() {
 
@@ -531,6 +529,17 @@ if (user_rol == 1) {
         })
 
     }
+    
+    function select_sede() {
+
+        let data_ = $("#sede").val();
+        document.getElementById("data_sede").value = data_;
+   
+        setTimeout(send_ajax(), 2000);
+        setTimeout($("#modal_close").trigger("click"), 2200);
+
+    }
+
 
     function create_clients() {
         //defino variables
@@ -599,6 +608,7 @@ if (user_rol == 1) {
     $(document).ready(function() {
         $("#addRows").trigger("click");
         $("#verificar").trigger("click");
+         $("#my-id").hide();
 
 
         //obtener los datos
