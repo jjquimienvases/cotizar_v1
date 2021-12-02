@@ -440,26 +440,7 @@ include 'modal_sede.php';
             console.log("verifique y si tiene usuario");
         }
         
-        let tabla;
-if (user_rol == 1) {
-    tabla = "producto_av";
-} else if (user_rol == 2) {
-    tabla = "producto";
-} else if (user_rol == 3) {
-    tabla = "producto_d1";
-} else if (user_rol == 4) {
-    tabla = "producto_av";
-} else if (user_rol == 6) {
-    tabla = "producto_av";
-} else if (user_id == 27) {
-    tabla = "productos_ibague2";
-} else if (user_rol == 7) {
-    tabla = "productos_ibague";
-} else if (user_rol == 9) {
-    tabla = "producto_av";
-}
-        
-        $("#user_rols").val(tabla);
+      
     }
 
     function send_ajax() {
@@ -558,9 +539,7 @@ if (user_rol == 1) {
 
         let data_ = $("#sede").val();
         document.getElementById("data_sede").value = data_;
-      
-       console.log($("#data_sede").val());
-      return;
+    
         setTimeout(send_ajax(), 2000);
         setTimeout($("#modal_close").trigger("click"), 2200);
 
