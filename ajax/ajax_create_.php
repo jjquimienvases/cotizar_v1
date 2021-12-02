@@ -95,7 +95,7 @@ if ($gramos == 0 || $gramos == null) {
 } else {
 }
 $tapa = (isset($_POST['Tapa'])) ? $_POST['Tapa'] : "";
-if ($tapa == 0 || $tapa == null) {
+if (!isset($tapa) || empty($tapa) {
     $tapa = 0;
 } else {
 }
