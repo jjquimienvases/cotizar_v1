@@ -10,6 +10,28 @@ session_start();
 $rol_usuario = $_SESSION['id_rol'];
 $user_id = $_SESSION['userid'];
 $tabla = $_POST['user_rol'];
+if($tabla == 0|| $tabla == null){
+
+if ($rol_usuario == 1) {
+    $tabla = "producto_av";
+} else if ($rol_usuario == 2) {
+    $tabla = "producto";
+} else if ($rol_usuario == 3) {
+    $tabla = "producto_d1";
+} else if ($rol_usuario == 4) {
+    $tabla = "producto_av";
+} else if ($rol_usuario == 6) {
+    $tabla = "producto_av";
+} else if ($user_id == 27) {
+    $tabla = "productos_ibague2";
+} else if ($rol_usuario == 7) {
+    $tabla = "productos_ibague";
+} else if ($rol_usuario == 9) {
+    $tabla = "producto_av";
+}
+
+}else{
+$tabla = $_POST['user_rol'];}
 if ($user_id == 0 || $user_id = null) {
     echo "no_session";
 } else {
