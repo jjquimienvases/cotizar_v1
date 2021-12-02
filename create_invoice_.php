@@ -368,7 +368,7 @@ $conexion = conectar();
                 <input type="hidden" onclick="existe_session()" id="verificar">
 
                 <input type="hidden" value="<?php echo $_SESSION['userid']; ?>" id="user_id" class="form-control" name="userId">
-                <input type="hidden" value="<?php echo $_SESSION['id_rol']; ?>" id="user_rol" class="form-control">
+                <input type="hidden" value="" id="user_rol" class="form-control">
                 <button data-loading-text="Guardando factura..." type="button" onclick="send_ajax()" name="invoice_btn" value="" class="btn btn-success rounded-pill">FInalizar </button>
                 <!--<input id="guardando" data-loading-text="Guardando factura..." type="submit" name="invoice_btn" value="FINALIZAR" doiclicksito class="btn btn-success submit_btn invoice-save-btm" accesskey="g">-->
                 <!--<input id="guardando_call" data-loading-text="Guardando factura..." type="submit" name="invoice_btn" value="FINALIZAR" doiclicksito class="btn btn-success submit_btn invoice-save-btm" accesskey="g">-->
@@ -421,6 +421,27 @@ $conexion = conectar();
             Swal.fire('Todo esta correcto.', 'Cotiza con cuidado', 'success')
             console.log("verifique y si tiene usuario");
         }
+        
+        let tabla;
+if (user_rol == 1) {
+    tabla = "producto_av";
+} else if (user_rol == 2) {
+    tabla = "producto";
+} else if (user_rol == 3) {
+    tabla = "producto_d1";
+} else if (user_rol == 4) {
+    tabla = "producto_av";
+} else if (user_rol == 6) {
+    tabla = "producto_av";
+} else if (user_id == 27) {
+    tabla = "productos_ibague2";
+} else if (user_rol == 7) {
+    tabla = "productos_ibague";
+} else if (user_rol == 9) {
+    tabla = "producto_av";
+}
+        
+        $("#user_rol").val(tabla);
     }
 
     function send_ajax() {
