@@ -46,7 +46,12 @@ $conexion = conectar();
 <script src="js/cotizacion.js"></script>
 <script src="scripts/alertas.js"></script>
 <script src="js/calcular_perfumeria.js"></script>
+<!-- UIkit CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.9.4/dist/css/uikit.min.css" />
 
+<!-- UIkit JS -->
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.9.4/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.9.4/dist/js/uikit-icons.min.js"></script>
 
 <style>
     table {
@@ -93,8 +98,11 @@ $conexion = conectar();
     }
 </style>
 
-<?php include 'container_comerciales.php'; ?>
+<?php include 'container_comerciales.php'; 
+include 'modal_sede.php'; 
+?>
 <div class="row">
+    <button uk-toggle="target: #my-id" id="my-id" type="button"></button>
     <div class="col-md-12 col-xl-12 col-sm-12 col-lg-12 ">
         <form action="" id="invoice-form" method="post" class="invoice-form" role="form" novalidate>
             <!--<input type="hidden" value="agregarCotizacion" name="metodo">-->
@@ -370,7 +378,7 @@ $conexion = conectar();
                 <input type="hidden" value="<?php echo $_SESSION['userid']; ?>" id="user_id" class="form-control" name="userId">
                    <input type="hidden" value="<?php echo $_SESSION['id_rol']; ?>" id="user_rol"  class="form-control">
                           <input type="hidden" value="" id="user_rols" name="user_rol" class="form-control">
-                <button data-loading-text="Guardando factura..." type="button" onclick="send_ajax()" name="invoice_btn" value="" class="btn btn-success rounded-pill">FInalizar </button>
+                <button data-loading-text="Guardando factura..." type="button" onclick="sede()" name="invoice_btn" value="" class="btn btn-success rounded-pill">FInalizar </button>
                 <!--<input id="guardando" data-loading-text="Guardando factura..." type="submit" name="invoice_btn" value="FINALIZAR" doiclicksito class="btn btn-success submit_btn invoice-save-btm" accesskey="g">-->
                 <!--<input id="guardando_call" data-loading-text="Guardando factura..." type="submit" name="invoice_btn" value="FINALIZAR" doiclicksito class="btn btn-success submit_btn invoice-save-btm" accesskey="g">-->
 
@@ -403,7 +411,14 @@ $conexion = conectar();
     $(document).ready(function() {
         $("#addRows").trigger("click");
         $("#verificar").trigger("click");
+         $("#my-id").hide();
     });
+    
+      function sede() {
+
+        $("#my-id").trigger("click");
+
+    }
 
     function existe_session() {
 
@@ -537,6 +552,17 @@ if (user_rol == 1) {
 
     }
 
+  function select_sede() {
+
+        let data_ = $("$sede").val();
+        document.getElementById("data_sede").value = data_;
+      
+       console.log($("$sede").val());
+      return;
+        setTimeout(send_ajax(), 2000);
+        setTimeout($("#modal_close").trigger("click"), 2200);
+
+    }
 
     function create_clients() {
         //defino variables
