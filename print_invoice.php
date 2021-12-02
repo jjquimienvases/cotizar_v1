@@ -54,7 +54,7 @@ if ($result != 0 || $result != "") {
 }
 
 
-$sql_data = ("SELECT * FROM factura_orden fo INNER JOIN factura_orden_producto fp ON factura_orden.order_id = factura_orden_producto.order_id WHERE factura_orden.order_id = $cotizacion");
+$sql_data = ("SELECT * FROM factura_orden fo INNER JOIN factura_orden_producto fp ON fo.order_id = fp.order_id WHERE fo.order_id = $cotizacion");
 $execute = $conex->query($sql_data);
 
 if ($execute) {
