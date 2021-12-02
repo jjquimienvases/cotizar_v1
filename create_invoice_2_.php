@@ -424,9 +424,6 @@ include 'modal_sede.php';
             Swal.fire('Todo esta correcto.', 'Cotiza con cuidado', 'success')
             console.log("verifique y si tiene usuario");
         }
-       
-        
-       
     }
 
     function run_calcular(e, id) {
@@ -436,9 +433,8 @@ include 'modal_sede.php';
    function sede() {
 
         $("#my-ids").trigger("click");
-          
+       
           console.log("le di click");
-
     }
 
     function send_ajax() {
@@ -514,9 +510,9 @@ include 'modal_sede.php';
                             } else if (r == "no_session") {
                                 Swal.fire('Se Cerro la session!', 'porfavor iniciar session y guardar la cotizacion', 'info')
 
-                            } else { //ES 0(NO SE EJECUTO LA CONSULTA) O EXISTE UN ERROR EXPLICATIVO(STRING)
-                                alert("no funciona");
-                                console.log(datos);
+                            } else if (r == "Fallo"){ //ES 0(NO SE EJECUTO LA CONSULTA) O EXISTE UN ERROR EXPLICATIVO(STRING)
+                                Swal.fire('Fallo !', 'No se creo correctamente la orden', 'error')
+                                console.log(r);
                             }
                         }
                     });
