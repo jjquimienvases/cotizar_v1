@@ -138,7 +138,7 @@ if ($sql_add) {
     //insertando items
     for ($i = 0; $i < count($codigo); $i++) {
   $execute_items = ("INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario,order_item_price,order_item_final_amount, order_date,gramos,envases,tapa)
-                                   VALUES ('$id_', '$codigo[$i]', '$perfume[$i] $capacidad_puntos[$i]', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]',0,'$resultado[$i]','$fecha[$i]','$gramos[$i]','$envase[$i]','$tapa[$i]')");
+                                   VALUES ($id_, $codigo[$i], '$perfume[$i] $capacidad_puntos[$i]', $cantidad[$i], $categoria[$i],$unitario[$i],0,$resultado[$i],'$fecha[$i]',$gramos[$i],$envase[$i],$tapa[$i])");
 
    echo $execute_items;
             
