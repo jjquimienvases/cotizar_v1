@@ -168,7 +168,7 @@ $output .= '<link href="css/styledom2.css" rel="stylesheet" type="text/css"   me
 
 $count = 0;
 
-foreach ($execute as $datos) {
+foreach($execute as $datos):
 
 	$count++;
 
@@ -189,7 +189,7 @@ foreach ($execute as $datos) {
 	<td align="left">' . formatear($datos["order_item_final_amount"]) . '</td>
 
 	</tr>';
-}
+endforeach;
 $output .= '
 
 		<tr>
