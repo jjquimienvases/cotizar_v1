@@ -292,5 +292,5 @@ if ($sql_add) {
         echo 0;
     }
 } else {
-    echo "Fallo";
+    echo $execute;
 }
