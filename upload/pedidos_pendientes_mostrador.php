@@ -1,12 +1,3 @@
-
-<script type="text/javascript">
-
-function stopDefAction(evt) {
-  evt.preventDefault();
-}
-</script>
-
-
 <?php
 function formatear($num){
 	setlocale(LC_MONETARY, 'en_US');
@@ -148,3 +139,9 @@ if($user_rol == 2){
 </body>
 
 </html>
+<script type="text/javascript">
+
+function stopDefAction(evt) {
+  evt.preventDefault();
+}
+</script>
