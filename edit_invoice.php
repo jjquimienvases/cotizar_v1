@@ -1,5 +1,4 @@
-<?php
-include 'conectar.php';
+'conectar.php';
 $con = conectar();
 
 session_start();
@@ -78,31 +77,39 @@ $invoiceItems = $con->query("SELECT * FROM factura_orden_producto WHERE order_id
 					</div>
 <?php				
 foreach($invoiceValue as $invoiceValues):
+				$cliente = $invoiceValues['order_receiver_name']; ;
+				$cedula = $invoiceValues['cedula']; 
+				$direccion = $invoiceValues['direccion']; 
+				$telefono = $invoiceValues['tel_client']; 
+				$ciudad = $invoiceValues['ciudad']; 
+				$email = $invoiceValues['email'];
+endforeach;
+				
 ?>
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 pull-right">
 					<h3>Para,</h3>
 					<div class="form-group">
-						<input value="<?php echo $invoiceValues['order_receiver_name']; ?>" type="text" class="form-control" name="companyName" id="companyName" placeholder="Nombre del cliente" autocomplete="off">
+						<input value="<?php echo $cliente; ?>" type="text" class="form-control" name="companyName" id="companyName" placeholder="Nombre del cliente" autocomplete="off">
 					</div>
 					<div class="form-group">
-						<input value="<?php echo $invoiceValues['cedula']; ?>" type="text" class="form-control" name="cedula" id="cedula" placeholder="Ingresar la Cedula o nit" autocomplete="off">
+						<input value="<?php echo $cedula; ?>" type="text" class="form-control" name="cedula" id="cedula" placeholder="Ingresar la Cedula o nit" autocomplete="off">
 					</div>
 					<div class="form-group">
-						<input value="<?php echo $invoiceValues['tel_client']; ?>" type="text" class="form-control" name="tele" id="tele" placeholder="Telefono" autocomplete="off">
+						<input value="<?php echo $telefono; ?>" type="text" class="form-control" name="tele" id="tele" placeholder="Telefono" autocomplete="off">
 					</div>
 					<div class="form-group">
-						<input value="<?php echo $invoiceValues['direccion']; ?>" type="text" class="form-control" name="direccion" id="direccion" placeholder="Direccion" autocomplete="off">
+						<input value="<?php echo $direccion; ?>" type="text" class="form-control" name="direccion" id="direccion" placeholder="Direccion" autocomplete="off">
 					</div>
 					<div class="form-group">
-						<input value="<?php echo $invoiceValues['ciudad']; ?>" type="text" class="form-control" name="ciudad" id="ciudad" placeholder="Ciudad" autocomplete="off">
+						<input value="<?php echo $ciudad; ?>" type="text" class="form-control" name="ciudad" id="ciudad" placeholder="Ciudad" autocomplete="off">
 					</div>
 					<div class="form-group">
-						<input value="<?php echo $invoiceValues['email']; ?>" type="text" class="form-control" name="email" id="email" placeholder="Correo electronico" autocomplete="off">
+						<input value="<?php echo $email; ?>" type="text" class="form-control" name="email" id="email" placeholder="Correo electronico" autocomplete="off">
 					</div>
 					<div class="form-group">
 						<input class="form-control" rows="3" name="address" id="address" placeholder="Cotizante" value="<?php echo $invoiceValues['order_receiver_address']; ?>" readonly>
 					</div>
-					<?php endforeach; ?>
+					
 					<button type="button" class="btn btn-success" onclick="showInfo()" id="buttons">Mostrar Opciones de venta</button>
 					<button type="button" class="btn btn-danger" onclick="hiddenInfo()" id="buttonh">Cerrar Opciones de venta</button>
 					<div id="ocult">
