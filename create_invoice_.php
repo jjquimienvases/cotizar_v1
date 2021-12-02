@@ -556,7 +556,7 @@ if (user_rol == 1) {
 
   function select_sede() {
 
-        let data_ = $("$sede").val();
+        let data_ = $("#sede").val();
         document.getElementById("data_sede").value = data_;
       
        console.log($("$sede").val());
