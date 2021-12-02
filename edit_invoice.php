@@ -1,9 +1,16 @@
 <?php
+include 'conectar.php';
+$con = conectar();
+
 session_start([
 	'cookie_lifetime' => 86400,
 	'gc_maxlifetime' => 86400,
 ]);
 
+
+$cot = $_GET['invoice_id'];
+$invoiceValues = $con->query("SELECT * FROM factura_orden WHERE order_id = $cot");
+$invoiceItem = $con->query("SELECT * FROM factura_orden_producto WHERE order_id = $cot");
 ?>
 <title>Editar Cotizaciones</title>
 <script src="jquery-3.5.1.min.js"></script>
