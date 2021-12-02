@@ -9,7 +9,7 @@ session_start();
 
 $rol_usuario = $_SESSION['id_rol'];
 $user_id = $_SESSION['userid'];
-$tabla = $_POST['user_rol'];
+$tabla = $_POST['data_sede'];
 if($tabla == 0|| $tabla == null){
 
 if ($rol_usuario == 1) {
