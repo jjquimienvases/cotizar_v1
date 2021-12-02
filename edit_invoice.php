@@ -4,17 +4,6 @@ session_start([
 	'gc_maxlifetime' => 86400,
 ]);
 
-include 'Invoice.php';
-$invoice = new Invoice();
-$invoice->checkLoggedIn();
-if (!empty($_POST['companyName']) && $_POST['companyName'] && !empty($_POST['invoiceId']) && $_POST['invoiceId']) {
-	$invoice->updateInvoice($_POST);
-	header("Location:search/index.php");
-}
-if (!empty($_GET['update_id']) && $_GET['update_id']) {
-	$invoiceValues = $invoice->getInvoice($_GET['update_id']);
-	$invoiceItems = $invoice->getInvoiceItems($_GET['update_id']);
-}
 ?>
 <title>Editar Cotizaciones</title>
 <script src="jquery-3.5.1.min.js"></script>
