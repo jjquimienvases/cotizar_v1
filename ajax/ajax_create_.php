@@ -312,5 +312,5 @@ if ($sql_add) {
         echo 0;
     }
 } else {
-    echo $sqlInsertarProductos;
+    echo "Fallo";
 }
