@@ -4,13 +4,6 @@ $con = conectar();
 
 session_start();
 
-if($con){
-echo "okok";
-}else{
-echo "asa";
-}
-
-return;
 
 $cot = $_GET['invoice_id'];
 $invoiceValues = $con->query("SELECT * FROM factura_orden WHERE order_id = $cot");
