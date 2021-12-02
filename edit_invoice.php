@@ -6,8 +6,9 @@ session_start();
 
 
 $cot = $_GET['invoice_id'];
-$invoiceValues = $con->query("SELECT * FROM factura_orden WHERE order_id = $cot");
-$invoiceItem = $con->query("SELECT * FROM factura_orden_producto WHERE order_id = $cot");
+$invoiceValue = $con->query("SELECT * FROM factura_orden WHERE order_id = $cot");
+$invoiceItems = $con->query("SELECT * FROM factura_orden_producto WHERE order_id = $cot");
+
 ?>
 <title>Editar Cotizaciones</title>
 <script src="jquery-3.5.1.min.js"></script>
@@ -74,7 +75,9 @@ $invoiceItem = $con->query("SELECT * FROM factura_orden_producto WHERE order_id 
 					<?php echo $_SESSION['address']; ?><br>
 					<?php echo $_SESSION['mobile']; ?><br>
 					<?php echo $_SESSION['email']; ?><br>
-				</div>
+<?php				</div>
+foreach($invoiceValue as $invoiceValues):
+?>
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 pull-right">
 					<h3>Para,</h3>
 					<div class="form-group">
@@ -98,6 +101,7 @@ $invoiceItem = $con->query("SELECT * FROM factura_orden_producto WHERE order_id 
 					<div class="form-group">
 						<input class="form-control" rows="3" name="address" id="address" placeholder="Cotizante" value="<?php echo $invoiceValues['order_receiver_address']; ?>" readonly>
 					</div>
+					<?php endforeach; ?>
 					<button type="button" class="btn btn-success" onclick="showInfo()" id="buttons">Mostrar Opciones de venta</button>
 					<button type="button" class="btn btn-danger" onclick="hiddenInfo()" id="buttonh">Cerrar Opciones de venta</button>
 					<div id="ocult">
