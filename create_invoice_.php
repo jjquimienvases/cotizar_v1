@@ -102,7 +102,7 @@ $conexion = conectar();
 include 'modal_sede.php'; 
 ?>
 <div class="row">
-    <button uk-toggle="target: #my-id" id="my-id" type="button"></button>
+    <button uk-toggle="target: #my-id" id="my-ids" type="button"></button>
     <div class="col-md-12 col-xl-12 col-sm-12 col-lg-12 ">
         <form action="" id="invoice-form" method="post" class="invoice-form" role="form" novalidate>
             <!--<input type="hidden" value="agregarCotizacion" name="metodo">-->
@@ -416,7 +416,9 @@ include 'modal_sede.php';
     
       function sede() {
 
-        $("#my-id").trigger("click");
+        $("#my-ids").trigger("click");
+          
+          console.log("le di click");
 
     }
 
