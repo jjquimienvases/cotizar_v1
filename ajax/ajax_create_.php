@@ -32,6 +32,11 @@ if ($taxA == 0 || $taxA == null) {
 } else {
 }
 $taxR = $_POST['taxRate'];
+if ($taxR == 0 || $taxR == null) {
+    $taxR = 0;
+} else {
+    $taxR = $_POST['taxRate'];
+}
 $totalAft = $_POST['totalAftertax'];
 $amountP = $_POST['amountPaid'];
 if ($amountP == 0 || $amountP == null) {
