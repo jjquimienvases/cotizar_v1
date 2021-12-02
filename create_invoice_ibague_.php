@@ -548,9 +548,9 @@ include 'modal_sede.php';
                             } else if (r == "no_session") {
                                 Swal.fire('Se Cerro la session!', 'porfavor iniciar session y guardar la cotizacion', 'info')
 
-                            } else { //ES 0(NO SE EJECUTO LA CONSULTA) O EXISTE UN ERROR EXPLICATIVO(STRING)
-                                alert("no funciona");
-                                console.log(datos);
+                            }  else if (r == "Fallo"){ //ES 0(NO SE EJECUTO LA CONSULTA) O EXISTE UN ERROR EXPLICATIVO(STRING)
+                                Swal.fire('Fallo !', 'No se creo correctamente la orden', 'error')
+                                console.log(r);
                             }
                         }
                     });
