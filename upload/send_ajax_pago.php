@@ -39,11 +39,13 @@
     ($cot,'$title','$comercial',$total,$monto_cancelado,$total,'$pago','$fecha_actual','$estado2',$rol)";
     $execute = $con->query( $ins5);
   
-   $ins6 = "INSERT INTO file_abono (order_id, ruta, archivo, metodo_de_pago,nuevo_abono) VALUES 
-   ($cot,'$destino','$nombreImg','$pago',$monto_cancelado)";
+   $ins6 = "INSERT INTO file_abono (order_id,order_date, ruta, archivo, metodo_de_pago,nuevo_abono) VALUES 
+   ($cot,'$fecha','$destino','$nombreImg','$pago',$monto_cancelado)";
    $execute2 = $con->query($ins6);
    
-      $ins = $con->query("INSERT INTO files(title,description,url,type,order_id,file_name,file_ruta,estado,archivo_name,archivo_ruta,id_punto_venta) VALUES ('$title','$description','$new_name_file','$tipo','$cot','$nombreImg','$destino','$estado','$demo_1','$demo_2','$punto_despacho')");
+      $ins = $con->query("INSERT INTO files(title,description,url,type,order_id,file_name,file_ruta,estado,archivo_name,archivo_ruta,id_punto_venta,salida_name,salida_ruta,order_date) 
+      VALUES ('$title','$description','$new_name_file','$tipo','$cot','$nombreImg','$destino','$estado','$demo_1','$demo_2','$punto_despacho','pendiente','pendiente','$fecha_actual')");
+      
     $ins2 = $con->query("INSERT INTO factura_modificada(order_id,order_receiver_name,comercial,total,estado,metodopago,code,codigo,canal) VALUES ('$cot','$title','$comercial','$total','$estado','$pago','$code','$codigo','$canal_v')");
     // $ins3 = $con ->query("UPDATE factura_orden SET order_date = '$fecha_actual' WHERE order_id = $cot");
     $ins4 = $con ->query("UPDATE factura_orden SET metodo_de_pago = '$pago' WHERE order_id = $cot");
@@ -51,7 +53,7 @@
    
   }else{
          $ins = $con->query("INSERT INTO files(title,description,url,type,order_id,file_name,file_ruta,estado,archivo_name,archivo_ruta,id_punto_venta) VALUES ('$title','$description','$new_name_file','$tipo','$cot','$nombreImg','$destino','$estado','$demo_1','$demo_2','$punto_despacho')");
-    $ins2 = $con->query("INSERT INTO factura_modificada(order_id,order_receiver_name,comercial,total,estado,metodopago,code,codigo,canal) VALUES ('$cot','$title','$comercial','$total','$estado','$pago','$code','$codigo','$canal_v')");
+    $ins2 = $con->query("INSERT INTO factura_modificada(order_id,order_receiver_name,comercial,total,estado,metodopago,code,codigo,canal,order_date) VALUES ('$cot','$title','$comercial','$total','$estado','$pago','$code','$codigo','$canal_v','$fecha_actual')");
     // $ins3 = $con ->query("UPDATE factura_orden SET order_date = '$fecha_actual' WHERE order_id = $cot");
     $ins4 = $con ->query("UPDATE factura_orden SET metodo_de_pago = '$pago' WHERE order_id = $cot");
  
