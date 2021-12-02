@@ -414,7 +414,7 @@ $conexion = conectar();
                     <!-- Botom para guardar -->
                     <div class="guardado_group">
                         <input type="hidden" value="<?php echo $_SESSION['userid']; ?>" id="user_id" class="form-control" name="userId">
-                        <input type="hidden" value="" id="user_rol" class="form-control">
+                        <input type="hidden" value="" id="user_rol" class="form-control" name="user_rol">
                         <button data-loading-text="Guardando factura..." type="button" onclick="send_ajax()" name="invoice_btn" value="" class="btn btn-success rounded-pill">FInalizar </button>
                         <!--<input id="guardando" data-loading-text="Guardando factura..." type="submit" name="invoice_btn" value="FINALIZAR" doiclicksito class="btn btn-success submit_btn invoice-save-btm" accesskey="g">-->
                         <!--<input id="guardando_call" data-loading-text="Guardando factura..." type="submit" name="invoice_btn" value="FINALIZAR" doiclicksito class="btn btn-success submit_btn invoice-save-btm" accesskey="g">-->
