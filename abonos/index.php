@@ -1,6 +1,5 @@
 <?php
 include '../conectar.php';
-$conexion = conectar();
 ?>
 <!DOCTYPE html>
 <html lang="es">
