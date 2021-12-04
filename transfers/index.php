@@ -68,22 +68,22 @@ if(!$id_user){header('Location: https://cotizar.jjquimienvases.com/');}else{}
 
                     <div class="col mt-2">
                         <label>Producto</label>
-                        <input type="text" class="form-control" name="item_name" placeholder="Nombre Producto" readonly>
+                        <input type="text" class="form-control" name="item_name" id="item_name" placeholder="Nombre Producto" readonly>
                     </div>
 
                     <div class="col mt-2">
                         <label>Codigo</label>
-                        <input type="number" class="form-control" name="item_code" placeholder="Codigo Producto" readonly>
+                        <input type="number" class="form-control" name="item_code" id="item_code" placeholder="Codigo Producto" readonly>
                     </div>
 
                     <div class="col mt-2">
                         <label for="inputCity">Escribir la cantidad que vas a solicitar</label>
-                        <input type="number" class="form-control" name="quantity" placeholder="Cantidad" id="inputCity">
+                        <input type="number" class="form-control" name="quantity" id="quantity" placeholder="Cantidad" id="inputCity">
                     </div>
                     
                       <div class="col mt-2">
                         <label for="inputCity">Escribir los gramos de perfumeria que tienes actualmente</label>
-                        <input type="number" class="form-control" name="gramos_actuales" placeholder="gramos actules" id="gramos_actuales">
+                        <input type="number" class="form-control" name="gramos_actuales" id="gramos_actuales" placeholder="gramos actules" id="gramos_actuales">
                     </div>
 
                     <div class="col mt-2">
@@ -147,7 +147,7 @@ if(!$id_user){header('Location: https://cotizar.jjquimienvases.com/');}else{}
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
+    
 </body>
 
 </html>
