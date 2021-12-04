@@ -96,6 +96,11 @@ if ($envase == 0 || $envase == null) {
 }
 $capacidad = (isset($_POST['Capacidad'])) ? $_POST['Capacidad'] : "";
 $perfume = (isset($_POST['op'])) ? $_POST['op'] : "";
+
+if ($perfume == 0 || $perfume == null) {
+    $perfume = "data";
+} else {
+}
 $capacidad_puntos = (isset($_POST['Puntos'])) ? $_POST['Puntos'] : "";
 $abono = (isset($_POST['abono'])) ? $_POST['abono'] : "";
 $gramosAdicionales = (isset($_POST['gramos_adicionales'])) ? $_POST['gramos_adicionales'] : "";
