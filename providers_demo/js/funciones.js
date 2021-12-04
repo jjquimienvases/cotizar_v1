@@ -422,7 +422,7 @@ function getOrderList() { //ESTO TRAE LA INFORMACION DEL LAS ORDENES Y LAS PINTA
             },
         })
         .done(function (d) {
-            clear_table()
+           setTimeout(clear_table(),2000)
             getProviersOrders()
             getProductsOrders()
             /*     console.log(d); */
@@ -511,7 +511,7 @@ function getOrderList_filter() { //ESTO TRAE LA INFORMACION DEL LAS ORDENES Y LA
             },
         })
         .done(function (d) {
-            clear_table()
+            setTimeout(clear_table(),2000)
             /*     console.log(d); */
             d.retornolosdatos.forEach((item) => {
 
