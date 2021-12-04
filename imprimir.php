@@ -39,6 +39,7 @@ if($execute){
 		$taxPer = $datas['order_tax_per'];
 		$totalTax = $datas['order_total_tax'];
 		$amountD = $datas['order_total_amount_due'];
+		$notas = $datas['note'];
 }
 	
 }else{
@@ -138,7 +139,7 @@ $output .= '
 
 
     <tr>
-<td align="left" colspan ="5"><P>Notas:</P>' . $invoiceValues['note'] . '</td>
+<td align="left" colspan ="5"><P>Notas:</P>' . $notas. '</td>
     </tr>
 
 	</table>';
