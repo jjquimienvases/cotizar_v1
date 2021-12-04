@@ -13,6 +13,7 @@ $("#buscar_item").on("keyup", function () {
     },
   })
   .done(function (d) {
+    console.lo(d);
    // let padre = $("#izquierda").parent().parent().parent();
     //padre.find("[name^=item_name]").val(d.resultado.contratipo);
      // padre.find("[name^=item_code]").val(d.resultado.id);
