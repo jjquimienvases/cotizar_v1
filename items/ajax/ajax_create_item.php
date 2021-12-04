@@ -33,7 +33,7 @@ $ruta=$_FILES['imagen']['tmp_name'];
 $destino="../imagenes/".$nombreImg;
 $src = "https://cotizar.jjquimienvases.com/items/imagenes/".$nombreImg;
 if(copy($ruta, $destino)){
-           $sql_ = "INSERT INTO producto_av (id,contratipo,stock,genero,gramo,id_categoria,peso,ubicacion,unidad,minimo,maximo,imagen,name_prov,visibilidad) VALUES ($item_code,'$item_name',$stock,'$genero', $costo,$categoria,$peso,'$ubicacion','$unidad_empaque', $stock_minimo,$stock_maximo,'$src','$nombre_proveedor',1)";
+           $sql_ = "INSERT INTO producto_av (id,contratipo,stock,genero,gramo,id_categoria,peso,ubicacion,unidad,minimo,maximo,imagen,name_prov,visibilidad,price_orden) VALUES ($item_code,'$item_name',$stock,'$genero', $costo,$categoria,$peso,'$ubicacion','$unidad_empaque', $stock_minimo,$stock_maximo,'$src','$nombre_proveedor',1,$costo)";
            $sql_1 = "INSERT INTO producto (id,contratipo,stock,genero,gramo,id_categoria,peso,ubicacion,unidad,minimo,maximo,imagen,visibilidad) VALUES ($item_code,'$item_name',$stock,'$genero', $costo,$categoria,$peso,'$ubicacion','$unidad_empaque', $stock_minimo,$stock_maximo,'$src',1)";
            $sql_2 = "INSERT INTO producto_d1 (id,contratipo,stock,genero,gramo,id_categoria,peso,ubicacion,unidad,minimo,maximo,imagen,visibilidad) VALUES ($item_code,'$item_name',$stock,'$genero', $costo,$categoria,$peso,'$ubicacion','$unidad_empaque', $stock_minimo,$stock_maximo,'$src',1)";
            $sql_3 = "INSERT INTO productos_ibague (id,contratipo,stock,genero,gramo,id_categoria,peso,ubicacion,unidad,minimo,maximo,imagen,visibilidad) VALUES ($item_code,'$item_name',$stock,'$genero', $costo,$categoria,$peso,'$ubicacion','$unidad_empaque', $stock_minimo,$stock_maximo,'$src',1)";
