@@ -1,5 +1,8 @@
 let code_tot = "";
 let usuario = "";
+let items =  $("#buscar_item").val();
+
+console.log(items)
 
 
 function consultar_data() {
@@ -9,7 +12,7 @@ function consultar_data() {
     dataType: "json",
     data: {
       key: "Q1",
-      item: $("#buscar_item").val(),
+      item: items,
     },
   })
   .done(function (d) {
