@@ -35,7 +35,7 @@ console.log(items)
   function mostrarData(){
     var data = 0;
     $.ajax({
-      url: "../methods/get_information.php",
+      url: "./methods/get_information.php",
       type: "POST",
       dataType: "json",
       data: {
