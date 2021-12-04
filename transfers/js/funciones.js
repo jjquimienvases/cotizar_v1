@@ -23,7 +23,8 @@ function consultar_data() {
     $("[name='gramos_actuales']").val(d.resultado.stock);
     })
     .fail(function (e) {});
-  });
+  };
+
   
   //ajax para mostrar informacion
   function mostrarData(){
