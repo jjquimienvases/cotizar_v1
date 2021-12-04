@@ -74,8 +74,8 @@ $punto_v = $_POST['metodopago'];
 
 try {
     //SQL PARA SUBIR A LA TABLA DE DEVOLUCIONES (ALLI VA A QUEDAR REGISTRADO DICHA DEVOLUCION);
-    $sql_insert_devolucion = $conexion->query("INSERT INTO devolucion (order_id, cliente, cedula, item_code, item_name, item_quantity, item_total_amount, punto_venta) 
-    VALUES ($order_id,'$order_receiver_name','$cedula',$item_code,'$item_name',$order_item_quantity,$order_item_final_amount,'$punto_venta')");
+    $sql_insert_devolucion = $conexion->query("INSERT INTO devolucion (order_id, cliente, cedula, item_code, item_name, item_quantity, item_total_amount, punto_venta,order_date) 
+    VALUES ($order_id,'$order_receiver_name','$cedula',$item_code,'$item_name',$order_item_quantity,$order_item_final_amount,'$punto_venta','$date')");
      
      if($item_name == "Perfume Sencillo 30 ML" || $item_name == "Perfume Sencillo 50 ML" || $item_name == "Perfume Sencillo 100 ML"){
      $sql_perfume_pp = $conexion->query("INSERT INTO `devolucion_pp`(`order_id`, `item_code`, `item_name`, `item_quantity`, `user`,`estado`) VALUES ($order_id,$item_code,'$item_name',$order_item_quantity,'$user_','pendiente')");     
