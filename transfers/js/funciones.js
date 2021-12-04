@@ -17,11 +17,14 @@ console.log(items)
     },
   })
   .done(function (d) {
-    console.log(d);
-   let padre = $("#izquierda").parent().parent().parent();
-    padre.find("[name^=item_name]").val(d.resultado.contratipo);
-     padre.find("[name^=item_code]").val(d.resultado.id);
-      padre.find("[name^=gramos_actuales]").val(d.resultado.stock);
+    console.log(d.resultado);
+  // let padre = $("#izquierda").parent().parent().parent();
+    //padre.find("[name^=item_name]").val(d.resultado.contratipo);
+     //padre.find("[name^=item_code]").val(d.resultado.id);
+      //padre.find("[name^=gramos_actuales]").val(d.resultado.stock);
+    $("#item_name").val(d.resultado.contratipo);
+     $("#item_code").val(d.resultado.id);
+     $("#gramos_actuales").val(d.resultado.stock);
 
     })
     .fail(function (e) {});
