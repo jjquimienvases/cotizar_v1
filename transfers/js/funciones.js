@@ -2,7 +2,7 @@ let code_tot = "";
 let usuario = "";
 
 
-$("#buscar_item").on("keyup", function () {
+function consultar_data() {
   $.ajax({
     url: "methods/conexiones.php",
     type: "POST",
