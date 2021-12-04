@@ -1,11 +1,12 @@
 let code_tot = "";
 let usuario = "";
-let items =  $("#buscar_item").val();
 
-console.log(items)
 
 
 function consultar_data() {
+  let items =  $("#buscar_item").val();
+
+console.log(items)
   $.ajax({
     url: "methods/conexiones.php",
     type: "POST",
