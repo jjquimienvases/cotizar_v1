@@ -18,8 +18,8 @@
   $pago = $_POST['pago'];
   $code = "";
   $codigo = "";
-  $demo_1 = "";
-  $demo_2 = "";
+  $demo_1 = "sR";
+  $demo_2 = "Ss";
   $canal_v = $_POST['canal_v'];
   $fecha_actual = date('Y-m-d H:m:s');
 
