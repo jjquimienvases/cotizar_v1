@@ -13,10 +13,13 @@ $("#buscar_item").on("keyup", function () {
     },
   })
   .done(function (d) {
-    let padre = $("#izquierda").parent().parent().parent();
-    padre.find("[name^=item_name]").val(d.resultado.contratipo);
-      padre.find("[name^=item_code]").val(d.resultado.id);
-      padre.find("[name^=gramos_actuales]").val(d.resultado.stock);
+   // let padre = $("#izquierda").parent().parent().parent();
+    //padre.find("[name^=item_name]").val(d.resultado.contratipo);
+     // padre.find("[name^=item_code]").val(d.resultado.id);
+      //padre.find("[name^=gramos_actuales]").val(d.resultado.stock);
+    $("[name='item_name']").val(d.resultado.contratipo);
+    $("[name='item_code']").val(d.resultado.id);
+    $("[name='gramos_actuales']").val(d.resultado.stock);
     })
     .fail(function (e) {});
   });
