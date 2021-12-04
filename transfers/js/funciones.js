@@ -8,7 +8,7 @@ function consultar_data() {
 
 console.log(items)
   $.ajax({
-    url: "../methods/conexiones.php",
+    url: "./methods/conexiones.php",
     type: "POST",
     dataType: "json",
     data: {
@@ -17,7 +17,7 @@ console.log(items)
     },
   })
   .done(function (d) {
-    console.lo(d);
+    console.log(d);
    let padre = $("#izquierda").parent().parent().parent();
     padre.find("[name^=item_name]").val(d.resultado.contratipo);
      padre.find("[name^=item_code]").val(d.resultado.id);
