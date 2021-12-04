@@ -9,7 +9,7 @@ function consultar_data() {
     dataType: "json",
     data: {
       key: "Q1",
-      item: $(this).val(),
+      item: $("#buscar_item").val(),
     },
   })
   .done(function (d) {
