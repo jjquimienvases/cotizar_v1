@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
 
     <script src="../Lib/bootstrap/js/bootstrap.js"></script>
-    <script src="../js/scripts.js"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!--     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
@@ -34,8 +34,8 @@
         .printer:hover {
             cursor: pointer;
         }
-    </style>
-    <script src="../js/funciones.js"></script>
+    </style>   
+ 
 </head>
 
 <body>
@@ -111,5 +111,6 @@
             </div>
     </div>
 
-
+   <script src="../js/scripts.js"></script>
+    <script src="../js/funciones.js"></script>
 </html>
