@@ -62,7 +62,7 @@ if(!$id_user){header('Location: https://cotizar.jjquimienvases.com/');}else{}
                             }
                             ?>
                         </datalist>
-                        <input class="form-control" list="buscar_items" name="item_" id="buscar_item" type="text" placeholder="Buscar un productos">
+                        <input class="form-control" list="buscar_items" onkeyup="consultar_data()" name="item_" id="buscar_item" type="text" placeholder="Buscar un productos">
                     </div>
 
 
