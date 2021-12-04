@@ -55,7 +55,7 @@ $execute_4 = $conexion->query($sql_4);
 // return;
 
  if($execute){
-     echo $execute;
+     echo $sql_;
  }else{
      echo 0;
  }
