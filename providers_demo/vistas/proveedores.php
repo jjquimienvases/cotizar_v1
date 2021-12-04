@@ -36,7 +36,7 @@ cursor: pointer;
     </style>
 </head> 
 <body>
-<?php include '../scripts.php' ?>
+
 <?php include './navbar.php' ?>
     <div class="m-4">
         <?php include './tabs.php' ?>
