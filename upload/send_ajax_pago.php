@@ -63,6 +63,7 @@
   if ($ins) {
     echo $ins;
   }else{
-    echo 0;
+    $var = "INSERT INTO files(title,description,url,type,order_id,file_name,file_ruta,estado,archivo_name,archivo_ruta,id_punto_venta,salida_name,salida_ruta) VALUES ('$title','$description','$new_name_file','$tipo','$cot','$nombreImg','$destino','$estado','$demo_1','$demo_2','$punto_despacho','pendiente,'pendiente')";
+    echo $var;
   }
  ?>
