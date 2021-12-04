@@ -26,8 +26,8 @@ function limpiar_table() {
 }
 
 function clear_table() {
-    document.getElementById("info_orders").innerHTML = "";
-    document.getElementById("info_facturas").innerHTML = "";
+  //  document.getElementById("info_orders").innerHTML = "";
+   // document.getElementById("info_facturas").innerHTML = "";
 }
 
 function clear_table_modal() {
@@ -422,7 +422,7 @@ function getOrderList() { //ESTO TRAE LA INFORMACION DEL LAS ORDENES Y LAS PINTA
             },
         })
         .done(function (d) {
-           setTimeout(clear_table(),2000)
+           setTimeout(clear_table(),6000)
             getProviersOrders()
             getProductsOrders()
             /*     console.log(d); */
