@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <?php
 include('conexion.php');
 
@@ -30,8 +24,7 @@ if ($cuenta > 0) {
 } else {
     echo "AGREGAR UNA NUEVA COTIZACION A PENDIENTES";
 }
-?>
-<?php
+
 $resultado = "";
 if (isset($_POST['buscar_cotizacion'])) {
     $id = $_POST['producto'];
@@ -51,10 +44,10 @@ if (isset($_POST['btn_buscar'])) {
     }
 }
 
-$conexion = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
 ?>
 
 
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -154,7 +147,7 @@ $conexion = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
         function onSubmitForm() {
 
             Swal.fire({
-                title: 'Bebe estas segura de solicitar esta factura?',
+                title: 'Estas seguro de solicitar esta factura?',
                 showDenyButton: true,
                 showCancelButton: false,
                 confirmButtonText: `Continuar`,
