@@ -5,7 +5,7 @@ $con = conectar();
 session_start();
 
 
-$cot = $_GET['invoice_id'];
+$cot = $_GET['update_id'];
 $invoiceValue = $con->query("SELECT * FROM factura_orden WHERE order_id = $cot");
 $invoiceItems = $con->query("SELECT * FROM factura_orden_producto WHERE order_id = $cot");
 
