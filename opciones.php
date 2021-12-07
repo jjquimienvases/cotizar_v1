@@ -174,6 +174,18 @@ if (isset($_POST['Capacidad'])) {
                 "presentacion" => "KIT DE PERFUMERIA",
             ];
             break;
+            
+                 case "kit_small":
+            $unidad = [
+                "Unidad" => "17000",
+                "Gramo" => "17",
+                "Envase" => "0",
+                "Capacidad" => "1 ML",
+                "presentacion" => "KIT DE PERFUMERIA SMALL",
+            ];
+            break;
+            
+            
         case "Muestra Perfumeria":
             $unidad = [
                 "Unidad" => "1",
