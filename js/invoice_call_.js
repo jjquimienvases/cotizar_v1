@@ -881,10 +881,11 @@ $(document).ready(function() {
                             name: "Envase[]",
                             type: "hidden",
                             value: 0,
-                            className:"Envase",
+                     
                         },
                         style: { width: "150px" },
                         id: "Envase_" + count,
+                               className:"Envase",
                     }),
                 },
                 {
