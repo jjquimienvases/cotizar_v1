@@ -490,7 +490,7 @@ include 'modal_sede.php';
                     console.log(datos);
                     $.ajax({
                         type: "POST",
-                        url: "./ajax/ajax_create_.php",
+                        url: "./ajax/ajax_create_pruebas.php",
                         data: datos,
                         success: function(r) {
                             console.log("Esta respuesta: " + r);
