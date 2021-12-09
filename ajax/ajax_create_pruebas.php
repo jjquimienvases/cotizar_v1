@@ -122,12 +122,17 @@ $execute = "INSERT INTO `factura_orden`(user_id, order_receiver_name, tel_client
 
 //consulta_ agregar cotizacion
 for ($i = 0; $i < count($codigo); $i++) {
+    if(isset($_POST['Envase'])){
+        $envase =$_POST['Envase'];
   $env = $envase[$i];
    if($env == 0 || $env == NULL || empty($env)){
    echo "No_envase";
    }else{
     $sql_add = $con->query($execute);
    }
+    }else{
+     $sql_add = $con->query($execute);
+    }
 }
 
 
