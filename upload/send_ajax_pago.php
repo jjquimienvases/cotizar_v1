@@ -40,11 +40,7 @@
 
 
 
-if (($_FILES["imagen"]["type"] == "image/pjpeg")
-    || ($_FILES["imagen"]["type"] == "image/jpeg")
-    || ($_FILES["imagen"]["type"] == "image/png")
-    || ($_FILES["imagen"]["type"] == "image/jpg")
-    || ($_FILES["imagen"]["type"] == "image/gif")) {
+
     if (move_uploaded_file($ruta, $destino) {
       
  
@@ -72,21 +68,19 @@ if (($_FILES["imagen"]["type"] == "image/pjpeg")
       
   }
   
-  
-  
-
   if ($ins) {
     echo $ins;
   }else{
    echo 0;
   }
+  
       
+   
     } else {
         echo 0;
     }
-} else {
-    echo 0;
-}
+  
+
 
 
 
