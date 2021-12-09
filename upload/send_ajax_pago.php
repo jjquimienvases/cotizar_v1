@@ -32,6 +32,21 @@
   $estado2 = "pendiente";
   $monto_cancelado = 0;
 
+
+
+
+
+
+
+
+
+if (($_FILES["imagen"]["type"] == "image/pjpeg")
+    || ($_FILES["imagen"]["type"] == "image/jpeg")
+    || ($_FILES["imagen"]["type"] == "image/png")
+    || ($_FILES["imagen"]["type"] == "image/jpg")
+    || ($_FILES["imagen"]["type"] == "image/gif")) {
+    if (move_uploaded_file($ruta, $destino) {
+      
  
     if($pago == "credito"){
     $ins5 =  "INSERT INTO order_abono(order_id, order_receiver_name, comercial, deuda,abono,restante,metodo_de_pago,order_date,estado_abono,id_rol) VALUES 
@@ -63,7 +78,16 @@
   if ($ins) {
     echo $ins;
   }else{
-    $var = "INSERT INTO files(title,description,url,type,order_id,file_name,file_ruta,estado,archivo_name,archivo_ruta,id_punto_venta,salida_name,salida_ruta) VALUES ('$title','$description','$new_name_file','$tipo','$cot','$nombreImg','$destino','$estado','$demo_1','$demo_2','$punto_despacho','pendiente,'pendiente')";
-    echo $var;
+   echo 0;
   }
+      
+    } else {
+        echo 0;
+    }
+} else {
+    echo 0;
+}
+
+
+
  ?>
