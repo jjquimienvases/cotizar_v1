@@ -445,7 +445,7 @@ include 'modal_sede.php';
     
     function array_date(){
       var arrayInput = new Array();
-      var inputs_value = document.getElementByClassName('envases'),
+      var inputs_value = document.getElementsByClassName('envases'),
           nameValues = [].map.call(inputs_value,function(dataInput){
             arrayInput.push(dataInput.value);
           });
@@ -460,8 +460,6 @@ include 'modal_sede.php';
     }
 
     function send_ajax() {
-
-
         let user_id = $("#user_id").val();
         let user_rol = $("#user_rol").val();
         let cedula = $("#cedula").val();
