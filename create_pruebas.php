@@ -378,7 +378,7 @@ include 'modal_sede.php';
                 <input type="hidden" value="<?php echo $_SESSION['userid']; ?>" id="user_id" class="form-control" name="userId">
                    <input type="hidden" value="<?php echo $_SESSION['id_rol']; ?>" id="user_rol"  class="form-control">
                             <input type="hidden" value="" id="data_sede" name="data_sede" class="form-control">
-                <button data-loading-text="Guardando factura..." type="button" onclick="sede()" name="invoice_btn" value="" class="btn btn-success rounded-pill">FInalizar </button>
+                <button data-loading-text="Guardando factura..." type="button" onclick="array_date()" name="invoice_btn" value="" class="btn btn-success rounded-pill">FInalizar </button>
                 <!--<input id="guardando" data-loading-text="Guardando factura..." type="submit" name="invoice_btn" value="FINALIZAR" doiclicksito class="btn btn-success submit_btn invoice-save-btm" accesskey="g">-->
                 <!--<input id="guardando_call" data-loading-text="Guardando factura..." type="submit" name="invoice_btn" value="FINALIZAR" doiclicksito class="btn btn-success submit_btn invoice-save-btm" accesskey="g">-->
 
@@ -461,9 +461,7 @@ include 'modal_sede.php';
 
     function send_ajax() {
 
-array_date();
-        
-        return;
+
         let user_id = $("#user_id").val();
         let user_rol = $("#user_rol").val();
         let cedula = $("#cedula").val();
