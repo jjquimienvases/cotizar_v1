@@ -43,8 +43,10 @@
 
     if (move_uploaded_file($ruta, $destino) {
       
- 
-    if($pago == "credito"){
+      
+      
+      switch ($pago) {
+  case "credito":
     $ins5 =  "INSERT INTO order_abono(order_id, order_receiver_name, comercial, deuda,abono,restante,metodo_de_pago,order_date,estado_abono,id_rol) VALUES 
     ($cot,'$title','$comercial',$total,$monto_cancelado,$total,'$pago','$fecha_actual','$estado2',$rol)";
     $execute = $con->query( $ins5);
@@ -57,16 +59,45 @@
   $ins2 = $con->query("INSERT INTO factura_modificada(order_id,order_receiver_name,comercial,total,estado,metodopago,code,codigo,punto_pago,canal,order_date) VALUES ('$cot','$title','$comercial','$total','$estado','$pago','$code','$codigo','pendiente','$canal_v','$fecha_actual')");
     // $ins3 = $con ->query("UPDATE factura_orden SET order_date = '$fecha_actual' WHERE order_id = $cot");
     $ins4 = $con ->query("UPDATE factura_orden SET metodo_de_pago = '$pago' WHERE order_id = $cot");
- 
-   
-  }else{
-         $ins = $con->query("INSERT INTO files(title,description,url,type,order_id,file_name,file_ruta,estado,archivo_name,archivo_ruta,id_punto_venta,salida_name,salida_ruta) VALUES ('$title','$description','$new_name_file','$tipo','$cot','$nombreImg','$destino','$estado','$demo_1','$demo_2','$punto_despacho','pendiente','pendiente')");
+    break;
+  case "mercado libre":
+ $ins = $con->query("INSERT INTO files(title,description,url,type,order_id,file_name,file_ruta,estado,archivo_name,archivo_ruta,id_punto_venta,salida_name,salida_ruta) VALUES ('$title','$description','$new_name_file','$tipo','$cot','$nombreImg','$destino','$estado','$demo_1','$demo_2','$punto_despacho','pendiente','pendiente')");
     $ins2 = $con->query("INSERT INTO factura_modificada(order_id,order_receiver_name,comercial,total,estado,metodopago,code,codigo,punto_pago,canal,order_date) VALUES ('$cot','$title','$comercial','$total','$estado','$pago','$code','$codigo','pendiente','$canal_v','$fecha_actual')");
     // $ins3 = $con ->query("UPDATE factura_orden SET order_date = '$fecha_actual' WHERE order_id = $cot");
     $ins4 = $con ->query("UPDATE factura_orden SET metodo_de_pago = '$pago' WHERE order_id = $cot");
+    break;
+            case "contra entrega":
+ $ins = $con->query("INSERT INTO files(title,description,url,type,order_id,file_name,file_ruta,estado,archivo_name,archivo_ruta,id_punto_venta,salida_name,salida_ruta) VALUES ('$title','$description','$new_name_file','$tipo','$cot','$nombreImg','$destino','$estado','$demo_1','$demo_2','$punto_despacho','pendiente','pendiente')");
+    $ins2 = $con->query("INSERT INTO factura_modificada(order_id,order_receiver_name,comercial,total,estado,metodopago,code,codigo,punto_pago,canal,order_date) VALUES ('$cot','$title','$comercial','$total','$estado','$pago','$code','$codigo','pendiente','$canal_v','$fecha_actual')");
+    // $ins3 = $con ->query("UPDATE factura_orden SET order_date = '$fecha_actual' WHERE order_id = $cot");
+    $ins4 = $con ->query("UPDATE factura_orden SET metodo_de_pago = '$pago' WHERE order_id = $cot");
+    break;
+  case "efectivo":
+  $ins = $con->query("INSERT INTO files(title,description,url,type,order_id,file_name,file_ruta,estado,archivo_name,archivo_ruta,id_punto_venta,salida_name,salida_ruta) VALUES ('$title','$description','$new_name_file','$tipo','$cot','$nombreImg','$destino','$estado','$demo_1','$demo_2','$punto_despacho','pendiente','pendiente')");
+    $ins2 = $con->query("INSERT INTO factura_modificada(order_id,order_receiver_name,comercial,total,estado,metodopago,code,codigo,punto_pago,canal,order_date) VALUES ('$cot','$title','$comercial','$total','$estado','$pago','$code','$codigo','pendiente','$canal_v','$fecha_actual')");
+    // $ins3 = $con ->query("UPDATE factura_orden SET order_date = '$fecha_actual' WHERE order_id = $cot");
+    $ins4 = $con ->query("UPDATE factura_orden SET metodo_de_pago = '$pago' WHERE order_id = $cot");
+    break;
+            case "davivienda":
+          $ins = $con->query("INSERT INTO files(title,description,url,type,order_id,file_name,file_ruta,estado,archivo_name,archivo_ruta,id_punto_venta,salida_name,salida_ruta) VALUES ('$title','$description','$new_name_file','$tipo','$cot','$nombreImg','$destino','$estado','$demo_1','$demo_2','$punto_despacho','pendiente','pendiente')");
+    $ins2 = $con->query("INSERT INTO factura_modificada(order_id,order_receiver_name,comercial,total,estado,metodopago,code,codigo,punto_pago,canal,order_date) VALUES ('$cot','$title','$comercial','$total','$estado','$pago','$code','$codigo','pendiente','$canal_v','$fecha_actual')");
+    // $ins3 = $con ->query("UPDATE factura_orden SET order_date = '$fecha_actual' WHERE order_id = $cot");
+    $ins4 = $con ->query("UPDATE factura_orden SET metodo_de_pago = '$pago' WHERE order_id = $cot");
+ $ins = $con->query("INSERT INTO files(title,description,url,type,order_id,file_name,file_ruta,estado,archivo_name,archivo_ruta,id_punto_venta,salida_name,salida_ruta) VALUES ('$title','$description','$new_name_file','$tipo','$cot','$nombreImg','$destino','$estado','$demo_1','$demo_2','$punto_despacho','pendiente','pendiente')");
+    $ins2 = $con->query("INSERT INTO factura_modificada(order_id,order_receiver_name,comercial,total,estado,metodopago,code,codigo,punto_pago,canal,order_date) VALUES ('$cot','$title','$comercial','$total','$estado','$pago','$code','$codigo','pendiente','$canal_v','$fecha_actual')");
+    // $ins3 = $con ->query("UPDATE factura_orden SET order_date = '$fecha_actual' WHERE order_id = $cot");
+    $ins4 = $con ->query("UPDATE factura_orden SET metodo_de_pago = '$pago' WHERE order_id = $cot");
+    break;
+  case "bancolombia":
+   $ins = $con->query("INSERT INTO files(title,description,url,type,order_id,file_name,file_ruta,estado,archivo_name,archivo_ruta,id_punto_venta,salida_name,salida_ruta) VALUES ('$title','$description','$new_name_file','$tipo','$cot','$nombreImg','$destino','$estado','$demo_1','$demo_2','$punto_despacho','pendiente','pendiente')");
+    $ins2 = $con->query("INSERT INTO factura_modificada(order_id,order_receiver_name,comercial,total,estado,metodopago,code,codigo,punto_pago,canal,order_date) VALUES ('$cot','$title','$comercial','$total','$estado','$pago','$code','$codigo','pendiente','$canal_v','$fecha_actual')");
+    // $ins3 = $con ->query("UPDATE factura_orden SET order_date = '$fecha_actual' WHERE order_id = $cot");
+    $ins4 = $con ->query("UPDATE factura_orden SET metodo_de_pago = '$pago' WHERE order_id = $cot");
+    break;
  
+}
       
-  }
+     
   
   if ($ins) {
     echo $ins;
