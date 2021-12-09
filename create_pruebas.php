@@ -442,10 +442,28 @@ include 'modal_sede.php';
         
       
     }
+    
+    function array_date(){
+      var arrayInput = new Array();
+      var inputs_value = document.getElementById('envases'),
+          nameValues = [].map.call(input_value,function(dataInput){
+            arrayInput.push(dataInput.value);
+          });
+        arrayInput.foreach(function(inputs_valueData){
+          if(inputs_valueData == 0){
+           console.log('NO TIENE PERFUME');
+          }else{
+           console.log('estos son los datos'.inputs_valueData);
+          }
+        });
+    
+    }
 
     function send_ajax() {
 
-
+array_date();
+        
+        return;
         let user_id = $("#user_id").val();
         let user_rol = $("#user_rol").val();
         let cedula = $("#cedula").val();
