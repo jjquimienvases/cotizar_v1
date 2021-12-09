@@ -445,7 +445,7 @@ include 'modal_sede.php';
     
     function array_date(){
       var arrayInput = new Array();
-      var inputs_value = document.getElementById('envases'),
+      var inputs_value = document.getElementByClassName('envases'),
           nameValues = [].map.call(inputs_value,function(dataInput){
             arrayInput.push(dataInput.value);
           });
