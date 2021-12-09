@@ -17,7 +17,7 @@ console.log(items)
     },
   })
   .done(function (d) {
-    console.log(d.resultado);
+    console.log(d.resultado.contratipo);
   // let padre = $("#izquierda").parent().parent().parent();
     //padre.find("[name^=item_name]").val(d.resultado.contratipo);
      //padre.find("[name^=item_code]").val(d.resultado.id);
