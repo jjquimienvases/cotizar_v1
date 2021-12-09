@@ -881,7 +881,7 @@ $(document).ready(function() {
                             name: "Envase[]",
                             type: "hidden",
                             value: 0,
-                            class:"Envase",
+                            className:"Envase",
                         },
                         style: { width: "150px" },
                         id: "Envase_" + count,
