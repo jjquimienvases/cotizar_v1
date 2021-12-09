@@ -64,6 +64,7 @@ $gramosNuevos_demo = [];
 
 
 
+
 //items 
 //------ Productos-----//
 $codigo = (isset($_POST['productCode'])) ? $_POST['productCode'] : "";
@@ -116,13 +117,21 @@ foreach ($sql_c as $data_c) {
     $id_c = $data_c['id'];
 }
 
-
-//consulta_ agregar cotizacion
-
-
 $execute = "INSERT INTO `factura_orden`(user_id, order_receiver_name, tel_client, direccion, ciudad, order_receiver_address, order_total_before_tax, order_total_tax, order_tax_per, order_total_after_tax, order_amount_paid, order_total_amount_due, note, metodopago,codigof, cedula, email, estado,metodo_de_pago,new_date)
            VALUES ($usuario,'$cliente',$telefono,'$direccion','$ciudad','$comercial',$subtotal,$taxA,$taxR,$totalAft,$amountP,$amountD,'$nota','$metodo',0,'$cedula','$email','$estado','$estado','none')";
-$sql_add = $con->query($execute);
+
+//consulta_ agregar cotizacion
+for ($i = 0; $i < count($codigo); $i++) {
+  $env = $envase[$i];
+   if($env == 0 || $env == NULL || empty($env)){
+   echo "No_envase";
+   }else{
+    $sql_add = $con->query($execute);
+   }
+}
+
+
+
 
 $id_ =  mysqli_insert_id($con);
 
