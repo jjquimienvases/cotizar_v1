@@ -16,7 +16,7 @@
   $ruta=$_FILES['imagen']['tmp_name'];
   $destino="./imagenes/".$nombreImg;
   //insertar los datos en la tabla de mostrador
-
+ if (move_uploaded_file($ruta, $destino)) {
   $estado = "pendiente";
  
     $ins = $con->query("INSERT INTO call_punto_de_venta(order_id,cliente,comercial,monto,estado,notas,canal,bodega,ruta,imagen)
@@ -28,4 +28,7 @@
   }else{
     echo "La cotizacion no se agrego correctamente";
   }
+ }else{
+ echo 0;
+ }
  ?>
