@@ -41,7 +41,7 @@
 
 
 
-    if (move_uploaded_file($ruta, $destino) {
+    if (move_uploaded_file($ruta, $destino)) {
       
       
       
