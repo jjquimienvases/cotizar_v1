@@ -22,9 +22,12 @@ console.log(items)
     //padre.find("[name^=item_name]").val(d.resultado.contratipo);
      //padre.find("[name^=item_code]").val(d.resultado.id);
       //padre.find("[name^=gramos_actuales]").val(d.resultado.stock);
-    $("#item_name").val(d.resultado.contratipo);
-     $("#item_code").val(d.resultado.id);
-     $("#gramos_actuales").val(d.resultado.stock);
+    document.getElementById("item_name").value = d.resultado.contratipo;
+    document.getElementById("item_code").value = d.resultado.id;
+    document.getElementById("gramos_actuales").value = d.resultado.stock;
+    //$("#item_name").val(d.resultado.contratipo);
+     //$("#item_code").val(d.resultado.id);
+     //$("#gramos_actuales").val(d.resultado.stock);
 
     })
     .fail(function (e) {});
