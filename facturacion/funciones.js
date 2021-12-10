@@ -146,8 +146,8 @@ function abrir_data() {
 }
 
 function update_factura() {
-  let order_id = $("#order_id_").val();
-  let id = $("#id_").val();
+  let order_id_ = $("#order_id_").val();
+  let id_ = $("#id_").val();
 
 
   Swal.fire({
@@ -162,7 +162,10 @@ function update_factura() {
       $.ajax({
         type: "POST",
         url: "ajax/actualizar_id.php",
-        data: datos,
+        data: {
+          order_id : order_id_,
+          id : id_,
+        },
         success: function (r) {
           console.log(r);
           if (r != 0 && !isNaN(r)) { //SI ES DISTINTO A 0 Y ES UN NUMERO
