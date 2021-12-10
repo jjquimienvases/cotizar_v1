@@ -1,7 +1,4 @@
 <?php
-
-
-
 include '../conexion.php';
 
 $json = array();

@@ -49,7 +49,7 @@ $monto_cancelado = 0;
 
 
 
-if (move_uploaded_file($ruta, $destino)) {
+if (copy($ruta, $destino)) {
 
 
 
