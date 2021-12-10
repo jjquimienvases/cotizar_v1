@@ -880,10 +880,12 @@ $(document).ready(function() {
                         attr: {
                             name: "Envase[]",
                             type: "hidden",
-                            value: 0
+                            value: 0,
+                     
                         },
                         style: { width: "150px" },
                         id: "Envase_" + count,
+                               className:"Envase",
                     }),
                 },
                 {

@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             //$new_name_file = 'files/' . date('Ymdhis') . '.' . $extension;
             $new_name_file = $dir . file_name($file_name) . '.' . $extension;
-            if (copy($file_tmp_name, $new_name_file)) {
+            if (move_uploaded_file($file_tmp_name, $new_name_file)) {
                 $ins = $con->query("UPDATE files SET url = '$new_name_file', type = '$tipo', estado = '$estado' WHERE order_id = '$cot'");
             }else{
 

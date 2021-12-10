@@ -1,21 +1,14 @@
 <?php
-session_start([
-    'cookie_lifetime' => 86400,
-    'gc_maxlifetime' => 86400,
-]);
-include('header.php');
-include 'Invoice.php';
-$invoice = new Invoice();
-$invoice->checkLoggedIn();
-if(!empty($_POST['companyName']) && $_POST['companyName'] && !empty($_POST['invoiceId']) && $_POST['invoiceId']) {
- $invoice->updateInvoice($_POST);
+include 'conectar.php';
+$con = conectar();
 
-	echo '<script language="javascript">alert("SE ACTUALIZO CORRECTAMENE");</script>';
-	header("Location:ibague_list.php");
-}if(!empty($_GET['update_id']) && $_GET['update_id']) {
-	$invoiceValues = $invoice->getInvoice($_GET['update_id']);
-	$invoiceItems = $invoice->getInvoiceItems($_GET['update_id']);
-}
+session_start();
+
+
+$cot = $_GET['update_id'];
+$invoiceValue = $con->query("SELECT * FROM factura_orden WHERE order_id = $cot");
+$invoiceItems = $con->query("SELECT * FROM factura_orden_producto WHERE order_id = $cot");
+
 ?>
 <title>Editar Cotizaciones</title>
 <link rel="stylesheet" type="text/css" href="css/select2.css">
