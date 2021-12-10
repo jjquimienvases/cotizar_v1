@@ -6,10 +6,16 @@
     <div class="uk-modal-dialog uk-modal-body">
         <h2 class="uk-modal-title">Actualizar NUmero de Factura</h2>
 
-  <div class="row">
-      <div class="col-auto"><input type="number" class="form-control rounded-pill" id="id_" placeholder="Escribe el numero de factura"></div>
-      <div class="col-auto"><input type="number" class="form-control rounded-pill" id="order_id_"placeholder="Escribe el numero de cotizacion"></div>
-  </div>
+        <div class="row">
+            <div class="col-auto">
+                <label for="">Escribir numero de factura</label>
+                <input type="number" class="form-control rounded-pill" id="id_" placeholder="Escribe el numero de factura">
+            </div>
+            <div class="col-auto">
+                <label for="">Escribir numero de cotizacion o #1</label>
+                <input type="number" class="form-control rounded-pill" id="order_id_" placeholder="Escribe el numero de cotizacion">
+            </div>
+        </div>
 
         <p class="uk-text-right">
             <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
