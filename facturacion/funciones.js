@@ -146,8 +146,8 @@ function abrir_data() {
 }
 
 function update_factura() {
-  let order_id = $("#").val();
-  let id = $("#").val();
+  let order_id = $("#order_id_").val();
+  let id = $("#id_").val();
 
 
   Swal.fire({

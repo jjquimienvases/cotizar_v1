@@ -7,8 +7,8 @@
         <h2 class="uk-modal-title">Actualizar NUmero de Factura</h2>
 
   <div class="row">
-      <div class="col-auto"><input type="number" class="form-control rounded-pill" placeholder="Escribe el numero de factura"></div>
-      <div class="col-auto"><input type="number" class="form-control rounded-pill" placeholder="Escribe el numero de cotizacion"></div>
+      <div class="col-auto"><input type="number" class="form-control rounded-pill" id="id_" placeholder="Escribe el numero de factura"></div>
+      <div class="col-auto"><input type="number" class="form-control rounded-pill" id="order_id_"placeholder="Escribe el numero de cotizacion"></div>
   </div>
 
         <p class="uk-text-right">
