@@ -1,6 +1,7 @@
 <?php
 include('conexion.php');
 
+$conexion = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
 $tmp = array();
 $res = array();
 
@@ -8,10 +9,10 @@ $status3 = "s_factura";
 $status = "pendiente";
 $status2 = "alistamiento";
 
-$sel = $con->query("SELECT * FROM files WHERE estado = '$status' OR estado = '$status2' OR estado = '$status3' ORDER BY order_date DESC");
+$sel = $conexion->query("SELECT * FROM files WHERE estado = '$status' OR estado = '$status2' OR estado = '$status3' ORDER BY order_date DESC");
 
 
-$seleccion = $con->query("SELECT count(*) AS total FROM files WHERE estado = '$status' OR estado = '$status2' OR estado = '$status3'");
+$seleccion = $conexion->query("SELECT count(*) AS total FROM files WHERE estado = '$status' OR estado = '$status2' OR estado = '$status3'");
 $data = mysqli_fetch_assoc($seleccion);
 $cuenta = $data['total'];
 
@@ -29,7 +30,7 @@ $resultado = "";
 if (isset($_POST['buscar_cotizacion'])) {
     $id = $_POST['producto'];
     $sql = "SELECT * FROM factura_orden WHERE order_id='$id'";
-    $r = $con->query($sql);
+    $r = $conexion->query($sql);
     if ($o = $r->fetch_object()) {
         $resultado = $o;
     }
@@ -38,7 +39,7 @@ if (isset($_POST['buscar_cotizacion'])) {
 if (isset($_POST['btn_buscar'])) {
     $buscar_text = $_POST['buscar'];
      $sql_select = "SELECT * FROM files WHERE order_id = $buscar_text OR order_date LIKE '%$buscar_text%' AND e  stado = 'alistamiento'";
-    $r = $con->query($sql_select);
+    $r = $conexion->query($sql_select);
     if ($o = $r->fetch_object()) {
         $resultado = $o;
     }

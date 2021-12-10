@@ -73,7 +73,7 @@ if ($execute) {
 		$ciudad = $datas['ciudad'];
 		$telefono = $datas['tel_client'];
 		$beforeT = $datas['order_total_before_tax'];
-		$notes = $datas['notes'];
+		$notes = $datas['note'];
 	}
 } else {
 	print_r($sql_data);

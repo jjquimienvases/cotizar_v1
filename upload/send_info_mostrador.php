@@ -18,10 +18,10 @@
   //insertar los datos en la tabla de mostrador
 
   $estado = "pendiente";
-  if(copy($ruta, $destino)){
+ 
     $ins = $con->query("INSERT INTO call_punto_de_venta(order_id,cliente,comercial,monto,estado,notas,canal,bodega,ruta,imagen)
-     VALUES ('$cot','$cliente','$comercial','$monto','$estado','$nota','$canal_v','$bodega','$destino','$nombreImg')");
-  }
+     VALUES ($cot,'$cliente','$comercial',$monto,'$estado','$nota','$canal_v','$bodega','$destino','$nombreImg')");
+  
 
   if ($ins) {
     echo "Cotizacion agregada a pendientes mostrador :D, me encantas bebe";

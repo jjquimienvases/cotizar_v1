@@ -2,30 +2,40 @@ let code_tot = "";
 let usuario = "";
 
 
-$("#buscar_item").on("keyup", function () {
+
+function consultar_data() {
+  let items =  $("#buscar_item").val();
+
+console.log(items)
   $.ajax({
-    url: "methods/conexiones.php",
+    url: "./methods/conexiones.php",
     type: "POST",
     dataType: "json",
     data: {
       key: "Q1",
-      item: $(this).val(),
+      item: items,
     },
   })
   .done(function (d) {
-    let padre = $("#izquierda").parent().parent().parent();
-    padre.find("[name^=item_name]").val(d.resultado.contratipo);
-      padre.find("[name^=item_code]").val(d.resultado.id);
-      padre.find("[name^=gramos_actuales]").val(d.resultado.stock);
+    console.log(d.resultado);
+  // let padre = $("#izquierda").parent().parent().parent();
+    //padre.find("[name^=item_name]").val(d.resultado.contratipo);
+     //padre.find("[name^=item_code]").val(d.resultado.id);
+      //padre.find("[name^=gramos_actuales]").val(d.resultado.stock);
+    $("#item_name").val(d.resultado.contratipo);
+     $("#item_code").val(d.resultado.id);
+     $("#gramos_actuales").val(d.resultado.stock);
+
     })
     .fail(function (e) {});
-  });
+  };
+
   
   //ajax para mostrar informacion
   function mostrarData(){
     var data = 0;
     $.ajax({
-      url: "methods/get_information.php",
+      url: "./methods/get_information.php",
       type: "POST",
       dataType: "json",
       data: {

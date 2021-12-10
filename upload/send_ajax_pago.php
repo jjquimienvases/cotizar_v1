@@ -22,6 +22,18 @@ $demo_2 = "";
 $canal_v = $_POST['canal_v'];
 $fecha_actual = date('Y-m-d H:m:s');
 
+  $new_name_file = "";
+  $tipo = "";
+  $comercial = $_POST['vendedor'];
+  $total = $_POST['monto'];
+  $pago = $_POST['pago'];
+  $code = "";
+  $codigo = "";
+  $demo_1 = "sR";
+  $demo_2 = "Ss";
+  $canal_v = $_POST['canal_v'];
+  $fecha_actual = date('Y-m-d H:m:s');
+
 
 //insert de la foto
 $nombreImg = $_FILES['imagen']['name'];
@@ -32,6 +44,7 @@ $estado2 = "pendiente";
 $monto_cancelado = 0;
 
 
+<<<<<<< HEAD
 if ($pago != "credito") {
    
 
@@ -39,6 +52,13 @@ print_r("INSERT INTO files(title,description,url,type,order_id,file_name,file_ru
   return;
   $ins = $con->query("INSERT INTO files(title,description,url,type,order_id,file_name,file_ruta,estado,archivo_name,archivo_ruta,id_punto_venta) VALUES ('$title','$description','$new_name_file','$tipo','$cot','$nombreImg','$destino','$estado','$demo_1','$demo_2','$punto_despacho')");
   $ins2 = $con->query("INSERT INTO factura_modificada(order_id,order_receiver_name,comercial,total,estado,metodopago,code,codigo,canal,order_date) VALUES ('$cot','$title','$comercial','$total','$estado','$pago','$code','$codigo','$canal_v','$fecha_actual')");
+=======
+ 
+    if($pago == "credito"){
+    $ins5 =  "INSERT INTO order_abono(order_id, order_receiver_name, comercial, deuda,abono,restante,metodo_de_pago,order_date,estado_abono,id_rol) VALUES 
+    ($cot,'$title','$comercial',$total,$monto_cancelado,$total,'$pago','$fecha_actual','$estado2',$rol)";
+    $execute = $con->query( $ins5);
+>>>>>>> 2defc7c001b027a025f91cd3a7f4dc28adc4a6f2
   
 
   return;
@@ -51,6 +71,7 @@ print_r("INSERT INTO files(title,description,url,type,order_id,file_name,file_ru
 
   $ins6 = "INSERT INTO file_abono (order_id,order_date, ruta, archivo, metodo_de_pago,nuevo_abono) VALUES 
    ($cot,'$fecha','$destino','$nombreImg','$pago',$monto_cancelado)";
+<<<<<<< HEAD
   $execute2 = $con->query($ins6);
 
   $ins = ("INSERT INTO files(title,description,url,type,order_id,file_name,file_ruta,estado,archivo_name,archivo_ruta,id_punto_venta,salida_name,salida_ruta,order_date) 
@@ -69,3 +90,32 @@ if ($ins) {
 } else {
   echo 0;
 }
+=======
+   $execute2 = $con->query($ins6);
+   
+      $ins = $con->query("INSERT INTO files(title,description,url,type,order_id,file_name,file_ruta,estado,archivo_name,archivo_ruta,id_punto_venta,salida_name,salida_ruta) VALUES ('$title','$description','$new_name_file','$tipo','$cot','$nombreImg','$destino','$estado','$demo_1','$demo_2','$punto_despacho','pendiente','pendiente')");
+  $ins2 = $con->query("INSERT INTO factura_modificada(order_id,order_receiver_name,comercial,total,estado,metodopago,code,codigo,punto_pago,canal,order_date) VALUES ('$cot','$title','$comercial','$total','$estado','$pago','$code','$codigo','pendiente','$canal_v','$fecha_actual')");
+    // $ins3 = $con ->query("UPDATE factura_orden SET order_date = '$fecha_actual' WHERE order_id = $cot");
+    $ins4 = $con ->query("UPDATE factura_orden SET metodo_de_pago = '$pago' WHERE order_id = $cot");
+ 
+   
+  }else{
+         $ins = $con->query("INSERT INTO files(title,description,url,type,order_id,file_name,file_ruta,estado,archivo_name,archivo_ruta,id_punto_venta,salida_name,salida_ruta) VALUES ('$title','$description','$new_name_file','$tipo','$cot','$nombreImg','$destino','$estado','$demo_1','$demo_2','$punto_despacho','pendiente','pendiente')");
+    $ins2 = $con->query("INSERT INTO factura_modificada(order_id,order_receiver_name,comercial,total,estado,metodopago,code,codigo,punto_pago,canal,order_date) VALUES ('$cot','$title','$comercial','$total','$estado','$pago','$code','$codigo','pendiente','$canal_v','$fecha_actual')");
+    // $ins3 = $con ->query("UPDATE factura_orden SET order_date = '$fecha_actual' WHERE order_id = $cot");
+    $ins4 = $con ->query("UPDATE factura_orden SET metodo_de_pago = '$pago' WHERE order_id = $cot");
+ 
+      
+  }
+  
+  
+  
+
+  if ($ins) {
+    echo $ins;
+  }else{
+    $var = "INSERT INTO files(title,description,url,type,order_id,file_name,file_ruta,estado,archivo_name,archivo_ruta,id_punto_venta,salida_name,salida_ruta) VALUES ('$title','$description','$new_name_file','$tipo','$cot','$nombreImg','$destino','$estado','$demo_1','$demo_2','$punto_despacho','pendiente,'pendiente')";
+    echo $var;
+  }
+ ?>
+>>>>>>> 2defc7c001b027a025f91cd3a7f4dc28adc4a6f2

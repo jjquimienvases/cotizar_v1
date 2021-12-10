@@ -14,6 +14,7 @@ let resultt_i = "";
 const numberFormat2 = new Intl.NumberFormat('en-US', options2);
 
 function limpiar_data() {
+    /* $("#info").empty() */
     document.getElementById("info").innerHTML = "";
     document.getElementById("stock_actual").innerHTML = "";
     document.getElementById("unidad_empaque").innerHTML = "";
@@ -25,8 +26,8 @@ function limpiar_table() {
 }
 
 function clear_table() {
-    document.getElementById("info_orders").innerHTML = "";
-    document.getElementById("info_facturas").innerHTML = "";
+  //  document.getElementById("info_orders").innerHTML = "";
+   // document.getElementById("info_facturas").innerHTML = "";
 }
 
 function clear_table_modal() {
@@ -63,14 +64,14 @@ function deletedata(data_item, data_order) {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
             $.ajax({
-                url: "../ajax/ajax_delete_item.php",
-                type: "POST",
-                dataType: "json",
-                data: {
-                    id: data_item,
-                    order: data_order,
-                },
-            })
+                    url: "../ajax/ajax_delete_item.php",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        id: data_item,
+                        order: data_order,
+                    },
+                })
                 .done(function (d) {
                     Swal.fire({
                         position: 'top-end',
@@ -109,14 +110,14 @@ function generar_orders() {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
             $.ajax({
-                url: "../ajax/ajax_send_orders.php",
-                type: "POST",
-                dataType: "json",
-                data: {
-                    id: data_,
+                    url: "../ajax/ajax_send_orders.php",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        id: data_,
 
-                },
-            })
+                    },
+                })
                 .done(function (d) {
                     getOrderList()
                     clear_form()
@@ -150,13 +151,13 @@ function generar_orders() {
 function items_table() {
     limpiar_table()
     $.ajax({
-        url: "../ajax/ajax_get_items_table.php",
-        type: "POST",
-        dataType: "json",
-        data: {
-            key: "Q1",
-        },
-    })
+            url: "../ajax/ajax_get_items_table.php",
+            type: "POST",
+            dataType: "json",
+            data: {
+                key: "Q1",
+            },
+        })
         .done(function (d) {
             /*     console.log(d); */
             d.retornolosdatos.forEach((item) => {
@@ -206,7 +207,7 @@ function items_table() {
             });
 
         })
-        .fail(function (e) { });
+        .fail(function (e) {});
 }
 
 $(document).ready(function () {
@@ -227,14 +228,14 @@ $(document).ready(function () {
         /*       let id_item  = document.getElementById("buscar_items"); */
         let id_item = value;
         $.ajax({
-            url: "../ajax/ajax_get_items.php",
-            type: "POST",
-            dataType: "json",
-            data: {
-                key: "Q1",
-                id: id_item,
-            },
-        })
+                url: "../ajax/ajax_get_items.php",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    key: "Q1",
+                    id: id_item,
+                },
+            })
             .done(function (d) {
                 /*     console.log(d); */
                 d.retornolosdatos.forEach((item) => {
@@ -365,15 +366,15 @@ function print_information(datas) {
     let id_item = value;
     let id_proveedor = datas;
     $.ajax({
-        url: "../ajax/ajax_print_info.php",
-        type: "POST",
-        dataType: "json",
-        data: {
-            key: "Q1",
-            id_proveedor: id_proveedor,
-            id: id_item,
-        },
-    })
+            url: "../ajax/ajax_print_info.php",
+            type: "POST",
+            dataType: "json",
+            data: {
+                key: "Q1",
+                id_proveedor: id_proveedor,
+                id: id_item,
+            },
+        })
         .done(function (d) {
             /*     console.log(d); */
             d.retornolosdatos.forEach((item) => {
@@ -394,7 +395,7 @@ function print_information(datas) {
             });
 
         })
-        .fail(function (e) { });
+        .fail(function (e) {});
 }
 
 
@@ -413,15 +414,15 @@ function calcularTotal() {
 
 function getOrderList() { //ESTO TRAE LA INFORMACION DEL LAS ORDENES Y LAS PINTA
     $.ajax({
-        url: "../ajax/ajax_get_order_shop.php",
-        type: "POST",
-        dataType: "json",
-        data: {
-            key: "Q1"
-        },
-    })
+            url: "../ajax/ajax_get_order_shop.php",
+            type: "POST",
+            dataType: "json",
+            data: {
+                key: "Q1"
+            },
+        })
         .done(function (d) {
-            clear_table()
+           setTimeout(clear_table(),6000)
             getProviersOrders()
             getProductsOrders()
             /*     console.log(d); */
@@ -436,7 +437,7 @@ function getOrderList() { //ESTO TRAE LA INFORMACION DEL LAS ORDENES Y LAS PINTA
                 let boton_pdf = '<li class="botones_orders">| <a href="../print_order_value.php?order=' + order_id + '"><i class="fas fa-file-invoice fa-1x print_pdf mb-2"></i></a></li>';
                 let boton_aprobar = '<li class="botones_orders" data-bs-toggle="modal" data-bs-target="#modal_update_info" onclick="getInfoUser(' + order_id + ')">| <i class="fas fa-check-circle fa-1x aprobar mb-2" ></i></li>';
                 var capa = document.getElementById("info_orders");
-
+         
 
                 var ul = document.createElement("ul");
                 var li_estado = document.createElement("li");
@@ -463,7 +464,7 @@ function getOrderList() { //ESTO TRAE LA INFORMACION DEL LAS ORDENES Y LAS PINTA
 
                 //capa imprime la informacion
                 $(".estado_").css("color", "#109911");
-                if (estado == "pendiente") {
+                if(estado == "pendiente"){ 
                     capa.appendChild(ul);
                     capa.appendChild(li_fecha);
                     capa.appendChild(li_order);
@@ -475,8 +476,8 @@ function getOrderList() { //ESTO TRAE LA INFORMACION DEL LAS ORDENES Y LAS PINTA
                     $("#info_orders").append(boton_aprobar);
                     capa.appendChild(hr);
                     $(".estado_").css("color", "#991005");
-
-                } else {
+           
+                }else{
                     capa.appendChild(ul);
                     capa.appendChild(li_fecha);
                     capa.appendChild(li_order);
@@ -484,14 +485,14 @@ function getOrderList() { //ESTO TRAE LA INFORMACION DEL LAS ORDENES Y LAS PINTA
                     capa.appendChild(li_monto);
                     capa.appendChild(li_estado);
                     $("#info_orders").append(boton_pdf);
-                    capa.appendChild(hr);
-
+                    capa.appendChild(hr); 
+                
                 }
-
+               
             });
 
         })
-        .fail(function (e) { });
+        .fail(function (e) {});
 
 }
 
@@ -501,16 +502,16 @@ function getOrderList_filter() { //ESTO TRAE LA INFORMACION DEL LAS ORDENES Y LA
     let datas = $("#input_search_orders").val();
 
     $.ajax({
-        url: "../ajax/ajax_get_order_shop_filter.php",
-        type: "POST",
-        dataType: "json",
-        data: {
-            key: "Q1",
-            dato: datas,
-        },
-    })
+            url: "../ajax/ajax_get_order_shop_filter.php",
+            type: "POST",
+            dataType: "json",
+            data: {
+                key: "Q1",
+                dato: datas,
+            },
+        })
         .done(function (d) {
-            clear_table()
+            setTimeout(clear_table(),2000)
             /*     console.log(d); */
             d.retornolosdatos.forEach((item) => {
 
@@ -537,7 +538,7 @@ function getOrderList_filter() { //ESTO TRAE LA INFORMACION DEL LAS ORDENES Y LA
                 var li_fecha = document.createElement("li");
                 var hr = document.createElement("hr");
                 //GENERANDO LA INFORMACION DE LOS proveedores
-
+    
                 estado_orden = estado;
                 li_estado.name = "estado[]";
                 li_estado.className = "estado_";
@@ -547,48 +548,48 @@ function getOrderList_filter() { //ESTO TRAE LA INFORMACION DEL LAS ORDENES Y LA
                 li_proveedor.innerHTML = "Proveedor: ".bold() + proveedor;
                 li_monto.innerHTML = "Total: ".bold() + numberFormat2.format(monto);
                 li_fecha.innerHTML = "Fecha: ".bold() + fecha;
-                //capa imprime la informacion
-                $(".estado_").css("color", "#109911");
-                if (estado == "pendiente") {
-                    capa.appendChild(ul);
-                    capa.appendChild(li_fecha);
-                    capa.appendChild(li_order);
-                    capa.appendChild(li_proveedor);
-                    capa.appendChild(li_monto);
-                    capa.appendChild(li_estado);
-                    $("#info_orders").append(boton_edit);
-                    $("#info_orders").append(boton_pdf);
-                    $("#info_orders").append(boton_aprobar);
-                    capa.appendChild(hr);
-                    $(".estado_").css("color", "#991005");
-
-                } else {
-                    capa.appendChild(ul);
-                    capa.appendChild(li_fecha);
-                    capa.appendChild(li_order);
-                    capa.appendChild(li_proveedor);
-                    capa.appendChild(li_monto);
-                    capa.appendChild(li_estado);
-                    $("#info_orders").append(boton_pdf);
-                    capa.appendChild(hr);
-
-                }
+            //capa imprime la informacion
+            $(".estado_").css("color", "#109911");
+            if(estado == "pendiente"){ 
+                capa.appendChild(ul);
+                capa.appendChild(li_fecha);
+                capa.appendChild(li_order);
+                capa.appendChild(li_proveedor);
+                capa.appendChild(li_monto);
+                capa.appendChild(li_estado);
+                $("#info_orders").append(boton_edit);
+                $("#info_orders").append(boton_pdf);
+                $("#info_orders").append(boton_aprobar);
+                capa.appendChild(hr);
+                $(".estado_").css("color", "#991005");
+       
+            }else{
+                capa.appendChild(ul);
+                capa.appendChild(li_fecha);
+                capa.appendChild(li_order);
+                capa.appendChild(li_proveedor);
+                capa.appendChild(li_monto);
+                capa.appendChild(li_estado);
+                $("#info_orders").append(boton_pdf);
+                capa.appendChild(hr); 
+            
+            }
             });
 
         })
-        .fail(function (e) { });
+        .fail(function (e) {});
 
 }
 //OBTENER Y PINTAR PROVEEDORES EN ORDERS
 function getProviersOrders() { //ESTO TRAE LA INFORMACION de los proveedores
     $.ajax({
-        url: "../ajax/ajax_get_providers.php",
-        type: "POST",
-        dataType: "json",
-        data: {
-            key: "Q1",
-        },
-    })
+            url: "../ajax/ajax_get_providers.php",
+            type: "POST",
+            dataType: "json",
+            data: {
+                key: "Q1",
+            },
+        })
         .done(function (d) {
             clear_table_provider_order()
             /*     console.log(d); */
@@ -607,8 +608,8 @@ function getProviersOrders() { //ESTO TRAE LA INFORMACION de los proveedores
                 var li_telefono = document.createElement("li");
                 var hr = document.createElement("hr");
                 let new_compania = compania;
-                let paramentroFinal = id_compania + "," + "'" + compania + "'";
-                /*  let boton_generate = "<button class='btn btn-primary mt-2' data-bs-toggle='modal' data-bs-target='#exampleModal_create_order_by_provider' onclick='get_data_items_modal_provider("+id_compania+","+compania+")' id='generate_order_item'><i class='far fa-plus-square'></i></button>"; */
+               let  paramentroFinal=id_compania+","+"'"+compania+"'";
+               /*  let boton_generate = "<button class='btn btn-primary mt-2' data-bs-toggle='modal' data-bs-target='#exampleModal_create_order_by_provider' onclick='get_data_items_modal_provider("+id_compania+","+compania+")' id='generate_order_item'><i class='far fa-plus-square'></i></button>"; */
                 let boton_generate = '<button class="btn btn-danger mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal_create_order_by_provider" onclick="get_data_items_modal_provider(' + paramentroFinal + ')" id="generate_order_item"><i class="far fa-plus-square"></i></button>';
 
                 //GENERANDO LA INFORMACION DE LOS proveedores
@@ -629,7 +630,7 @@ function getProviersOrders() { //ESTO TRAE LA INFORMACION de los proveedores
             });
 
         })
-        .fail(function (e) { });
+        .fail(function (e) {});
 
 }
 
@@ -637,14 +638,14 @@ function getProviersOrders_filter() { //ESTO TRAE LA INFORMACION de los proveedo
 
     let dato = $("#input_search_providers_orders").val();
     $.ajax({
-        url: "../ajax/ajax_get_providers_filter.php",
-        type: "POST",
-        dataType: "json",
-        data: {
-            key: "Q1",
-            dato: dato,
-        },
-    })
+            url: "../ajax/ajax_get_providers_filter.php",
+            type: "POST",
+            dataType: "json",
+            data: {
+                key: "Q1",
+                dato: dato,
+            },
+        })
         .done(function (d) {
             clear_table_provider_order()
             /*     console.log(d); */
@@ -661,10 +662,10 @@ function getProviersOrders_filter() { //ESTO TRAE LA INFORMACION de los proveedo
                 var li_codigo = document.createElement("li");
                 var li_telefono = document.createElement("li");
                 var hr = document.createElement("hr");
-                let paramentroFinal = id_compania + "," + "'" + compania + "'";
+                let  paramentroFinal=id_compania+","+"'"+compania+"'";
                 /*  let boton_generate = "<button class='btn btn-primary mt-2' data-bs-toggle='modal' data-bs-target='#exampleModal_create_order_by_provider' onclick='get_data_items_modal_provider("+id_compania+","+compania+")' id='generate_order_item'><i class='far fa-plus-square'></i></button>"; */
-                let boton_generate = '<button class="btn btn-danger mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal_create_order_by_provider" onclick="get_data_items_modal_provider(' + paramentroFinal + ')" id="generate_order_item"><i class="far fa-plus-square"></i></button>';
-
+                 let boton_generate = '<button class="btn btn-danger mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal_create_order_by_provider" onclick="get_data_items_modal_provider(' + paramentroFinal + ')" id="generate_order_item"><i class="far fa-plus-square"></i></button>';
+ 
                 li_codigo.innerHTML = "ID COMPAÑIA: ".bold() + id_compania;
                 li_empresa.innerHTML = "COMPAÑIA: ".bold() + compania.toUpperCase();
                 li_asesor.innerHTML = "ASESOR: ".bold() + asesor.toUpperCase();
@@ -681,19 +682,19 @@ function getProviersOrders_filter() { //ESTO TRAE LA INFORMACION de los proveedo
             });
 
         })
-        .fail(function (e) { });
+        .fail(function (e) {});
 
 }
 //consultando e imprimiendo items asociados 
 function getProductsOrders() { //ESTO TRAE LA INFORMACION de los proveedores
     $.ajax({
-        url: "../ajax/ajax_get_products_orders.php",
-        type: "POST",
-        dataType: "json",
-        data: {
-            key: "Q1",
-        },
-    })
+            url: "../ajax/ajax_get_products_orders.php",
+            type: "POST",
+            dataType: "json",
+            data: {
+                key: "Q1",
+            },
+        })
         .done(function (d) {
             clear_table_products_order()
             /*     console.log(d); */
@@ -711,8 +712,8 @@ function getProductsOrders() { //ESTO TRAE LA INFORMACION de los proveedores
                 var li_codigo = document.createElement("li");
                 var li_precio = document.createElement("li");
                 var hr = document.createElement("hr");
-                let info = id_compania + "," + "'" + compania + "'" + ',' + item_id + ',' + "'" + contratipo + "'" + ',' + precio;
-                let boton_generate = '<button class="btn btn-warning mt-2 generate_order_item" data-bs-toggle="modal"  onclick="printItemProviderData(' + info + ')" data-bs-target="#staticBackdrop_generate_order_by_item" id="generate_order_item"><i class="far fa-plus-square"></i></button>';
+                let  info=id_compania+","+"'"+compania+"'"+','+item_id+','+"'"+contratipo+"'"+','+precio;
+                let boton_generate = '<button class="btn btn-warning mt-2 generate_order_item" data-bs-toggle="modal"  onclick="printItemProviderData('+info+')" data-bs-target="#staticBackdrop_generate_order_by_item" id="generate_order_item"><i class="far fa-plus-square"></i></button>';
                 li_codigo.innerHTML = "ITEM ID: ".bold() + item_id;
                 li_contratipo.innerHTML = "CONTRATIPO: ".bold() + contratipo.toUpperCase();
                 li_precio.innerHTML = "PRECIO: ".bold() + numberFormat2.format(precio);
@@ -733,21 +734,21 @@ function getProductsOrders() { //ESTO TRAE LA INFORMACION de los proveedores
             });
 
         })
-        .fail(function (e) { });
+        .fail(function (e) {});
 
 }
 
 function getProductsOrders_filter() { //ESTO TRAE LA INFORMACION de los proveedores
     let dato = $("#input_search_products_orders").val();
     $.ajax({
-        url: "../ajax/ajax_get_products_orders_filter.php",
-        type: "POST",
-        dataType: "json",
-        data: {
-            key: "Q1",
-            dato: dato
-        },
-    })
+            url: "../ajax/ajax_get_products_orders_filter.php",
+            type: "POST",
+            dataType: "json",
+            data: {
+                key: "Q1",
+                dato: dato
+            },
+        })
         .done(function (d) {
             clear_table_products_order()
             /*     console.log(d); */
@@ -783,25 +784,25 @@ function getProductsOrders_filter() { //ESTO TRAE LA INFORMACION de los proveedo
             });
 
         })
-        .fail(function (e) { });
+        .fail(function (e) {});
 
 }
 //pintando datos para generar orden de cmompra apartir del proveedor
-function get_data_items_modal_provider(val_1, val_2) {
+function get_data_items_modal_provider(val_1 ,val_2) { 
 
-
+    
     $("#provider_selected_orders").val(val_2);
     $("#id_provider_").val(val_1);
     let dato = $("#id_provider_").val();
     $.ajax({
-        url: "../ajax/ajax_get_items_provider.php",
-        type: "POST",
-        dataType: "json",
-        data: {
-            key: "Q1",
-            id_provider: val_1
-        },
-    })
+            url: "../ajax/ajax_get_items_provider.php",
+            type: "POST",
+            dataType: "json",
+            data: {
+                key: "Q1",
+                id_provider: val_1
+            },
+        })
         .done(function (d) {
             clear_table_provider_items_();
             /*     console.log(d); */
@@ -832,7 +833,7 @@ function get_data_items_modal_provider(val_1, val_2) {
                 capa.appendChild(ul);
                 capa.appendChild(li_codigo);
                 capa.appendChild(li_contratipo);
-                /*               capa.appendChild(li_empresa); */
+  /*               capa.appendChild(li_empresa); */
                 capa.appendChild(li_precio);
 
                 capa.appendChild(hr);
@@ -840,28 +841,28 @@ function get_data_items_modal_provider(val_1, val_2) {
             });
 
         })
-        .fail(function (e) { });
+        .fail(function (e) {});
 
 }
 
-function get_data_items_modal_provider_filter() {
+function get_data_items_modal_provider_filter() { 
     let dato = $("#id_provider_").val();
     let dato_search = $("#search_item_provider").val();
-
+ 
     $.ajax({
-        url: "../ajax/ajax_get_items_provider.php",
-        type: "POST",
-        dataType: "json",
-        data: {
-            key: "Q2",
-            id_provider: dato,
-            item_id: dato_search
-        },
-    })
+            url: "../ajax/ajax_get_items_provider.php",
+            type: "POST",
+            dataType: "json",
+            data: {
+                key: "Q2",
+                id_provider: dato,
+                item_id: dato_search
+            },
+        })
         .done(function (d) {
             document.getElementById("list_items_data_provider").innerHTML = "";
-            console.log("search: " + dato_search);
-            console.log("PROVEEDOR" + dato);
+            console.log("search: "+dato_search);
+            console.log("PROVEEDOR"+dato);
             /*     console.log(d); */
             d.retornolosdatos.forEach((item) => {
 
@@ -890,7 +891,7 @@ function get_data_items_modal_provider_filter() {
                 capa.appendChild(ul);
                 capa.appendChild(li_codigo);
                 capa.appendChild(li_contratipo);
-                /*     capa.appendChild(li_empresa); */
+            /*     capa.appendChild(li_empresa); */
                 capa.appendChild(li_precio);
 
                 capa.appendChild(hr);
@@ -898,7 +899,7 @@ function get_data_items_modal_provider_filter() {
             });
 
         })
-        .fail(function (e) { });
+        .fail(function (e) {});
 
 }
 //  funcion para editar las ordenes de compra
@@ -935,14 +936,14 @@ function editOrder(data) {
                         $("#edit").trigger("click");
                         limpiar_table()
                         $.ajax({
-                            url: "../ajax/ajax_get_items_edit.php",
-                            type: "POST",
-                            dataType: "json",
-                            data: {
-                                key: "Q2",
-                                order: data,
-                            },
-                        })
+                                url: "../ajax/ajax_get_items_edit.php",
+                                type: "POST",
+                                dataType: "json",
+                                data: {
+                                    key: "Q2",
+                                    order: data,
+                                },
+                            })
                             .done(function (d) {
                                 /*     console.log(d); */
                                 d.retornolosdatos.forEach((item) => {
@@ -985,7 +986,7 @@ function editOrder(data) {
                                 });
 
                             })
-                            .fail(function (e) { });
+                            .fail(function (e) {});
                     } else {
                         Swal.fire({
                             icon: "error",
@@ -1087,9 +1088,9 @@ function getInfoUser(data) {
                 $("#info_items_order").append(boton_editar);
             });
 
-        }).fail(function (e) { });
+        }).fail(function (e) {});
 
-    }).fail(function (e) { });
+    }).fail(function (e) {});
 }
 
 //funcin para cargar mercancia, ingresar factura, cargar pdf, actualizar stock 
@@ -1116,7 +1117,7 @@ function print_edit_item_data(data_1, data_2) {
         $("#order_item_quantity").val(quantity);
         $("#item_unitary_price").val(unitario);
 
-    }).fail(function (e) { });
+    }).fail(function (e) {});
     //enviando ajax para printar datos y editar la informacion del item seleccionado
 }
 
@@ -1230,13 +1231,13 @@ function muestreo_data(var_data) {
 
 function getFacturaList() {
     $.ajax({
-        url: "../ajax/ajax_get_facturas.php",
-        type: "POST",
-        dataType: "json",
-        data: {
-            key: "Q1"
-        },
-    })
+            url: "../ajax/ajax_get_facturas.php",
+            type: "POST",
+            dataType: "json",
+            data: {
+                key: "Q1"
+            },
+        })
         .done(function (d) {
             clear_table()
             /*     console.log(d); */
@@ -1269,7 +1270,7 @@ function getFacturaList() {
                         let orderS = d.resultado.order_id;
                         $("#factura").val(facturaS);
                         $("#order").val(orderS);
-                    }).fail(function (e) { });
+                    }).fail(function (e) {});
 
                 });
 
@@ -1315,7 +1316,7 @@ function getFacturaList() {
             });
 
         })
-        .fail(function (e) { });
+        .fail(function (e) {});
 
 }
 
@@ -1383,107 +1384,107 @@ function enlazarItemOrders() {
 
 //funcion para pintar datos en el modal que crea la orden de compra apartir de un item
 
-function printItemProviderData(id_compañia_order, compañia_order, item_id_order, contratipo_order, precio_order) {
-
-
-
+ function printItemProviderData(id_compañia_order,compañia_order, item_id_order, contratipo_order, precio_order ) { 
+  
+   
+   
     let provider_id = id_compañia_order;
     let provider_name = compañia_order;
     let item_id = item_id_order;
     let item_name = contratipo_order;
     let price = precio_order;
-
-    $("#item_id_orders_select").val(item_id);
-    $("#item_name_orders_select").val(item_name);
-    $("#provider_orders_select").val(provider_name);
-    $("#id_proveedor").val(provider_id);
-    $("#price_item_selected").val(price);
-    let quantity = document.getElementById("quantity_item_selected").value;
-    cantidad_i = (document.getElementById("quantity_item_selected").value);
-    resultt_i = ($('#result_item_selected').val());
-    let total = 0;
-    /*  $("#quantity_item_selected").on("keyup", function () {
-         
-         total = parseFloat(costo * quantity);
-         $('#result_item_selected').val(total);
     
-         
-        }); */
+ $("#item_id_orders_select").val(item_id);
+ $("#item_name_orders_select").val(item_name);
+ $("#provider_orders_select").val(provider_name);
+ $("#id_proveedor").val(provider_id);
+ $("#price_item_selected").val(price);
+ let quantity = document.getElementById("quantity_item_selected").value; 
+  cantidad_i = (document.getElementById("quantity_item_selected").value); 
+  resultt_i = ($('#result_item_selected').val());
+ let total = 0;
+/*  $("#quantity_item_selected").on("keyup", function () {
+     
+     total = parseFloat(costo * quantity);
+     $('#result_item_selected').val(total);
+
+     
+    }); */
 
 
-    $("#solicitar_item_order").on("click", function () {
-        $.ajax({
-            type: "POST",
-            url: "../ajax/ajax_upload_information.php",
-            data: {
-                id_proveedor: provider_id,
-                proveedor: provider_name,
-                costo: price,
-                item_id: item_id,
-                item_name: item_name,
-                cantidad: cantidad_i,
-                resultado: resultt_i
-            },
-            success: function (r) {
-                console.log(r);
-                if (r != 0 && r != "i_a") {
+ $("#solicitar_item_order").on("click", function () {
+    $.ajax({
+        type: "POST",
+        url: "../ajax/ajax_upload_information.php",
+        data: { 
+            id_proveedor: provider_id,
+            proveedor: provider_name,
+            costo: price,
+            item_id: item_id,
+            item_name: item_name,
+            cantidad: cantidad_i,
+            resultado: resultt_i
+        },
+        success: function (r) {
+            console.log(r);
+            if (r != 0 && r != "i_a") {
 
-                    items_table()
-                    clear_form()
-                    //SI ES DISTINTO A 0 Y ES UN NUMERO
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Nueva Orden Exitosa!!',
-                        text: 'la orden de compra' + r + 'se agrego con exito',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
+                items_table()
+                clear_form()
+                //SI ES DISTINTO A 0 Y ES UN NUMERO
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Nueva Orden Exitosa!!',
+                    text: 'la orden de compra' + r + 'se agrego con exito',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
 
-                    $("#close_modal_items").trigger('click');
-                    $("#order_open_create").trigger('click');
+                $("#close_modal_items").trigger('click');
+                $("#order_open_create").trigger('click');
 
+               
+            } else if (r == "i_a") {
 
-                } else if (r == "i_a") {
-
-                    items_table()
-                    clear_form()
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Nuevo Item!!',
-                        text: 'Item agregado con exito!!',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                } else { //ES 0(NO SE EJECUTO LA CONSULTA) O EXISTE UN ERROR EXPLICATIVO(STRING)
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Algo salio mal!!',
-                        footer: '<a href="">Contactar al desarrollador</a>'
-                    })
-
-                }
+                items_table()
+                clear_form()
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Nuevo Item!!',
+                    text: 'Item agregado con exito!!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            } else { //ES 0(NO SE EJECUTO LA CONSULTA) O EXISTE UN ERROR EXPLICATIVO(STRING)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Algo salio mal!!',
+                    footer: '<a href="">Contactar al desarrollador</a>'
+                })
+               
             }
-        });
-        return false;
+        }
     });
+    return false;
+ });
 
 
-}
+ }
 
-function calculate_in_modal() {
-    cantidad_i = document.getElementById("quantity_item_selected").value;
+ function calculate_in_modal(){
+    cantidad_i = document.getElementById("quantity_item_selected").value; 
     let costo = $('#price_item_selected').val();
 
-    cantidad_i = parseInt(document.getElementById("quantity_item_selected").value);
-
+    cantidad_i = parseInt(document.getElementById("quantity_item_selected").value); 
+    
     resultt_i = parseFloat(costo * cantidad_i);
     $('#result_item_selected').val(resultt_i);
-}
-
-function createProviderOrders() {
+ }
+ 
+ function createProviderOrders(){
     Swal.fire({
         title: '¿Estas Seguro?',
         text: '¿Deseas agregar este proveedor?',
@@ -1491,7 +1492,7 @@ function createProviderOrders() {
         showCancelButton: true,
         confirmButtonText: 'Si, Seguro',
         denyButtonText: `No, validar Datos`,
-    }).then((result) => {
+      }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
             var datos = $('#form_provider').serialize();
@@ -1499,21 +1500,21 @@ function createProviderOrders() {
                 type: "POST",
                 url: "../ajax/ajax_create_provider.php",
                 data: datos,
-                success: function (r) {
-
+                success: function(r) {
+                    
                     if (r != 0) { //SI ES DISTINTO A 0 Y ES UN NUMERO
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',
                             title: 'Operacion Exitosa!!',
-                            text: r + ' Fue agregado con exito.',
+                            text: r+' Fue agregado con exito.',
                             showConfirmButton: false,
                             timer: 2000
-                        })
-                        getProviersOrders()
-                        $("#close_modal_create_provider_orders").trigger('click');
+                          })
+                          getProviersOrders()
+                          $("#close_modal_create_provider_orders").trigger('click');
                     } else { //ES 0(NO SE EJECUTO LA CONSULTA) O EXISTE UN ERROR EXPLICATIVO(STRING)
-
+                    
                         Swal.fire({
                             position: 'top-end',
                             icon: 'error',
@@ -1521,16 +1522,16 @@ function createProviderOrders() {
                             text: 'Algo salio mal.',
                             showConfirmButton: false,
                             timer: 2000
-                        })
+                          })
                     }
                 }
             });
             return false;
         } else if (result.isDenied) {
-            Swal.fire('Cancelaste la operacion', '', 'info')
+          Swal.fire('Cancelaste la operacion', '', 'info')
         }
-    })
+      })
 
-
-
-}
+    
+  
+ }

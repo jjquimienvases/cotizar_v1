@@ -32,14 +32,14 @@ $nombreImg=$_FILES['imagen']['name'];
 $ruta=$_FILES['imagen']['tmp_name'];
 $destino="../imagenes/".$nombreImg;
 $src = "https://cotizar.jjquimienvases.com/items/imagenes/".$nombreImg;
-if(copy($ruta, $destino)){
-           $sql_ = "INSERT INTO producto_av (id,contratipo,stock,genero,gramo,id_categoria,peso,ubicacion,unidad,minimo,maximo,imagen,name_prov,visibilidad) VALUES ($item_code,'$item_name',$stock,'$genero', $costo,$categoria,$peso,'$ubicacion','$unidad_empaque', $stock_minimo,$stock_maximo,'$src','$nombre_proveedor',1)";
-           $sql_1 = "INSERT INTO producto (id,contratipo,stock,genero,gramo,id_categoria,peso,ubicacion,unidad,minimo,maximo,imagen,visibilidad) VALUES ($item_code,'$item_name',$stock,'$genero', $costo,$categoria,$peso,'$ubicacion','$unidad_empaque', $stock_minimo,$stock_maximo,'$src',1)";
-           $sql_2 = "INSERT INTO producto_d1 (id,contratipo,stock,genero,gramo,id_categoria,peso,ubicacion,unidad,minimo,maximo,imagen,visibilidad) VALUES ($item_code,'$item_name',$stock,'$genero', $costo,$categoria,$peso,'$ubicacion','$unidad_empaque', $stock_minimo,$stock_maximo,'$src',1)";
-           $sql_3 = "INSERT INTO productos_ibague (id,contratipo,stock,genero,gramo,id_categoria,peso,ubicacion,unidad,minimo,maximo,imagen,visibilidad) VALUES ($item_code,'$item_name',$stock,'$genero', $costo,$categoria,$peso,'$ubicacion','$unidad_empaque', $stock_minimo,$stock_maximo,'$src',1)";
-           $sql_4 = "INSERT INTO productos_ibague2 (id,contratipo,stock,genero,gramo,id_categoria,peso,ubicacion,unidad,minimo,maximo,imagen,visibilidad) VALUES ($item_code,'$item_name',$stock,'$genero', $costo,$categoria,$peso,'$ubicacion','$unidad_empaque', $stock_minimo,$stock_maximo,'$src',1)";
+
+           $sql_ = "INSERT INTO producto_av (id,contratipo,stock,genero,precio,gramo,id_categoria,peso,ubicacion,unidad,minimo,maximo,imagen,ruta,name_prov,visibilidad,price_orden,capacidad,item_asociado,padre,margen,sub_categoria) VALUES ($item_code,'$item_name',$stock,'$genero',0, $costo,$categoria,$peso,'$ubicacion','$unidad_empaque', $stock_minimo,$stock_maximo,'$src','Ruta','$nombre_proveedor',1,$costo,0,0,0,0,1)";
+           $sql_1 = "INSERT INTO producto (id,contratipo,stock,genero,gramo,id_categoria,peso,ubicacion,unidad,minimo,maximo,sub_categoria,imagen,ruta,margen,padre,capacidad,item_asociado,visibilidad) VALUES ($item_code,'$item_name',$stock,'$genero', $costo,$categoria,$peso,'$ubicacion','$unidad_empaque', $stock_minimo,$stock_maximo,0,'$src','ruta',0,0,0,0,1)";
+           $sql_2 = "INSERT INTO producto_d1 (id,contratipo,stock,genero,gramo,id_categoria,peso,ubicacion,unidad,minimo,maximo,sub_categoria,imagen,ruta,margen,padre,capacidad,item_asociado,visibilidad,precio) VALUES ($item_code,'$item_name',$stock,'$genero', $costo,$categoria,$peso,'$ubicacion','$unidad_empaque', $stock_minimo,$stock_maximo,0,'$src','ruta',0,0,0,0,1)";
+           $sql_3 = "INSERT INTO productos_ibague (id,contratipo,stock,genero,gramo,id_categoria,peso,ubicacion,unidad,minimo,maximo,imagen,ruta,margen,padre,capacidad,item_asociado,visibilidad,sub_categoria,precio) VALUES ($item_code,'$item_name',$stock,'$genero', $costo,$categoria,$peso,'$ubicacion','$unidad_empaque', $stock_minimo,$stock_maximo,'$src','ruta',0,0,0,0,1,0,0)";
+           $sql_4 = "INSERT INTO productos_ibague2 (id,contratipo,stock,genero,gramo,id_categoria,peso,ubicacion,unidad,minimo,maximo,imagen,ruta,margen,padre,capacidad,item_asociado,visibilidad,sub_categoria,precio) VALUES ($item_code,'$item_name',$stock,'$genero', $costo,$categoria,$peso,'$ubicacion','$unidad_empaque', $stock_minimo,$stock_maximo,'$src','ruta',0,0,0,0,1,0,0)";
  
-}
+
 
  include '../formulas.php';
 $unitarios = round(($unitario), 2) ;
@@ -54,8 +54,8 @@ $execute_3 = $conexion->query($sql_3);
 $execute_4 = $conexion->query($sql_4); 
 // return;
 
- if($execute){
+ if($execute_3){
      echo $execute;
  }else{
-     echo 0;
+     echo $sql_3;
  }

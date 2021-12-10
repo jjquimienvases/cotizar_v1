@@ -96,6 +96,11 @@ if ($envase == 0 || $envase == null) {
 }
 $capacidad = (isset($_POST['Capacidad'])) ? $_POST['Capacidad'] : "";
 $perfume = (isset($_POST['op'])) ? $_POST['op'] : "";
+
+if ($perfume == 0 || $perfume == null) {
+    $perfume = "data";
+} else {
+}
 $capacidad_puntos = (isset($_POST['Puntos'])) ? $_POST['Puntos'] : "";
 $abono = (isset($_POST['abono'])) ? $_POST['abono'] : "";
 $gramosAdicionales = (isset($_POST['gramos_adicionales'])) ? $_POST['gramos_adicionales'] : "";
@@ -212,6 +217,11 @@ if ($sql_add) {
 
                 switch ($capacidad_recarga[$i]) {
                     case "Recarga 30 ML":
+                            $execute_items = ("INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario,order_item_price,order_item_final_amount, order_date,gramos,envases,tapa)
+                       VALUES ('$id_', '$codigo[$i]', '$contratipo[$i]', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]',0,'$resultado[$i]','$date_',0,0,0)");
+
+
+            $sqlInsertarProductos = $con->query($execute_items);
                         $especial = $cantidad[$i] * 0.5;
                         $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
                         foreach ($sql_cs as $data_c) {
@@ -221,6 +231,11 @@ if ($sql_add) {
                         $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
                         break;
                     case "Recarga 50 ML":
+                            $execute_items = ("INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario,order_item_price,order_item_final_amount, order_date,gramos,envases,tapa)
+                       VALUES ('$id_', '$codigo[$i]', '$contratipo[$i]', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]',0,'$resultado[$i]','$date_',0,0,0)");
+
+
+            $sqlInsertarProductos = $con->query($execute_items);
                         $especial = $cantidad[$i] * 1;
                         $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
                         foreach ($sql_cs as $data_c) {
@@ -230,6 +245,11 @@ if ($sql_add) {
                         $update_puntos = $con->query("UPDATE clientes SET puntos_perfumeria = $new_point WHERE cedula = $cedula");
                         break;
                     case "Recarga 100 ML":
+                            $execute_items = ("INSERT INTO factura_orden_producto (order_id, item_code, item_name, order_item_quantity, item_categoria, order_item_unitario,order_item_price,order_item_final_amount, order_date,gramos,envases,tapa)
+                       VALUES ('$id_', '$codigo[$i]', '$contratipo[$i]', '$cantidad[$i]', '$categoria[$i]','$unitario[$i]',0,'$resultado[$i]','$date_',0,0,0)");
+
+
+            $sqlInsertarProductos = $con->query($execute_items);
                         $especial = $cantidad[$i] * 2;
                         $sql_cs = $con->query("SELECT * FROM clientes WHERE cedula = $cedula");
                         foreach ($sql_cs as $data_c) {
