@@ -6,7 +6,7 @@ $(document).ready(function () {
     ajax: "ajax/ajax_get_facturas.php",
     buttons: true,
     buttons: ["copy", "excel", "pdf"],
-    id:"informacions",
+    id: "informacions",
     columns: [
       {
         data: "order_date",
@@ -49,59 +49,59 @@ $(document).ready(function () {
         padre.find("[name^=nombres]").val(d.resultado.nombres);
         padre.find("[name^=ciudad]").val(d.resultado.ciudad);
         padre.find("[name^=direccion]").val(d.resultado.direccion);
-        padre.find("[name^=telefono]").val(d.resultado.telefono); 
-        padre.find("[name^=id]").val(d.resultado.id); 
-        padre.find("[name^=email]").val(d.resultado.email); 
-        padre.find("[name^=porcentaje]").val(d.resultado.descuento); 
+        padre.find("[name^=telefono]").val(d.resultado.telefono);
+        padre.find("[name^=id]").val(d.resultado.id);
+        padre.find("[name^=email]").val(d.resultado.email);
+        padre.find("[name^=porcentaje]").val(d.resultado.descuento);
       })
-      .fail(function (e) {});
+      .fail(function (e) { });
   });
 
   $("#edit_client").on("click", function () {
-  var datos = $('#form1').serialize();
-  $.ajax({
+    var datos = $('#form1').serialize();
+    $.ajax({
       type: "POST",
       url: "ajax/ajax_actualizar_cliente.php",
       data: datos,
-      success: function(r) {
-          console.log(r);
-          if (r != 0 && !isNaN(r)) { //SI ES DISTINTO A 0 Y ES UN NUMERO
-              alert("agregado con exito");
+      success: function (r) {
+        console.log(r);
+        if (r != 0 && !isNaN(r)) { //SI ES DISTINTO A 0 Y ES UN NUMERO
+          alert("agregado con exito");
 
-              console.log(datos);
-          } else { //ES 0(NO SE EJECUTO LA CONSULTA) O EXISTE UN ERROR EXPLICATIVO(STRING)
-              alert("no funciona");
-              console.log(datos);
-          }
+          console.log(datos);
+        } else { //ES 0(NO SE EJECUTO LA CONSULTA) O EXISTE UN ERROR EXPLICATIVO(STRING)
+          alert("no funciona");
+          console.log(datos);
+        }
       }
-  });
+    });
 
-});
+  });
 
 });
 
 function show_new_methods() {
-    document.getElementById('info_factura').style.display = 'flex';
-    document.getElementById('close').style.display = 'block';
-    document.getElementById('table_info').style.display = 'none';
-    document.getElementById('show').style.display = 'none';
+  document.getElementById('info_factura').style.display = 'flex';
+  document.getElementById('close').style.display = 'block';
+  document.getElementById('table_info').style.display = 'none';
+  document.getElementById('show').style.display = 'none';
 };
 
 function show_new_methods_call() {
-    document.getElementById('info_factura_call').style.display = 'block';
-    document.getElementById('close').style.display = 'block';
-    document.getElementById('table_info').style.display = 'none';
-    document.getElementById('show').style.display = 'none';
-    document.getElementById('shows').style.display = 'none';
+  document.getElementById('info_factura_call').style.display = 'block';
+  document.getElementById('close').style.display = 'block';
+  document.getElementById('table_info').style.display = 'none';
+  document.getElementById('show').style.display = 'none';
+  document.getElementById('shows').style.display = 'none';
 };
 
 function ocultar_new_methods() {
-    document.getElementById('info_factura').style.display = 'none';
-    document.getElementById('close').style.display = 'none';
-    document.getElementById('table_info').style.display = 'block';
-    document.getElementById('show').style.display = 'block';
-    document.getElementById('shows').style.display = 'block';
-    document.getElementById('info_factura_call').style.display = 'none';
+  document.getElementById('info_factura').style.display = 'none';
+  document.getElementById('close').style.display = 'none';
+  document.getElementById('table_info').style.display = 'block';
+  document.getElementById('show').style.display = 'block';
+  document.getElementById('shows').style.display = 'block';
+  document.getElementById('info_factura_call').style.display = 'none';
 
 };
 
@@ -114,7 +114,7 @@ function abrir_data() {
   // var cotizacion =  document.getElementsByClassName("id_cotizacion")[0].event.target.value;
 
   // console.log(cotizacion);
-  
+
   // $.ajax({
   //     url: 'consulta.php',
   //     type: 'POST',
@@ -142,5 +142,47 @@ function abrir_data() {
   // }).fail(function(e) {
 
   // });
+
+}
+
+function update_factura() {
+  let order_id = $("#").val();
+  let id = $("#").val();
+
+
+  Swal.fire({
+    title: 'Esta seguro de actualizar este dato?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText: 'Si, estoy seguro',
+    denyButtonText: `NO, Cancelar`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      $.ajax({
+        type: "POST",
+        url: "ajax/actualizar_id.php",
+        data: datos,
+        success: function (r) {
+          console.log(r);
+          if (r != 0 && !isNaN(r)) { //SI ES DISTINTO A 0 Y ES UN NUMERO
+            Swal.fire('Actualizado con exito!', 'Intenta hacer tu factura una vez mas', 'success')
+
+
+          } else { //ES 0(NO SE EJECUTO LA CONSULTA) O EXISTE UN ERROR EXPLICATIVO(STRING)
+            Swal.fire('FAIL!', 'Posiblemente el numero de factura ya este registrado en el sistema', 'error')
+
+          }
+        }
+      });
+
+
+    } else if (result.isDenied) {
+      Swal.fire('Cancelaste la accion', '', 'info')
+    }
+  })
+
+
+
 
 }
