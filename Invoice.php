@@ -2,10 +2,10 @@
 <?php
 
 class Invoice{
-  private $user  = 'jjquimienvases_jjadmin';
-  private $host  = 'ftp.jjquimienvases.com';
+  private $user  = 'cotizar';
+  private $host  = '173.230.154.140';
   private $password   = "LeinerM4ster";
-  private $database  = "jjquimienvases_cotizar";
+  private $database  = "cotizar";
   private $invoiceUserTable = 'factura_usuarios';
   private $invoiceOrderTable = 'factura_orden';
   private $invoiceOrderItemTable = 'factura_orden_producto';
