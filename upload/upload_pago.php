@@ -1,7 +1,7 @@
 <?php
 include('conexion.php');
 
-$conexion = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
+$conexion = conectar();
 $tmp = array();
 $res = array();
 
@@ -28,21 +28,26 @@ if ($cuenta > 0) {
 
 $resultado = "";
 if (isset($_POST['buscar_cotizacion'])) {
+    $res = array();
     $id = $_POST['producto'];
     $sql = "SELECT * FROM factura_orden WHERE order_id='$id'";
     $r = $conexion->query($sql);
-    if ($o = $r->fetch_object()) {
-        $resultado = $o;
+    while ($row = $r->fetch_assoc()) {
+        $tmp = $row;
+        array_push($res, $tmp);
     }
 }
 
 if (isset($_POST['btn_buscar'])) {
+    $res = array();
     $buscar_text = $_POST['buscar'];
-     $sql_select = "SELECT * FROM files WHERE order_id = $buscar_text OR order_date LIKE '%$buscar_text%' AND e  stado = 'alistamiento'";
+     $sql_select = "SELECT * FROM files WHERE order_id = '$buscar_text' OR order_date LIKE '%$buscar_text%'";
     $r = $conexion->query($sql_select);
-    if ($o = $r->fetch_object()) {
-        $resultado = $o;
-    }
+
+        while ($row = $r->fetch_assoc()) {
+            $tmp = $row;
+            array_push($res, $tmp);
+        }
 }
 
 ?>
