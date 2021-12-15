@@ -1,37 +1,37 @@
+
 let code_tot = "";
 let usuario = "";
+$( document ).ready(function() {
+  console.log("leiner inicio");
 
 
+  
+  $("#buscar_item").keyup(function() {
+    
+    let items =  $("#buscar_item").val();
+  console.log(items);
 
-function consultar_data() {
-  let items =  $("#buscar_item").val();
 
-console.log(items)
-  $.ajax({
-    url: "./methods/conexiones.php",
-    type: "POST",
-    dataType: "json",
-    data: {
-      key: "Q1",
-      item: items,
-    },
-  })
-  .done(function (d) {
-    console.log(d.resultado.contratipo);
-  // let padre = $("#izquierda").parent().parent().parent();
-    //padre.find("[name^=item_name]").val(d.resultado.contratipo);
-     //padre.find("[name^=item_code]").val(d.resultado.id);
-      //padre.find("[name^=gramos_actuales]").val(d.resultado.stock);
-    document.getElementById("item_name").value = d.resultado.contratipo;
-    document.getElementById("item_code").value = d.resultado.id;
-    document.getElementById("gramos_actuales").value = d.resultado.stock;
-    //$("#item_name").val(d.resultado.contratipo);
-     //$("#item_code").val(d.resultado.id);
-     //$("#gramos_actuales").val(d.resultado.stock);
-
+    axios({
+       method: "POST",
+       url: "./methods/conexiones.php",
+       params: {
+        key: "Q1",
+        item: items,
+      }.then(function(res)  {
+        console.log(res);
     })
-    .fail(function (e) {});
-  };
+    .catch(err => {
+        console.log(err);
+    })
+      
+    })
+  });
+});
+
+
+
+
 
   
   //ajax para mostrar informacion

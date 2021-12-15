@@ -1,6 +1,5 @@
 <?php
 include "../conectar.php";
-$conexion = conectar();
 $resultado = new stdClass;
 $fun = $_POST['key'];
 switch ($fun) {
