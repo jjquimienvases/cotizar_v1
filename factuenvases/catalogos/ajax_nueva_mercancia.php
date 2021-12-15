@@ -1,6 +1,6 @@
-<?php 
- include 'conectar.php';
- 
+<?php
+$con = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
+
 
  $item_id = $_POST['codigo'];
  $item_name = $_POST['name'];
