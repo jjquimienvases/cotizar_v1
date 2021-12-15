@@ -1,9 +1,4 @@
-
-
-
-
 <?php
-
 include "../conexion.php";
 session_start();
 $id_rol = $_SESSION['id_rol'];
@@ -55,6 +50,3 @@ switch ($fun) {
 }
 
 echo json_encode($response);
-
-?>
-

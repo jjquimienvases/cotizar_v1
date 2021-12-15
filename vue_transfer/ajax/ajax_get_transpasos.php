@@ -2,7 +2,6 @@
 include '../conexion.php';
 $conexion = conectar();
 
-session_start();
 $user = $_SESSION['user'];
 $user_id = $_SESSION['userid'];
 $user_rol = $_SESSION['id_rol'];

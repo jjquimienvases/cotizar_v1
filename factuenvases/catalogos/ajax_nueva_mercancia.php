@@ -1,6 +1,6 @@
 <?php 
- include '../../conectar.php';
- $conexion = conectar();
+ include 'conectar.php';
+ 
 
  $item_id = $_POST['codigo'];
  $item_name = $_POST['name'];
