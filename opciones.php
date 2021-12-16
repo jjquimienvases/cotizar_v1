@@ -23,8 +23,8 @@ if (isset($_POST['Capacidad'])) {
             ];
 
             break;
-            
-                case "Splash 3750 ML":
+
+        case "Splash 3750 ML":
             $unidad = [
                 "Unidad" => "45000",
                 "Gramo" => "180",
@@ -76,7 +76,7 @@ if (isset($_POST['Capacidad'])) {
             ];
 
             break;
-            
+
         case "Crema 1000 ML":
             $unidad = [
                 "Unidad" => "25000",
@@ -87,8 +87,8 @@ if (isset($_POST['Capacidad'])) {
             ];
 
             break;
-            
-              case "Crema 3750 ML":
+
+        case "Crema 3750 ML":
             $unidad = [
                 "Unidad" => "68000",
                 "Gramo" => "222",
@@ -137,7 +137,7 @@ if (isset($_POST['Capacidad'])) {
                 "presentacion" => "Perfume Sencillo 100 ML Familia",
             ];
             break;
-              case "perfume promo 30 ML":
+        case "perfume promo 30 ML":
             $unidad = [
                 "Unidad" => "10000",
                 "Gramo" => "0",
@@ -146,7 +146,7 @@ if (isset($_POST['Capacidad'])) {
                 "presentacion" => "perfume promo 30 ML",
             ];
             break;
-             case "perfume promo 50 ML":
+        case "perfume promo 50 ML":
             $unidad = [
                 "Unidad" => "16000",
                 "Gramo" => "0",
@@ -155,7 +155,7 @@ if (isset($_POST['Capacidad'])) {
                 "presentacion" => "perfume promo 50 ML",
             ];
             break;
-             case "perfume promo 100 ML":
+        case "perfume promo 100 ML":
             $unidad = [
                 "Unidad" => "27000",
                 "Gramo" => "0",
@@ -164,8 +164,8 @@ if (isset($_POST['Capacidad'])) {
                 "presentacion" => "perfume promo 100 ML",
             ];
             break;
-          
-               case "kit":
+
+        case "kit":
             $unidad = [
                 "Unidad" => "50000",
                 "Gramo" => "54",
@@ -174,8 +174,8 @@ if (isset($_POST['Capacidad'])) {
                 "presentacion" => "KIT DE PERFUMERIA",
             ];
             break;
-            
-                 case "kit_small":
+
+        case "kit_small":
             $unidad = [
                 "Unidad" => "17000",
                 "Gramo" => "17",
@@ -184,8 +184,8 @@ if (isset($_POST['Capacidad'])) {
                 "presentacion" => "KIT DE PERFUMERIA SMALL",
             ];
             break;
-            
-            
+
+
         case "Muestra Perfumeria":
             $unidad = [
                 "Unidad" => "1",
@@ -218,6 +218,34 @@ if (isset($_POST['Capacidad'])) {
                 "presentacion" => "Perfume Lujo 100 ML",
             ];
             break;
+
+        case "Perfume Lujo 30 ML Regalo":
+            $unidad = [
+                "Unidad" => "1",
+                "Gramo" => "11",
+                "Capacidad" => "30 ML",
+                "presentacion" => "Perfume Lujo 30 ML REGALO",
+            ];
+            break;
+        case "Perfume Lujo 50 ML Regalo":
+            $unidad = [
+                "Unidad" => "1",
+                "Gramo" => "18",
+                "Capacidad" => "50 ML",
+                "presentacion" => "Perfume Lujo 50 ML REGALO",
+            ];
+            break;
+        case "Perfume Lujo 100 ML Regalo":
+            $unidad = [
+                "Unidad" => "1",
+                "Gramo" => "36",
+                "Capacidad" => "100 ML",
+                "presentacion" => "Perfume Lujo 100 ML REGALO",
+            ];
+            break;
+
+
+
         case "Perfumero Recargado 3 ML":
             $unidad = [
                 "Unidad" => "2500",
@@ -282,7 +310,7 @@ if (isset($_POST['Capacidad'])) {
                 "presentacion" => "Perfumero Recargado 4 ML",
             ];
             break;
-       
+
         case "Recarga 30 ML":
             $unidad = [
                 "Unidad" => "12000",
@@ -355,8 +383,8 @@ if (isset($_POST['Capacidad'])) {
                 "presentacion" => "Recarga 4 ML",
             ];
             break;
-            
-         case "Premio 50 ML":
+
+        case "Premio 50 ML":
             $unidad = [
                 "Unidad" => "1",
                 "Gramo" => "18",
@@ -365,7 +393,7 @@ if (isset($_POST['Capacidad'])) {
                 "Envase" => "1500",
             ];
             break;
-            
+
         case "Premio 100 ML":
             $unidad = [
                 "Unidad" => "1",
@@ -374,8 +402,8 @@ if (isset($_POST['Capacidad'])) {
                 "Capacidad" => "100ML Premio",
                 "Envase" => "1000",
             ];
-            break;    
-         case "aumentar":
+            break;
+        case "aumentar":
             $unidad = [
                 "Unidad" => "14000",
                 "Gramo" => "36",
@@ -383,8 +411,7 @@ if (isset($_POST['Capacidad'])) {
                 "Capacidad" => "100ML aumentar",
                 "Envase" => "1000",
             ];
-            break;  
-
+            break;
     }
     echo json_encode($unidad);
 }
@@ -441,7 +468,7 @@ if (isset($_POST['Capacidad_D'])) {
                 "presentacion" => "Onzas",
 
             ];
-       
+
             break;
         case "4":
             $unidad = [
@@ -451,32 +478,32 @@ if (isset($_POST['Capacidad_D'])) {
                 "Valvula" => "901",
                 "presentacion" => "After shave",
             ];
-         
+
             break;
-            case "Perfume Lujo 30 ML":
-                $unidad = [
-                    "Unidad" => "12000",
-                    "Gramo" => "11",
-                    "Capacidad" => "30 ML",
-                    "presentacion" => "Perfume Lujo 30 ML",
-                ];
-                break;
-            case "Perfume Lujo 50 ML":
-                $unidad = [
-                    "Unidad" => "23000",
-                    "Gramo" => "18",
-                    "Capacidad" => "50 ML",
-                    "presentacion" => "Perfume Lujo 52 ML",
-                ];
-                break;
-            case "Perfume Lujo 100 ML":
-                $unidad = [
-                    "Unidad" => "33000",
-                    "Gramo" => "36",
-                    "Capacidad" => "100 ML",
-                    "presentacion" => "Perfume Lujo 100 ML",
-                ];
-                break;
+        case "Perfume Lujo 30 ML":
+            $unidad = [
+                "Unidad" => "12000",
+                "Gramo" => "11",
+                "Capacidad" => "30 ML",
+                "presentacion" => "Perfume Lujo 30 ML",
+            ];
+            break;
+        case "Perfume Lujo 50 ML":
+            $unidad = [
+                "Unidad" => "23000",
+                "Gramo" => "18",
+                "Capacidad" => "50 ML",
+                "presentacion" => "Perfume Lujo 52 ML",
+            ];
+            break;
+        case "Perfume Lujo 100 ML":
+            $unidad = [
+                "Unidad" => "33000",
+                "Gramo" => "36",
+                "Capacidad" => "100 ML",
+                "presentacion" => "Perfume Lujo 100 ML",
+            ];
+            break;
     }
     echo json_encode($unidad);
 }
