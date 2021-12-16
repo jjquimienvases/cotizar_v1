@@ -1,12 +1,12 @@
 <?php
-include 'conectar.php';
+$mysqli = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
+
 session_start();
 
 
 ?>
 
-<?php $mysqli = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
-?>
+
 <title>Nueva Mercancia</title>
 <script src="jquery-3.1.1.min.js"></script>
 <link href="css/style.css" rel="stylesheet">

@@ -19,7 +19,7 @@ $con = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
   for ($i = 0; $i < count($item_id); $i++) {
       
       //seleccionano stock actual
-        $con_stock = $con->query("SELECT stock FROM $bodega[$i] WHERE id = $item_id[$i]");
+        $con_stock = $con->query("SELECT stock FROM $bodega[$i] WHERE id = '$item_id[$i]'");
          $stock = floatval($con_stock->fetch_row()[0]); 
          $nuevo_stock = floatval($stock) + $item_new_q[$i];
          //actualizando stock
