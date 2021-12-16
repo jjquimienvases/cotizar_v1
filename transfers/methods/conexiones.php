@@ -25,6 +25,8 @@ $response = new stdClass;
 
 $fun = $_POST['key'];
 
+
+
 switch ($fun) {
 
     case 'Q1':
@@ -36,6 +38,8 @@ switch ($fun) {
                 WHERE id='$id' AND visibilidad != 0";
 
         $r = $con->query($sql);
+
+        
 
         if ($o = $r->fetch_object()) {
 

@@ -277,7 +277,7 @@ session_start();
                 Swal.fire('Los cambios se han cargado con exito!', '', 'success');
 
                 setTimeout(function() {
-                  window.location.reload();
+                 window.location.reload();
                 }, 2000);
               }
             });

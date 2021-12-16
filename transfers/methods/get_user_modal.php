@@ -1,7 +1,3 @@
-
-
-
-
 <?php
 include '../conexion.php';
 // $con = new mysqli('localhost','root','','cotpruebas');

@@ -12,6 +12,7 @@ $con = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
  $new_price = $_POST['precio'];
  $fecha = DATE("Y-m-d h:m:s");
  
+
  //AQUI COMIENZO MIS CONSULTAS SQL
  
          $nuevo_stock = 0;
@@ -22,22 +23,30 @@ $con = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
         $con_stock = $con->query("SELECT stock FROM $bodega[$i] WHERE id = '$item_id[$i]'");
          $stock = floatval($con_stock->fetch_row()[0]); 
          $nuevo_stock = floatval($stock) + $item_new_q[$i];
+
          //actualizando stock
-        //  $sql_update_s = $con->query("UPDATE $bodega[$i] SET stock = $nuevo_stock WHERE id = $item_id[$i]");
+          $sql_update_s = $con->query("UPDATE $bodega[$i] SET stock = $nuevo_stock WHERE id = '$item_id[$i]'");
          //actualizando las demas bodegas
   
-         $update_bodegas = $con->query("UPDATE producto SET gramo = $new_price[$i], unidad = '$item_inidad[$i]' WHERE id = $item_id[$i]");
-         $update_bodegas_ = $con->query("UPDATE producto_d1 SET gramo = $new_price[$i], unidad = '$item_inidad[$i]' WHERE id = $item_id[$i]");
-         $update_bodegas_1 = $con->query("UPDATE productos_ibague SET gramo = $new_price[$i], unidad = '$item_inidad[$i]' WHERE id = $item_id[$i]");
-         $update_bodegas_2 = $con->query("UPDATE productos_ibague2 SET gramo = $new_price[$i], unidad = '$item_inidad[$i]' WHERE id = $item_id[$i]");
-         $update_bodegas_3 = $con->query("UPDATE producto_av SET gramo = $new_price[$i], unidad = '$item_inidad[$i]' WHERE id = $item_id[$i]");
+         $update_bodegas = $con->query("UPDATE producto SET gramo = $new_price[$i], unidad = '$item_inidad[$i]' WHERE id = '$item_id[$i]'");
+         $update_bodegas_ = $con->query("UPDATE producto_d1 SET gramo = $new_price[$i], unidad = '$item_inidad[$i]' WHERE id = '$item_id[$i]'");
+         $update_bodegas_1 = $con->query("UPDATE productos_ibague SET gramo = $new_price[$i], unidad = '$item_inidad[$i]' WHERE id = '$item_id[$i]'");
+         $update_bodegas_2 = $con->query("UPDATE productos_ibague2 SET gramo = $new_price[$i], unidad = '$item_inidad[$i]' WHERE id = '$item_id[$i]'");
+         $update_bodegas_3 = $con->query("UPDATE producto_av SET gramo = $new_price[$i], unidad = '$item_inidad[$i]' WHERE id = '$item_id[$i]'");
          
          
          //insertando ingreso 
-         
-     $sql_ingresos =("INSERT INTO `ingresos`(`code`, `contratipo`, `cantidad`, `factura`, `Proveedor`, `order_date`) VALUES ($item_id[$i],'$item_name[$i]',$item_new_q[$i],'$factura_number[$i]','$provider[$i]','$fecha')");
+         if($update_bodegas_3){
+            $sql_ingresos =("INSERT INTO `ingresos`(`code`, `contratipo`, `cantidad`, `factura`, `Proveedor`, `order_date`) VALUES ($item_id[$i],'$item_name[$i]',$item_new_q[$i],'$factura_number[$i]','$provider[$i]','$fecha')");
       
-      $execute = $con->query($sql_ingresos);
+            $execute = $con->query($sql_ingresos);
+        }else{
+            echo 0;
+        } 
+    
+
+
+
   if($execute){
       echo 1;
   }else{

@@ -52,47 +52,45 @@ $existencias = mysqli_num_rows($sql_consulta);
 if ($existencias != 0) {
     foreach ($sql_consulta as $data) {
         $order = $data['transfer_id'];
-        $sql_exist_item = $con->query("SELECT * FROM traspaso_producto_id WHERE item_code = $item_code AND transfer_id = $order");
+        $sql_exist_item = $con->query("SELECT * FROM traspaso_producto_id WHERE item_code = $item_code AND transfer_id = '$order'");
         $existencia_item = mysqli_num_rows($sql_exist_item);
-        if($existencia_item != 0){
-            foreach($sql_exist_item as $data_item){
-              $cantidad_registrada = $data_item['item_quantity'];
-              $id_ = $data_item['id'];
-              $new_quantity = $cantidad_registrada  + $quantity; 
-              $sql_update_items = $con->query("UPDATE traspaso_producto_id SET item_quantity = $new_quantity WHERE id = $id_");
+        if ($existencia_item != 0) {
+            foreach ($sql_exist_item as $data_item) {
+                $cantidad_registrada = $data_item['item_quantity'];
+                $id_ = $data_item['id'];
+                $new_quantity = $cantidad_registrada  + $quantity;
+                $sql_update_items = $con->query("UPDATE traspaso_producto_id SET item_quantity = $new_quantity WHERE id = '$id_'");
             }
 
-            if($sql_update_items){
+            if ($sql_update_items) {
                 echo $sql_update_items;
-            }else{
-                echo 0;
+            } else {
+                echo "fallo actualizar cantidad de un item ya solicitado";
             }
-        }else{
-        $sql_insert_item = $con->query("INSERT INTO `traspaso_producto_id`(`transfer_id`, `item_code`, `item_name`, `item_quantity`, `bodega_entrada`, `bodega_salida`, `item_status`, `order_date`,`gr_actual`) 
-        VALUES ($order,$item_code,'$item_name',$quantity,'$bodega_entrada','$bodega_salida','$estado','$date',$gr_actual)");
-        
-        if ($sql_insert_item) {
-            echo $sql_insert_item;
         } else {
-            echo 0;
+            $sql_insert_item = ("INSERT INTO `traspaso_producto_id`(`transfer_id`, `item_code`, `item_name`, `item_quantity`, `bodega_entrada`, `bodega_salida`, `item_status`,`notas`, `order_date`,`gr_actual`) 
+        VALUES ($order,$item_code,'$item_name',$quantity,'$bodega_entrada','$bodega_salida','$estado','NONE','$date',$gr_actual)");
+            $execu = $con->query($sql_insert_item);
+            if ($execu) {
+                echo $execu;
+            } else {
+                echo "fallo insertar item en orden vieja" . $sql_insert_item;
+            }
         }
     }
-}
 } else {
-    $sql_insert  = $con->query("INSERT INTO `traspaso_orden`(`solicitante`, `bodega_entrada`, `bodega_salida`, `estado`, `order_date`) 
- VALUES ('$user','$bodega_entrada','$bodega_salida','$estado','$date')");
+    $sql_insert  = ("INSERT INTO `traspaso_orden`(`solicitante`,`empaca`,`recibe`,`bodega_entrada`, `bodega_salida`, `estado`, `order_date`,`notes`) 
+ VALUES ('$user','pendiente','pendiente','$bodega_entrada','$bodega_salida','$estado','$date','NONE')");
+    $exec_ = $con->query($sql_insert);
     $last_insert = mysqli_insert_id($con);
-    $sql_insert_item = "INSERT INTO `traspaso_producto_id`(`transfer_id`, `item_code`, `item_name`, `item_quantity`, `bodega_entrada`, `bodega_salida`, `item_status`, `order_date`,`gr_actual`) 
- VALUES ($last_insert,$item_code,'$item_name',$quantity,'$bodega_entrada','$bodega_salida','$estado','$date',$gr_actual)";
+    $sql_insert_item = ("INSERT INTO `traspaso_producto_id`(`transfer_id`, `item_code`, `item_name`, `item_quantity`, `bodega_entrada`, `bodega_salida`, `item_status`,`notas`, `order_date`,`gr_actual`) 
+ VALUES ($order,$item_code,'$item_name',$quantity,'$bodega_entrada','$bodega_salida','$estado','NONE','$date',$gr_actual)");    
     $execute = $con->query($sql_insert_item);
 
-  
+
     if ($execute) {
         echo $execute;
     } else {
-        echo 0;
+        echo "fallo insertar item en orden nueva" . $sql_insert_item;
     }
 }
-
-
-

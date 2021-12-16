@@ -5,25 +5,6 @@ let usuario = "";
 function consultar_data() {
   let items = $("#buscar_item").val();
  
-  axios({
-
-  }).then
-  
-  axios.post('./methods/conexiones.php', {
-
-    key: "Q1",
-    item: items,
-  })
-    .then(function (response) {
-
-   
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-
-  return;
   console.log(items)
   $.ajax({
     url: "./methods/conexiones.php",
@@ -49,6 +30,26 @@ function consultar_data() {
 
     })
     .fail(function (e) { });
+
+return;
+console.log(items);
+axios({
+
+}).then
+
+axios.post('./methods/conexiones.php', {
+
+  key: "Q1",
+  item: items,
+})
+  .then(function (tarjetas) {
+
+ 
+    console.log(tarjetas);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 
 
 
