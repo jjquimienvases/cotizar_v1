@@ -74,7 +74,7 @@
                         </select>
                     </li>
                     <li class="list-group-item text-center">
-                        <button class="btn btn-success editar" id="editar" @click="GenerarFactura(data)">Generar Factura</button>
+                        <button class="btn btn-warning editar" id="editar" @click="GenerarFactura(data)">Generar Factura</button>
                         <button class=" btn btn-danger delete" id="delete" @click="eliminarProveedor(data.id)">Eliminar</button>
                     </li>
 
