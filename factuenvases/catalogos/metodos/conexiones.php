@@ -1,5 +1,9 @@
 <?php
+
 include "../conectar.php";
+
+$conexion = new mysqli('173.230.154.140', 'cotizar', 'LeinerM4ster', 'cotizar');
+
 $resultado = new stdClass;
 $fun = $_POST['key'];
 switch ($fun) {

@@ -5,17 +5,7 @@ $invoice = new Invoice();
 $invoice->checkLoggedIn();
 
 ?>
-<?php 
-include 'conectar.php';
-$conexion = conectar();
 
-$alistamiento = "alistamiento";
-$result= $conx -> query ("SELECT count(*) as total from files WHERE estado = '$alistamiento'");
-$data=mysqli_fetch_assoc($result);
-
-$cuenta = $data['total'];
-
-?>
 
 
 
@@ -70,7 +60,7 @@ $cuenta = $data['total'];
    								 				 </div>
    								 				 <div class="card-body text-center mb-2">
    								 				    
-   								 				    <strong><p>Tienes ( <?php echo $cuenta;   ?> ) Cotizaciones pendientes</p></strong>
+   								 				    <strong><p>Cotizaciones pendientes</p></strong>
    								 						<p class="card-text">ingresar aqui para ver empaques pendientes.</p>
    								 						<hr>
    								 					 <a href="upload/upload_guia.php"><button class="btn btn-lg btn-success">Click Aqui</button></a>
