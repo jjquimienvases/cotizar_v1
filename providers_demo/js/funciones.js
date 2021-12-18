@@ -26,7 +26,7 @@ function limpiar_table() {
 }
 
 function clear_table() {
-  //  document.getElementById("info_orders").innerHTML = "";
+    document.getElementById("info_orders").innerHTML = "";
    // document.getElementById("info_facturas").innerHTML = "";
 }
 
@@ -754,6 +754,10 @@ function getProductsOrders_filter() { //ESTO TRAE LA INFORMACION de los proveedo
             /*     console.log(d); */
             d.retornolosdatos.forEach((item) => {
 
+
+                let compania = item.empresa;
+                let id_compania = item.codigo;
+
                 let compañia = item.empresa;
                 let contratipo = item.contratipo;
                 let item_id = item.id;
@@ -770,7 +774,8 @@ function getProductsOrders_filter() { //ESTO TRAE LA INFORMACION de los proveedo
                 li_contratipo.innerHTML = "CONTRATIPO: ".bold() + contratipo.toUpperCase();
                 li_precio.innerHTML = "PRECIO: ".bold() + numberFormat2.format(precio);
                 li_empresa.innerHTML = "PROVEEDOR: ".bold() + compañia.toUpperCase();
-
+                let  info=id_compania+","+"'"+compania+"'"+','+item_id+','+"'"+contratipo+"'"+','+precio;
+                let boton_generate = '<button class="btn btn-warning mt-2 generate_order_item" data-bs-toggle="modal"  onclick="printItemProviderData('+info+')" data-bs-target="#staticBackdrop_generate_order_by_item" id="generate_order_item"><i class="far fa-plus-square"></i></button>';
                 //capa imprime la informacion
 
                 capa.appendChild(ul);
@@ -778,7 +783,7 @@ function getProductsOrders_filter() { //ESTO TRAE LA INFORMACION de los proveedo
                 capa.appendChild(li_contratipo);
                 capa.appendChild(li_empresa);
                 capa.appendChild(li_precio);
-
+                $("#info_products_orders").append(boton_generate);
                 capa.appendChild(hr);
 
             });
@@ -807,7 +812,8 @@ function get_data_items_modal_provider(val_1 ,val_2) {
             clear_table_provider_items_();
             /*     console.log(d); */
             d.retornolosdatos.forEach((item) => {
-
+                let id_compania = $("#id_provider_").val();
+                let compania = item.empresa;
                 let compañia = item.empresa;
                 let contratipo = item.contratipo;
                 let item_id = item.id;
@@ -820,7 +826,8 @@ function get_data_items_modal_provider(val_1 ,val_2) {
                 var li_codigo = document.createElement("li");
                 var li_precio = document.createElement("li");
                 var hr = document.createElement("hr");
-
+                let  info=id_compania+","+"'"+compania+"'"+','+item_id+','+"'"+contratipo+"'"+','+precio;
+                let boton_generate = '<button type="button" class="btn btn-warning mt-2 generate_order_item" data-bs-toggle="modal"  onclick="printItemProviderData('+info+')" data-bs-target="#staticBackdrop_generate_order_by_item" id="generate_order_item"><i class="far fa-plus-square"></i></button>';
 
 
                 li_codigo.innerHTML = "ITEM ID: ".bold() + item_id;
@@ -835,7 +842,7 @@ function get_data_items_modal_provider(val_1 ,val_2) {
                 capa.appendChild(li_contratipo);
   /*               capa.appendChild(li_empresa); */
                 capa.appendChild(li_precio);
-
+                $("#list_items_data_provider").append(boton_generate);
                 capa.appendChild(hr);
 
             });
@@ -847,7 +854,7 @@ function get_data_items_modal_provider(val_1 ,val_2) {
 
 function get_data_items_modal_provider_filter() { 
     let dato = $("#id_provider_").val();
-    let dato_search = $("#search_item_provider").val();
+    let dato_searchs = $("#search_item_provider").val();
  
     $.ajax({
             url: "../ajax/ajax_get_items_provider.php",
@@ -856,30 +863,29 @@ function get_data_items_modal_provider_filter() {
             data: {
                 key: "Q2",
                 id_provider: dato,
-                item_id: dato_search
+                item_id: dato_searchs
             },
         })
         .done(function (d) {
-            document.getElementById("list_items_data_provider").innerHTML = "";
-            console.log("search: "+dato_search);
-            console.log("PROVEEDOR"+dato);
-            /*     console.log(d); */
+            clear_table_provider_items_();
             d.retornolosdatos.forEach((item) => {
-
+               // document.getElementById("list_items_data_provider").innerHTML = "";
+                let id_compania = $("#id_provider_").val();
+                let compania = item.empresa;
                 let compañia = item.empresa;
                 let contratipo = item.contratipo;
                 let item_id = item.id;
                 let precio = item.precio;
 
-                var capa = document.getElementById("info_products_orders");
+                var capa = document.getElementById("list_items_data_provider");
                 var ul = document.createElement("ul");
                 var li_empresa = document.createElement("li");
                 var li_contratipo = document.createElement("li");
                 var li_codigo = document.createElement("li");
                 var li_precio = document.createElement("li");
                 var hr = document.createElement("hr");
-
-
+                let  info=id_compania+","+"'"+compania+"'"+','+item_id+','+"'"+contratipo+"'"+','+precio;
+                let boton_generate = '<button type="button" class="btn btn-warning mt-2 generate_order_item" data-bs-toggle="modal"  onclick="printItemProviderData('+info+')" data-bs-target="#staticBackdrop_generate_order_by_item" id="generate_order_item"><i class="far fa-plus-square"></i></button>';
 
                 li_codigo.innerHTML = "ITEM ID: ".bold() + item_id;
                 li_contratipo.innerHTML = "CONTRATIPO: ".bold() + contratipo.toUpperCase();
@@ -891,9 +897,9 @@ function get_data_items_modal_provider_filter() {
                 capa.appendChild(ul);
                 capa.appendChild(li_codigo);
                 capa.appendChild(li_contratipo);
-            /*     capa.appendChild(li_empresa); */
+  /*               capa.appendChild(li_empresa); */
                 capa.appendChild(li_precio);
-
+                $("#list_items_data_provider").append(boton_generate);
                 capa.appendChild(hr);
 
             });

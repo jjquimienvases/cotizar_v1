@@ -1,18 +1,7 @@
-
 let code_tot = "";
 let usuario = "";
-$( document ).ready(function() {
-  console.log("leiner inicio");
 
 
-<<<<<<< HEAD
-  
-  $("#buscar_item").keyup(function() {
-    
-    let items =  $("#buscar_item").val();
-  console.log(items);
-
-=======
 function consultar_data() {
   let items = $("#buscar_item").val();
  
@@ -38,54 +27,9 @@ function consultar_data() {
       //$("#item_name").val(d.resultado.contratipo);
       //$("#item_code").val(d.resultado.id);
       //$("#gramos_actuales").val(d.resultado.stock);
->>>>>>> cd1461e79fa298d74ffcc80767d789eff08ab068
 
-    axios({
-       method: "POST",
-       url: "./methods/conexiones.php",
-       params: {
-        key: "Q1",
-        item: items,
-      }.then(function(res)  {
-        console.log(res);
     })
-<<<<<<< HEAD
-    .catch(err => {
-        console.log(err);
-    })
-      
-    })
-  });
-});
-
-
-
-
-=======
     .fail(function (e) { });
->>>>>>> cd1461e79fa298d74ffcc80767d789eff08ab068
-
-return;
-console.log(items);
-axios({
-
-}).then
-
-axios.post('./methods/conexiones.php', {
-
-  key: "Q1",
-  item: items,
-})
-  .then(function (tarjetas) {
-
- 
-    console.log(tarjetas);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-
-
 
 
 

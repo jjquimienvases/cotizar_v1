@@ -77,9 +77,9 @@ if($user_rol == 2){
             <label>Buscar Productos</label>
             <div class="buscar_productos">
                 <datalist id="search_items">
-                    <option value="">Seleccione un cliente</option>
+                    <option value="">Seleccione un producto</option>
                     <?php
-                    $query = $con->query("SELECT * FROM $bodega ORDER BY id ASC");
+                    $query = $conexion->query("SELECT * FROM $bodega ORDER BY id ASC");
                     while ($valores = mysqli_fetch_array($query)) {
                         echo '<option value="' . $valores["id"] . '">' . $valores["id"] . ',' . $valores["contratipo"] . '</option>';
                     }

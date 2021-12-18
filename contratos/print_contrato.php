@@ -496,7 +496,7 @@ Cualquier modificación del lugar de trabajo, que signifique cambio de ciudad, s
 </p>
 <p>
 <b>TERCERA. PERIODO DE PRUEBA:</b> El TRABAJADOR estará en periodo de prueba por un término equivalente a la quinta parte del término inicial del contrato,
-siendo para el presente caso un periodo de dieciocho días (18), contados a partir de la fecha de inicio de labores.
+siendo para el presente caso un periodo de 2 meses, contados a partir de la fecha de inicio de labores.
 </p>
 <p>
 <b>CUARTA. FUNCIONES:</b> EL TRABAJADOR en función del cargo de '.$cargo.' para el cual fue contratado, se compromete a desempeñar y a cumplir las siguientes funciones, siendo causal de terminación del presente Contrato De Trabajo, 

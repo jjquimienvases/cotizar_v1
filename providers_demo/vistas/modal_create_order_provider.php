@@ -25,7 +25,7 @@
                         </div>
                         <input type="text"class="form-control rounded-pill border border-success" id="search_item_provider" onkeyup="get_data_items_modal_provider_filter()" name="search_item_provider" placeholder="Buscar un producto">
                         <hr>
-                        <div id="list_items_data_provider">
+                        <div id="list_items_data_provider" class="overflow-auto">
 
                         </div>
                     </form>

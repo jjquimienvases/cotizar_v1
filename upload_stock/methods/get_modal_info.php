@@ -11,7 +11,7 @@ switch ($fun) {
         $user_id = $_POST['users_id'];
         // $sql = "SELECT * FROM `traspaso_producto_id` INNER JOIN traspaso_orden ON traspaso_producto_id.transfer_id = traspaso_orden.transfer_id WHERE traspaso_orden.transfer_id = $id";
         $sql = "SELECT * FROM stocks_upload_information WHERE id_user = $user_id AND status = 'pendiente'";
-        $r = $con->query($sql);
+        $r = $conexion->query($sql);
         $retornolosdatos = [];
         while ($o = $r->fetch_object()) {
             $retornolosdatos[] = $o;

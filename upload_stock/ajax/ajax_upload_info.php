@@ -14,7 +14,7 @@ $status = "pendiente";
 
 
 //consulta, exite este dato registrado?
-$sql_consulta = $con->query("SELECT * FROM stocks_upload_information WHERE id_user = $user_id AND item_code = $item_id AND status = '$status'");
+$sql_consulta = $conexion->query("SELECT * FROM stocks_upload_information WHERE id_user = $user_id AND item_code = $item_id AND status = '$status'");
 
 if( mysqli_num_rows($sql_consulta) > 0 ){
     foreach($sql_consulta as $data){
@@ -22,7 +22,7 @@ if( mysqli_num_rows($sql_consulta) > 0 ){
         $stocks = $data['new_stock'];
         if($item_id == $code){
             $nuevo_stocks = $stocks + $new_stock;
-            $sql_update = $con->query("UPDATE stocks_upload_information SET new_stock = $nuevo_stocks WHERE item_code = $code AND id_user = $user_id AND status = 'pendiente'");
+            $sql_update = $conexion->query("UPDATE stocks_upload_information SET new_stock = $nuevo_stocks WHERE item_code = $code AND id_user = $user_id AND status = 'pendiente'");
         }
     }
     if($sql_update){
@@ -32,7 +32,7 @@ if( mysqli_num_rows($sql_consulta) > 0 ){
     }
     
 }else{
-     $sql_insert = $con->query("INSERT INTO `stocks_upload_information`(`item_code`, `item_name`, `last_stock`, `new_stock`, `user`, `order_date`, `status`,`id_user`,`bodega`)
+     $sql_insert = $conexion->query("INSERT INTO `stocks_upload_information`(`item_code`, `item_name`, `last_stock`, `new_stock`, `user`, `order_date`, `status`,`id_user`,`bodega`)
  VALUES ($item_id,'$item_name',$last_stock,$new_stock,'$user','$date','$status',$user_id,'$bodega')");
 
  if($sql_insert){

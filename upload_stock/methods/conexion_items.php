@@ -27,7 +27,7 @@ switch ($fun) {
         
         $sql = "SELECT * FROM $bodega
                 WHERE id = $id";
-        $r = $con->query($sql); 
+        $r = $conexion->query($sql); 
         if($r){
             if ($o = $r->fetch_object()) {
                 $resultado = $o;
