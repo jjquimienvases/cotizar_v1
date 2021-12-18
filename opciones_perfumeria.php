@@ -16,14 +16,13 @@ switch ($valor) {
         echo "<option value='Crema 120 ML'>120 ML</option>";
         echo "<option value='Crema 250 ML'>250 ML</option>";
         echo "<option value='Crema 1000 ML'>1000 ML</option>";
-          echo "<option value='Crema 3750 ML'>3750 ML</option>";
+        echo "<option value='Crema 3750 ML'>3750 ML</option>";
         break;
     case "3":
-  if ($_SESSION['id_rol'] == 7) {
-            $precio="8000";
-
+        if ($_SESSION['id_rol'] == 7) {
+            $precio = "8000";
         } else {
-          $precio="8500";
+            $precio = "8500";
         }
         $unidad = [
             "Unidad" => $precio,
@@ -61,6 +60,9 @@ switch ($valor) {
         echo "<option value='Perfume Lujo 30 ML'>30 ML</option>";
         echo "<option value='Perfume Lujo 50 ML'>50 ML</option>";
         echo "<option value='Perfume Lujo 100 ML'>100 ML</option>";
+        echo "<option value='Perfume Lujo 30 ML Regalo'>30 ML</option>";
+        echo "<option value='Perfume Lujo 50 ML Regalo'>50 ML</option>";
+        echo "<option value='Perfume Lujo 100 ML Regalo'>100 ML</option>";
         echo "<option value='Perfumero Recargado 3 ML'>3 ML</option>";
         echo "<option value='Perfumero Recargado 8 ML'>8 ML</option>";
         echo "<option value='Perfumero Recargado 18 ML'>18 ML</option>";
@@ -87,8 +89,7 @@ switch ($valor) {
     case "8":
         echo "<option>Selecione la capacidad</option>";
         echo "<option value='Premio 50 ML'>50 ML</option>";
-        echo "<option value='Premio 100 ML'>100 ML</option>";     
+        echo "<option value='Premio 100 ML'>100 ML</option>";
         echo "<option value='aumentar'>Aumentar Premio</option>";
-        break;    
-
+        break;
 }

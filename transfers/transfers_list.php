@@ -33,7 +33,7 @@ if ($user_rol == 2) {
 }
 
 
-if(!$user_id){header('Location: https://cotizar.jjquimienvases.com/');}else{}
+if(!$user_id){header('Location: https://cotizar.envasesyperfumeria.com/');}else{}
 
 if($user_rol == 5 || $user_rol == 1){
     $sql = $con->query("SELECT * FROM traspaso_orden WHERE estado != 'pendiente'   ORDER BY transfer_id DESC");
@@ -49,7 +49,7 @@ $sql = $con->query("SELECT * FROM traspaso_orden WHERE estado != 'pendiente' AND
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="../catalogo_e/fontawesome/svg-with-js/js/fontawesome-all.min.js"></script>
+<script src="../Lib/fontawesome/svg-with-js/js/fontawesome-all.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
